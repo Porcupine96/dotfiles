@@ -41,11 +41,6 @@ bindkey -M vicmd v edit-command-line
 
 # }}}
 
-# Exports {{{
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
-# }}}
-
 # Alias {{{
 
 # Tmux
@@ -55,8 +50,6 @@ alias tmuxkillall="tmux ls | cut -d : -f 1 | xargs -I {} tmux kill-session -t {}
 alias tmuxkillunnamed="tmux ls | cut -d : -f 1 | grep '\d' | xargs -I {} tmux kill-session -t {}" # tmux kill unnamed sessions
 
 # Python
-alias notebook="/Users/porcupine/anaconda3/bin/jupyter-notebook --NotebookApp.iopub_data_rate_limit=10000000000"
-# alias conda="/Users/porcupine/anaconda3/bin/conda"
 alias python2="python"
 alias python="python3"
 
@@ -64,14 +57,19 @@ alias python="python3"
 alias useJava8="export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home"
 alias useJava9="export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home"
 
+# Scala + Bloop
+alias bcw="bloop compile --watch $(basename "$PWD")"
+
 # Git
 alias gpp="git pull --no-edit && git push"
-alias pelUp="gl && cd pel-proto-files && gl && cd .. && sbt protocGenerate"
 
 # Spotify
 alias sp="spotify play"
 alias spa="spotify play album"
 alias spar="spotify play artist"
+
+# Ranger
+alias r=ranger
 
 # Misc
 alias ls="exa"
@@ -80,7 +78,6 @@ alias ls="exa"
 alias ecd="emacs --daemon"
 
 # Docker
-
 alias docker-clean-containers='docker container stop $(docker container ls -a -q) && docker container rm $(docker container ls -a -q)'
 alias docker-clean-unused='docker system prune --all --force --volumes'
 alias docker-clean-all='docker stop $(docker container ls -a -q) && docker system prune -a -f --volumes'
@@ -98,19 +95,15 @@ fpath=(~/path/to/wd $fpath)
 
 # }}}
 
-PATH=$PATH:~/.local/bin:/Applications/Racket\ v7.3/bin
+# Misc {{{
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 wd() {
   . /Users/porcupine/bin/wd/wd.sh
 }
 
-
 # Use Java8 by defaule
 useJava8
-
-# opam configuration
-test -r /Users/porcupine/.opam/opam-init/init.zsh && . /Users/porcupine/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/porcupine/tool/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/porcupine/tool/google-cloud-sdk/path.zsh.inc'; fi
@@ -118,12 +111,33 @@ if [ -f '/Users/porcupine/tool/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/porcupine/tool/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/porcupine/tool/google-cloud-sdk/completion.zsh.inc'; fi
 
+# Python specific configuration
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# }}}
+
+# Function {{{
+
+vf() { fzf | xargs nvim; }
+
+# }}}
+
+# Exports {{{
+
+# LLVM
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
+# Go
 export GOPATH=/usr/local/go/src
 
 # FZF.vim configuraion
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# Racket
+# TODO: move to .profile
+export PATH=$PATH:~/.local/bin:/Applications/Racket\ v7.3/bin
+
+# }}}
