@@ -1,143 +1,118 @@
-# General {{{
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# language and encoding settings
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
+# Path to your oh-my-zsh installation.
+export ZSH="/home/porcupine/.dotfiles"
 
-# shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/.dotfiles
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/Development
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-setopt extended_glob
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# source every .zsh file in this rep
-for config_file ($ZSH/**^external/*.zsh) source $config_file
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
-# load every completion after autocomplete loads
-for config_file ($ZSH/**^external/completion.sh) source $config_file
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-#if which tmux 2>&1 >/dev/null; then
-#  test -z "$TMUX" && tmux new-session && exit
-#fi
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
-unsetopt ignoreeof
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-export VISUAL=nvim
-autoload edit-command-line; zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# }}}
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-# Alias {{{
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
 
-# Tmux
-alias tat='tmux new-session -As $(basename "$PWD" | tr . -)' # will attach if session exists, or create a new session
-alias tmuxsrc="tmux source-file ~/.tmux.conf"
-alias tmuxkillall="tmux ls | cut -d : -f 1 | xargs -I {} tmux kill-session -t {}" # tmux kill all sessions
-alias tmuxkillunnamed="tmux ls | cut -d : -f 1 | grep '\d' | xargs -I {} tmux kill-session -t {}" # tmux kill unnamed sessions
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Python
-alias python2="python"
-alias python="python3"
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
 
-# Java
-alias useJava8="export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home"
-alias useJava9="export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home"
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Scala + Bloop
-alias bcw="bloop compile --watch $(basename "$PWD")"
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
 
-# Git
-alias gpp="git pull --no-edit && git push"
+source $ZSH/oh-my-zsh.sh
 
-# Spotify
-alias sp="spotify play"
-alias spa="spotify play album"
-alias spar="spotify play artist"
+# User configuration
 
-# Ranger
-alias r=ranger
+# export MANPATH="/usr/local/man:$MANPATH"
 
-# Misc
-alias ls="exa"
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-# Emacs
-alias ecd="emacs --daemon"
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-# Docker
-alias docker-clean-containers='docker container stop $(docker container ls -a -q) && docker container rm $(docker container ls -a -q)'
-alias docker-clean-unused='docker system prune --all --force --volumes'
-alias docker-clean-all='docker stop $(docker container ls -a -q) && docker system prune -a -f --volumes'
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-# }}}
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 
-# Plugins {{{
+alias r="ranger"
 
-plugins=(
-    git
-    wd
-)
+set -o vi
 
-fpath=(~/path/to/wd $fpath)
-
-# }}}
-
-# Misc {{{
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-wd() {
-  . /Users/porcupine/bin/wd/wd.sh
-}
-
-# Use Java8 by defaule
-useJava8
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/porcupine/tool/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/porcupine/tool/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/porcupine/tool/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/porcupine/tool/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Python specific configuration
+# pyenv configuration
+export PATH="/home/porcupine/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# }}}
+# fzf configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Function {{{
+# autojump configuration
+[[ -s /home/porcupine/.autojump/etc/profile.d/autojump.sh ]] && source /home/porcupine/.autojump/etc/profile.d/autojump.sh
 
-vf() { fzf | xargs nvim; }
+autoload -U compinit && compinit -u
 
-# }}}
-
-# Exports {{{
-
-# LLVM
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
-
-# Go
-export GOPATH=/usr/local/go/src
-
-# FZF.vim configuraion
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# Racket
-# TODO: move to .profile
-export PATH=$PATH:~/.local/bin:/Applications/Racket\ v7.3/bin
-
-# }}}
