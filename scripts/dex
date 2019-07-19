@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker ps | grep -v CONTAINER | fzf | cut -d' ' -f1 | awk '{ print "\"docker exec -it " $1 " /bin/bash\"" }'

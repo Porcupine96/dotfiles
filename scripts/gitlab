@@ -1,0 +1,11 @@
+#!/bin/bash
+
+API_URL="https://gitlab.com/api/v4"
+TOKEN="CWs4zZpQvf5aUos897jg"
+QUERY="private_token=$TOKEN&membership=true&per_page=100"
+URL="$API_URL/projects?$QUERY"
+
+SSH_REPO_URL=`curl --silent $URL | jq '.[] | .ssh_url_to_repo' | fzf`
+
+git clone $SSH_REPO_URL
+

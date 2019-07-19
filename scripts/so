@@ -1,0 +1,14 @@
+#!/bin/bash
+
+declare -a urls=(
+  "https://gitlab.com/codeheroes_/nm/nm-product-service"
+  "https://gitlab.com/codeheroes_/agentpanel/ap-suggestion-service"
+  "https://gitlab.com/codeheroes_/agentpanel/ap-connector-graphql"
+  "https://codeheroesdev.atlassian.net/secure/Dashboard.jspa"
+  "https://gitlab.com/wallfury/backend"
+  "https://gitlab.com/codeheroes_"
+  "https://github.com/LukeSmithxyz/voidrice"
+)
+
+printf "%s\n" "${urls[@]}" | fzf | xargs -I _ open _
+
