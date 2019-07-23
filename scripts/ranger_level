@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+if [ -z $RANGER_LEVEL ]; then
+        echo -n "";
+else
+        echo -n "R: $RANGER_LEVEL";
+fi

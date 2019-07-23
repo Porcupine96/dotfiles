@@ -1,14 +1,18 @@
 #!/bin/bash
 
 declare -a urls=(
+  "https://gitlab.com/codeheroes_/nm"
+  "https://gitlab.com/codeheroes_/agentpanel"
+  "https://gitlab.com/dashboard/activity?nav_source=navbar"
   "https://gitlab.com/codeheroes_/nm/nm-product-service"
   "https://gitlab.com/codeheroes_/agentpanel/ap-suggestion-service"
   "https://gitlab.com/codeheroes_/agentpanel/ap-connector-graphql"
-  "https://codeheroesdev.atlassian.net/secure/Dashboard.jspa"
+  "https://gitlab.com/codeheroes_/agentpanel/ap-conversation-service"
   "https://gitlab.com/wallfury/backend"
   "https://gitlab.com/codeheroes_"
   "https://github.com/LukeSmithxyz/voidrice"
+  "https://codeheroesdev.atlassian.net/secure/Dashboard.jspa"
 )
 
-printf "%s\n" "${urls[@]}" | fzf | xargs -I _ open _
+printf "%s\n" "${urls[@]}" | fzf --exact | xargs -I _ bash -c "brave-browser _; (true)" >> /dev/null 2>&1
 

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+choice=$(printf "basic\\nwork\\nhome" | dmenu)
+
+case "$choice" in
+    "work") bash -c "~/.screenlayout/work.sh" ;;
+    "home") bash -c "~/.screenlayout/home.sh" ;;
+    *) bash -c "~/.screenlayout/basic.sh" ;;
+esac
+
+# reload background
+~/.fehbg &
+
+# synchronize the touch screen
+xinput map-to-output 10 eDP-1-1
