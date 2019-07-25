@@ -1,0 +1,9 @@
+#!/bin/bash
+
+default_sink=$(pactl info | grep 'Default Sink' | sed -E 's/Default Sink: (.*)/\1/')
+
+case "$1" in
+    "toggle") pactl set-sink-mute $default_sink toggle ;;
+    "up") pactl set-sink-volume $default_sink +10% ;;
+    "down") pactl set-sink-volume $default_sink -10% ;;
+esac
