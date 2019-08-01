@@ -1,0 +1,22 @@
+#!/bin/sh
+
+locked_label=🔒
+unlocked_label=🔓
+
+nordvpn status | awk '
+/^Status:/ {
+    status=$2
+}
+/^City:/ {
+    city=$2
+}
+END {
+    if (status == "Disconnected") {
+        print "🔓 Disconnected\n"
+        print "#FF0000"
+    } else {
+        printf("🔒 %s\n", city)
+        print "#00FF00"
+    }
+}
+'

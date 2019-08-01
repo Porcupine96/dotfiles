@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+light -G | awk -v label="$LABEL" '
+{
+	printf("%s %.f%%\n", label, $1)
+}
+'
