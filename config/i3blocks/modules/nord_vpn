@@ -1,8 +1,5 @@
 #!/bin/sh
 
-locked_label=🔒
-unlocked_label=🔓
-
 nordvpn status | awk '
 /^Status:/ {
     status=$2
