@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+bloop compile --watch $(bloop projects | head -n1)
