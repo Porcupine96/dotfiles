@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cat $HOME/.xsessionrc | head -n2 | xargs -I _ bash -c
