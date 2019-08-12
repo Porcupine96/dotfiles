@@ -1,0 +1,26 @@
+#!/bin/bash
+files="keypair.pem publickey.crt public.der private.der"
+
+should_exit=0
+for file in $files
+do
+    if [ -f $file ]
+    then
+        echo "File $file exists and would be lost."
+        should_exit=1
+    fi
+
+done
+
+if [[ should_exit -eq 1 ]]
+then
+    echo "Exiting"
+    exit 1
+fi
+
+echo "Generating keys"
+
+openssl genrsa -out keypair.pem 2048
+openssl rsa -in keypair.pem -pubout -out publickey.crt
+openssl rsa -in keypair.pem -pubout -outform DER -out public.der
+openssl pkcs8 -topk8 -in keypair.pem -nocrypt -outform DER -out private.der

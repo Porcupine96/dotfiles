@@ -1,4 +1,11 @@
 #!/bin/sh
 
+projects=$(bloop projects)
 
-bloop compile --watch $(bloop projects | head -n1)
+current_project=$(echo $projects | head -n1)
+
+if [ $1 = 'noi' ]; then
+  bloop compile --incremental=false $current_project
+else
+  bloop compile --watch $current_project
+fi
