@@ -5,7 +5,6 @@ TOKEN="CWs4zZpQvf5aUos897jg"
 QUERY="private_token=$TOKEN&membership=true&per_page=100"
 URL="$API_URL/projects?$QUERY"
 
-SSH_REPO_URL=`curl --silent $URL | jq '.[] | .ssh_url_to_repo' | fzf`
+SSH_REPO_URL=`curl --silent $URL | jq '.[] | .ssh_url_to_repo' | fzf | sed 's/"//g'`
 
-git clone $SSH_REPO_URL
-
+git clone $SSH_REPO_URL --recursive
