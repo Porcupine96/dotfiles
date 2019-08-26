@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: List[IO].parSequence
+# key: pseq
+# --
+import cats.instances.list.catsStdInstancesForList
+import cats.syntax.parallel.catsSyntaxParallelSequence

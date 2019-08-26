@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: case object T
+# key: co
+# --
+case object ${1:Name}

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: object Name extends SuperClass
+# key: obe
+# --
+object ${1:Name} extends ${2:SuperClass} {
+  $3
+}

@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: Slick CRUD
+# key: scrud
+# --
+
+import cats.effect.IO
+import scala.concurrent.ExecutionContext
+
+class Slick${1:Name}()(implicit db: Database, ec: ExecutionContext)
+    extends repo.plain.CrudRepo[${2:Id}, ${3:DTO}, ${4:Schema}](db, $4)
+    with repo.CatsIntegration
+    with CustomJdbcTypes
+    with $1[IO] {
+
+  override protected def id: $4 => repo.profile.api.Rep[$2] = _.$2
+}

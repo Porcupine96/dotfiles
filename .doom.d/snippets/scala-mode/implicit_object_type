@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: implicit val Type: ObjectType[Unit, Type] = deriveObjectType()
+# key: dot
+# --
+implicit val ${1:Name}Type: ObjectType[Unit, $1] = deriveObjectType()

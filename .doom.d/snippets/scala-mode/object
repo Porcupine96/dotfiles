@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: object T { ... }
+# key: ob
+# --
+object ${1:Name} {
+ $2
+}

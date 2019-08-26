@@ -1,0 +1,30 @@
+# -*- mode: snippet -*-
+# name: slick schema
+# key: sschema
+# --
+package `(scala/package)`
+
+import repo.profile.api._
+
+object ${1:Name}Schema extends repo.SlickSchemas with CustomJdbcTypes {
+
+  case class $1DTO(
+
+  )
+
+  override def schemas = List($1)
+
+  val $1 = TableQuery[$1s]
+
+  class AudioGraphMessages(tag: Tag) extends Table[AudioGraphDTO](tag, "") {
+    def id = column[Id]("id")
+
+    def pk = primaryKey("pk", (streamId, sequenceId))
+
+    override def * =
+      (
+        id,
+      ) <> ($1DTO.tupled, $1DTO.unapply)
+  }
+
+}

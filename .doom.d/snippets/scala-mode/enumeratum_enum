@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: enumeratum enum
+# key: eenum
+# --
+import enumeratum.{Enum, EnumEntry}
+import scala.collection.immutable.IndexedSeq
+
+sealed trait ${1:Name} extends EnumEntry
+object $1 extends Enum[$1]{
+  case object ${2:CaseName} extends $1
+
+  override def values: IndexedSeq[$1] = findValues
+}

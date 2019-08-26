@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: mongo find one
+# key: mfo
+# --
+collection
+    .find(BSONDocument("_id" -> ${1:id}), projection = None)
+    .one
+    .map($2)

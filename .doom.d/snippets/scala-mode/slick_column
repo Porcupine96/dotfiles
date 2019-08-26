@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: slick column
+# key: col
+# --
+def ${1:Field} = column[${2:Type}]("${1:$(string-inflection-underscore-function yas-text)}")

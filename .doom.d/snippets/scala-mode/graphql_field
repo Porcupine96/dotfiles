@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: Field(name, type, arguments, resolve)
+# key: gqf
+# --
+Field(
+  "${1:Name}",
+  ${2:Type},
+  arguments = ${3:Arg} :: Nil,
+  resolve = c => {
+    ${4:???}
+  }
+)

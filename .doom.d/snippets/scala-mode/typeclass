@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: typeclass
+# key: tc
+# --
+
+import simulacrum.typeclass
+
+@typeclass
+trait ${1:Name}[F[_]] {
+    $2
+}

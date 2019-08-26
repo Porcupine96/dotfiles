@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import scala.concurrent.ExecutionContext.Implicits.global
+# key: iec
+# --
+import scala.concurrent.ExecutionContext.Implicits.global

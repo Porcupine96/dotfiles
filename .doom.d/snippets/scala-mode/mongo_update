@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: mongo update
+# key: mup
+# --
+collection
+    .update(ordered = false)
+    .one(
+        BSONDocument("_id" -> ${1:id})
+        BSONDocument($2),
+        upsert = ${3:true}
+    )
+    .map(_ => ())

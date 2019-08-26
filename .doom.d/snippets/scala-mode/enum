@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: sealed trait + object
+# key: enum
+# --
+sealed trait ${1:Name}
+object $1 {
+    case object ${2:CaseName} extends $1
+}
