@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: private val
+# key: pv
+# --
+private val $1 = $2

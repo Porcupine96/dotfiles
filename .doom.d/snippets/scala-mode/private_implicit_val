@@ -1,0 +1,4 @@
+# key: piv
+# name: private implicit val
+# --
+private implicit val ${1:Name} = $2

@@ -2,13 +2,16 @@
 
 ;; VISUALS {{{
 
+;; theme
 (load-theme 'doom-solarized-light t)
 
+;; treemacs icons
 (add-hook 'doom-load-theme-hook
           (lambda ()
             (require 'treemacs)
             (treemacs-load-theme "Default")))
 
+;; org mode
 (setq
   org-ellipsis " ▾ "
   org-bullets-bullet-list '("⁖")
@@ -34,6 +37,13 @@
                       :foreground nil
                       :background nil
                       :height 1.1))
+
+;; }}}
+
+(defun kitty ()
+    (interactive)
+    (require 'subr-x)
+    (start-process "RUN" "RUN" "kitty" "-d" doom-modeline-project-root))
 
 ;; }}}
 
@@ -67,6 +77,9 @@
      :desc "format-buffer" :nv "f" #'lsp-format-buffer)
    (:prefix "o"
      :desc "eshell" :nv "e" #'eshell)
+   (:prefix "TAB"
+     :desc "Display tab bar" :nv "`" #'+workspace/display
+     :desc "Switch to last workpace" :nv "TAB" #'+workspace/other)
  ))
 
 ;; workspace movements
@@ -77,7 +90,10 @@
       "]" #'+workspace/switch-right
       "C-o" #'zoom-window-zoom)
 
-;; (global-set-key (kbd "SPC-`") #'+workspace/other)
+;; completion
+(map! :map +doom-dashboard-mode-map
+      "C-n" #'+company/dabbrev
+      "C-p" #'+company/dabbrev-code-previous)
 
 ;; python
 (map! :map python-mode-map
