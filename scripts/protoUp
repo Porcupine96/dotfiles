@@ -1,0 +1,8 @@
+#!/bin/bash
+
+PROTO_FOLDER=`ls | grep proto`
+cd $PROTO_FOLDER
+git checkout master
+git pull
+cd ..
+sbt protocGenerate bloopInstall
