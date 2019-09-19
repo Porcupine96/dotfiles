@@ -1,5 +1,9 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
+;; temporary
+(setq elfeed-db-directory "~/Dropbox/rss/elfeeddb")
+(setq rmh-elfeed-org-files (list "~Dropbox/rss/elfeed.org"))
+
 ;; VISUALS {{{
 
 ;; theme
@@ -105,7 +109,9 @@
 ;; MISC {{{
 
 (setq
-;; global mar
+;; initial buffer
+ initial-buffer-choice "~/Dropbox/org/todo/current.org"
+;; global mark
  global-mark-ring-max 16
 ;; treemacs config
  treemacs-width 50
@@ -135,4 +141,5 @@
 (load! "+reason")
 (load! "+scala")
 (load! "+blacken")
+;; (load! "+elfeed")
 ;; }
