@@ -40,7 +40,17 @@
   (set-face-attribute 'org-level-2 nil
                       :foreground nil
                       :background nil
-                      :height 1.1))
+                      :height 1.1)
+  (org-babel-do-load-languages
+    'org-babel-load-languages
+    '((emacs-lisp . t)
+      (python . t)
+      (java . t)
+      (shell . t)
+      (C . t)
+      (sql . t)
+      (ammonite . t)
+      )))
 
 ;; }}}
 

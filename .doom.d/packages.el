@@ -5,3 +5,4 @@
 (package! reason-mode)
 (package! flycheck-mypy)
 (package! string-inflection)
+(package! ob-ammonite)
