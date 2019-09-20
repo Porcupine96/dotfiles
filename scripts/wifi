@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kitty --session ~/.config/kitty/wifi_session
