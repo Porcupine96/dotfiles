@@ -105,9 +105,10 @@
       "C-o" #'zoom-window-zoom)
 
 ;; completion
-(map! :map +doom-dashboard-mode-map
+(map! :map evil-insert-state-map
       "C-n" #'+company/dabbrev
-      "C-p" #'+company/dabbrev-code-previous)
+      "C-p" #'+company/dabbrev-code-previous
+      "C-m" #'+tabnine/tabnine-complete)
 
 ;; python
 (map! :map python-mode-map
@@ -132,6 +133,8 @@
 ;; relative line numbers
  display-line-numbers-type 'relative)
 
+(global-auto-revert-mode t)
+
 ;; company
 (after! company
   (setq company-idle-delay 0.1))
@@ -151,5 +154,6 @@
 (load! "+reason")
 (load! "+scala")
 (load! "+blacken")
+(load! "+tabnine")
 ;; (load! "+elfeed")
 ;; }

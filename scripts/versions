@@ -1,0 +1,29 @@
+#!/bin/bash
+
+api_url="https://gitlab.com/api/v4"
+cache_file="$home_dir/cache"
+crontab_backup_file="$home_dir/crontab_backup"
+tmp_crontab_file="$home_dir/crontab_tmp"
+log_file="$home_dir/${name}.log"
+
+primary_token_file="$HOME/.private/gitlab-pull"
+secondary_token_file="${home_dir}/gitlab-pull"
+
+if [ -f "$primary_token_file" ]; then
+	token_file="$primary_token_file"
+elif [ -f "$secondary_token_file" ]; then
+	token_file="$secondary_token_file"
+else
+	echo "Please save gitlab token to $primary_token_file or $secondary_token_file"
+	echo "You can generate it at https://gitlab.com/profile/personal_access_tokens"
+	echo "You need permisisons 'api' and 'read_repository'."
+	exit 1
+fi
+
+token=$(cat "$token_file")
+query="private_token=$token&membership=true&per_page=100"
+url="$api_url/projects?$query"
+
+function downloaded_urls() {
+	curl --silent "$url" | jq '.[] | .ssh_url_to_repo' | tr -d '"' | sed 's/\.git//'
+}

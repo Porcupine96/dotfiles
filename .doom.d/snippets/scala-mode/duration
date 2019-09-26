@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: duration imports
+# key: dur
+# --
+import scala.concurrent.duration._
+import scala.language.postfixOps

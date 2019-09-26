@@ -9,7 +9,7 @@ if [ $1 = 'noi' ]; then
 elif [ $1 = 'r' ] || [ $1 = 'run' ]; then
   bloop run $current_project
 elif [ $1 = 't' ] || [ $1 = 'test' ]; then
-  bloop test $current_project
+  bloop test --watch $current_project
 else
   bloop compile --watch $current_project
 fi

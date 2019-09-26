@@ -55,4 +55,5 @@
       :desc "search-case-class" :nv "v" #'+scala/search-case-class
       :desc "search-def" :nv "d" #'+scala/search-def
       :desc "search-object" :nv "o" #'+scala/search-object
-      :desc "copy-import" :nv "i" #'+scala/copy-import))))
+      :desc "copy-import" :nv "i" #'+scala/copy-import
+      :desc "lsp-find-workspace-symbol" :nv "l" #'lsp-ui-find-workspace-symbol))))
