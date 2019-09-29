@@ -41,6 +41,16 @@
                       :foreground nil
                       :background nil
                       :height 1.1)
+  (set-face-attribute 'org-block-begin-line nil
+                      :foreground "lightgrey"
+                      :box nil
+                      :background nil
+                      :height 0.8)
+  (set-face-attribute 'org-block-end-line nil
+                      :foreground "lightgrey"
+                      :box nil
+                      :background nil
+                      :height 0.8)
   (org-babel-do-load-languages
     'org-babel-load-languages
     '((emacs-lisp . t)
@@ -51,7 +61,6 @@
       (sql . t)
       (ammonite . t)
       )))
-
 ;; }}}
 
 (defun kitty ()
@@ -107,8 +116,8 @@
 ;; completion
 (map! :map evil-insert-state-map
       "C-n" #'+company/dabbrev
-      "C-p" #'+company/dabbrev-code-previous
-      "C-m" #'+tabnine/tabnine-complete)
+      "C-p" #'+company/dabbrev-code-previous)
+      ;; "C-m" #'+tabnine/tabnine-complete)
 
 ;; python
 (map! :map python-mode-map

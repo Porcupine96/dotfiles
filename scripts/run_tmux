@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Run new Tmux session: [Y/n]"
+
+read choice
+
+if [[ $choice != "n" ]]; then
+   tmux
+else
+   tmux attach -t 0
+   # the one below does not work since we cannot call "fzf"
+   # outside of a terminal
+   # tmux attach -t $(tmux ls | fzf | cut -d':' -f1)
+fi

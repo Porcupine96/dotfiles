@@ -7,7 +7,7 @@ current_project=$(echo $projects | head -n1)
 if [ $1 = 'noi' ]; then
   bloop compile --incremental=false $current_project
 elif [ $1 = 'r' ] || [ $1 = 'run' ]; then
-  bloop run $current_project
+  bloop run --watch $current_project
 elif [ $1 = 't' ] || [ $1 = 'test' ]; then
   bloop test --watch $current_project
 else
