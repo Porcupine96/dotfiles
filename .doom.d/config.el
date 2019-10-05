@@ -7,7 +7,8 @@
 ;; VISUALS {{{
 
 ;; theme
-(load-theme 'doom-solarized-light t)
+;; (load-theme 'doom-solarized-light t)
+(load-theme 'doom-dracula t)
 
 ;; treemacs icons
 (add-hook 'doom-load-theme-hook
@@ -50,7 +51,7 @@
                       :foreground "lightgrey"
                       :box nil
                       :background nil
-                      :height 0.8)
+                      :height 1.0)
   (org-babel-do-load-languages
     'org-babel-load-languages
     '((emacs-lisp . t)
@@ -84,6 +85,9 @@
 (global-set-key (kbd "C-k") 'evil-window-up)
 (global-set-key (kbd "C-l") 'evil-window-right)
 
+;; jj to switch to normal-mode
+(setq-default evil-escape-key-sequence "jj")
+
 ;; prevent org-mode from overriding the global map
 (map! :map org-mode-map
       "C-j" 'evil-window-down)
@@ -100,6 +104,8 @@
      :desc "format-buffer" :nv "f" #'lsp-format-buffer)
    (:prefix "o"
      :desc "eshell" :nv "e" #'eshell)
+   (:prefix "r"
+     :desc "ranger" :nv "r" #'ranger)
    (:prefix "TAB"
      :desc "Display tab bar" :nv "`" #'+workspace/display
      :desc "Switch to last workpace" :nv "TAB" #'+workspace/other)
@@ -111,7 +117,8 @@
       "c" nil
       "[" #'+workspace/switch-left
       "]" #'+workspace/switch-right
-      "C-o" #'zoom-window-zoom)
+      "C-o" #'zoom-window-zoom
+      "p" #'+treemacs/toggle)
 
 ;; completion
 (map! :map evil-insert-state-map
@@ -152,12 +159,18 @@
 (after! org
   (setq
     org-log-done 'time))
-;; }}}
+
+;; o-reveal
+(require 'ox-reveal)
+(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
+(setq Org-Reveal-title-slide nil)
 
 ;; python
 (def-package! blacken-mode
   :hook
   (python-mode . blacken-mode))
+
+;; }}}
 
 ;; ADDITIONAL MODULES {{{
 (load! "+reason")

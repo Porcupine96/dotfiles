@@ -26,9 +26,9 @@
 
 
 (defun +scala/search-symbol (symbol)
-  (setq counsel-projectile-ag-initial-input (format "%s " symbol))
-  (counsel-projectile-ag)
-  (setq counsel-projectile-ag-initial-input ""))
+  (let ((counsel-projectile-ag-initial-input (format "%s " symbol)))
+       (counsel-projectile-ag)))
+
 
 (defun +scala/search-class ()
   (interactive)
