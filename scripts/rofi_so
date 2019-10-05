@@ -1,0 +1,10 @@
+#!/bin/bash
+
+declare -a urls=(
+  "https://gitlab.com/dashboard/activity"
+  "https://gitlab.com/dashboard/merge_requests?assignee_username=Porcupine96"
+  "https://codeheroesdev.atlassian.net/secure/RapidBoard.jspa?rapidView=18&projectKey=CP&view=planning"
+)
+
+printf "%s\n" "${urls[@]}" | rofi -dmenu -dpi 196 -show-icons | xargs -I _ bash -c "brave-browser _; (true)" >> /dev/null 2>&1
+
