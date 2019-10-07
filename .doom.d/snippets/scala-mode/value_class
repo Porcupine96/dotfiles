@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: values class
-# key: vc
+# key: cv
 # --
 case class ${1:Name}(value: String) extends AnyVal

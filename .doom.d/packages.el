@@ -8,3 +8,4 @@
 (package! ob-ammonite)
 (package! company-tabnine)
 (package! ox-reveal)
+(package! keychain-environment)

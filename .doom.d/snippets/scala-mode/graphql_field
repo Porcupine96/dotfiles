@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: Field(name, type, arguments, resolve)
-# key: gqf
+# key: field
 # --
 Field(
   "${1:Name}",

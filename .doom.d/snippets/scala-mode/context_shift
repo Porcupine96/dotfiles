@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: context shift
+# key: cs
+# --
+private implicit val contextShift: ContextShift[IO] = IO.contextShift($1)
