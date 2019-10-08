@@ -1,10 +1,23 @@
 #!/bin/bash
 
-declare -a urls=(
-  "https://gitlab.com/dashboard/activity"
-  "https://gitlab.com/dashboard/merge_requests?assignee_username=Porcupine96"
-  "https://codeheroesdev.atlassian.net/secure/RapidBoard.jspa?rapidView=18&projectKey=CP&view=planning"
+
+declare -a options=(
+  "GitLab Activity"
+  "GitLab Merge Requests"
+  "Jira Chatbotize Board"
 )
 
-printf "%s\n" "${urls[@]}" | rofi -dmenu -dpi 196 -show-icons | xargs -I _ bash -c "brave-browser _; (true)" >> /dev/null 2>&1
 
+function to_url() {
+  case "$1" in
+    "GitLab Activity")        echo "https://gitlab.com/dashboard/activity" ;;
+    "GitLab Merge Requests")  echo "https://gitlab.com/dashboard/merge_requests?assignee_username=Porcupine96" ;;
+    "Jira Chatbotize Board")  echo "https://codeheroesdev.atlassian.net/secure/RapidBoard.jspa?rapidView=18&projectKey=CP&view=planning" ;;
+  esac
+}
+
+
+choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu -dpi 196 -show-icons)
+url=$(to_url "$choice")
+
+bash -c "brave-browser $url; (true)" >> /dev/null 2>&1

@@ -85,8 +85,8 @@
 (global-set-key (kbd "C-k") 'evil-window-up)
 (global-set-key (kbd "C-l") 'evil-window-right)
 
-;; jj to switch to normal-mode
-(setq-default evil-escape-key-sequence "jj")
+;; jk to switch to normal-mode
+(setq-default evil-escape-key-sequence "jk")
 
 ;; prevent org-mode from overriding the global map
 (map! :map org-mode-map
