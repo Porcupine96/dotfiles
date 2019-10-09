@@ -179,3 +179,5 @@
 (load! "+tabnine")
 ;; (load! "+elfeed")
 ;; }
+
+(keychain-refresh-environment)

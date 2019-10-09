@@ -17,7 +17,10 @@ function to_url() {
 }
 
 
-choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu -dpi 196 -show-icons)
-url=$(to_url "$choice")
+choice=$(printf "%s\n" "${options[@]}" | rofi -i -dmenu -dpi 196 -show-icons)
 
-bash -c "brave-browser $url; (true)" >> /dev/null 2>&1
+if [[ ! -z "$choice" ]]; then
+  url=$(to_url "$choice")
+
+  bash -c "brave-browser $url; (true)" >> /dev/null 2>&1
+fi
