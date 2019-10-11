@@ -120,6 +120,7 @@
       "C-o" #'zoom-window-zoom
       "p" #'+treemacs/toggle)
 
+
 ;; completion
 (map! :map evil-insert-state-map
       "C-n" #'+company/dabbrev
@@ -129,6 +130,21 @@
 ;; python
 (map! :map python-mode-map
       "C-c C-o" #'run-python)
+
+;; org
+(defun org-archive-done ()
+  (interactive)
+  (org-archive-all-done))
+
+(defun org-archive-save-buffer ()
+  (let ((afile (car (org-all-archive-files))))
+    (if (file-exists-p afile)
+      (let ((buffer (find-file-noselect afile)))
+          (with-current-buffer buffer
+            (save-buffer)))
+      (message "Ooops ... (%s) does not exist." afile))))
+
+(add-hook 'org-archive-hook 'org-archive-save-buffer)
 
 ;; }}}
 

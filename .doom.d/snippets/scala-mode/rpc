@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: override grpc endpoint
+# key: rpc
+# --
+override def ${1:Name}(r: $1Request): Future[$1Response] = ???
