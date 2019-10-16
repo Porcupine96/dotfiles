@@ -46,6 +46,15 @@
   (interactive)
   (+scala/search-symbol "object"))
 
+
+(defun +scala/referse-pattern-match ()
+  (interactive)
+  (let (pattern (evil-ex-make-search-pattern "x"))
+    (message "lol")
+    (evil-ex-substitute "'<" "'>" pattern "y")
+    ))
+
+
 (after! scala-mode
   (map!
   (:leader

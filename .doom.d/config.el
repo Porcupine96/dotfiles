@@ -173,10 +173,10 @@
 
 ;; org-mode
 (after! org
-  (setq
-    org-log-done 'time))
+  (setq org-log-done 'time)
+  (setq org-html-validation-link nil))
 
-;; o-reveal
+;; ox-reveal
 (require 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
 (setq Org-Reveal-title-slide nil)
@@ -186,13 +186,19 @@
   :hook
   (python-mode . blacken-mode))
 
+;; clojure
+(after! cider
+   (sp-use-smartparens-bindings))
+
 ;; }}}
 
 ;; ADDITIONAL MODULES {{{
 (load! "+reason")
 (load! "+scala")
 (load! "+blacken")
-(load! "+tabnine")
+
+(after! org
+  (load! "+tabnine"))
 ;; (load! "+elfeed")
 ;; }
 
