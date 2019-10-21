@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sleep 1
+sleep 3
 bash -c ~/.screenlayout/basic.sh

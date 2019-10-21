@@ -1,0 +1,5 @@
+#!/bin/bash
+
+QUERY=$(echo "$@" | sed -e "s/\s\s*/+/g")
+
+curl "https://cheat.sh/$QUERY"

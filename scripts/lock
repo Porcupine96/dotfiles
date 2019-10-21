@@ -1,3 +1,16 @@
 #!/bin/sh
 
-systemctl suspend && i3lock -c 001f3f -e
+# systemctl suspend && i3lock -c 001f3f -e
+# xss-lock -- i3lock -c 001f3f -e &
+
+revert() {
+  xset dpms 0 0 0
+  xset dpms force off
+}
+
+
+trap revert HUP INT TERM
+xset +dpms dpms 0 0 5
+
+i3lock  -c 1d2021 -e -f
+revert

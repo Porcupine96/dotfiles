@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cheatsheet_dir="~/Dropbox/org/resources/cheatsheets/"
+
+choice=$(ls $cheatsheet_dir | rofi -i -dmenu -dpi 196 -show-icons)
+
+zathura $choice

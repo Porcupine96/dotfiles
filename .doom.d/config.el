@@ -8,10 +8,11 @@
 
 ;; theme
 ;; (load-theme 'doom-solarized-light t)
-(load-theme 'doom-dracula t)
+;; (load-theme 'doom-dracula t)
+(load-theme 'doom-molokai t)
 
 ;; treemacs icons
-(add-hook 'doom-load-theme-hook
+(after! treemacs
           (lambda ()
             (require 'treemacs)
             (treemacs-load-theme "Default")))
@@ -61,6 +62,7 @@
       (C . t)
       (sql . t)
       (ammonite . t)
+      (clojure . t)
       )))
 ;; }}}
 
@@ -187,8 +189,11 @@
   (python-mode . blacken-mode))
 
 ;; clojure
-(after! cider
-   (sp-use-smartparens-bindings))
+(after! 'cider
+  (add-hook 'before-save-hook #'cider-format-buffer))
+
+;; use smartparens
+(sp-use-smartparens-bindings)
 
 ;; }}}
 
@@ -199,6 +204,7 @@
 
 (after! org
   (load! "+tabnine"))
+
 ;; (load! "+elfeed")
 ;; }
 
