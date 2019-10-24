@@ -17,7 +17,7 @@ function to_url() {
 }
 
 
-choice=$(printf "%s\n" "${options[@]}" | rofi -i -dmenu -dpi 196 -show-icons)
+choice=$(printf "%s\n" "${options[@]}" | rofi -i -dmenu -dpi 196 -show-icons -font "Fira Mono 11")
 
 if [[ ! -z "$choice" ]]; then
   url=$(to_url "$choice")

@@ -1,8 +1,8 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; temporary
-(setq elfeed-db-directory "~/Dropbox/rss/elfeeddb")
-(setq rmh-elfeed-org-files (list "~Dropbox/rss/elfeed.org"))
+;; (setq elfeed-db-directory "~/Dropbox/rss/elfeeddb")
+;; (setq rmh-elfeed-org-files (list "~Dropbox/rss/elfeed.org"))
 
 ;; VISUALS {{{
 
@@ -40,9 +40,9 @@
                       :height 1.2
                       :weight 'bold)
   (set-face-attribute 'org-level-2 nil
-                      :foreground nil
+                      :foreground "lightgrey"
                       :background nil
-                      :height 1.1)
+                      :height 1.0)
   (set-face-attribute 'org-block-begin-line nil
                       :foreground "lightgrey"
                       :box nil
@@ -53,6 +53,7 @@
                       :box nil
                       :background nil
                       :height 1.0)
+
   (org-babel-do-load-languages
     'org-babel-load-languages
     '((emacs-lisp . t)
@@ -86,6 +87,11 @@
 (global-set-key (kbd "C-j") 'evil-window-down)
 (global-set-key (kbd "C-k") 'evil-window-up)
 (global-set-key (kbd "C-l") 'evil-window-right)
+
+;; toggle treemacs
+(global-set-key (kbd "M-p") #'+treemacs/toggle)
+;; TODO: add the same binging to treemacs map
+
 
 ;; jk to switch to normal-mode
 (setq-default evil-escape-key-sequence "jk")
@@ -189,8 +195,12 @@
   (python-mode . blacken-mode))
 
 ;; clojure
-(after! 'cider
-  (add-hook 'before-save-hook #'cider-format-buffer))
+(add-hook 'clojure-mode-hook
+    (lambda () (add-hook 'before-save-hook #'cider-format-buffer)))
+
+;; scala
+(add-hook 'scala-mode-hook
+    (lambda () (add-hook 'before-save-hook #'lsp-format-buffer)))
 
 ;; use smartparens
 (sp-use-smartparens-bindings)
@@ -202,8 +212,8 @@
 (load! "+scala")
 (load! "+blacken")
 
-(after! org
-  (load! "+tabnine"))
+;; (after! org
+;;   (load! "+tabnine"))
 
 ;; (load! "+elfeed")
 ;; }

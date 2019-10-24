@@ -1,7 +1,9 @@
 #!/bin/bash
 
-cheatsheet_dir="~/Dropbox/org/resources/cheatsheets/"
+cheatsheet_dir="$HOME/Dropbox/org/resources/cheatsheets/"
 
-choice=$(ls $cheatsheet_dir | rofi -i -dmenu -dpi 196 -show-icons)
+choice=$(ls $cheatsheet_dir | rofi -i -dmenu -dpi 196 -show-icons -font "Fira Mono 11")
 
-zathura $choice
+if [[ ! -z "$choice" ]]; then
+    zathura "$cheatsheet_dir$choice"
+fi
