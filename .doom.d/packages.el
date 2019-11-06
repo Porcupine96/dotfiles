@@ -9,3 +9,4 @@
 (package! company-tabnine)
 (package! ox-reveal)
 (package! keychain-environment)
+(package! flycheck-joker)

@@ -11,7 +11,7 @@ declare -a options=(
 function to_url() {
   case "$1" in
     "GitLab Activity")        echo "https://gitlab.com/dashboard/activity" ;;
-    "GitLab Merge Requests")  echo "https://gitlab.com/dashboard/merge_requests?assignee_username=Porcupine96" ;;
+    "GitLab Merge Requests")  echo "https://gitlab.com/dashboard/merge_requests?author_username=Porcupine96" ;;
     "Jira Chatbotize Board")  echo "https://codeheroesdev.atlassian.net/secure/RapidBoard.jspa?rapidView=18&projectKey=CP&view=planning" ;;
   esac
 }

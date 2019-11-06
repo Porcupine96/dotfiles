@@ -11,11 +11,17 @@
 ;; (load-theme 'doom-dracula t)
 (load-theme 'doom-molokai t)
 
+(setq doom-font (font-spec :family "Fira Mono" :size 28))
+
 ;; treemacs icons
 (after! treemacs
           (lambda ()
             (require 'treemacs)
             (treemacs-load-theme "Default")))
+
+;; zoom window
+(custom-set-variables
+ '(zoom-window-mode-line-color "DarkGreen"))
 
 ;; org mode
 (setq
@@ -83,22 +89,34 @@
 (global-set-key (kbd "C-x C-x") 'save-buffer)
 
 ;; easier movements between splits
-(global-set-key (kbd "C-h") 'evil-window-left)
-(global-set-key (kbd "C-j") 'evil-window-down)
-(global-set-key (kbd "C-k") 'evil-window-up)
-(global-set-key (kbd "C-l") 'evil-window-right)
+(global-set-key (kbd "C-h") #'evil-window-left)
+(global-set-key (kbd "C-j") #'evil-window-down)
+(global-set-key (kbd "C-k") #'evil-window-up)
+(global-set-key (kbd "C-l") #'evil-window-right)
 
 ;; toggle treemacs
 (global-set-key (kbd "M-p") #'+treemacs/toggle)
 ;; TODO: add the same binging to treemacs map
 
 
+;; treemacs
+;; (after! treemacs
+;;   (map! evil-treemacs-state-map
+;;         "M-p" #'treemacs/toggle)
+;;   (map! treemacs-mode-map
+;;         "M-p" #'treemacs/toggle))
+
 ;; jk to switch to normal-mode
 (setq-default evil-escape-key-sequence "jk")
 
 ;; prevent org-mode from overriding the global map
 (map! :map org-mode-map
-      "C-j" 'evil-window-down)
+      "C-k" #'evil-window-up
+      "C-j" #'evil-window-down)
+
+(map! :map evil-org-mode-map
+      "C-k" #'evil-window-up
+      "C-j" #'evil-window-down)
 
 ;; leader movements
 (map!
@@ -138,6 +156,10 @@
 ;; python
 (map! :map python-mode-map
       "C-c C-o" #'run-python)
+
+;; ruby
+(map! :map enh-ruby-mode-map
+      "C-j" 'evil-window-down)
 
 ;; org
 (defun org-archive-done ()
@@ -195,7 +217,10 @@
   (python-mode . blacken-mode))
 
 ;; clojure
-(add-hook 'clojure-mode-hook
+;; (add-hook 'clojure-mode-hook
+;;     (lambda () (add-hook 'before-save-hook #'cider-format-buffer)))
+
+(after! clojure
     (lambda () (add-hook 'before-save-hook #'cider-format-buffer)))
 
 ;; scala
