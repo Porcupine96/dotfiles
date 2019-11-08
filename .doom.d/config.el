@@ -13,11 +13,18 @@
 
 (setq doom-font (font-spec :family "Fira Mono" :size 28))
 
-;; treemacs icons
+;; treemacs
 (after! treemacs
-          (lambda ()
-            (require 'treemacs)
-            (treemacs-load-theme "Default")))
+  (require 'treemacs)
+  (treemacs-load-theme "Default")
+  (map! :map evil-treemacs-state-map "M-p" #'+treemacs/toggle)
+  (map! :map treemacs-mode-map "M-p" #'+treemacs/toggle))
+
+;; treemacs
+;; (after! treemacs
+;;   (map! evil-treemacs-state-map
+;;         "M-p" #'treemacs/toggle)
+;; )
 
 ;; zoom window
 (custom-set-variables
@@ -93,18 +100,6 @@
 (global-set-key (kbd "C-j") #'evil-window-down)
 (global-set-key (kbd "C-k") #'evil-window-up)
 (global-set-key (kbd "C-l") #'evil-window-right)
-
-;; toggle treemacs
-(global-set-key (kbd "M-p") #'+treemacs/toggle)
-;; TODO: add the same binging to treemacs map
-
-
-;; treemacs
-;; (after! treemacs
-;;   (map! evil-treemacs-state-map
-;;         "M-p" #'treemacs/toggle)
-;;   (map! treemacs-mode-map
-;;         "M-p" #'treemacs/toggle))
 
 ;; jk to switch to normal-mode
 (setq-default evil-escape-key-sequence "jk")
