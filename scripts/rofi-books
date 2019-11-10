@@ -1,0 +1,9 @@
+#!/bin/bash
+
+paper_dir="$HOME/Dropbox/org/resources/papers/"
+
+choice=$(ls $paper_dir | rofi -i -dmenu -dpi 196 -show-icons -font "Fira Mono 11")
+
+if [[ ! -z "$choice" ]]; then
+    zathura "$paper_dir$choice"
+fi

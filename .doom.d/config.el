@@ -13,19 +13,6 @@
 
 (setq doom-font (font-spec :family "Fira Mono" :size 28))
 
-;; treemacs
-(after! treemacs
-  (require 'treemacs)
-  (treemacs-load-theme "Default")
-  (map! :map evil-treemacs-state-map "M-p" #'+treemacs/toggle)
-  (map! :map treemacs-mode-map "M-p" #'+treemacs/toggle))
-
-;; treemacs
-;; (after! treemacs
-;;   (map! evil-treemacs-state-map
-;;         "M-p" #'treemacs/toggle)
-;; )
-
 ;; zoom window
 (custom-set-variables
  '(zoom-window-mode-line-color "DarkGreen"))
@@ -46,16 +33,6 @@
                       :background nil
                       :height 1.5
                       :weight 'bold)
-  (set-face-attribute 'org-level-1 nil
-                      :foreground "steelblue2"
-                      :box nil
-                      :background nil
-                      :height 1.2
-                      :weight 'bold)
-  (set-face-attribute 'org-level-2 nil
-                      :foreground "lightgrey"
-                      :background nil
-                      :height 1.0)
   (set-face-attribute 'org-block-begin-line nil
                       :foreground "lightgrey"
                       :box nil
@@ -80,6 +57,8 @@
       )))
 ;; }}}
 
+;; FUNCTIONS {{{
+
 (defun kitty ()
     (interactive)
     (require 'subr-x)
@@ -100,6 +79,15 @@
 (global-set-key (kbd "C-j") #'evil-window-down)
 (global-set-key (kbd "C-k") #'evil-window-up)
 (global-set-key (kbd "C-l") #'evil-window-right)
+
+;; treemacs
+(global-set-key (kbd "M-p") #'+treemacs/toggle)
+
+(after! treemacs
+  (require 'treemacs)
+  (treemacs-load-theme "Default")
+  (map! :map evil-treemacs-state-map "M-p" #'+treemacs/toggle)
+  (map! :map treemacs-mode-map "M-p" #'+treemacs/toggle))
 
 ;; jk to switch to normal-mode
 (setq-default evil-escape-key-sequence "jk")
@@ -139,14 +127,13 @@
       "[" #'+workspace/switch-left
       "]" #'+workspace/switch-right
       "C-o" #'zoom-window-zoom
-      "p" #'+treemacs/toggle)
-
+      "p" #'+treemacs/toggle
+      "C-v" #'clone-indirect-buffer-other-window)
 
 ;; completion
 (map! :map evil-insert-state-map
       "C-n" #'+company/dabbrev
       "C-p" #'+company/dabbrev-code-previous)
-      ;; "C-m" #'+tabnine/tabnine-complete)
 
 ;; python
 (map! :map python-mode-map
@@ -212,15 +199,12 @@
   (python-mode . blacken-mode))
 
 ;; clojure
-;; (add-hook 'clojure-mode-hook
-;;     (lambda () (add-hook 'before-save-hook #'cider-format-buffer)))
-
 (after! clojure
-    (lambda () (add-hook 'before-save-hook #'cider-format-buffer)))
+    (add-hook 'before-save-hook #'cider-format-buffer))
 
 ;; scala
 (add-hook 'scala-mode-hook
-    (lambda () (add-hook 'before-save-hook #'lsp-format-buffer)))
+    (add-hook 'before-save-hook #'lsp-format-buffer))
 
 ;; use smartparens
 (sp-use-smartparens-bindings)
@@ -231,11 +215,6 @@
 (load! "+reason")
 (load! "+scala")
 (load! "+blacken")
-
-;; (after! org
-;;   (load! "+tabnine"))
-
-;; (load! "+elfeed")
-;; }
+;; }}}
 
 (keychain-refresh-environment)
