@@ -99,6 +99,9 @@ alias gs="gst"
 alias gpp="gl && gp"
 
 set -o vi
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
 
 # pyenv configuration
 export PATH="/home/porcupine/.pyenv/bin:$PATH"
@@ -123,21 +126,6 @@ autoload -U compinit && compinit -u
 fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/home/porcupine/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "/home/porcupine/miniconda3/etc/profile.d/conda.sh" ]; then
-#        . "/home/porcupine/miniconda3/etc/profile.d/conda.sh"
-#    else
-#        export PATH="/home/porcupine/miniconda3/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
-# <<< conda initialize <<<
 
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 eval "$(rbenv init -)"

@@ -15,7 +15,8 @@
 
 ;; zoom window
 (custom-set-variables
- '(zoom-window-mode-line-color "DarkGreen"))
+ '(zoom-window-mode-line-color "DarkGreen")
+ '(zoom-window-use-persp t))
 
 ;; org mode
 (setq

@@ -1,0 +1,40 @@
+super + d
+	rofi -show combi -combi-modi window,drun,run -dpi 196 -show-icons -font "Fira Mono 11"
+super + o
+	rofi -dpi 196 -show window -show-icons -font "Fira Mono 11"
+super + alt + d
+	exec dmenu_run
+super + t
+	kitty
+super + b
+	rofi-books
+super + c
+	rofi-cheatsheets
+super + p
+	rofi_so
+super + F11
+	pkill -USR1 sxhkd; notify-send "sxhkd refreshed!";
+super + shift + F12
+	playerctl pause; i3lock -c 1d2021 -e;
+super + F12
+	prompt 'Suspend the computer?' 'lock'
+super + F4
+	deepin-screenshot
+	#maim-clipboard
+# super + alt + r
+	# clear rofi cache
+	# rm -f "$HOME/.cache/rofi*"; notify-send "rofi cache cleared!";
+super + shift + F4
+	maim -s ~/Pictures/$(date +%s).png
+super + shift + p
+	sxiv ~/Desktop/plan.png
+XF86AudioMute
+	volume toggle; exec pkill -SIGRTMIN+10 i3blocks
+XF86AudioLowerVolume
+	volume down; exec pkill -SIGRTMIN+10 i3blocks
+XF86AudioRaiseVolume
+	volume up; exec pkill -SIGRTMIN+10 i3blocks
+XF86MonBrightnessDown
+	light -U 5; exec pkill -SIGRTMIN+10 i3blocks
+XF86MonBrightnessUp
+	light -A 5; exec pkill -SIGRTMIN+10 i3blocks

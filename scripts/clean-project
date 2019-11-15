@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# remove scala project files
+rm -rf project/project project/target target
+
+# remove protobuf files
+rm -rf *protobufs
+
+# remove old git repository
+rm -rf .git .gitmodules
+
+# initialize a fresh git repository
+git init
+
