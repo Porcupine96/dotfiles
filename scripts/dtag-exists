@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+DOCKER_LOGIN=gitlab
+DOCKER_PASSWORD=3a99KGBnqGX2jveT
+
+IMAGE=agentpanel-configuration-service
+TAG=0.2
+
+TAG_EXISTS_CODE=$(curl -o /dev/null -s -w '%{http_code}' -L "https://$DOCKER_LOGIN:$DOCKER_PASSWORD@docker.codeheroes.io/v2/$IMAGE/manifests/$TAG")
+
+if [[ "$TAG_EXISTS_CODE" = "200" ]]; then echo "Image $IMAGE:$TAG already exists!"; exit -1; else echo "Image does not exist. Proceeding to publish."; fi;
