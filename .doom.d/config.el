@@ -9,7 +9,8 @@
 ;; theme
 ;; (load-theme 'doom-solarized-light t)
 ;; (load-theme 'doom-dracula t)
-(load-theme 'doom-molokai t)
+(load-theme 'doom-nord t)
+;; (load-theme 'doom-molokai t)
 
 (setq doom-font (font-spec :family "Fira Mono" :size 28))
 
@@ -165,6 +166,8 @@
 ;; MISC {{{
 
 (setq
+ ;; fix clipboard manager issue
+ x-select-enable-clipboard-manager nil
 ;; initial buffer
  initial-buffer-choice "~/Dropbox/org/todo/current.org"
 ;; global mark

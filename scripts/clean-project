@@ -9,6 +9,9 @@ rm -rf *protobufs
 # remove old git repository
 rm -rf .git .gitmodules
 
+# remove bloop / metals 
+rm -rf .bloop .metals
+
 # initialize a fresh git repository
 git init
 
