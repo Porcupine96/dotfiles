@@ -88,6 +88,7 @@
 (after! treemacs
   (require 'treemacs)
   (treemacs-load-theme "Default")
+  (setq treemacs-follow-mode 't)
   (map! :map evil-treemacs-state-map "M-p" #'+treemacs/toggle)
   (map! :map treemacs-mode-map "M-p" #'+treemacs/toggle))
 
