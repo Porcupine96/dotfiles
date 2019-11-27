@@ -121,6 +121,8 @@
    (:prefix "TAB"
      :desc "Display tab bar" :nv "`" #'+workspace/display
      :desc "Switch to last workpace" :nv "TAB" #'+workspace/other)
+   (:prefix "e"
+     :desc "elfeed" :nv "e" #'elfeed)
  ))
 
 ;; workspace movements
@@ -203,16 +205,33 @@
   :hook
   (python-mode . blacken-mode))
 
+;; protobuf
+(after! protobuf
+  (setq tab-width 4))
+
 ;; clojure
 (after! clojure
     (add-hook 'before-save-hook #'cider-format-buffer))
 
 ;; scala
 (add-hook 'scala-mode-hook
-    (add-hook 'before-save-hook #'lsp-format-buffer))
+          #'lsp)
+
+(after! scala
+  (add-hook 'before-save-hook #'lsp-format-buffer))
 
 ;; use smartparens
 (sp-use-smartparens-bindings)
+
+;; elfeed
+(setq
+ elfeed-root "~/Dropbox/rss/"
+ elfeed-db-directory (concat elfeed-root "elfeed/db/")
+ elfeed-db-directory (concat elfeed-root "elfeed/enclosures/")
+ elfeed-feeds
+ '(("https://www.reddit.com/r/i3wm.rss" reddit i3wm)
+   ("https://www.reddit.com/r/scala.rss" reddit scala)))
+
 
 ;; }}}
 

@@ -1,7 +1,7 @@
 ;;; ~/dotfiles/.doom.d/+elfeed.el -*- lexical-binding: t; -*-
 
 
-;; (setq elfeed-db-directory "~/Dropbox/rss/elfeeddb")
+;; 
 ;; (setq rmh-elfeed-org-files (list "~Dropbox/rss/elfeed.org"))
 
 ;; (defun elfeed-mark-all-as-read ()
