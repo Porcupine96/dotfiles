@@ -4,6 +4,8 @@
 ;; (setq elfeed-db-directory "~/Dropbox/rss/elfeeddb")
 ;; (setq rmh-elfeed-org-files (list "~Dropbox/rss/elfeed.org"))
 
+(fset 'battery-update #'ignore)
+
 ;; VISUALS {{{
 
 ;; theme
@@ -82,6 +84,10 @@
 (global-set-key (kbd "C-k") #'evil-window-up)
 (global-set-key (kbd "C-l") #'evil-window-right)
 
+;; buffer movements
+;; (global-set-key (kbd "C-[") #'previous-buffer)
+;; (global-set-key (kbd "C-]") #'next-buffer)
+
 ;; treemacs
 (global-set-key (kbd "M-p") #'+treemacs/toggle)
 
@@ -117,7 +123,8 @@
    (:prefix "o"
      :desc "eshell" :nv "e" #'eshell)
    (:prefix "r"
-     :desc "ranger" :nv "r" #'ranger)
+     :desc "ranger" :nv "r" #'ranger
+     :desc "deer" :nv "d" #'deer)
    (:prefix "TAB"
      :desc "Display tab bar" :nv "`" #'+workspace/display
      :desc "Switch to last workpace" :nv "TAB" #'+workspace/other)
@@ -135,10 +142,14 @@
       "p" #'+treemacs/toggle
       "C-v" #'clone-indirect-buffer-other-window)
 
-;; completion
+;; evil
 (map! :map evil-insert-state-map
       "C-n" #'+company/dabbrev
       "C-p" #'+company/dabbrev-code-previous)
+
+;; evil
+(map! :map evil-normal-state-map
+      "U" #'lsp-ui-doc-glance)
 
 ;; python
 (map! :map python-mode-map
@@ -164,7 +175,6 @@
 (add-hook 'org-archive-hook 'org-archive-save-buffer)
 
 ;; }}}
-
 
 ;; MISC {{{
 

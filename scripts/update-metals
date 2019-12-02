@@ -11,4 +11,6 @@ else
         -r bintray:scalacenter/releases \
         -r sonatype:snapshots \
         -o /usr/local/bin/metals-emacs -f
+
+    echo "$1" > ~/.cache/update-metals/version
 fi

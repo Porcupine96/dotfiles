@@ -90,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.profile
 
 export EDITOR="nvim"
-export BROWSER="brave.desktop"
+export BROWSER="firefox.desktop"
 
 alias r="ranger"
 alias vim="nvim"
