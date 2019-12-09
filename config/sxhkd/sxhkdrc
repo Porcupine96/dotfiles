@@ -23,8 +23,12 @@ super + F4
 	#maim-clipboard
 # super + alt + r
 	# clear rofi cache
+super + F7
+	playerctl previous
 super + F8
 	playerctl play-pause
+super + F9
+	playerctl previous
 super + shift + F4
 	maim -s ~/Pictures/$(date +%s).png
 super + shift + p

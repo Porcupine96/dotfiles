@@ -22,5 +22,5 @@ choice=$(printf "%s\n" "${options[@]}" | rofi -i -dmenu -dpi 196 -show-icons -fo
 if [[ ! -z "$choice" ]]; then
   url=$(to_url "$choice")
 
-  bash -c "brave-browser $url; (true)" >> /dev/null 2>&1
+  bash -c "firefox $url; (true)" >> /dev/null 2>&1
 fi

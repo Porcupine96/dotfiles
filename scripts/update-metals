@@ -1,7 +1,19 @@
 #!/bin/bash
 
 if [[ "$#" != 1 ]]; then
-    echo "Usage: update-metals [version]"
+    echo "Usage: update-metals [version] [-v]"
+elif [[ "$1" == "-v" ]]; then
+    LATEST=$(curl -s https://scalameta.org/metals/docs/editors/emacs.html | pup 'table tbody tr:last-child td:first-child' | head -n2 | tail -n1 | sed "s/\s*//")
+    CURRENT=$(cat ~/.cache/update-metals/version)
+
+    if [[ ! "$CURRENT" == "$LATEST" ]]; then
+        echo "New version is available!"
+    else
+        echo "You're up to date!"
+    fi
+
+    echo "Currently using: $CURRENT" 
+    echo "Latest version:  $LATEST" 
 else
     ~/tool/coursier bootstrap \
         --java-opt -Xss4m \
@@ -12,5 +24,6 @@ else
         -r sonatype:snapshots \
         -o /usr/local/bin/metals-emacs -f
 
+    mkdir -p ~/.cache/update-metals 
     echo "$1" > ~/.cache/update-metals/version
 fi
