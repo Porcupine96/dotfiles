@@ -4,8 +4,6 @@
 ;; (setq elfeed-db-directory "~/Dropbox/rss/elfeeddb")
 ;; (setq rmh-elfeed-org-files (list "~Dropbox/rss/elfeed.org"))
 
-(fset 'battery-update #'ignore)
-
 ;; VISUALS {{{
 
 ;; theme
@@ -88,6 +86,9 @@
 ;; (global-set-key (kbd "C-[") #'previous-buffer)
 ;; (global-set-key (kbd "C-]") #'next-buffer)
 
+;; avy
+(setq avy-timeout-seconds 0.25)
+
 ;; treemacs
 (global-set-key (kbd "M-p") #'+treemacs/toggle)
 
@@ -132,6 +133,7 @@
      :desc "elfeed" :nv "e" #'elfeed)
  ))
 
+
 ;; workspace movements
 (map! :map evil-window-map
       "d" #'+workspace/close-window-or-workspace
@@ -153,11 +155,16 @@
 
 ;; python
 (map! :map python-mode-map
-      "C-c C-o" #'run-python)
+      "C-c C-o" #'run-python
+      "C-c c" #'recompile)
 
 ;; ruby
 (map! :map enh-ruby-mode-map
       "C-j" 'evil-window-down)
+
+;; company
+(map! :map company-mode-map
+  :i "C-S-SPC" #'company-tabnine)
 
 ;; org
 (defun org-archive-done ()
@@ -249,6 +256,7 @@
 (load! "+reason")
 (load! "+scala")
 (load! "+blacken")
+(load! "+tabnine")
 ;; }}}
 
 (keychain-refresh-environment)

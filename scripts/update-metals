@@ -19,7 +19,7 @@ elif [[ "$#" == 0 ]]; then
     RES=$(curl -s https://scalameta.org/metals/docs/editors/emacs.html | pup 'table tbody tr:last-child td:nth-last-child(n+2)' | grep -v -E '</?td>' | sed 's/\s*//')
     LATEST=$(echo "$RES" | head -n1)
     LATEST_DATE=$(echo "$RES" | tail -n1)
-    CURRENT=$(cat ~/.cache/update-metals/version | head -n1)
+    CURRENT=$(cat ~/.cache/update-metals/version | head -n1 | sed 's/\\n//')
     CURRENT_DATE=$(cat ~/.cache/update-metals/version | tail -n1)
 
     if [[ ! "$CURRENT" == "$LATEST" ]]; then
@@ -27,7 +27,7 @@ elif [[ "$#" == 0 ]]; then
         CHOICE=$(echo "$HEADER,Yes,No" | sed "s/,/\n/g" | fzf --header-lines 4 --reverse)
 
         case "$CHOICE" in
-            "Yes") update_metals $LATEST
+            "Yes") update_metals $LATEST $LATEST_DATE
         esac
     else
         echo "Using version: $CURRENT ($CURRENT_DATE)"
