@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import cats.implicits.{toFunctorOps, toFlatMapOps}
+# key: fops
+# --
+import cats.implicits.{toFunctorOps, toFlatMapOps}

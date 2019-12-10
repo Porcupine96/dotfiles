@@ -1,20 +1,6 @@
 #!/bin/bash
 
-if [[ "$#" != 1 ]]; then
-    echo "Usage: update-metals [version] [-v]"
-elif [[ "$1" == "-v" ]]; then
-    LATEST=$(curl -s https://scalameta.org/metals/docs/editors/emacs.html | pup 'table tbody tr:last-child td:first-child' | head -n2 | tail -n1 | sed "s/\s*//")
-    CURRENT=$(cat ~/.cache/update-metals/version)
-
-    if [[ ! "$CURRENT" == "$LATEST" ]]; then
-        echo "New version is available!"
-    else
-        echo "You're up to date!"
-    fi
-
-    echo "Currently using: $CURRENT" 
-    echo "Latest version:  $LATEST" 
-else
+function update_metals() {
     ~/tool/coursier bootstrap \
         --java-opt -Xss4m \
         --java-opt -Xms100m \
@@ -22,8 +8,29 @@ else
         org.scalameta:metals_2.12:"$1" \
         -r bintray:scalacenter/releases \
         -r sonatype:snapshots \
-        -o /usr/local/bin/metals-emacs -f
+        -o /usr/local/bin/metals-emacs -f \
+    && mkdir -p ~/.cache/update-metals \
+    && echo "$1" > ~/.cache/update-metals/version
+}
 
-    mkdir -p ~/.cache/update-metals 
-    echo "$1" > ~/.cache/update-metals/version
+if [[ "$#" == 1 ]]; then
+    update_metals "$1"
+elif [[ "$#" == 0 ]]; then
+    LATEST=$(curl -s https://scalameta.org/metals/docs/editors/emacs.html | pup 'table tbody tr:last-child td:first-child' | head -n2 | tail -n1 | sed "s/\s*//")
+    CURRENT=$(cat ~/.cache/update-metals/version)
+
+
+    if [[ ! "$CURRENT" == "$LATEST" ]]; then
+        HEADER="Currently using: $CURRENT,Latest version:  $LATEST,------------------------,Do you want to update?"
+        CHOICE=$(echo "$HEADER,Yes,No" | sed "s/,/\n/g" | fzf --header-lines 4 --reverse)
+
+        case "$CHOICE" in
+            "Yes") update_metals $LATEST
+        esac
+    else
+        echo "Using version: $CURRENT"
+        echo "You're up to date!"
+    fi
+else
+    echo "Usage: update-metals {version}"
 fi
