@@ -10,25 +10,27 @@ function update_metals() {
         -r sonatype:snapshots \
         -o /usr/local/bin/metals-emacs -f \
     && mkdir -p ~/.cache/update-metals \
-    && echo "$1" > ~/.cache/update-metals/version
+    && echo "$1\n$2" > ~/.cache/update-metals/version
 }
 
 if [[ "$#" == 1 ]]; then
-    update_metals "$1"
+    update_metals "$1" "???"
 elif [[ "$#" == 0 ]]; then
-    LATEST=$(curl -s https://scalameta.org/metals/docs/editors/emacs.html | pup 'table tbody tr:last-child td:first-child' | head -n2 | tail -n1 | sed "s/\s*//")
-    CURRENT=$(cat ~/.cache/update-metals/version)
-
+    RES=$(curl -s https://scalameta.org/metals/docs/editors/emacs.html | pup 'table tbody tr:last-child td:nth-last-child(n+2)' | grep -v -E '</?td>' | sed 's/\s*//')
+    LATEST=$(echo "$RES" | head -n1)
+    LATEST_DATE=$(echo "$RES" | tail -n1)
+    CURRENT=$(cat ~/.cache/update-metals/version | head -n1)
+    CURRENT_DATE=$(cat ~/.cache/update-metals/version | tail -n1)
 
     if [[ ! "$CURRENT" == "$LATEST" ]]; then
-        HEADER="Currently using: $CURRENT,Latest version:  $LATEST,------------------------,Do you want to update?"
+        HEADER="Currently using: $CURRENT ($CURRENT_DATE),Latest version:  $LATEST ($LATEST_DATE),------------------------,Do you want to update?"
         CHOICE=$(echo "$HEADER,Yes,No" | sed "s/,/\n/g" | fzf --header-lines 4 --reverse)
 
         case "$CHOICE" in
             "Yes") update_metals $LATEST
         esac
     else
-        echo "Using version: $CURRENT"
+        echo "Using version: $CURRENT ($CURRENT_DATE)"
         echo "You're up to date!"
     fi
 else
