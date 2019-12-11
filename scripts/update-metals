@@ -10,7 +10,7 @@ function update_metals() {
         -r sonatype:snapshots \
         -o /usr/local/bin/metals-emacs -f \
     && mkdir -p ~/.cache/update-metals \
-    && echo "$1\n$2" > ~/.cache/update-metals/version
+    && echo "$1,$2" | sed "s/,/\n/g" > ~/.cache/update-metals/version
 }
 
 if [[ "$#" == 1 ]]; then

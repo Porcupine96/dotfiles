@@ -10,6 +10,13 @@ elif [ $1 = 'r' ] || [ $1 = 'run' ]; then
   bloop run --watch $current_project
 elif [ $1 = 't' ] || [ $1 = 'test' ]; then
   bloop test --watch $current_project
+elif [ $1 = 'to' ]; then
+  class_file=$(find . -name '*Test.scala' | fzf)
+  package=$(grep '^package ' $class_file | sed 's/package //')
+  class_name=$(echo $class_file | sed 's/.*\/\(.*\)\.scala/\1/')
+  class="$package.$class_name"
+
+  bloop test --only $class --watch $current_project
 else
   bloop compile --watch $current_project
 fi
