@@ -1,22 +1,37 @@
 #!/bin/sh
 
 projects=$(bloop projects)
+current_project=$(echo "$projects" | head -n1)
 
-current_project=$(echo $projects | head -n1)
+test=false
+only=false
+flags=" "
 
-if [ $1 = 'noi' ]; then
-  bloop compile --incremental=false $current_project
-elif [ $1 = 'r' ] || [ $1 = 'run' ]; then
-  bloop run --watch $current_project
-elif [ $1 = 't' ] || [ $1 = 'test' ]; then
-  bloop test --watch $current_project
-elif [ $1 = 'to' ]; then
+while test $# != 0
+do
+  case "$1" in
+    -o|--only) only=true;;
+    -t|--test) test=true;;
+    -noi) flags="$flags --incremental=false ";;
+    -w) flags="$flags --watch ";
+  esac
+  shift
+done;
+
+
+if [ "$only" = true ]; then
   class_file=$(find . -name '*Test.scala' | fzf)
   package=$(grep '^package ' $class_file | sed 's/package //')
   class_name=$(echo $class_file | sed 's/.*\/\(.*\)\.scala/\1/')
   class="$package.$class_name"
 
-  bloop test --only $class --watch $current_project
-else
-  bloop compile --watch $current_project
+  flags="$flags --only $class "
 fi
+
+
+if [ "$test" = true ]; then
+  bloop test $current_project $flags
+else
+  bloop compile $current_project $flags
+fi
+
