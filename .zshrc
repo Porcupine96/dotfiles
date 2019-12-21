@@ -97,6 +97,7 @@ alias vim="nvim"
 alias ta="tmux attach"
 alias gs="gst"
 alias gpp="gl && gp"
+alias vf="vifm"
 
 set -o vi
 autoload -z edit-command-line

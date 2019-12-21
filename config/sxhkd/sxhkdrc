@@ -10,6 +10,8 @@ super + b
 	rofi-books
 super + c
 	rofi-cheatsheets
+super + shift + g
+    rofi-list "Documents/ergodox";
 super + p
 	rofi_so
 super + F11

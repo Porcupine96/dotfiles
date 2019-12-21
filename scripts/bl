@@ -5,18 +5,21 @@ current_project=$(echo "$projects" | head -n1)
 
 test=false
 only=false
+copy=false
 flags=" "
 
 while test $# != 0
 do
   case "$1" in
-    -o|--only) only=true;;
-    -t|--test) test=true;;
-    -noi) flags="$flags --incremental=false ";;
-    -w) flags="$flags --watch ";
+    -o|--only) only=true; test=true ;;
+    -t|--test) test=true ;;
+    -n) flags="$flags --incremental=false " ;;
+    -w) flags="$flags --watch " ;;
+    -c) copy=true ;;
+    *)  echo "Unrecognized flag: $1" ;;
   esac
   shift
-done;
+done
 
 
 if [ "$only" = true ]; then
@@ -28,10 +31,16 @@ if [ "$only" = true ]; then
   flags="$flags --only $class "
 fi
 
-
+command=""
 if [ "$test" = true ]; then
-  bloop test $current_project $flags
+  command="bloop test $current_project $flags"
 else
-  bloop compile $current_project $flags
+  command="bloop compile $current_project $flags"
 fi
 
+if [ "$copy" = true ]; then
+  echo "$command" | xclip -selection clipboard
+  echo "Command copied to clipboard!"
+else
+  eval "$command"
+fi
