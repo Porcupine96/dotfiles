@@ -1,0 +1,27 @@
+#!/bin/sh
+
+is_connected () {
+     [ -n $(nordvpn status | grep  Disconnected) ]
+}
+
+
+case $BLOCK_BUTTON in
+    1) notify-send "$(nordvpn status)";;
+    3)
+        if is_connected ; then
+            nordvpn disconnect >/dev/null 2>&1
+        else
+            nordvpn connect >/dev/null 2>&1
+        fi
+
+esac
+
+
+if $(is_connected)
+then
+    status="<span color=\"green\"> $(nordvpn status | grep City |cut -d' ' -f2)</span>"
+else
+    status="<span color=\"red\">Disconnected </span>"
+fi
+
+echo "$status"

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+XRANDR_OUT=$(xrandr -q | grep ' connected')
+OUTPUT_COUNT=$(echo "$XRANDR_OUT" | wc -l)
+PRIMARY=$(echo "$XRANDR_OUT" | grep 'primary' | cut -d' ' -f1)
+NON_PRIMARY=$(echo "$XRANDR_OUT" | grep -v 'primary' | cut -d' ' -f1)
+
+
+case "$OUTPUT_COUNT" in
+    1) echo "one" ;;
+    2) echo "two" ;;
+    3) echo "three" ;;
+    *) echo "Unsupported configuration: $OUTPUT_COUNT outputs."; exit 1 ;;
+esac

@@ -27,7 +27,7 @@ elif [[ "$#" == 0 ]]; then
         CHOICE=$(echo "$HEADER,Yes,No" | sed "s/,/\n/g" | fzf --header-lines 4 --reverse)
 
         case "$CHOICE" in
-            "Yes") update_metals $LATEST $LATEST_DATE
+            "Yes") update_metals "$LATEST" "$LATEST_DATE"
         esac
     else
         echo "Using version: $CURRENT ($CURRENT_DATE)"

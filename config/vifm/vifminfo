@@ -1,0 +1,905 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'D
+	/home/porcupine/Dropbox
+	..
+1575329338
+'H
+	/home/porcupine/
+	..
+1574010110
+'S
+	/home/porcupine/scripts
+	..
+1575329245
+'b
+	/home/porcupine/Dropbox/org/resources/papers
+	..
+1575329338
+'c
+	/home/porcupine/.config
+	..
+1575329546
+'d
+	/home/porcupine/Downloads
+	..
+1575329338
+'e
+	/etc
+	..
+1575329338
+'h
+	/home/porcupine/
+	..
+1574010110
+'m
+	/home/porcupine/studies/master
+	..
+1575329397
+'s
+	/home/porcupine/studies
+	..
+1575329245
+'w
+	/home/porcupine/codeheroes
+	..
+1575329397
+
+# Bookmarks:
+
+# TUI:
+ar
+q0
+v2
+ov
+m-1
+l2
+r8,2
+
+# Left window history (oldest to newest):
+d/home/porcupine
+	Dropbox
+4
+d/home/porcupine/Dropbox
+	org
+3
+d/home/porcupine/Dropbox/org
+	resources
+3
+d/home/porcupine/Dropbox/org/resources
+	papers
+2
+d/home/porcupine/Dropbox/org/resources/papers
+	Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, Doug Lea - Java Concurrency in Practice-Addison-Wesley Professional (2006).pdf
+5
+d/home/porcupine/studies/neural_networks
+	lab1_rbm.pickle.dat
+3
+d/home/porcupine
+	..
+0
+d/home/porcupine/studies/complex_systems/project
+	..
+0
+d/home/porcupine/Downloads
+	atg_czolgi.pdf
+24
+d/home/porcupine
+	Downloads
+3
+d/home/porcupine/Downloads
+	albert-model
+2
+d/home/porcupine/Downloads/albert-model
+	..
+0
+d/home/porcupine/Downloads
+	atg_czolgi.pdf
+16
+d/home/porcupine/studies/master/using-albert
+	..
+0
+d/home/porcupine/studies/master/albert
+	simple
+6
+d/home/porcupine/studies/master/albert/simple
+	tokenizer.model
+3
+d/home/porcupine/studies/master
+	..
+0
+d/home/porcupine
+	.config
+4
+d/home/porcupine/.config
+	vifm
+17
+d/home/porcupine/.config/vifm
+	scripts
+2
+d/home/porcupine/.config/vifm/scripts
+	README
+1
+d/home/porcupine/.config/vifm
+	vifmrc
+4
+d/home/porcupine/Downloads
+	..
+0
+d/home/porcupine/.local/share/vifm/Trash
+	
+0
+d/home/porcupine
+	
+0
+d/home/porcupine/studies/complex_systems/project
+	
+0
+d/home/porcupine/studies
+	
+0
+d/home/porcupine
+	
+0
+d/home/porcupine/codeheroes/nm
+	
+0
+d/home/porcupine/myself/cv
+	
+0
+d/home/porcupine/Downloads
+	STG-backups-linux-20191031085722
+2
+d/home/porcupine
+	myself
+44
+d/home/porcupine/myself
+	cv
+1
+d/home/porcupine/myself/cv
+	index.html
+4
+d/home/porcupine
+	Downloads
+55
+d/home/porcupine/Downloads
+	libpng12.so.0
+51
+d/home/porcupine
+	..
+0
+d/home/porcupine/studies/data_science/lab3
+	data
+2
+d/home/porcupine/studies/data_science/lab3/data
+	..
+0
+d/home/porcupine/studies/data_science/lab3
+	data
+2
+d/home/porcupine/studies/data_science/lab3/data
+	InputData.xlsx
+1
+d/home/porcupine/Downloads
+	..
+0
+d/home/porcupine/studies
+	..
+0
+d/home/porcupine/scripts
+	..
+0
+d/home/porcupine/studies
+	..
+0
+d/home/porcupine/.config
+	sxhkd
+43
+d/home/porcupine/.config/sxhkd
+	sxhkdrc
+1
+d/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
+	..
+0
+d/home/porcupine/codeheroes/agentpanel
+	ap-suggestion-backend
+12
+d/home/porcupine/codeheroes
+	chatbotize
+3
+d/home/porcupine
+	studies
+55
+d/home/porcupine/studies
+	master
+6
+d/home/porcupine/studies/master
+	using-albert
+4
+d/home/porcupine/studies/master/using-albert
+	model-without-special
+5
+d/home/porcupine/studies/master/using-albert/model-without-special
+	tokenizer.vocab
+7
+d/home/porcupine/studies/master/using-albert
+	albert
+2
+d/home/porcupine/studies/master/using-albert/albert
+	..
+0
+d/home/porcupine/studies/master/using-albert
+	google-research
+4
+d/home/porcupine/studies/master/using-albert/google-research
+	..
+0
+d/home/porcupine/studies/master/using-albert
+	model-without-special
+5
+d/home/porcupine/studies/master/using-albert/model-without-special
+	tokenizer.vocab
+8
+d/home/porcupine
+	.private
+16
+d/home/porcupine/.private
+	gclone.json
+1
+d/home/porcupine
+	.gclone
+4
+d/home/porcupine/.gclone
+	..
+0
+d/home/porcupine
+	.gclone
+4
+d/home/porcupine/.gclone
+	..
+0
+d/home/porcupine
+	.private
+34
+d/home/porcupine/.private
+	gclone.json
+1
+d/home/porcupine/Downloads
+	..
+0
+d/home/porcupine/codeheroes
+	..
+0
+d/home/porcupine/studies
+	..
+0
+d/home/porcupine/codeheroes
+	mongo
+11
+d/home/porcupine
+	codeheroes
+44
+d/home/porcupine/codeheroes
+	research
+16
+d/home/porcupine/Downloads
+	ala
+37
+d/home/porcupine/studies/master
+	albert
+1
+d/home/porcupine/studies/master/albert
+	shards
+4
+d/home/porcupine/studies/master/albert/shards
+	..
+0
+d/home/porcupine/studies/master/albert
+	shards
+4
+d/home/porcupine/studies/master/albert/shards
+	..
+0
+d/home/porcupine/studies/master/albert
+	shards
+4
+d/home/porcupine/studies/master
+	albert
+1
+d/home/porcupine/studies/master/albert
+	pretraining_data
+4
+d/home/porcupine/studies/master/albert/pretraining_data
+	shard_0007.tfrecord
+8
+d/home/porcupine/.config/i3
+	..
+0
+d/home/porcupine/.config
+	i3
+4
+d/home/porcupine
+	dotfiles
+14
+d/home/porcupine/dotfiles
+	scripts
+5
+d/home/porcupine/dotfiles/scripts
+	..
+0
+d/home/porcupine/dotfiles
+	config
+4
+d/home/porcupine/dotfiles/config
+	i3blocks
+1
+d/home/porcupine/dotfiles
+	config
+4
+d/home/porcupine/dotfiles/config
+	i3blocks
+1
+d/home/porcupine/dotfiles
+	config
+4
+d/home/porcupine/dotfiles/config
+	rofi
+3
+d/home/porcupine/dotfiles/config/rofi
+	..
+0
+d/home/porcupine/dotfiles/config
+	i3
+1
+d/home/porcupine/dotfiles/config/i3
+	..
+0
+d/home/porcupine/dotfiles/config
+	..
+0
+
+# Right window history (oldest to newest):
+D/home/porcupine/studies/data_science
+	lectures
+2
+D/home/porcupine/studies
+	data_science
+3
+D/home/porcupine/studies/data_science
+	lectures
+2
+D/home/porcupine/studies/complex_systems/project
+	..
+0
+D/home/porcupine/Downloads
+	Applicative.pdf
+33
+D/home/porcupine/Dropbox
+	org
+4
+D/home/porcupine/Dropbox/org
+	resources
+5
+D/home/porcupine/Dropbox/org/resources
+	cheatsheets
+1
+D/home/porcupine/Dropbox/org/resources/cheatsheets
+	typeclasses.pdf
+6
+D/home/porcupine/.config
+	..
+0
+D/home/porcupine/Downloads
+	albert-model
+3
+D/home/porcupine/Downloads/albert-model
+	albert_model_model.ckpt-122500.meta
+8
+D/home/porcupine/studies/master/using-albert
+	model
+3
+D/home/porcupine/studies/master/using-albert/model
+	..
+0
+D/home/porcupine/studies/master/using-albert
+	model
+3
+D/home/porcupine/studies/master/albert
+	shards
+2
+D/home/porcupine/studies/master
+	albert
+4
+D/home/porcupine/studies/master/albert
+	tokens-to-sents.ipynb
+4
+D/home/porcupine/studies/master
+	albert
+4
+D/home/porcupine/studies/master/albert
+	pretraining_data
+5
+D/home/porcupine/studies/master/albert/pretraining_data
+	..
+0
+D/home/porcupine/Downloads
+	..
+0
+D/home/porcupine/studies/master
+	albert
+4
+D/home/porcupine/studies/master/albert
+	pretraining_data
+2
+D/home/porcupine/studies/master/albert/pretraining_data
+	shard_0010.tfrecord
+1
+D/home/porcupine/.local/share/vifm/Trash
+	..
+0
+D/home/porcupine/.local/share/vifm
+	Trash
+1
+D/home/porcupine/.local/share
+	vifm
+32
+D/home/porcupine/.local/share/vifm
+	Trash
+1
+D/home/porcupine/.local/share/vifm/Trash
+	..
+0
+D/home/porcupine/.local/share/vifm
+	Trash
+1
+D/home/porcupine/.local/share/vifm/Trash
+	..
+0
+D/home/porcupine/studies/master
+	albert
+1
+D/home/porcupine/studies/master/albert
+	pretraining_data
+2
+D/home/porcupine/studies/master/albert/pretraining_data
+	shard_0000.tfrecord
+24
+D/home/porcupine
+	..
+0
+D/home/porcupine/studies/master
+	albert
+1
+D/home/porcupine/studies/complex_systems/project
+	Snap-5.0
+1
+D/home/porcupine/studies/complex_systems/project/Snap-5.0
+	examples
+3
+D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples
+	particles
+36
+D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles
+	results
+2
+D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/results
+	..
+0
+D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles
+	kurdziel
+1
+D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/kurdziel
+	..
+0
+D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles
+	kurdziel
+1
+D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/kurdziel
+	..
+0
+D/home/porcupine/studies
+	data_mining
+3
+D/home/porcupine/studies/data_mining
+	InfomapCommunityGraph.ipynb
+10
+D/home/porcupine
+	..
+0
+D/home/porcupine/.config
+	..
+0
+D/home/porcupine/codeheroes
+	chatbotize
+3
+D/home/porcupine/codeheroes/chatbotize
+	creator-campaign-service
+7
+D/home/porcupine/codeheroes/chatbotize/creator-campaign-service
+	..
+0
+D/home/porcupine/codeheroes/nm
+	..
+0
+D/home/porcupine/codeheroes
+	codeheroes-commons
+5
+D/home/porcupine
+	Pictures
+6
+D/home/porcupine/Pictures
+	uber.png
+2
+D/home/porcupine/codeheroes/nm
+	..
+0
+D/home/porcupine
+	Pictures
+6
+D/home/porcupine/Pictures
+	uber.png
+2
+D/home/porcupine/codeheroes/nm
+	..
+0
+D/home/porcupine/codeheroes
+	nm
+11
+D/home/porcupine
+	Documents
+3
+D/home/porcupine/Documents
+	ergodox
+1
+D/home/porcupine/Documents/ergodox
+	layer3.png
+1
+D/home/porcupine/Documents
+	ergodox
+1
+D/home/porcupine
+	Documents
+3
+D/home/porcupine/myself/cv
+	..
+0
+D/home/porcupine/myself
+	cv
+1
+D/home/porcupine
+	studies
+22
+D/home/porcupine/studies
+	semantics
+9
+D/home/porcupine/studies/semantics
+	hyperreal-analysis
+3
+D/home/porcupine/studies/semantics/hyperreal-analysis
+	data
+2
+D/home/porcupine/Downloads
+	font-awesome-4.7.0
+4
+D/home/porcupine/Downloads/font-awesome-4.7.0
+	less
+1
+D/home/porcupine
+	..
+0
+D/home/porcupine/studies
+	neural_networks
+7
+D/home/porcupine/studies/neural_networks
+	test.npy
+3
+D/home/porcupine
+	..
+0
+D/home/porcupine/studies
+	semantics
+9
+D/home/porcupine/studies/semantics
+	hyperreal-analysis
+3
+D/home/porcupine/studies/semantics/hyperreal-analysis
+	text_search.py
+4
+D/home/porcupine/studies/data_science/lab3
+	szeregi.ipynb
+2
+D/home/porcupine/Downloads
+	..
+0
+D/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
+	..
+0
+D/home/porcupine
+	
+0
+D/home/porcupine/Downloads
+	
+0
+D/home/porcupine/studies/master
+	
+0
+D/home/porcupine/.config/i3
+	..
+0
+D/home/porcupine/.config
+	zathura
+12
+D/home/porcupine/.config/zathura
+	..
+0
+D/home/porcupine/.config
+	nvim
+8
+D/home/porcupine/.config/nvim
+	..
+0
+D/home/porcupine/.config
+	nvim
+8
+D/home/porcupine/.config/nvim
+	..
+0
+D/home/porcupine/.config
+	nvim
+8
+D/home/porcupine/.config/nvim
+	..
+0
+D/home/porcupine/.config
+	i3status
+5
+D/home/porcupine/.config/i3status
+	statusbar
+1
+D/home/porcupine/.config
+	Postman
+16
+
+# Command line history (oldest to newest):
+:filter svg
+:filter *.svg
+:filter "*.svg"
+:!wc -l data.dat
+:touch zenburn_1.vifm
+:sp
+:vs
+:mkdir remaining-shards
+:filter complex
+:filter
+:mk
+:mkdir kur2
+:help
+:mkdir
+:mkdir albert-model
+:mkdir model
+:mkdir shards
+:empty
+:w
+:mkdir data
+:q
+
+# Search history (oldest to newest):
+/data
+/vecjk
+/quiz
+/kazmie
+/png
+/eu
+/euhk
+/test
+/svg
+/loca
+/local
+/vifm
+/e
+/emac
+/doom
+/alb
+/partic
+/csv
+/studies
+/learni
+/do
+/hel
+/wla
+/wall
+/Dow
+/zip
+/grap
+/ex
+/par
+/post
+/st
+/cata
+/cats
+/gra
+/confi
+/part
+/chatb
+/cam
+/code
+/studi
+/sem
+/myself
+/down
+/lab
+/neu
+/xls
+/sx
+/stud
+/pri
+/gclone
+/gclo
+/private
+/gdgd
+/ala
+/dotfile
+
+# Prompt history (oldest to newest):
+pparticle_method_eu.png
+pchatbotize.svg
+pcodeheroes.svg
+pdoobie
+ptypeclasses.pdf
+pgclone.json
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/porcupine/.local/share/vifm/Trash/000_AvivaSchema.pdf
+	/home/porcupine/studies/data_science/infomap/AvivaSchema.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_kur2-coauth.dat
+	/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/kur2-coauth.dat
+t/home/porcupine/.local/share/vifm/Trash/000_kur2-coauth.time_0.par
+	/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/kur2-coauth.time_0.par
+t/home/porcupine/.local/share/vifm/Trash/000_kur2-coauth.time_final.par
+	/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/kur2-coauth.time_final.par
+t/home/porcupine/.local/share/vifm/Trash/000_kur2-coauth.com
+	/home/porcupine/studies/complex_systems/project/kur2/kur2-coauth.com
+t/home/porcupine/.local/share/vifm/Trash/000_kur2-authors.dat
+	/home/porcupine/studies/complex_systems/project/kur2-authors.dat
+t/home/porcupine/.local/share/vifm/Trash/000_kur2.csv
+	/home/porcupine/studies/complex_systems/project/kur2.csv
+t/home/porcupine/.local/share/vifm/Trash/000_albert_model_model.ckpt-122500(1).data-00000-of-00001
+	/home/porcupine/Downloads/albert_model_model.ckpt-122500(1).data-00000-of-00001
+t/home/porcupine/.local/share/vifm/Trash/000_Jakub Darul Security Onion Zadanie 2 (1).pdf
+	/home/porcupine/Downloads/Jakub Darul Security Onion Zadanie 2 (1).pdf
+t/home/porcupine/.local/share/vifm/Trash/000_Jakub Darul Security Onion Zadanie 2.pdf
+	/home/porcupine/Downloads/Jakub Darul Security Onion Zadanie 2.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_JakubPiekarz_30_10_2018.pdf
+	/home/porcupine/Downloads/JakubPiekarz_30_10_2018.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_LinuxNotesForProfessionals(1).pdf
+	/home/porcupine/Downloads/LinuxNotesForProfessionals(1).pdf
+t/home/porcupine/.local/share/vifm/Trash/000_Wire 2019-11-26 at 11_20 PM (1).gif
+	/home/porcupine/Downloads/Wire 2019-11-26 at 11_20 PM (1).gif
+t/home/porcupine/.local/share/vifm/Trash/000_Wire 2019-11-26 at 11_20 PM.gif
+	/home/porcupine/Downloads/Wire 2019-11-26 at 11_20 PM.gif
+t/home/porcupine/.local/share/vifm/Trash/000_PROJEKTY.docx
+	/home/porcupine/Downloads/PROJEKTY.docx
+t/home/porcupine/.local/share/vifm/Trash/000_Wallfury - Instrukcja Konfiguracji Cennika.pdf
+	/home/porcupine/Downloads/Wallfury - Instrukcja Konfiguracji Cennika.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_bilet_92966267.pdf
+	/home/porcupine/Downloads/bilet_92966267.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_message-schema.pdf
+	/home/porcupine/Downloads/message-schema.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_lab7.ipynb
+	/home/porcupine/Downloads/lab7.ipynb
+t/home/porcupine/.local/share/vifm/Trash/000_shards
+	/home/porcupine/studies/master/albert/shards
+t/home/porcupine/.local/share/vifm/Trash/000_shards-sample
+	/home/porcupine/studies/master/albert/shards-sample
+t/home/porcupine/.local/share/vifm/Trash/000_pretraining_data
+	/home/porcupine/studies/master/albert/pretraining_data
+t/home/porcupine/.local/share/vifm/Trash/000_DeepinScreenshot_select-area_20190928224439.png
+	/home/porcupine/Pictures/DeepinScreenshot_select-area_20190928224439.png
+t/home/porcupine/.local/share/vifm/Trash/000_special_char.png
+	/home/porcupine/Pictures/special_char.png
+t/home/porcupine/.local/share/vifm/Trash/000_special\.png
+	/home/porcupine/Pictures/special\.png
+t/home/porcupine/.local/share/vifm/Trash/000_address.png
+	/home/porcupine/Pictures/address.png
+t/home/porcupine/.local/share/vifm/Trash/000_similarity.png
+	/home/porcupine/Pictures/similarity.png
+t/home/porcupine/.local/share/vifm/Trash/000_edit_save.png
+	/home/porcupine/Pictures/edit_save.png
+t/home/porcupine/.local/share/vifm/Trash/000_DeepinScreenshot_select-area_20190928211142.png
+	/home/porcupine/Pictures/DeepinScreenshot_select-area_20190928211142.png
+t/home/porcupine/.local/share/vifm/Trash/000_google_drive01.png
+	/home/porcupine/Pictures/google_drive01.png
+t/home/porcupine/.local/share/vifm/Trash/000_offsets.png
+	/home/porcupine/Pictures/offsets.png
+t/home/porcupine/.local/share/vifm/Trash/000_google_drive02.png
+	/home/porcupine/Pictures/google_drive02.png
+t/home/porcupine/.local/share/vifm/Trash/000_DeepinScreenshot_select-area_20191006220641.png
+	/home/porcupine/Pictures/DeepinScreenshot_select-area_20191006220641.png
+t/home/porcupine/.local/share/vifm/Trash/000_cluster02.png
+	/home/porcupine/Pictures/cluster02.png
+t/home/porcupine/.local/share/vifm/Trash/000_elo.png
+	/home/porcupine/Pictures/elo.png
+t/home/porcupine/.local/share/vifm/Trash/000_co_tam.png
+	/home/porcupine/Pictures/co_tam.png
+t/home/porcupine/.local/share/vifm/Trash/000_drukarka.png
+	/home/porcupine/Pictures/drukarka.png
+t/home/porcupine/.local/share/vifm/Trash/000_mapa.png
+	/home/porcupine/Pictures/mapa.png
+t/home/porcupine/.local/share/vifm/Trash/000_connection_notprivate.png
+	/home/porcupine/Pictures/connection_notprivate.png
+t/home/porcupine/.local/share/vifm/Trash/000_cluster01.png
+	/home/porcupine/Pictures/cluster01.png
+t/home/porcupine/.local/share/vifm/Trash/000_email.png
+	/home/porcupine/Pictures/email.png
+t/home/porcupine/.local/share/vifm/Trash/000_DeepinScreenshot_select-area_20190929200009.png
+	/home/porcupine/Pictures/DeepinScreenshot_select-area_20190929200009.png
+t/home/porcupine/.local/share/vifm/Trash/000_basket.png
+	/home/porcupine/Pictures/basket.png
+t/home/porcupine/.local/share/vifm/Trash/000_merge2.png
+	/home/porcupine/Pictures/merge2.png
+t/home/porcupine/.local/share/vifm/Trash/000_betweenness-graph.png
+	/home/porcupine/Pictures/betweenness-graph.png
+t/home/porcupine/.local/share/vifm/Trash/000_london.png
+	/home/porcupine/Pictures/london.png
+t/home/porcupine/.local/share/vifm/Trash/000_merge.png
+	/home/porcupine/Pictures/merge.png
+t/home/porcupine/.local/share/vifm/Trash/000_furasy.png
+	/home/porcupine/Pictures/furasy.png
+t/home/porcupine/.local/share/vifm/Trash/000_loty.png
+	/home/porcupine/Pictures/loty.png
+t/home/porcupine/.local/share/vifm/Trash/000_config.png
+	/home/porcupine/Pictures/config.png
+t/home/porcupine/.local/share/vifm/Trash/000_turtle.png
+	/home/porcupine/Pictures/turtle.png
+t/home/porcupine/.local/share/vifm/Trash/000_maluch.png
+	/home/porcupine/Pictures/maluch.png
+t/home/porcupine/.local/share/vifm/Trash/000_programujecie.png
+	/home/porcupine/Pictures/programujecie.png
+t/home/porcupine/.local/share/vifm/Trash/000_rainbow.png
+	/home/porcupine/Pictures/rainbow.png
+t/home/porcupine/.local/share/vifm/Trash/000_role.png
+	/home/porcupine/Pictures/role.png
+t/home/porcupine/.local/share/vifm/Trash/000_atoms2.png
+	/home/porcupine/Pictures/atoms2.png
+t/home/porcupine/.local/share/vifm/Trash/000_state-of-the-art.png
+	/home/porcupine/Pictures/state-of-the-art.png
+t/home/porcupine/.local/share/vifm/Trash/000_tolong.png
+	/home/porcupine/Pictures/tolong.png
+t/home/porcupine/.local/share/vifm/Trash/000_luggage.png
+	/home/porcupine/Pictures/luggage.png
+t/home/porcupine/.local/share/vifm/Trash/000_1572965571.png
+	/home/porcupine/Pictures/1572965571.png
+t/home/porcupine/.local/share/vifm/Trash/000_fountain.png
+	/home/porcupine/Pictures/fountain.png
+t/home/porcupine/.local/share/vifm/Trash/000_atoms1.png
+	/home/porcupine/Pictures/atoms1.png
+t/home/porcupine/.local/share/vifm/Trash/000_error.png
+	/home/porcupine/Pictures/error.png
+t/home/porcupine/.local/share/vifm/Trash/000_DeepinScreenshot_select-area_20191022184746.png
+	/home/porcupine/Pictures/DeepinScreenshot_select-area_20191022184746.png
+t/home/porcupine/.local/share/vifm/Trash/000_wallpaper.jpg
+	/home/porcupine/Pictures/wallpaper.jpg
+t/home/porcupine/.local/share/vifm/Trash/000_paczkomat.png
+	/home/porcupine/Pictures/paczkomat.png
+t/home/porcupine/.local/share/vifm/Trash/000_v1ola
+	/home/porcupine/codeheroes/v1ola
+t/home/porcupine/.local/share/vifm/Trash/000_palettenwerk
+	/home/porcupine/codeheroes/palettenwerk
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].1
+]F
+s0

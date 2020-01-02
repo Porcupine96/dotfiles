@@ -3,6 +3,7 @@
 projects=$(bloop projects)
 current_project=$(echo "$projects" | head -n1)
 
+run=false
 test=false
 only=false
 copy=false
@@ -13,6 +14,7 @@ do
   case "$1" in
     -o|--only) only=true; test=true ;;
     -t|--test) test=true ;;
+    -r|--run) run=true ;;
     -n) flags="$flags --incremental=false " ;;
     -w) flags="$flags --watch " ;;
     -c) copy=true ;;
@@ -34,6 +36,8 @@ fi
 command=""
 if [ "$test" = true ]; then
   command="bloop test $current_project $flags"
+elif [ "$run" = true ]; then
+  command="bloop run $current_project $flags"
 else
   command="bloop compile $current_project $flags"
 fi
