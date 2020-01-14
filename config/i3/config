@@ -222,7 +222,7 @@ for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [class="brave"] floating_maximum_size 2560 x 1280
 for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
 
-assign [class="firefox"] 2
+assign [class=".*Firefox.*"] 2
 assign [class="Emacs"] 3
 assign [class="Station"] 5
 assign [class="Spotify.*"] 5

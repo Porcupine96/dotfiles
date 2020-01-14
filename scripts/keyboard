@@ -3,5 +3,5 @@
 setxkbmap -option altwin:swap_lalt_lwin
 setxkbmap -layout pl -option ctrl:nocaps
 
-xset r rate 250 40
+xset r rate 200 50
 xset m 30/12 0
