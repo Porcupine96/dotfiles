@@ -1,0 +1,9 @@
+#!/bin/bash
+
+workers=$(grep "Host worker" ~/.ssh/config | awk '{ print $2 }')
+
+for worker in $workers; do
+    size=$(ssh "$worker" "sudo df -h | grep '/dev/sd'" | awk '{ print $5 }')
+
+    echo "$worker ($size)"
+done
