@@ -1,0 +1,21 @@
+#!/bin/bash
+set -e
+
+if [ $# = 1 ]; then
+  case $1 in
+  --sh)
+    shell="/bin/sh"
+    ;;
+  *)
+    echo "$0 --sh   for using /bin/sh"
+    echo "$0        for using /bin/bash"
+    exit 0
+    ;;
+  esac
+else
+  shell="/bin/bash"
+fi
+
+id=$(docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}' | sed 's/0.0.0.0/0.0/' | fzf --header-lines=1 | awk '{print $1}')
+
+docker exec -it $id $shell

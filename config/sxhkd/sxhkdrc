@@ -11,7 +11,9 @@ super + b
 super + c
 	rofi-cheatsheets
 super + shift + g
-    rofi-list "Documents/planck";
+	rofi-list "Documents/planck";
+super + shift + n
+	zathura ~/studies/neural_networks/Neural\ Networks.pdf
 super + p
 	rofi_so
 super + F11

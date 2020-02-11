@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+if [[ "$#" != 2 ]]; then
+  echo "usage: [old_name] [new_name]"
+fi
+
+match="^((import|package).*)$1(.*)$"
+
+rg "$match" --files-with-matches | xargs -I{} sed -i -E "s/$match/\1$2\3/g" {}

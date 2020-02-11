@@ -3,11 +3,12 @@
 
 (package! zoom-window)
 (package! reason-mode)
-(package! flycheck-mypy)
 (package! string-inflection)
 (package! ob-ammonite)
 (package! company-tabnine)
 (package! ox-reveal)
 (package! keychain-environment)
+(package! flycheck-mypy)
 (package! flycheck-joker)
 (package! vlf)
+(package! org-brain)

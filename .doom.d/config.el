@@ -9,8 +9,8 @@
 ;; theme
 ;; (load-theme 'doom-solarized-light t)
 ;; (load-theme 'doom-dracula t)
-(load-theme 'doom-nord t)
-;; (load-theme 'doom-molokai t)
+;; (load-theme 'doom-nord t)
+(load-theme 'doom-peacock t)
 
 (setq doom-font (font-spec :family "Fira Mono" :size 28))
 
@@ -186,6 +186,7 @@
 ;; MISC {{{
 
 (setq
+ auth-sources '("~/.authinfo")
  ;; fix clipboard manager issue
  x-select-enable-clipboard-manager nil
 ;; initial buffer
@@ -196,6 +197,10 @@
  treemacs-width 50
 ;; projectile config
  projectile-project-search-path '("~/codeheroes/")
+ projectile-project-root-files-functions #'(projectile-root-top-down
+                                            projectile-root-top-down-recurring
+                                            projectile-root-bottom-up
+                                            projectile-root-local)
 ;; turn off continuing comments
  +evil-want-o/O-to-continue-comments nil
 ;; relative line numbers
@@ -248,6 +253,24 @@
  elfeed-feeds
  '(("https://www.reddit.com/r/i3wm.rss" reddit i3wm)
    ("https://www.reddit.com/r/scala.rss" reddit scala)))
+
+;; org-brain
+(use-package! org-brain
+  :init
+  (setq org-brain-path "~/Dropbox/org/brain")
+  ;; For Evil users
+  (with-eval-after-load 'evil
+    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
+  :config
+  (setq org-id-track-globally nil)
+  (setq org-id-locations-file "~/my-emacs/.org-id-locations"))
+  ;; (push '("b" "Brain" plain (function org-brain-goto-end)
+  ;;         "* %i%?" :empty-lines 1)
+  ;;       org-capture-templates)
+  ;; (setq org-brain-visualize-default-choices 'all)
+  ;; (setq org-brain-title-max-length 12)
+  ;; (setq org-brain-include-file-entries nil
+  ;;       org-brain-file-entries-use-title nil))
 
 
 ;; }}}

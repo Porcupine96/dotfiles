@@ -98,6 +98,14 @@ alias ta="tmux attach"
 alias gs="gst"
 alias gpp="gl && gp"
 alias vf="vifm"
+alias sizes="du -h -d1 -a | sort -h"
+alias pbcopy="xclip -selection cipboard"
+
+alias doom_reinstall='rm -rf ~/.emacs.d/ && git clone https://github.com/hlissner/doom-emacs ~/.emacs.d && ~/.emacs.d/bin/doom install'
+
+def() {
+  sdcv $1 | less
+}
 
 set -o vi
 autoload -z edit-command-line
@@ -131,8 +139,8 @@ prompt pure
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 eval "$(rbenv init -)"
 
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

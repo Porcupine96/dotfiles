@@ -24,7 +24,7 @@
 'd
 	/home/porcupine/Downloads
 	..
-1575329338
+1579290471
 'e
 	/etc
 	..
@@ -33,10 +33,22 @@
 	/home/porcupine/
 	..
 1574010110
+'j
+	/home/porcupine/studies/neural_networks
+	opracowanie_neurony_2018-2019_bardziej_matematyczne.pdf
+1579990162
 'm
 	/home/porcupine/studies/master
 	..
-1575329397
+1579290471
+'n
+	/home/porcupine
+	.gitconfig
+1580847624
+'o
+	/home/porcupine/Dropbox/org
+	..
+1579290377
 's
 	/home/porcupine/studies
 	..
@@ -44,624 +56,639 @@
 'w
 	/home/porcupine/codeheroes
 	..
-1575329397
+1579290471
 
 # Bookmarks:
 
 # TUI:
 ar
 q0
-v2
+v1
 ov
 m-1
-l2
-r8,2
+l8,2
+r2
 
 # Left window history (oldest to newest):
-d/home/porcupine
-	Dropbox
-4
-d/home/porcupine/Dropbox
-	org
-3
-d/home/porcupine/Dropbox/org
-	resources
-3
-d/home/porcupine/Dropbox/org/resources
-	papers
-2
-d/home/porcupine/Dropbox/org/resources/papers
-	Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, Doug Lea - Java Concurrency in Practice-Addison-Wesley Professional (2006).pdf
-5
-d/home/porcupine/studies/neural_networks
-	lab1_rbm.pickle.dat
-3
-d/home/porcupine
-	..
-0
-d/home/porcupine/studies/complex_systems/project
-	..
-0
-d/home/porcupine/Downloads
-	atg_czolgi.pdf
-24
-d/home/porcupine
-	Downloads
-3
-d/home/porcupine/Downloads
-	albert-model
-2
-d/home/porcupine/Downloads/albert-model
-	..
-0
-d/home/porcupine/Downloads
-	atg_czolgi.pdf
+d/home/porcupine/codeheroes/chatbotize/monorepo/inbox
+	inbox-statistics-service
 16
-d/home/porcupine/studies/master/using-albert
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-backend
 	..
 0
-d/home/porcupine/studies/master/albert
-	simple
+d/home/porcupine/Downloads
+	..
+0
+d/home/porcupine/studies
+	data_science
+5
+d/home/porcupine/studies/data_science
+	pca
 6
-d/home/porcupine/studies/master/albert/simple
-	tokenizer.model
-3
-d/home/porcupine/studies/master
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-backend
+	generated
+1
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-ai-clustering-backend
+1
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+9
+d/home/porcupine/codeheroes/chatbotize
+	knowledge-base
+17
+d/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
+	inpost_model.wv.vectors.npy
+56
+d/home/porcupine
+	.doom.d
+1
+d/home/porcupine/Downloads
+	results_B.txt
+4
+d/home/porcupine
+	..
+0
+d/home/porcupine/codeheroes/wallfury/wal-backend
+	..
+0
+d/home/porcupine/codeheroes/wallfury
+	wal-backend
+2
+d/home/porcupine/codeheroes
+	vis-a-vi
+20
+d/home/porcupine
+	tool
+17
+d/home/porcupine/tool
+	xwallpaper
+15
+d/home/porcupine
+	..
+0
+d/home/porcupine/Downloads
+	axiom_lukasz_kazmierczak.pdf
+5
+d/home/porcupine
+	.IdeaIC2019.3
+4
+d/home/porcupine/Downloads
+	opracowanie_neurony_2018-2019.pdf
+8
+d/home/porcupine
+	..
+0
+d/home/porcupine/studies
+	neural_networks
+8
+d/home/porcupine/studies/neural_networks
+	materials
+4
+d/home/porcupine/studies/neural_networks/materials
+	..
+0
+d/home/porcupine/studies/neural_networks
+	lab11.ipynb
+26
+d/home/porcupine/studies
+	neural_networks
+8
+d/home/porcupine/studies/neural_networks
+	before_exam
+2
+d/home/porcupine/studies/neural_networks/before_exam
+	lab3.ipynb
+2
+d/home/porcupine/studies/neural_networks
+	before_exam
+2
+d/home/porcupine/studies/neural_networks/before_exam
+	opracowanie_neurony_2018-2019_bardziej_matematyczne.pdf
+2
+d/home/porcupine/studies/neural_networks
+	before_exam
+2
+d/home/porcupine/studies/neural_networks/before_exam
+	opracowanie_neurony_2018-2019.pdf
+4
+d/home/porcupine
+	..
+0
+d/home/porcupine/studies
+	data_mining
+4
+d/home/porcupine/studies/data_mining
+	presentation
+7
+d/home/porcupine/studies/data_mining/presentation
+	..
+0
+d/home/porcupine/studies/data_mining
+	scala-app
+8
+d/home/porcupine/studies/data_mining/scala-app
+	..
+0
+d/home/porcupine/studies/data_mining
+	complex
+4
+d/home/porcupine/studies/data_mining/complex
+	..
+0
+d/home/porcupine/studies/data_mining
+	complex
+4
+d/home/porcupine/Downloads
+	pytania z egzaminów.pdf
+4
+d/home/porcupine
+	..
+0
+d/home/porcupine/studies
+	data_mining
+4
+d/home/porcupine/studies/data_mining
+	klasyfikacja.pdf
+21
+d/home/porcupine
+	.doom.d
+1
+d/home/porcupine/studies
 	..
 0
 d/home/porcupine
-	.config
+	studies
+53
+d/home/porcupine/studies
+	data_mining
 4
-d/home/porcupine/.config
-	vifm
-17
-d/home/porcupine/.config/vifm
+d/home/porcupine/studies/data_mining
+	klasyfikacja.pdf
+21
+d/home/porcupine
 	scripts
 2
-d/home/porcupine/.config/vifm/scripts
-	README
-1
-d/home/porcupine/.config/vifm
-	vifmrc
+d/home/porcupine/studies
+	data_science
+5
+d/home/porcupine/studies/data_science
+	pca
+6
+d/home/porcupine/studies
+	data_mining
 4
+d/home/porcupine/studies/data_mining
+	lectures
+7
+d/home/porcupine/studies/data_mining/lectures
+	wstęp.pdf
+3
 d/home/porcupine/Downloads
 	..
 0
-d/home/porcupine/.local/share/vifm/Trash
+d/home/porcupine/studies/data_mining/lectures
+	..
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service
+	..
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering
+	..
+0
+d/home/porcupine/Downloads
+	
+0
+d/home/porcupine/codeheroes/codeheroes-commons
 	
 0
 d/home/porcupine
 	
 0
-d/home/porcupine/studies/complex_systems/project
+d/home/porcupine/.sbt/1.0/plugins
 	
 0
-d/home/porcupine/studies
-	
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service
+	..
 0
-d/home/porcupine
-	
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-campaign-service
+1
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-campaign-service
+	project
+3
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-campaign-service/project
+	plugins.sbt
+4
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway
+	..
 0
-d/home/porcupine/codeheroes/nm
-	
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-clustering-backend
+	..
 0
-d/home/porcupine/myself/cv
+d/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
 	
 0
 d/home/porcupine/Downloads
-	STG-backups-linux-20191031085722
-2
+	
+0
 d/home/porcupine
-	myself
-44
-d/home/porcupine/myself
-	cv
+	
+0
+d/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
+	albert
 1
-d/home/porcupine/myself/cv
-	index.html
-4
+d/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend/albert
+	..
+0
+d/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
+	inpost_model
+21
 d/home/porcupine
 	Downloads
-55
-d/home/porcupine/Downloads
-	libpng12.so.0
-51
-d/home/porcupine
-	..
-0
-d/home/porcupine/studies/data_science/lab3
-	data
-2
-d/home/porcupine/studies/data_science/lab3/data
-	..
-0
-d/home/porcupine/studies/data_science/lab3
-	data
-2
-d/home/porcupine/studies/data_science/lab3/data
-	InputData.xlsx
-1
-d/home/porcupine/Downloads
-	..
-0
-d/home/porcupine/studies
-	..
-0
-d/home/porcupine/scripts
-	..
-0
-d/home/porcupine/studies
-	..
-0
-d/home/porcupine/.config
-	sxhkd
 43
-d/home/porcupine/.config/sxhkd
-	sxhkdrc
-1
-d/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
-	..
-0
+d/home/porcupine/Downloads
+	Eric Glendinning, John McEwan - Oxford English for Information Technology_ Student Book-Oxford University Press, USA (2006).pdf
+18
+d/home/porcupine/codeheroes
+	agentpanel
+2
 d/home/porcupine/codeheroes/agentpanel
 	ap-suggestion-backend
 12
+d/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
+	crawl-300d-2M.vec
+30
+d/home/porcupine
+	.doom.d
+1
 d/home/porcupine/codeheroes
 	chatbotize
+4
+d/home/porcupine/codeheroes/chatbotize
+	w2v
+20
+d/home/porcupine/codeheroes/chatbotize/w2v
+	tymbark_w2v
 3
-d/home/porcupine
-	studies
-55
-d/home/porcupine/studies
-	master
-6
-d/home/porcupine/studies/master
-	using-albert
-4
-d/home/porcupine/studies/master/using-albert
-	model-without-special
+d/home/porcupine/codeheroes/chatbotize/knowledge-base
+	..
+0
+d/home/porcupine/codeheroes/chatbotize
+	w2v
 5
-d/home/porcupine/studies/master/using-albert/model-without-special
-	tokenizer.vocab
-7
-d/home/porcupine/studies/master/using-albert
-	albert
-2
-d/home/porcupine/studies/master/using-albert/albert
-	..
-0
-d/home/porcupine/studies/master/using-albert
-	google-research
-4
-d/home/porcupine/studies/master/using-albert/google-research
-	..
-0
-d/home/porcupine/studies/master/using-albert
-	model-without-special
-5
-d/home/porcupine/studies/master/using-albert/model-without-special
-	tokenizer.vocab
-8
-d/home/porcupine
-	.private
-16
-d/home/porcupine/.private
-	gclone.json
-1
-d/home/porcupine
-	.gclone
-4
-d/home/porcupine/.gclone
-	..
-0
-d/home/porcupine
-	.gclone
-4
-d/home/porcupine/.gclone
-	..
-0
-d/home/porcupine
-	.private
-34
-d/home/porcupine/.private
-	gclone.json
-1
-d/home/porcupine/Downloads
-	..
-0
-d/home/porcupine/codeheroes
-	..
-0
-d/home/porcupine/studies
-	..
-0
-d/home/porcupine/codeheroes
-	mongo
-11
-d/home/porcupine
-	codeheroes
-44
-d/home/porcupine/codeheroes
-	research
-16
-d/home/porcupine/Downloads
-	ala
-37
-d/home/porcupine/studies/master
-	albert
-1
-d/home/porcupine/studies/master/albert
-	shards
-4
-d/home/porcupine/studies/master/albert/shards
-	..
-0
-d/home/porcupine/studies/master/albert
-	shards
-4
-d/home/porcupine/studies/master/albert/shards
-	..
-0
-d/home/porcupine/studies/master/albert
-	shards
-4
-d/home/porcupine/studies/master
-	albert
-1
-d/home/porcupine/studies/master/albert
-	pretraining_data
-4
-d/home/porcupine/studies/master/albert/pretraining_data
-	shard_0007.tfrecord
-8
-d/home/porcupine/.config/i3
-	..
-0
-d/home/porcupine/.config
-	i3
+d/home/porcupine/codeheroes/chatbotize/w2v
+	zenka_w2v
 4
 d/home/porcupine
-	dotfiles
-14
-d/home/porcupine/dotfiles
 	scripts
+2
+d/home/porcupine/Downloads
+	.ipynb_checkpoints
+1
+d/home/porcupine/codeheroes
+	chatbotize
+4
+d/home/porcupine/codeheroes/chatbotize
+	w2v
 5
-d/home/porcupine/dotfiles/scripts
+d/home/porcupine/codeheroes/chatbotize/w2v
+	inpost_w2v
+2
+d/home/porcupine
+	my-emacs
+35
+d/home/porcupine/my-emacs
 	..
 0
-d/home/porcupine/dotfiles
-	config
-4
-d/home/porcupine/dotfiles/config
-	i3blocks
+d/home/porcupine
+	.doom.d
 1
-d/home/porcupine/dotfiles
-	config
-4
-d/home/porcupine/dotfiles/config
-	i3blocks
-1
-d/home/porcupine/dotfiles
-	config
-4
-d/home/porcupine/dotfiles/config
-	rofi
-3
-d/home/porcupine/dotfiles/config/rofi
+d/home/porcupine/.doom.d
 	..
 0
-d/home/porcupine/dotfiles/config
-	i3
-1
-d/home/porcupine/dotfiles/config/i3
-	..
-0
-d/home/porcupine/dotfiles/config
-	..
-0
+d/home/porcupine
+	.emacs-profiles.el
+36
 
 # Right window history (oldest to newest):
-D/home/porcupine/studies/data_science
-	lectures
-2
-D/home/porcupine/studies
-	data_science
-3
-D/home/porcupine/studies/data_science
-	lectures
-2
-D/home/porcupine/studies/complex_systems/project
-	..
-0
-D/home/porcupine/Downloads
-	Applicative.pdf
-33
+D/home/porcupine
+	Dropbox
+36
 D/home/porcupine/Dropbox
 	org
 4
 D/home/porcupine/Dropbox/org
 	resources
-5
+3
 D/home/porcupine/Dropbox/org/resources
-	cheatsheets
-1
-D/home/porcupine/Dropbox/org/resources/cheatsheets
-	typeclasses.pdf
-6
-D/home/porcupine/.config
-	..
-0
-D/home/porcupine/Downloads
-	albert-model
+	papers
 3
-D/home/porcupine/Downloads/albert-model
-	albert_model_model.ckpt-122500.meta
-8
-D/home/porcupine/studies/master/using-albert
-	model
-3
-D/home/porcupine/studies/master/using-albert/model
-	..
-0
-D/home/porcupine/studies/master/using-albert
-	model
-3
-D/home/porcupine/studies/master/albert
-	shards
-2
-D/home/porcupine/studies/master
-	albert
-4
-D/home/porcupine/studies/master/albert
-	tokens-to-sents.ipynb
-4
-D/home/porcupine/studies/master
-	albert
-4
-D/home/porcupine/studies/master/albert
-	pretraining_data
+D/home/porcupine/Dropbox/org/resources/papers
+	work
 5
-D/home/porcupine/studies/master/albert/pretraining_data
+D/home/porcupine/Dropbox/org/resources/papers/work
+	From_Word_Embeddings_To_Document_Distances.pdf
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering
 	..
 0
-D/home/porcupine/Downloads
-	..
-0
-D/home/porcupine/studies/master
-	albert
-4
-D/home/porcupine/studies/master/albert
-	pretraining_data
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator
+	clustering
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize
+	creator
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com
+	chatbotize
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala
+	com
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main
+	scala
 2
-D/home/porcupine/studies/master/albert/pretraining_data
-	shard_0010.tfrecord
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src
+	main
 1
-D/home/porcupine/.local/share/vifm/Trash
-	..
-0
-D/home/porcupine/.local/share/vifm
-	Trash
-1
-D/home/porcupine/.local/share
-	vifm
-32
-D/home/porcupine/.local/share/vifm
-	Trash
-1
-D/home/porcupine/.local/share/vifm/Trash
-	..
-0
-D/home/porcupine/.local/share/vifm
-	Trash
-1
-D/home/porcupine/.local/share/vifm/Trash
-	..
-0
-D/home/porcupine/studies/master
-	albert
-1
-D/home/porcupine/studies/master/albert
-	pretraining_data
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service
+	src
 2
-D/home/porcupine/studies/master/albert/pretraining_data
-	shard_0000.tfrecord
-24
-D/home/porcupine
-	..
-0
-D/home/porcupine/studies/master
-	albert
-1
-D/home/porcupine/studies/complex_systems/project
-	Snap-5.0
-1
-D/home/porcupine/studies/complex_systems/project/Snap-5.0
-	examples
-3
-D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples
-	particles
-36
-D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles
-	results
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-ai-clustering-service
 2
-D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/results
-	..
-0
-D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles
-	kurdziel
-1
-D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/kurdziel
-	..
-0
-D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles
-	kurdziel
-1
-D/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/kurdziel
-	..
-0
-D/home/porcupine/studies
-	data_mining
-3
-D/home/porcupine/studies/data_mining
-	InfomapCommunityGraph.ipynb
-10
-D/home/porcupine
-	..
-0
-D/home/porcupine/.config
-	..
-0
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+7
+D/home/porcupine/codeheroes/chatbotize
+	monorepo
+18
 D/home/porcupine/codeheroes
 	chatbotize
+4
+D/home/porcupine
+	Dropbox
+36
+D/home/porcupine/Dropbox
+	org
+4
+D/home/porcupine/Dropbox/org
+	resources
 3
-D/home/porcupine/codeheroes/chatbotize
-	creator-campaign-service
+D/home/porcupine/Dropbox/org/resources
+	cheatsheets
+2
+D/home/porcupine/Dropbox/org
+	.projectile
 7
-D/home/porcupine/codeheroes/chatbotize/creator-campaign-service
-	..
-0
-D/home/porcupine/codeheroes/nm
-	..
-0
-D/home/porcupine/codeheroes
-	codeheroes-commons
-5
-D/home/porcupine
-	Pictures
-6
-D/home/porcupine/Pictures
-	uber.png
-2
-D/home/porcupine/codeheroes/nm
-	..
-0
-D/home/porcupine
-	Pictures
-6
-D/home/porcupine/Pictures
-	uber.png
-2
-D/home/porcupine/codeheroes/nm
-	..
-0
-D/home/porcupine/codeheroes
-	nm
-11
-D/home/porcupine
-	Documents
-3
-D/home/porcupine/Documents
-	ergodox
-1
-D/home/porcupine/Documents/ergodox
-	layer3.png
-1
-D/home/porcupine/Documents
-	ergodox
-1
-D/home/porcupine
-	Documents
-3
-D/home/porcupine/myself/cv
-	..
-0
-D/home/porcupine/myself
-	cv
-1
+D/home/porcupine/Dropbox
+	org
+4
 D/home/porcupine
 	studies
-22
+36
 D/home/porcupine/studies
-	semantics
-9
-D/home/porcupine/studies/semantics
-	hyperreal-analysis
+	eu_security
+6
+D/home/porcupine/studies/eu_security
+	ue-data-security
+1
+D/home/porcupine/studies/eu_security/ue-data-security
+	.gitignore
 3
-D/home/porcupine/studies/semantics/hyperreal-analysis
-	data
-2
+D/home/porcupine/studies/eu_security
+	ue-data-security
+1
+D/home/porcupine/studies
+	eu_security
+6
 D/home/porcupine/Downloads
-	font-awesome-4.7.0
-4
-D/home/porcupine/Downloads/font-awesome-4.7.0
-	less
+	.ipynb_checkpoints
 1
 D/home/porcupine
-	..
-0
+	Downloads
+8
 D/home/porcupine/studies
-	neural_networks
+	complex_systems
+3
+D/home/porcupine
+	studies
+30
+D/home/porcupine/codeheroes
+	chatbotize
+4
+D/home/porcupine/codeheroes/chatbotize
+	monorepo
+18
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
 7
-D/home/porcupine/studies/neural_networks
-	test.npy
-3
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-clustering-service
+8
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-clustering-service
+	update-version.sh
+9
+D/home/porcupine/codeheroes/codeheroes-commons
+	commons-mongo
+10
+D/home/porcupine/codeheroes/codeheroes-commons/commons-mongo
+	target
+2
 D/home/porcupine
+	.sbt
+46
+D/home/porcupine/.sbt
+	0.13
+1
+D/home/porcupine/.sbt/0.13
+	plugins
+2
+D/home/porcupine/.sbt/0.13/plugins
+	target
+2
+D/home/porcupine/.sbt/0.13
+	plugins
+2
+D/home/porcupine/.sbt/0.13/plugins
+	metals.sbt
+4
+D/home/porcupine/.sbt/1.0/plugins
 	..
 0
-D/home/porcupine/studies
-	semantics
-9
-D/home/porcupine/studies/semantics
-	hyperreal-analysis
+D/home/porcupine/.sbt/1.0
+	plugins
+1
+D/home/porcupine/.sbt
+	0.13
+1
+D/home/porcupine/.sbt/0.13
+	plugins
+2
+D/home/porcupine/.sbt/0.13/plugins
+	build.sbt
 3
-D/home/porcupine/studies/semantics/hyperreal-analysis
-	text_search.py
-4
-D/home/porcupine/studies/data_science/lab3
-	szeregi.ipynb
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service
+	project
+3
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project
+	project
+2
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project/project
+	target
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project/project/target
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project/project
+	target
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project
+	.bloop
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service
+	project
+3
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project
+	DependencyVersions.scala
+6
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway
+	update-version.sh
+11
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-clustering-backend
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-clustering-backend
+7
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+7
+D/home/porcupine/codeheroes/chatbotize
+	data
+12
+D/home/porcupine/codeheroes/chatbotize/data
+	statistics_archive.csv
+2
+D/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
+	trainer.py
+35
+D/home/porcupine/codeheroes/agentpanel
+	ap-suggestion-backend
+12
+D/home/porcupine/codeheroes
+	agentpanel
 2
 D/home/porcupine/Downloads
+	CCF02022020.pdf
+4
+D/home/porcupine
 	..
 0
+D/home/porcupine/codeheroes
+	agentpanel
+2
+D/home/porcupine/codeheroes/agentpanel
+	ap-suggestion-backend
+12
 D/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
+	polish_inpost
+11
+D/home/porcupine/codeheroes/agentpanel
+	ap-suggestion-backend
+12
+D/home/porcupine/codeheroes
+	chatbotize
+4
+D/home/porcupine/codeheroes/chatbotize
+	data
+12
+D/home/porcupine/codeheroes/chatbotize/data
+	statistics_archive.csv
+2
+D/home/porcupine/codeheroes/chatbotize
+	w2v
+20
+D/home/porcupine/codeheroes/chatbotize/w2v
+	aviva_w2v
+1
+D/home/porcupine
+	..
+0
+D/home
+	porcupine
+1
+D/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
+	
+0
+D/home/porcupine
+	..
+0
+D/home/porcupine/codeheroes
 	..
 0
 D/home/porcupine
-	
-0
-D/home/porcupine/Downloads
-	
-0
-D/home/porcupine/studies/master
-	
-0
-D/home/porcupine/.config/i3
-	..
-0
-D/home/porcupine/.config
-	zathura
+	codeheroes
+30
+D/home/porcupine/codeheroes
+	puppeteer
+17
+D/home/porcupine
+	codeheroes
+30
+D/home/porcupine/codeheroes
+	chatbotize
+4
+D/home/porcupine/codeheroes/chatbotize
+	monorepo
+18
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+7
+D/home/porcupine/codeheroes/chatbotize
+	monorepo
+18
+D/home/porcupine/codeheroes
+	agentpanel
+2
+D/home/porcupine/codeheroes/agentpanel
+	ap-suggestion-backend
 12
-D/home/porcupine/.config/zathura
+D/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
+	word2vec.ipynb
+34
+D/home/porcupine/codeheroes/chatbotize/knowledge-base
 	..
 0
-D/home/porcupine/.config
-	nvim
-8
-D/home/porcupine/.config/nvim
-	..
-0
-D/home/porcupine/.config
-	nvim
-8
-D/home/porcupine/.config/nvim
-	..
-0
-D/home/porcupine/.config
-	nvim
-8
-D/home/porcupine/.config/nvim
-	..
-0
-D/home/porcupine/.config
-	i3status
-5
-D/home/porcupine/.config/i3status
-	statusbar
-1
-D/home/porcupine/.config
-	Postman
+D/home/porcupine
+	.config
 16
+D/home/porcupine/.config
+	tmuxinator
+53
+D/home/porcupine/.config/tmuxinator
+	wallfury.yml
+2
+D/home/porcupine
+	.tmux.conf
+35
 
 # Command line history (oldest to newest):
+:empt
+:a
+:view
+:mkdir lectures
+:trashes
+:help trash
+:lstrash
+:d
+:grepprg
+:set grepprg
+:mkdir -p resources/wikipedia
+:!mkdir -p resources/wikipedia
+:mkdir coursera
+:m
+:mkdir spark
 :filter svg
 :filter *.svg
 :filter "*.svg"
@@ -674,43 +701,28 @@ D/home/porcupine/.config
 :filter
 :mk
 :mkdir kur2
-:help
-:mkdir
 :mkdir albert-model
 :mkdir model
 :mkdir shards
-:empty
 :w
 :mkdir data
+:ejh'u`
+:mkdir custom
+:touch custom.css
+:mkdir
+:mkdir semantics
+:help
+:empty
+:trash
+:!chmod u+x wally
+:mkdir work
+:touch build.sbt
+:.,.+1!k
+::
+:touch init.el
 :q
 
 # Search history (oldest to newest):
-/data
-/vecjk
-/quiz
-/kazmie
-/png
-/eu
-/euhk
-/test
-/svg
-/loca
-/local
-/vifm
-/e
-/emac
-/doom
-/alb
-/partic
-/csv
-/studies
-/learni
-/do
-/hel
-/wla
-/wall
-/Dow
-/zip
 /grap
 /ex
 /par
@@ -719,7 +731,6 @@ D/home/porcupine/.config
 /cata
 /cats
 /gra
-/confi
 /part
 /chatb
 /cam
@@ -728,11 +739,8 @@ D/home/porcupine/.config
 /sem
 /myself
 /down
-/lab
-/neu
 /xls
 /sx
-/stud
 /pri
 /gclone
 /gclo
@@ -740,158 +748,240 @@ D/home/porcupine/.config
 /gdgd
 /ala
 /dotfile
+/kn
+/ude
+/graa
+/jvm
+/h`hk
+/spa
+/learnin
+/cou
+/screen
+/wal
+/lab
+/ma
+/jup
+/csv
+/xses
+/own
+/myse
+/scal
+/polish
+/nlp
+/stop
+/qi
+/Sili
+/hek
+/neur
+/agent
+/wmd
+/neu
+/ana'
+/ana
+/backend
+/inb
+/inpost
+/zip
+/dotfi
+/rele
+/too
+/tool
+/ne
+/op
+/datat
+/dat
+/pre
+/in
+/eg
+/d
+/drop
+/stud
+/mongo
+/sbt
+/campa
+/scalafi
+/data
+/tym
+/s
+/seman
+/git
+/mono
+/aviv
+/ch
+/w
+/downlo
+/wor
+/backe
+/crawl
+/codehe
+/mo
+/ba
+/ze
+/cha
+/my
+/doom
+/emacs
+/confi
+/tmux
 
 # Prompt history (oldest to newest):
+pclustering
+pClusteringEndpoint.scala
+pMongoClusteringRepository.scala
+pClusteringRepository.scala
+pGradient-Based_Learning_Applied_to_Document_Recognition.pdf
+pImagenet_Classification_with_deep_convolutional_neural_networks.pdf
 pparticle_method_eu.png
 pchatbotize.svg
 pcodeheroes.svg
 pdoobie
 ptypeclasses.pdf
 pgclone.json
+pTraining_restricted_boltzmann_machines_using_approximations_to_the_likelihood_gradient.pdf
+pReducing_the_Dimensionality_of_Data_with_Neural_Networks.pdf
+pUnderstanding_Dropout.pdf
+pdarul_kazmierczak_leskiw.pdf
+pwstęp.pdf
+pFrom_Word_Embeddings_To_Document_Distances.pdf
+pcreator-clustering-backend
+pcreator-clustering-service
 
 # Local filter history (oldest to newest):
 
 # Registers:
+""/home/porcupine/.local/share/vifm/Trash/000_test.yml
 
 # Directory stack (oldest to newest):
 
 # Trash content:
-t/home/porcupine/.local/share/vifm/Trash/000_AvivaSchema.pdf
-	/home/porcupine/studies/data_science/infomap/AvivaSchema.pdf
-t/home/porcupine/.local/share/vifm/Trash/000_kur2-coauth.dat
-	/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/kur2-coauth.dat
-t/home/porcupine/.local/share/vifm/Trash/000_kur2-coauth.time_0.par
-	/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/kur2-coauth.time_0.par
-t/home/porcupine/.local/share/vifm/Trash/000_kur2-coauth.time_final.par
-	/home/porcupine/studies/complex_systems/project/Snap-5.0/examples/particles/kur2-coauth.time_final.par
-t/home/porcupine/.local/share/vifm/Trash/000_kur2-coauth.com
-	/home/porcupine/studies/complex_systems/project/kur2/kur2-coauth.com
-t/home/porcupine/.local/share/vifm/Trash/000_kur2-authors.dat
-	/home/porcupine/studies/complex_systems/project/kur2-authors.dat
-t/home/porcupine/.local/share/vifm/Trash/000_kur2.csv
-	/home/porcupine/studies/complex_systems/project/kur2.csv
-t/home/porcupine/.local/share/vifm/Trash/000_albert_model_model.ckpt-122500(1).data-00000-of-00001
-	/home/porcupine/Downloads/albert_model_model.ckpt-122500(1).data-00000-of-00001
-t/home/porcupine/.local/share/vifm/Trash/000_Jakub Darul Security Onion Zadanie 2 (1).pdf
-	/home/porcupine/Downloads/Jakub Darul Security Onion Zadanie 2 (1).pdf
-t/home/porcupine/.local/share/vifm/Trash/000_Jakub Darul Security Onion Zadanie 2.pdf
-	/home/porcupine/Downloads/Jakub Darul Security Onion Zadanie 2.pdf
-t/home/porcupine/.local/share/vifm/Trash/000_JakubPiekarz_30_10_2018.pdf
-	/home/porcupine/Downloads/JakubPiekarz_30_10_2018.pdf
-t/home/porcupine/.local/share/vifm/Trash/000_LinuxNotesForProfessionals(1).pdf
-	/home/porcupine/Downloads/LinuxNotesForProfessionals(1).pdf
-t/home/porcupine/.local/share/vifm/Trash/000_Wire 2019-11-26 at 11_20 PM (1).gif
-	/home/porcupine/Downloads/Wire 2019-11-26 at 11_20 PM (1).gif
-t/home/porcupine/.local/share/vifm/Trash/000_Wire 2019-11-26 at 11_20 PM.gif
-	/home/porcupine/Downloads/Wire 2019-11-26 at 11_20 PM.gif
-t/home/porcupine/.local/share/vifm/Trash/000_PROJEKTY.docx
-	/home/porcupine/Downloads/PROJEKTY.docx
-t/home/porcupine/.local/share/vifm/Trash/000_Wallfury - Instrukcja Konfiguracji Cennika.pdf
-	/home/porcupine/Downloads/Wallfury - Instrukcja Konfiguracji Cennika.pdf
-t/home/porcupine/.local/share/vifm/Trash/000_bilet_92966267.pdf
-	/home/porcupine/Downloads/bilet_92966267.pdf
-t/home/porcupine/.local/share/vifm/Trash/000_message-schema.pdf
-	/home/porcupine/Downloads/message-schema.pdf
-t/home/porcupine/.local/share/vifm/Trash/000_lab7.ipynb
-	/home/porcupine/Downloads/lab7.ipynb
-t/home/porcupine/.local/share/vifm/Trash/000_shards
-	/home/porcupine/studies/master/albert/shards
-t/home/porcupine/.local/share/vifm/Trash/000_shards-sample
-	/home/porcupine/studies/master/albert/shards-sample
-t/home/porcupine/.local/share/vifm/Trash/000_pretraining_data
-	/home/porcupine/studies/master/albert/pretraining_data
-t/home/porcupine/.local/share/vifm/Trash/000_DeepinScreenshot_select-area_20190928224439.png
-	/home/porcupine/Pictures/DeepinScreenshot_select-area_20190928224439.png
-t/home/porcupine/.local/share/vifm/Trash/000_special_char.png
-	/home/porcupine/Pictures/special_char.png
-t/home/porcupine/.local/share/vifm/Trash/000_special\.png
-	/home/porcupine/Pictures/special\.png
-t/home/porcupine/.local/share/vifm/Trash/000_address.png
-	/home/porcupine/Pictures/address.png
-t/home/porcupine/.local/share/vifm/Trash/000_similarity.png
-	/home/porcupine/Pictures/similarity.png
-t/home/porcupine/.local/share/vifm/Trash/000_edit_save.png
-	/home/porcupine/Pictures/edit_save.png
-t/home/porcupine/.local/share/vifm/Trash/000_DeepinScreenshot_select-area_20190928211142.png
-	/home/porcupine/Pictures/DeepinScreenshot_select-area_20190928211142.png
-t/home/porcupine/.local/share/vifm/Trash/000_google_drive01.png
-	/home/porcupine/Pictures/google_drive01.png
-t/home/porcupine/.local/share/vifm/Trash/000_offsets.png
-	/home/porcupine/Pictures/offsets.png
-t/home/porcupine/.local/share/vifm/Trash/000_google_drive02.png
-	/home/porcupine/Pictures/google_drive02.png
-t/home/porcupine/.local/share/vifm/Trash/000_DeepinScreenshot_select-area_20191006220641.png
-	/home/porcupine/Pictures/DeepinScreenshot_select-area_20191006220641.png
-t/home/porcupine/.local/share/vifm/Trash/000_cluster02.png
-	/home/porcupine/Pictures/cluster02.png
-t/home/porcupine/.local/share/vifm/Trash/000_elo.png
-	/home/porcupine/Pictures/elo.png
-t/home/porcupine/.local/share/vifm/Trash/000_co_tam.png
-	/home/porcupine/Pictures/co_tam.png
-t/home/porcupine/.local/share/vifm/Trash/000_drukarka.png
-	/home/porcupine/Pictures/drukarka.png
-t/home/porcupine/.local/share/vifm/Trash/000_mapa.png
-	/home/porcupine/Pictures/mapa.png
-t/home/porcupine/.local/share/vifm/Trash/000_connection_notprivate.png
-	/home/porcupine/Pictures/connection_notprivate.png
-t/home/porcupine/.local/share/vifm/Trash/000_cluster01.png
-	/home/porcupine/Pictures/cluster01.png
-t/home/porcupine/.local/share/vifm/Trash/000_email.png
-	/home/porcupine/Pictures/email.png
-t/home/porcupine/.local/share/vifm/Trash/000_DeepinScreenshot_select-area_20190929200009.png
-	/home/porcupine/Pictures/DeepinScreenshot_select-area_20190929200009.png
-t/home/porcupine/.local/share/vifm/Trash/000_basket.png
-	/home/porcupine/Pictures/basket.png
-t/home/porcupine/.local/share/vifm/Trash/000_merge2.png
-	/home/porcupine/Pictures/merge2.png
-t/home/porcupine/.local/share/vifm/Trash/000_betweenness-graph.png
-	/home/porcupine/Pictures/betweenness-graph.png
-t/home/porcupine/.local/share/vifm/Trash/000_london.png
-	/home/porcupine/Pictures/london.png
-t/home/porcupine/.local/share/vifm/Trash/000_merge.png
-	/home/porcupine/Pictures/merge.png
-t/home/porcupine/.local/share/vifm/Trash/000_furasy.png
-	/home/porcupine/Pictures/furasy.png
-t/home/porcupine/.local/share/vifm/Trash/000_loty.png
-	/home/porcupine/Pictures/loty.png
-t/home/porcupine/.local/share/vifm/Trash/000_config.png
-	/home/porcupine/Pictures/config.png
-t/home/porcupine/.local/share/vifm/Trash/000_turtle.png
-	/home/porcupine/Pictures/turtle.png
-t/home/porcupine/.local/share/vifm/Trash/000_maluch.png
-	/home/porcupine/Pictures/maluch.png
-t/home/porcupine/.local/share/vifm/Trash/000_programujecie.png
-	/home/porcupine/Pictures/programujecie.png
-t/home/porcupine/.local/share/vifm/Trash/000_rainbow.png
-	/home/porcupine/Pictures/rainbow.png
-t/home/porcupine/.local/share/vifm/Trash/000_role.png
-	/home/porcupine/Pictures/role.png
-t/home/porcupine/.local/share/vifm/Trash/000_atoms2.png
-	/home/porcupine/Pictures/atoms2.png
-t/home/porcupine/.local/share/vifm/Trash/000_state-of-the-art.png
-	/home/porcupine/Pictures/state-of-the-art.png
-t/home/porcupine/.local/share/vifm/Trash/000_tolong.png
-	/home/porcupine/Pictures/tolong.png
-t/home/porcupine/.local/share/vifm/Trash/000_luggage.png
-	/home/porcupine/Pictures/luggage.png
-t/home/porcupine/.local/share/vifm/Trash/000_1572965571.png
-	/home/porcupine/Pictures/1572965571.png
-t/home/porcupine/.local/share/vifm/Trash/000_fountain.png
-	/home/porcupine/Pictures/fountain.png
-t/home/porcupine/.local/share/vifm/Trash/000_atoms1.png
-	/home/porcupine/Pictures/atoms1.png
-t/home/porcupine/.local/share/vifm/Trash/000_error.png
-	/home/porcupine/Pictures/error.png
-t/home/porcupine/.local/share/vifm/Trash/000_DeepinScreenshot_select-area_20191022184746.png
-	/home/porcupine/Pictures/DeepinScreenshot_select-area_20191022184746.png
-t/home/porcupine/.local/share/vifm/Trash/000_wallpaper.jpg
-	/home/porcupine/Pictures/wallpaper.jpg
-t/home/porcupine/.local/share/vifm/Trash/000_paczkomat.png
-	/home/porcupine/Pictures/paczkomat.png
-t/home/porcupine/.local/share/vifm/Trash/000_v1ola
-	/home/porcupine/codeheroes/v1ola
-t/home/porcupine/.local/share/vifm/Trash/000_palettenwerk
-	/home/porcupine/codeheroes/palettenwerk
+t/home/porcupine/.local/share/vifm/Trash/000_When a humble bard 🎸 Graced a ride along 🐎69bf5373634b45e789fe55b5361b64ba.pdf
+	/home/porcupine/Downloads/When a humble bard 🎸 Graced a ride along 🐎69bf5373634b45e789fe55b5361b64ba.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_results_A.txt
+	/home/porcupine/Downloads/results_A.txt
+t/home/porcupine/.local/share/vifm/Trash/000_results_B.txt
+	/home/porcupine/Downloads/results_B.txt
+t/home/porcupine/.local/share/vifm/Trash/000_ala.zip
+	/home/porcupine/Downloads/ala.zip
+t/home/porcupine/.local/share/vifm/Trash/000_lukasz_kazmierczak_sprawozdanie.pdf
+	/home/porcupine/Downloads/lukasz_kazmierczak_sprawozdanie.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_83588817_2596961230593393_6293041036205752320_n.png
+	/home/porcupine/Downloads/83588817_2596961230593393_6293041036205752320_n.png
+t/home/porcupine/.local/share/vifm/Trash/000_poza_ramke.png
+	/home/porcupine/Downloads/poza_ramke.png
+t/home/porcupine/.local/share/vifm/Trash/000_kurdziel-10.csv
+	/home/porcupine/studies/complex_systems/project/kurdziel-10.csv
+t/home/porcupine/.local/share/vifm/Trash/000_kurdziel.csv
+	/home/porcupine/studies/complex_systems/project/kurdziel.csv
+t/home/porcupine/.local/share/vifm/Trash/000_kurdziel
+	/home/porcupine/studies/complex_systems/project/kurdziel
+t/home/porcupine/.local/share/vifm/Trash/000_kafka
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/infrastructure/kafka
+t/home/porcupine/.local/share/vifm/Trash/000_inmem
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/infrastructure/inmem
+t/home/porcupine/.local/share/vifm/Trash/000_grpc
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/infrastructure/grpc
+t/home/porcupine/.local/share/vifm/Trash/000_serialization
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/infrastructure/serialization
+t/home/porcupine/.local/share/vifm/Trash/000_postgres
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/infrastructure/postgres
+t/home/porcupine/.local/share/vifm/Trash/000_query
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/infrastructure/query
+t/home/porcupine/.local/share/vifm/Trash/000_utils
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/infrastructure/utils
+t/home/porcupine/.local/share/vifm/Trash/000_MongoCampaignSchemaRepository.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/infrastructure/mongo/MongoCampaignSchemaRepository.scala
+t/home/porcupine/.local/share/vifm/Trash/000_CampaignSegmentUserRepository.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/CampaignSegmentUserRepository.scala
+t/home/porcupine/.local/share/vifm/Trash/000_CampaignUserPredicate.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/CampaignUserPredicate.scala
+t/home/porcupine/.local/share/vifm/Trash/000_EventSource.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/EventSource.scala
+t/home/porcupine/.local/share/vifm/Trash/000_MessageSource.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/MessageSource.scala
+t/home/porcupine/.local/share/vifm/Trash/000_SegmentUpdateProducer.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/SegmentUpdateProducer.scala
+t/home/porcupine/.local/share/vifm/Trash/000_SegmentUpdateSource.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/SegmentUpdateSource.scala
+t/home/porcupine/.local/share/vifm/Trash/000_SegmentationService.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/SegmentationService.scala
+t/home/porcupine/.local/share/vifm/Trash/000_StatisticsEventProducer.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/StatisticsEventProducer.scala
+t/home/porcupine/.local/share/vifm/Trash/000_StatusUpdateSource.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/StatusUpdateSource.scala
+t/home/porcupine/.local/share/vifm/Trash/000_Tree.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/Tree.scala
+t/home/porcupine/.local/share/vifm/Trash/000_UserCampaignState.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/UserCampaignState.scala
+t/home/porcupine/.local/share/vifm/Trash/000_UserCampaignStateRepository.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/UserCampaignStateRepository.scala
+t/home/porcupine/.local/share/vifm/Trash/000_ActionService.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/ActionService.scala
+t/home/porcupine/.local/share/vifm/Trash/000_CampaignDraftSchemaRepository.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/CampaignDraftSchemaRepository.scala
+t/home/porcupine/.local/share/vifm/Trash/000_CampaignEvent.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/CampaignEvent.scala
+t/home/porcupine/.local/share/vifm/Trash/000_CampaignEventRepository.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/CampaignEventRepository.scala
+t/home/porcupine/.local/share/vifm/Trash/000_CampaignProcessorRepository.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/domain/CampaignProcessorRepository.scala
+t/home/porcupine/.local/share/vifm/Trash/000_CampaignFactory.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/app/CampaignFactory.scala
+t/home/porcupine/.local/share/vifm/Trash/000_CampaignLifecycleSupervisor.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/app/CampaignLifecycleSupervisor.scala
+t/home/porcupine/.local/share/vifm/Trash/000_CampaignProgressService.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/app/CampaignProgressService.scala
+t/home/porcupine/.local/share/vifm/Trash/000_CampaignService.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/app/CampaignService.scala
+t/home/porcupine/.local/share/vifm/Trash/000_SetupService.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/app/SetupService.scala
+t/home/porcupine/.local/share/vifm/Trash/000_TimeBasedTriggerProcessor.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/app/TimeBasedTriggerProcessor.scala
+t/home/porcupine/.local/share/vifm/Trash/000_TreeDiff.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/app/TreeDiff.scala
+t/home/porcupine/.local/share/vifm/Trash/000_TriggerConditionSource.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/app/TriggerConditionSource.scala
+t/home/porcupine/.local/share/vifm/Trash/000_TriggerInterpreter.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/app/TriggerInterpreter.scala
+t/home/porcupine/.local/share/vifm/Trash/000_app.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering/app/app.scala
+t/home/porcupine/.local/share/vifm/Trash/000_.bloop
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway/.bloop
+t/home/porcupine/.local/share/vifm/Trash/000_.metals
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway/.metals
+t/home/porcupine/.local/share/vifm/Trash/000_log(1).txt
+	/home/porcupine/Downloads/log(1).txt
+t/home/porcupine/.local/share/vifm/Trash/000_log(2).txt
+	/home/porcupine/Downloads/log(2).txt
+t/home/porcupine/.local/share/vifm/Trash/000_log(3).txt
+	/home/porcupine/Downloads/log(3).txt
+t/home/porcupine/.local/share/vifm/Trash/000_log(4).txt
+	/home/porcupine/Downloads/log(4).txt
+t/home/porcupine/.local/share/vifm/Trash/000_log.txt
+	/home/porcupine/Downloads/log.txt
+t/home/porcupine/.local/share/vifm/Trash/000_opracowanie_neurony_2018-2019.pdf
+	/home/porcupine/Downloads/opracowanie_neurony_2018-2019.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_opracowanie_neurony_2018-2019_bardziej_matematyczne.pdf
+	/home/porcupine/Downloads/opracowanie_neurony_2018-2019_bardziej_matematyczne.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_lab13-1.ipynb
+	/home/porcupine/Downloads/lab13-1.ipynb
+t/home/porcupine/.local/share/vifm/Trash/000_results_B(1).txt
+	/home/porcupine/Downloads/results_B(1).txt
+t/home/porcupine/.local/share/vifm/Trash/000_org.css
+	/home/porcupine/Downloads/org.css
+t/home/porcupine/.local/share/vifm/Trash/000_reveal.css
+	/home/porcupine/Downloads/reveal.css
+t/home/porcupine/.local/share/vifm/Trash/000_s2sem3.pdf
+	/home/porcupine/Downloads/s2sem3.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_Jeremi-Leskiw_581337_0.pdf
+	/home/porcupine/Downloads/Jeremi-Leskiw_581337_0.pdf
+t/home/porcupine/.local/share/vifm/Trash/000_Complex_Presentation.html
+	/home/porcupine/Downloads/Complex_Presentation.html
+t/home/porcupine/.local/share/vifm/Trash/000_github
+	/home/porcupine/github
+t/home/porcupine/.local/share/vifm/Trash/000_roam
+	/home/porcupine/Dropbox/org/roam
+t/home/porcupine/.local/share/vifm/Trash/000_test.yml
+	/home/porcupine/.config/tmuxinator/test.yml
 
 # State:
 f
@@ -900,6 +990,6 @@ i1
 [F
 F
 I1
-].1
+].0
 ]F
 s0

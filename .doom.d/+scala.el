@@ -59,6 +59,7 @@
   (:leader
     (:prefix "l"
       :map scala-mode-map
+      :desc "lsp-ui-flycheck-list" :nv "e" #'lsp-ui-flycheck-list
       :desc "search-class" :nv "c" #'+scala/search-class
       :desc "search-case-class" :nv "v" #'+scala/search-case-class
       :desc "search-def" :nv "d" #'+scala/search-def

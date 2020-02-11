@@ -1,0 +1,24 @@
+#!/bin/bash
+
+version=$(sed -n 's/.*version := "\(.*\)"/\1/p' build.sbt)
+major=$(echo "$version" | cut -d'-' -f1)
+hash=$(git --no-pager log -n1 --format="%h")
+updated_version="$major-$hash"
+
+echo "Updating the version to: $updated_version"
+
+# update the version in build.sbt
+sed -i "s/version := .*/version := \"${updated_version}\"/" build.sbt
+
+# publish locally and get the image
+build_out=$(sbt clean compile docker:publishLocal)
+image=$(echo "$build_out" | grep "Successfully tagged" | sed -n "s/.*tagged \(.*\)/\1/p")
+
+echo "Pushing image: $image"
+
+docker push "$image"
+
+echo "$updated_version" | xclip -selection clipboard
+echo "Version copied to clipboard!"
+
+notify-send "$image published!"
