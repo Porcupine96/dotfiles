@@ -157,3 +157,5 @@ eval "$(rbenv init -)"
 # unset __conda_setup
 # <<< conda initialize <<<
 
+
+source /home/porcupine/.config/broot/launcher/bash/br

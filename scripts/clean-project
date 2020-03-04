@@ -1,17 +1,29 @@
 #!/bin/bash
 
+reinitialize_git=false
+
+while test $# != 0
+do
+  case "$1" in
+    -g|--git) reinitialize_git=true;;
+    *)  echo "Unrecognized flag: $1" ;;
+  esac
+  shift
+done
+
 # remove scala project files
 rm -rf project/project project/target target
 
 # remove protobuf files
 rm -rf *protobufs
 
-# remove old git repository
-rm -rf .git .gitmodules
-
-# remove bloop / metals 
+# remove bloop / metals
 rm -rf .bloop .metals
 
-# initialize a fresh git repository
-git init
+if [ "$reinitialize_git" = true ]; then
+  # remove old git repository
+  rm -rf .git .gitmodules
 
+  # initialize a fresh git repository
+  git init
+fi

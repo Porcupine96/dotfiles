@@ -10,14 +10,19 @@
 ;; (load-theme 'doom-solarized-light t)
 ;; (load-theme 'doom-dracula t)
 ;; (load-theme 'doom-nord t)
-(load-theme 'doom-peacock t)
+(load-theme 'doom-dark+ t)
 
-(setq doom-font (font-spec :family "Fira Mono" :size 28))
+(setq doom-font (font-spec :family "Hack" :size 28))
 
 ;; zoom window
 (custom-set-variables
  '(zoom-window-mode-line-color "DarkGreen")
  '(zoom-window-use-persp t))
+
+;; toggle scroll and menu bars
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; org mode
 (setq
@@ -35,16 +40,17 @@
                       :background nil
                       :height 1.5
                       :weight 'bold)
-  (set-face-attribute 'org-block-begin-line nil
-                      :foreground "lightgrey"
-                      :box nil
-                      :background nil
-                      :height 0.8)
-  (set-face-attribute 'org-block-end-line nil
-                      :foreground "lightgrey"
-                      :box nil
-                      :background nil
-                      :height 1.0)
+
+  ;; (set-face-attribute 'org-block-begin-line nil
+  ;;                     :foreground "lightgrey"
+  ;;                     :box nil
+  ;;                     :background nil
+  ;;                     :height 0.8)
+  ;; (set-face-attribute 'org-block-end-line nil
+  ;;                     :foreground "lightgrey"
+  ;;                     :box nil
+  ;;                     :background nil
+  ;;                     :height 1.0)
 
   (org-babel-do-load-languages
     'org-babel-load-languages
@@ -92,24 +98,31 @@
 ;; treemacs
 (global-set-key (kbd "M-p") #'+treemacs/toggle)
 
+(defun +treemacs/copy-rename ()
+  (interactive)
+  (treemacs-copy-file)
+  (treemacs-rename))
+
 (after! treemacs
   (require 'treemacs)
   (treemacs-load-theme "Default")
   (setq treemacs-follow-mode 't)
   (map! :map evil-treemacs-state-map "M-p" #'+treemacs/toggle)
-  (map! :map treemacs-mode-map "M-p" #'+treemacs/toggle))
+  (map! :map treemacs-mode-map "M-p" #'+treemacs/toggle)
+  (map! :map treemacs-copy-map "f" #'+treemacs/copy-rename))
 
 ;; jk to switch to normal-mode
 (setq-default evil-escape-key-sequence "jk")
 
-;; prevent org-mode from overriding the global map
-(map! :map org-mode-map
-      "C-k" #'evil-window-up
-      "C-j" #'evil-window-down)
+;; C-j and C-k to move between panes
+(after! org
+  (map! :map org-mode-map
+        "C-k" #'evil-window-up
+        "C-j" #'evil-window-down)
 
-(map! :map evil-org-mode-map
-      "C-k" #'evil-window-up
-      "C-j" #'evil-window-down)
+  (map! :map evil-org-mode-map
+        :ni "C-k" #'evil-window-up
+        :ni "C-j" #'evil-window-down))
 
 ;; leader movements
 (map!
@@ -242,6 +255,14 @@
 (after! scala
   (add-hook 'before-save-hook #'lsp-format-buffer))
 
+;; protobuf
+(defconst my-protobuf-style
+  '((c-basic-offset . 4)
+    (indent-tabs-mode . nil)))
+
+(add-hook 'protobuf-mode-hook
+  (lambda () (c-add-style "my-style" my-protobuf-style t)))
+
 ;; use smartparens
 (sp-use-smartparens-bindings)
 
@@ -254,24 +275,13 @@
  '(("https://www.reddit.com/r/i3wm.rss" reddit i3wm)
    ("https://www.reddit.com/r/scala.rss" reddit scala)))
 
-;; org-brain
-(use-package! org-brain
-  :init
-  (setq org-brain-path "~/Dropbox/org/brain")
-  ;; For Evil users
-  (with-eval-after-load 'evil
-    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
-  :config
-  (setq org-id-track-globally nil)
-  (setq org-id-locations-file "~/my-emacs/.org-id-locations"))
-  ;; (push '("b" "Brain" plain (function org-brain-goto-end)
-  ;;         "* %i%?" :empty-lines 1)
-  ;;       org-capture-templates)
-  ;; (setq org-brain-visualize-default-choices 'all)
-  ;; (setq org-brain-title-max-length 12)
-  ;; (setq org-brain-include-file-entries nil
-  ;;       org-brain-file-entries-use-title nil))
+;; jira
+(setq jiralib-url "https://chatbotize.atlassian.net")
 
+;; plantUML
+(setq plantuml-jar-path "/home/porcupine/tool/plantuml.jar")
+(setq plantuml-default-exec-mode 'jar)
+(setq org-plantuml-jar-path "/home/porcupine/tool/plantuml.jar")
 
 ;; }}}
 

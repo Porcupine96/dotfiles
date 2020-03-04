@@ -5,7 +5,8 @@ choice=$(printf "basic\\nwork\\nhome" | dmenu)
 case "$choice" in
     "work") bash -c "~/.screenlayout/work.sh" ;;
     "home") bash -c "~/.screenlayout/home.sh" ;;
-    *) bash -c "~/.screenlayout/basic.sh" ;;
+    "basic") bash -c "~/.screenlayout/basic.sh" ;;
+    *) echo "Unknown choice" ;;
 esac
 
 # reload background

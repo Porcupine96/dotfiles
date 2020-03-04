@@ -1,14 +1,42 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; ~/.doom.d/packages.el
 
+
+;; ADD PACKAGES
+
 (package! zoom-window)
 (package! reason-mode)
 (package! string-inflection)
 (package! ob-ammonite)
-(package! company-tabnine)
+;; (package! company-tabnine)
 (package! ox-reveal)
 (package! keychain-environment)
 (package! flycheck-mypy)
 (package! flycheck-joker)
 (package! vlf)
-(package! org-brain)
+
+(package! org-jira)
+(package! plantuml-mode)
+
+(package! prettier-js)
+;; DISABLE PACKAGES
+
+;;data
+(package! dhall-mode :disable t)
+
+;;docker
+(package! docker :disable t)
+
+;;web
+(package! haml-mode :disable t)
+(package! pug-mode :disable t)
+(package! slim-mode :disable t)
+(package! sass-mode :disable t)
+(package! sws-mode :disable t)
+(package! less-css-mode :disable t)
+
+;;helm
+(package! helm)
+
+;;magit
+(package! magit-gitflow :disable t)

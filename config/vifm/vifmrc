@@ -127,9 +127,10 @@ mark d ~/Downloads
 mark D ~/Dropbox
 mark b ~/Dropbox/org/resources/papers
 mark S ~/scripts
+mark t ~/tool
 
 mark c ~/.config
-mark w ~/codeheroes
+mark w ~/codeheroes/chatbotize/monorepo
 
 mark s ~/studies
 mark m ~/studies/master

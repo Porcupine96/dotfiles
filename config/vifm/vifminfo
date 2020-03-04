@@ -53,10 +53,14 @@
 	/home/porcupine/studies
 	..
 1575329245
-'w
-	/home/porcupine/codeheroes
+'t
+	/home/porcupine/tool
 	..
-1579290471
+1582732948
+'w
+	/home/porcupine/codeheroes/chatbotize/monorepo
+	..
+1581501488
 
 # Bookmarks:
 
@@ -70,153 +74,6 @@ l8,2
 r2
 
 # Left window history (oldest to newest):
-d/home/porcupine/codeheroes/chatbotize/monorepo/inbox
-	inbox-statistics-service
-16
-d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-backend
-	..
-0
-d/home/porcupine/Downloads
-	..
-0
-d/home/porcupine/studies
-	data_science
-5
-d/home/porcupine/studies/data_science
-	pca
-6
-d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-backend
-	generated
-1
-d/home/porcupine/codeheroes/chatbotize/monorepo/creator
-	creator-ai-clustering-backend
-1
-d/home/porcupine/codeheroes/chatbotize/monorepo
-	creator
-9
-d/home/porcupine/codeheroes/chatbotize
-	knowledge-base
-17
-d/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
-	inpost_model.wv.vectors.npy
-56
-d/home/porcupine
-	.doom.d
-1
-d/home/porcupine/Downloads
-	results_B.txt
-4
-d/home/porcupine
-	..
-0
-d/home/porcupine/codeheroes/wallfury/wal-backend
-	..
-0
-d/home/porcupine/codeheroes/wallfury
-	wal-backend
-2
-d/home/porcupine/codeheroes
-	vis-a-vi
-20
-d/home/porcupine
-	tool
-17
-d/home/porcupine/tool
-	xwallpaper
-15
-d/home/porcupine
-	..
-0
-d/home/porcupine/Downloads
-	axiom_lukasz_kazmierczak.pdf
-5
-d/home/porcupine
-	.IdeaIC2019.3
-4
-d/home/porcupine/Downloads
-	opracowanie_neurony_2018-2019.pdf
-8
-d/home/porcupine
-	..
-0
-d/home/porcupine/studies
-	neural_networks
-8
-d/home/porcupine/studies/neural_networks
-	materials
-4
-d/home/porcupine/studies/neural_networks/materials
-	..
-0
-d/home/porcupine/studies/neural_networks
-	lab11.ipynb
-26
-d/home/porcupine/studies
-	neural_networks
-8
-d/home/porcupine/studies/neural_networks
-	before_exam
-2
-d/home/porcupine/studies/neural_networks/before_exam
-	lab3.ipynb
-2
-d/home/porcupine/studies/neural_networks
-	before_exam
-2
-d/home/porcupine/studies/neural_networks/before_exam
-	opracowanie_neurony_2018-2019_bardziej_matematyczne.pdf
-2
-d/home/porcupine/studies/neural_networks
-	before_exam
-2
-d/home/porcupine/studies/neural_networks/before_exam
-	opracowanie_neurony_2018-2019.pdf
-4
-d/home/porcupine
-	..
-0
-d/home/porcupine/studies
-	data_mining
-4
-d/home/porcupine/studies/data_mining
-	presentation
-7
-d/home/porcupine/studies/data_mining/presentation
-	..
-0
-d/home/porcupine/studies/data_mining
-	scala-app
-8
-d/home/porcupine/studies/data_mining/scala-app
-	..
-0
-d/home/porcupine/studies/data_mining
-	complex
-4
-d/home/porcupine/studies/data_mining/complex
-	..
-0
-d/home/porcupine/studies/data_mining
-	complex
-4
-d/home/porcupine/Downloads
-	pytania z egzaminów.pdf
-4
-d/home/porcupine
-	..
-0
-d/home/porcupine/studies
-	data_mining
-4
-d/home/porcupine/studies/data_mining
-	klasyfikacja.pdf
-21
-d/home/porcupine
-	.doom.d
-1
-d/home/porcupine/studies
-	..
-0
 d/home/porcupine
 	studies
 53
@@ -370,308 +227,455 @@ d/home/porcupine/.doom.d
 d/home/porcupine
 	.emacs-profiles.el
 36
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	
+0
+d/home/porcupine
+	
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration
+	
+0
+d/home/porcupine/doom-emacs
+	
+0
+d/home/porcupine/learning/tabix
+	
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-clustering-service
+	
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway
+	
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	
+0
+d/home/porcupine
+	
+0
+d/home/porcupine/Downloads
+	
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	
+0
+d/home/porcupine
+	.doom.d
+1
+d/home/porcupine/Downloads
+	mongodb-org-shell_4.2.3_amd64.deb
+3
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	..
+0
+d/home/porcupine/Downloads
+	Kopia-2019-2020-AZwolak-Poprawione.xlsx
+4
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway
+	..
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-user-graphql-gateway
+45
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+10
+d/home/porcupine/codeheroes/chatbotize
+	monorepo
+3
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	migration
+8
+d/home/porcupine/codeheroes/chatbotize/monorepo/migration
+	creator-base-template-migration
+1
+d/home/porcupine/codeheroes/agentpanel
+	ap-configuration-service
+1
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+10
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-user-graphql-gateway
+58
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway
+	..
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+10
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-user-graphql-gateway
+26
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+10
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-clustering-backend
+4
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-clustering-backend
+	src
+1
+d/home/porcupine/doom-emacs
+	..
+0
+d/home/porcupine
+	doom-emacs
+55
+d/home
+	porcupine
+1
+d/home/porcupine
+	Downloads
+55
+d/home/porcupine/Downloads
+	Brian Goetz, Tim Peierls - Java concurrency in practice  -Addison-Wesley (2006).epub
+9
+d/home/porcupine
+	scripts
+2
+d/home/porcupine/Downloads
+	robo3t-1.3.1-linux-x86_64-7419c406
+4
+d/home/porcupine/Downloads/robo3t-1.3.1-linux-x86_64-7419c406
+	..
+0
+d/home/porcupine/Downloads
+	conflict.py
+4
+d/home/porcupine
+	..
+0
+d/home/porcupine/.emacs.d
+	
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo/inbox/inbox-conversation-service
+	
+0
+d/home/porcupine/.local/share/fonts
+	
+0
+d/home/porcupine
+	
+0
+d/home/porcupine/pega-hackathon/main-backend
+	
+0
+d/home/porcupine/pega-hackathon
+	
+0
+d/home/porcupine/Downloads
+	
+0
+d/home/porcupine/studies/master
+	
+0
+d/home/porcupine
+	
+0
 
 # Right window history (oldest to newest):
-D/home/porcupine
-	Dropbox
-36
-D/home/porcupine/Dropbox
-	org
-4
-D/home/porcupine/Dropbox/org
-	resources
-3
-D/home/porcupine/Dropbox/org/resources
-	papers
-3
-D/home/porcupine/Dropbox/org/resources/papers
-	work
-5
-D/home/porcupine/Dropbox/org/resources/papers/work
-	From_Word_Embeddings_To_Document_Distances.pdf
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator/clustering
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-faq/agentpanel-protobufs/conversation_suggestion_service
 	..
 0
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize/creator
-	clustering
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-faq/agentpanel-protobufs
+	conversation_suggestion_service
 1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com/chatbotize
-	creator
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala/com
-	chatbotize
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main/scala
-	com
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src/main
-	scala
-2
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service/src
-	main
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-ai-clustering-service
-	src
-2
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator
-	creator-ai-clustering-service
-2
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	creator
-7
-D/home/porcupine/codeheroes/chatbotize
-	monorepo
-18
-D/home/porcupine/codeheroes
-	chatbotize
-4
-D/home/porcupine
-	Dropbox
-36
-D/home/porcupine/Dropbox
-	org
-4
-D/home/porcupine/Dropbox/org
-	resources
-3
-D/home/porcupine/Dropbox/org/resources
-	cheatsheets
-2
-D/home/porcupine/Dropbox/org
-	.projectile
-7
-D/home/porcupine/Dropbox
-	org
-4
-D/home/porcupine
-	studies
-36
-D/home/porcupine/studies
-	eu_security
-6
-D/home/porcupine/studies/eu_security
-	ue-data-security
-1
-D/home/porcupine/studies/eu_security/ue-data-security
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration
 	.gitignore
-3
-D/home/porcupine/studies/eu_security
-	ue-data-security
-1
-D/home/porcupine/studies
-	eu_security
-6
-D/home/porcupine/Downloads
-	.ipynb_checkpoints
-1
-D/home/porcupine
-	Downloads
-8
-D/home/porcupine/studies
-	complex_systems
-3
-D/home/porcupine
-	studies
-30
-D/home/porcupine/codeheroes
-	chatbotize
 4
-D/home/porcupine/codeheroes/chatbotize
-	monorepo
-18
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration
+	creator-faq-template-migration
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-plugin-faq
+19
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-faq
+	agentpanel-protobufs
+3
+D/home/porcupine/doom-emacs
+	..
+0
 D/home/porcupine/codeheroes/chatbotize/monorepo
 	creator
 7
 D/home/porcupine/codeheroes/chatbotize/monorepo/creator
-	creator-clustering-service
-8
+	creator-plugin-faq
+19
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-faq
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	migration
+56
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	migration
+56
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+7
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	migration
+56
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration
+	creator-faq-template-migration
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration
+	src
+3
+D/home/porcupine/learning/tabix
+	..
+0
+D/home/porcupine/.config
+	sxhkd
+23
+D/home/porcupine/.config/sxhkd
+	sxhkdrc
+1
 D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-clustering-service
-	update-version.sh
-9
-D/home/porcupine/codeheroes/codeheroes-commons
-	commons-mongo
-10
-D/home/porcupine/codeheroes/codeheroes-commons/commons-mongo
-	target
-2
-D/home/porcupine
-	.sbt
-46
-D/home/porcupine/.sbt
-	0.13
-1
-D/home/porcupine/.sbt/0.13
-	plugins
-2
-D/home/porcupine/.sbt/0.13/plugins
-	target
-2
-D/home/porcupine/.sbt/0.13
-	plugins
-2
-D/home/porcupine/.sbt/0.13/plugins
-	metals.sbt
-4
-D/home/porcupine/.sbt/1.0/plugins
-	..
-0
-D/home/porcupine/.sbt/1.0
-	plugins
-1
-D/home/porcupine/.sbt
-	0.13
-1
-D/home/porcupine/.sbt/0.13
-	plugins
-2
-D/home/porcupine/.sbt/0.13/plugins
-	build.sbt
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service
-	project
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project
-	project
-2
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project/project
-	target
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project/project/target
-	..
-0
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project/project
-	target
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project
-	.bloop
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service
-	project
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service/project
-	DependencyVersions.scala
-6
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway
-	update-version.sh
-11
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-clustering-backend
 	..
 0
 D/home/porcupine/codeheroes/chatbotize/monorepo/creator
 	creator-clustering-backend
 7
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	creator
-7
-D/home/porcupine/codeheroes/chatbotize
-	data
-12
-D/home/porcupine/codeheroes/chatbotize/data
-	statistics_archive.csv
-2
-D/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
-	trainer.py
-35
-D/home/porcupine/codeheroes/agentpanel
-	ap-suggestion-backend
-12
-D/home/porcupine/codeheroes
-	agentpanel
-2
-D/home/porcupine/Downloads
-	CCF02022020.pdf
-4
-D/home/porcupine
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-clustering-backend
+	.python-version
+5
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway
 	..
 0
-D/home/porcupine/codeheroes
-	agentpanel
-2
-D/home/porcupine/codeheroes/agentpanel
-	ap-suggestion-backend
-12
-D/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
-	polish_inpost
-11
-D/home/porcupine/codeheroes/agentpanel
-	ap-suggestion-backend
-12
-D/home/porcupine/codeheroes
-	chatbotize
-4
-D/home/porcupine/codeheroes/chatbotize
-	data
-12
-D/home/porcupine/codeheroes/chatbotize/data
-	statistics_archive.csv
-2
-D/home/porcupine/codeheroes/chatbotize
-	w2v
-20
-D/home/porcupine/codeheroes/chatbotize/w2v
-	aviva_w2v
-1
 D/home/porcupine
 	..
 0
 D/home
 	porcupine
 1
-D/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
-	
-0
 D/home/porcupine
-	..
-0
-D/home/porcupine/codeheroes
+	doom-emacs
+10
+D/home/porcupine/doom-emacs
 	..
 0
 D/home/porcupine
-	codeheroes
-30
-D/home/porcupine/codeheroes
-	puppeteer
-17
-D/home/porcupine
-	codeheroes
-30
-D/home/porcupine/codeheroes
-	chatbotize
-4
-D/home/porcupine/codeheroes/chatbotize
-	monorepo
-18
+	doom-emacs
+10
+D/home/porcupine/doom-emacs
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	..
+0
 D/home/porcupine/codeheroes/chatbotize/monorepo
 	creator
 7
 D/home/porcupine/codeheroes/chatbotize
 	monorepo
-18
-D/home/porcupine/codeheroes
-	agentpanel
-2
-D/home/porcupine/codeheroes/agentpanel
-	ap-suggestion-backend
-12
-D/home/porcupine/codeheroes/agentpanel/ap-suggestion-backend
-	word2vec.ipynb
-34
-D/home/porcupine/codeheroes/chatbotize/knowledge-base
+3
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	migration
+9
+D/home/porcupine/codeheroes/chatbotize/monorepo/migration
 	..
 0
 D/home/porcupine
-	.config
-16
-D/home/porcupine/.config
-	tmuxinator
-53
-D/home/porcupine/.config/tmuxinator
-	wallfury.yml
-2
+	foss
+52
+D/home/porcupine/foss
+	convball-cli
+3
+D/home/porcupine/foss/convball-cli
+	.git
+1
 D/home/porcupine
-	.tmux.conf
-35
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	..
+0
+D/home/porcupine/codeheroes/chatbotize
+	monorepo
+3
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+7
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-plugin-faq
+22
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-faq
+	..
+0
+D/home/porcupine/Downloads
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+7
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-plugin-faq
+22
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-faq
+	..
+0
+D/home/porcupine
+	tool
+43
+D/home/porcupine/tool
+	metals
+18
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	migration
+9
+D/home/porcupine/codeheroes/chatbotize/monorepo/migration
+	creator-base-template-migration
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/migration/creator-base-template-migration
+	src
+4
+D/home/porcupine/Downloads
+	mongodb-org-shell_4.2.3_amd64.deb
+6
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway
+	..
+0
+D/home/porcupine/codeheroes/agentpanel
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	..
+0
+D/home/porcupine/doom-emacs
+	..
+0
+D/home/porcupine
+	tool
+17
+D/home/porcupine/tool
+	robo3t-1.3.1-linux-x86_64-7419c406
+12
+D/home/porcupine/tool/robo3t-1.3.1-linux-x86_64-7419c406
+	bin
+1
+D/home/porcupine/tool/robo3t-1.3.1-linux-x86_64-7419c406/bin
+	..
+0
+D/home/porcupine
+	.3T
+1
+D/home/porcupine/Downloads
+	..
+0
+D/home/porcupine
+	..
+0
+D/home/porcupine/tool
+	robo3t-1.3.1-linux-x86_64-7419c406
+13
+D/home/porcupine/tool/robo3t-1.3.1-linux-x86_64-7419c406
+	bin
+1
+D/home/porcupine/tool/robo3t-1.3.1-linux-x86_64-7419c406/bin
+	robo3t
+2
+D/home/porcupine/.emacs.d
+	..
+0
+D/home/porcupine
+	doom-emacs
+17
+D/home/porcupine/doom-emacs
+	.git
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo/inbox/inbox-conversation-service
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo/inbox
+	inbox-conversation-service
+6
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+7
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-plugin-gamehero
+24
+D/home/porcupine/codeheroes/chatbotize/monorepo/inbox/inbox-conversation-service
+	.bloop
+1
+D/home/porcupine
+	.local
+36
+D/home/porcupine/.local
+	kitty.app
+3
+D/home/porcupine/.local/share/fonts
+	NerdFonts
+1
+D/home/porcupine/.local/share/fonts/NerdFonts
+	..
+0
+D/home/porcupine/.local/share/fonts
+	weathericons.ttf
+8
+D/home/porcupine
+	.bloop
+9
+D/home/porcupine/.bloop
+	systemd
+3
+D/home/porcupine/pega-hackathon/main-backend
+	project
+2
+D/home/porcupine/pega-hackathon/main-backend/project
+	..
+0
+D/home/porcupine/pega-hackathon/main-backend
+	deploy
+1
+D/home/porcupine/pega-hackathon/main-backend/deploy
+	..
+0
+D/home/porcupine/pega-hackathon/main-backend
+	src
+3
+D/home/porcupine/pega-hackathon/main-backend/src
+	..
+0
+D/home/porcupine/pega-hackathon/main-backend
+	src
+3
+D/home/porcupine/pega-hackathon
+	main-backend
+1
+D/home/porcupine/pega-hackathon/main-backend
+	.gitignore
+4
+D/home/porcupine/pega-hackathon
+	..
+0
+D/home/porcupine/tool
+	autojump
+1
+D/home/porcupine/Downloads
+	..
+0
+D/home/porcupine/studies/master
+	..
+0
+D/home/porcupine/studies
+	master
+7
+D/home/porcupine
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+7
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-plugin-gdpr
+25
 
 # Command line history (oldest to newest):
 :empt
@@ -712,7 +716,6 @@ D/home/porcupine
 :mkdir
 :mkdir semantics
 :help
-:empty
 :trash
 :!chmod u+x wally
 :mkdir work
@@ -720,27 +723,12 @@ D/home/porcupine
 :.,.+1!k
 ::
 :touch init.el
+:empty
 :q
 
 # Search history (oldest to newest):
-/grap
-/ex
-/par
-/post
-/st
-/cata
-/cats
-/gra
-/part
-/chatb
-/cam
-/code
-/studi
-/sem
 /myself
-/down
 /xls
-/sx
 /pri
 /gclone
 /gclo
@@ -785,7 +773,6 @@ D/home/porcupine
 /dotfi
 /rele
 /too
-/tool
 /ne
 /op
 /datat
@@ -811,20 +798,38 @@ D/home/porcupine
 /w
 /downlo
 /wor
-/backe
 /crawl
 /codehe
 /mo
 /ba
 /ze
-/cha
 /my
-/doom
 /emacs
 /confi
 /tmux
+/cha
+/cre
+/migrao
+/sx
+/backe
+/mig
+/fos
+/faq
+/migra
+/graph
+/cluste
+/down
+/ro
+/tool
+/robo
+/doom
+/local
+/fonr
+/bloop
+/crea
 
 # Prompt history (oldest to newest):
+pmigration
 pclustering
 pClusteringEndpoint.scala
 pMongoClusteringRepository.scala
@@ -849,7 +854,6 @@ pcreator-clustering-service
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/porcupine/.local/share/vifm/Trash/000_test.yml
 
 # Directory stack (oldest to newest):
 
@@ -982,6 +986,34 @@ t/home/porcupine/.local/share/vifm/Trash/000_roam
 	/home/porcupine/Dropbox/org/roam
 t/home/porcupine/.local/share/vifm/Trash/000_test.yml
 	/home/porcupine/.config/tmuxinator/test.yml
+t/home/porcupine/.local/share/vifm/Trash/000_.bloop
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/.bloop
+t/home/porcupine/.local/share/vifm/Trash/000_.metals
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/.metals
+t/home/porcupine/.local/share/vifm/Trash/000_agentpanel-protobufs
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/agentpanel-protobufs
+t/home/porcupine/.local/share/vifm/Trash/000_test
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/src/test
+t/home/porcupine/.local/share/vifm/Trash/000_api
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/src/main/scala/com/chatbotize/migration/faq/api
+t/home/porcupine/.local/share/vifm/Trash/000_actor
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/src/main/scala/com/chatbotize/migration/faq/domain/actor
+t/home/porcupine/.local/share/vifm/Trash/000_service
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/src/main/scala/com/chatbotize/migration/faq/domain/service
+t/home/porcupine/.local/share/vifm/Trash/000_processor
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/src/main/scala/com/chatbotize/migration/faq/domain/processor
+t/home/porcupine/.local/share/vifm/Trash/000_GrpcIntentService.scala
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/src/main/scala/com/chatbotize/migration/faq/infrastructure/grpc/GrpcIntentService.scala
+t/home/porcupine/.local/share/vifm/Trash/000_inmem
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/src/main/scala/com/chatbotize/migration/faq/infrastructure/inmem
+t/home/porcupine/.local/share/vifm/Trash/000_kafka
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/migration/creator-faq-template-migration/src/main/scala/com/chatbotize/migration/faq/infrastructure/kafka
+t/home/porcupine/.local/share/vifm/Trash/000_#build.sbt#
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-chatbot-service/#build.sbt#
+t/home/porcupine/.local/share/vifm/Trash/000_.#build.sbt
+	/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-chatbot-service/.#build.sbt
+t/home/porcupine/.local/share/vifm/Trash/000_Kopia-2019-2020-AZwolak.xlsx
+	/home/porcupine/Downloads/Kopia-2019-2020-AZwolak.xlsx
 
 # State:
 f

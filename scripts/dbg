@@ -1,0 +1,54 @@
+#!/usr/bin/env python
+
+import subprocess
+import argparse
+from random import randint
+from typing import List
+
+
+TMUXINATOR_PATH = "/home/porcupine/.config/tmuxinator"
+pipeline_name = f"dbg-{randint(0, 10000)}"
+pipeline_path = f"{TMUXINATOR_PATH}/{pipeline_name}.yml"
+
+parser = argparse.ArgumentParser(description="Tmuxinator debuger.")
+parser.add_argument("-u", "--user", type=str, default="root")
+parser.add_argument("-H", "--host", type=str, required=True)
+parser.add_argument("-s", "--stack", type=str)
+parser.add_argument("-l", "--logs", type=str, nargs="+")
+
+args = parser.parse_args()
+
+
+# TODO: implement
+def validate(args):
+    pass
+
+
+windows = []
+for service in args.logs:
+    window = f"""
+  - {service}:
+        layout: main-vertical
+        panes:
+          - logs:
+            - ssh {args.user}@{args.host}
+            - clear
+            - docker service logs --follow {args.stack}_{service}
+    """
+    windows.append(window)
+
+windows = "".join(windows)
+
+definition = f"""
+name: {pipeline_name}
+root: ~/
+
+windows:
+{windows}
+"""
+
+with open(pipeline_path, "w") as f:
+    f.write(definition)
+
+subprocess.run(["tmuxinator", pipeline_name])
+subprocess.run(["tmuxinator", "delete", pipeline_name])
