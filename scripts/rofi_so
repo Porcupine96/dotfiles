@@ -14,7 +14,7 @@ declare -a options=(
 function to_url() {
   case "$1" in
     "Monorepo Pull Requests") echo "https://github.com/chatbotizeteam/monorepo/pulls" ;;
-    "Herochat Stage")         echo "https://at-herochat.test.codeheroes.tech/0fecdde7f2964ec79aa7cfbfd8e9e499" ;;
+    "Herochat Stage")         echo "--incognito https://at-herochat.test.codeheroes.tech/0fecdde7f2964ec79aa7cfbfd8e9e499" ;;
     "Chatbotize Stage")       echo "https://creator-chatbotize.stage.codeheroes.tech" ;;
     "GitLab Activity")        echo "https://gitlab.com/dashboard/activity" ;;
     "GitLab Merge Requests")  echo "https://gitlab.com/dashboard/merge_requests?author_username=Porcupine96" ;;
@@ -28,5 +28,5 @@ choice=$(printf "%s\n" "${options[@]}" | rofi -i -dmenu -dpi 196 -show-icons -fo
 if [[ ! -z "$choice" ]]; then
   url=$(to_url "$choice")
 
-  bash -c "firefox -private $url; (true)" >> /dev/null 2>&1
+  bash -c "brave-browser $url; (true)" >> /dev/null 2>&1
 fi

@@ -13,6 +13,7 @@
 (load-theme 'doom-dark+ t)
 
 (setq doom-font (font-spec :family "Hack" :size 28))
+;; (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 28))
 
 ;; zoom window
 (custom-set-variables
@@ -115,14 +116,6 @@
 (setq-default evil-escape-key-sequence "jk")
 
 ;; C-j and C-k to move between panes
-(after! org
-  (map! :map org-mode-map
-        "C-k" #'evil-window-up
-        "C-j" #'evil-window-down)
-
-  (map! :map evil-org-mode-map
-        :ni "C-k" #'evil-window-up
-        :ni "C-j" #'evil-window-down))
 
 ;; leader movements
 (map!
@@ -194,6 +187,18 @@
 
 (add-hook 'org-archive-hook 'org-archive-save-buffer)
 
+;; (add-hook 'org-insert-heading-hook
+;;   (lambda ()
+;;     (message "Hello from: org-mode-hook")
+
+;;     (map! :map org-mode-map
+;;           "C-k" #'evil-window-up
+;;           "C-j" #'evil-window-down)
+
+;;     (map! :map evil-org-mode-map
+;;           :ni "C-k" #'evil-window-up
+;;           :ni "C-j" #'evil-window-down)))
+
 ;; }}}
 
 ;; MISC {{{
@@ -236,10 +241,16 @@
 (setq Org-Reveal-title-slide nil)
 
 ;; python
-(def-package! blacken-mode
+(use-package! blacken-mode
   :hook
   (python-mode . blacken-mode))
 
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+             "jupyter")
 ;; protobuf
 (after! protobuf
   (setq tab-width 4))
@@ -293,3 +304,4 @@
 ;; }}}
 
 (keychain-refresh-environment)
+

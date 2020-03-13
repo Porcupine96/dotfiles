@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+org="$1"
+lib="$2"
+url="https://mvnrepository.com/artifact/$org/$lib"
+version=$(curl --silent "$url" | pup "table tbody tr:first-child td:nth-child(2) a text{}" | head -n1)
+
+echo "$version"
