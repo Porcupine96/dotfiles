@@ -32,6 +32,19 @@
   org-refile-targets (quote ((nil :maxlevel . 1)))
   org-tags-column -40)
 
+
+;; TODO: automate
+;; (let* ((special-tags '(("AGH" . "cyan")
+;;                        ("work" . "blue")
+;;                        ("private" . "yellow"))))
+
+;;   (dolist (tag-color special-tags)
+;;     (message (car tag-color))
+;;     (message (cdr tag-color))
+;;     (add-to-list 'org-tag-faces '((car tag-color) . (:foreground (cdr tag-color))))))
+
+
+
 (custom-set-faces
  '(org-level-1 ((t nil))))
 
@@ -63,7 +76,14 @@
       (sql . t)
       (ammonite . t)
       (clojure . t)
-      )))
+      ))
+
+  (setq org-tag-faces
+        '(
+          ("@AGH" . (:foreground "cyan"))
+          ("@work" . (:foreground "yellow"))
+          ("@private" . (:foreground "pink"))
+          ("@book" . (:foreground "green")))))
 ;; }}}
 
 ;; FUNCTIONS {{{
@@ -76,6 +96,9 @@
 ;; }}}
 
 ;; KEYBINDINGS {{{
+
+;; agenda
+(global-set-key (kbd "<f1>") #'org-agenda)
 
 ;; use swiper instead of ISearch
 (global-set-key (kbd "C-s") 'swiper)
@@ -245,12 +268,9 @@
   :hook
   (python-mode . blacken-mode))
 
-(setq python-shell-interpreter "jupyter"
-      python-shell-interpreter-args "console --simple-prompt"
-      python-shell-prompt-detect-failure-warning nil)
+(setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "--simple-prompt -i")
 
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-             "jupyter")
 ;; protobuf
 (after! protobuf
   (setq tab-width 4))

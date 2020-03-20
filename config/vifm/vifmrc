@@ -131,6 +131,7 @@ mark t ~/tool
 
 mark c ~/.config
 mark w ~/codeheroes/chatbotize/monorepo
+mark r ~/codeheroes/research-repository/research
 
 mark s ~/studies
 mark m ~/studies/master

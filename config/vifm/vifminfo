@@ -49,6 +49,10 @@
 	/home/porcupine/Dropbox/org
 	..
 1579290377
+'r
+	/home/porcupine/codeheroes/research-repository/research
+	..
+1584290991
 's
 	/home/porcupine/studies
 	..
@@ -65,33 +69,15 @@
 # Bookmarks:
 
 # TUI:
-al
+ar
 q0
-v1
+v2
 ov
 m-1
 l8,2
 r2
 
 # Left window history (oldest to newest):
-d/home/porcupine
-	
-0
-d/home/porcupine/Downloads
-	
-0
-d/home/porcupine/codeheroes/chatbotize/monorepo
-	
-0
-d/home/porcupine
-	.doom.d
-1
-d/home/porcupine/Downloads
-	mongodb-org-shell_4.2.3_amd64.deb
-3
-d/home/porcupine/codeheroes/chatbotize/monorepo
-	..
-0
 d/home/porcupine/Downloads
 	Kopia-2019-2020-AZwolak-Poprawione.xlsx
 4
@@ -338,53 +324,62 @@ d/home/porcupine/studies/master/albert/data
 d/home/porcupine/studies/master/albert
 	tokenizer.model
 9
+d/home/porcupine/studies/master/spellchecking
+	..
+0
+d/home/porcupine/studies/master
+	spellchecking
+8
+d/home/porcupine/studies/master/spellchecking
+	..
+0
+d/home/porcupine/studies/master
+	spellchecking
+8
+d/home/porcupine/studies
+	iwium
+7
+d/home/porcupine/studies/iwium
+	lab1
+1
+d/home/porcupine/studies/iwium/lab1
+	zoo.arff
+4
+d/home/porcupine/studies/iwium
+	lab2
+2
+d/home/porcupine/studies/iwium/lab2
+	..
+0
+d/home/porcupine/studies/iwium
+	lab2
+2
+d/home/porcupine/studies/iwium/lab2
+	.python-version
+1
+d/home/porcupine/codeheroes/chatbotize/monorepo/core/core-organization-setup-service
+	.bloop
+1
+d/home/porcupine/codeheroes/chatbotize/monorepo/core
+	core-organization-setup-service
+8
 d/home/porcupine/codeheroes/chatbotize/monorepo
 	creator
-10
+11
 d/home/porcupine/codeheroes/chatbotize/monorepo/creator
-	creator-campaign-service
-1
-d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-campaign-service
-	target
-5
-d/home/porcupine/codeheroes/chatbotize/monorepo2
-	chat
-2
-d/home/porcupine/codeheroes/chatbotize/monorepo2/chat
-	..
-0
-d/home/porcupine/codeheroes/chatbotize/monorepo2
-	creator
-9
-d/home/porcupine/codeheroes/chatbotize/monorepo2/creator
-	creator-plugin-faq
-40
-d/home/porcupine/codeheroes/chatbotize/monorepo2/creator/creator-plugin-faq
-	.scalafix.conf
-5
-d/home/porcupine/studies/master
-	..
-0
-d/home/porcupine/studies
-	master
-8
-d/home/porcupine
-	.emacs.d
+	creator-plugin-dedicated-zenka-loan-extenstion
 4
-d/home/porcupine/.emacs.d
-	configuration.org
-2
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-dedicated-zenka-loan-extenstion
+	.scalafix.conf
+8
+d/home/porcupine/Downloads
+	..
+0
+d/home/porcupine/studies/iwium/lab5
+	..
+0
 
 # Right window history (oldest to newest):
-D/home/porcupine/Downloads
-	..
-0
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	creator
-7
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator
-	creator-plugin-faq
-22
 D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-faq
 	..
 0
@@ -667,17 +662,28 @@ D/home/porcupine/studies/master
 D/home/porcupine/studies/master/spellchecking
 	..
 0
+D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-organization-setup-service
+	..
+0
+D/home/porcupine/Downloads
+	..
+0
 D/home/porcupine/codeheroes/chatbotize/monorepo
-	
-0
-D/home/porcupine/codeheroes/chatbotize/monorepo2
-	
-0
-D/home/porcupine/studies/master
-	
-0
+	inbox
+8
+D/home/porcupine/codeheroes/chatbotize/monorepo/inbox
+	inbox-suggestion-backend
+18
+D/home/porcupine/codeheroes/chatbotize/monorepo/inbox/inbox-suggestion-backend
+	clusterization.ipynb
+10
+D/home/porcupine/studies/iwium/lab5
+	kazmierczak-lukasz-sklearn.zip
+2
 
 # Command line history (oldest to newest):
+:touch README.org
+:mkdir lab5
 :empt
 :a
 :view
@@ -729,16 +735,10 @@ D/home/porcupine/studies/master
 :mkdir iwium
 
 # Search history (oldest to newest):
-/profile
-/config
-/mime
-/h`hk
-/spa
 /learnin
 /cou
 /screen
 /wal
-/spe
 /lab
 /ma
 /jup
@@ -759,7 +759,6 @@ D/home/porcupine/studies/master
 /neu
 /ana'
 /ana
-/backend
 /inb
 /inpost
 /zip
@@ -805,6 +804,7 @@ D/home/porcupine/studies/master
 /backe
 /mig
 /fos
+/faq
 /migra
 /graph
 /cluste
@@ -830,17 +830,15 @@ D/home/porcupine/studies/master
 /sha
 /app
 /fire
-/core
-/creat
-/campai
-//creat
-/create
 /crea
-/plugin-fa
-/faq
-/emac
+/zen
+/sca
+/backend
+/kam
 
 # Prompt history (oldest to newest):
+pWymiana_multimediow_w_sieciach_oportunistycznych.pdf
+pHybrydowe_obliczenia_ewolucyjno-mrowkowe.pdf
 pmigration
 pclustering
 pClusteringEndpoint.scala
@@ -869,6 +867,7 @@ pmaterial-design-icons.ttf
 # Local filter history (oldest to newest):
 
 # Registers:
+""/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-dedicated-zenka-loan-extenstion/.scalafix.conf
 
 # Directory stack (oldest to newest):
 

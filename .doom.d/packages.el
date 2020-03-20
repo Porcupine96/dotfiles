@@ -16,9 +16,12 @@
 (package! vlf)
 
 (package! org-jira)
-(package! plantuml-mode)
 
 (package! prettier-js)
+(package! emojify)
+
+(package! org-ref)
+
 ;; DISABLE PACKAGES
 
 ;;data
