@@ -12,7 +12,10 @@
 ;; (load-theme 'doom-nord t)
 (load-theme 'doom-dark+ t)
 
-(setq doom-font (font-spec :family "Hack" :size 28))
+(setq
+  doom-font (font-spec :family "SF Mono" :size 32)
+  doom-big-font (font-spec :family "SF Mono" :size 42))
+;; (setq doom-font (font-spec :family "Hack" :size 28))
 ;; (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 28))
 
 ;; zoom window
@@ -33,18 +36,6 @@
   org-tags-column -40)
 
 
-;; TODO: automate
-;; (let* ((special-tags '(("AGH" . "cyan")
-;;                        ("work" . "blue")
-;;                        ("private" . "yellow"))))
-
-;;   (dolist (tag-color special-tags)
-;;     (message (car tag-color))
-;;     (message (cdr tag-color))
-;;     (add-to-list 'org-tag-faces '((car tag-color) . (:foreground (cdr tag-color))))))
-
-
-
 (custom-set-faces
  '(org-level-1 ((t nil))))
 
@@ -54,17 +45,6 @@
                       :background nil
                       :height 1.5
                       :weight 'bold)
-
-  ;; (set-face-attribute 'org-block-begin-line nil
-  ;;                     :foreground "lightgrey"
-  ;;                     :box nil
-  ;;                     :background nil
-  ;;                     :height 0.8)
-  ;; (set-face-attribute 'org-block-end-line nil
-  ;;                     :foreground "lightgrey"
-  ;;                     :box nil
-  ;;                     :background nil
-  ;;                     :height 1.0)
 
   (org-babel-do-load-languages
     'org-babel-load-languages
@@ -79,11 +59,39 @@
       ))
 
   (setq org-tag-faces
-        '(
-          ("@AGH" . (:foreground "cyan"))
+        '(("@AGH" . (:foreground "cyan"))
           ("@work" . (:foreground "yellow"))
           ("@private" . (:foreground "pink"))
-          ("@book" . (:foreground "green")))))
+          ("@book" . (:foreground "green")))
+
+        org-priority-faces '((65 :foreground "#e45649")
+                             (66 :foreground "#da8548")
+                             (67 :foreground "#0098dd"))))
+
+
+(use-package! org-fancy-priorities
+  :hook (org-mode . org-fancy-priorities-mode)
+  :config
+  (setq
+   org-highest-priority 65
+   org-fancy-priorities-list '("" "" "")))
+
+(use-package! org-super-agenda
+  :hook (org-agenda-mode . org-super-agenda-mode)
+  :config
+  (setq
+   org-super-agenda-groups '((:name "Today"
+                                    :time-grid t
+                                    :scheduled today)
+                             (:name "Due today"
+                                    :deadline today)
+                             (:name "Important"
+                                    :priority "A")
+                             (:name "Overdue"
+                                    :deadline past)
+                             (:name "Due soon"
+                                    :deadline future))))
+
 ;; }}}
 
 ;; FUNCTIONS {{{

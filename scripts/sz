@@ -1,0 +1,3 @@
+#!/bin/bash
+
+du -d1 -h -a | sort -rh

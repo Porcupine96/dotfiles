@@ -69,21 +69,15 @@
 # Bookmarks:
 
 # TUI:
-ar
+al
 q0
-v2
+v1
 ov
 m-1
 l8,2
 r2
 
 # Left window history (oldest to newest):
-d/home/porcupine/Downloads
-	Kopia-2019-2020-AZwolak-Poprawione.xlsx
-4
-d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-user-graphql-gateway
-	..
-0
 d/home/porcupine/codeheroes/chatbotize/monorepo/creator
 	creator-user-graphql-gateway
 45
@@ -375,20 +369,17 @@ d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-dedicated
 d/home/porcupine/Downloads
 	..
 0
-d/home/porcupine/studies/iwium/lab5
+d/home/porcupine/codeheroes/chatbotize/monorepo
 	..
 0
+d/home/porcupine/tool/languagetool/LanguageTool-4.8-stable
+	testrules.bat
+7
+d/home/porcupine/Downloads
+	summary.pdf
+6
 
 # Right window history (oldest to newest):
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-faq
-	..
-0
-D/home/porcupine
-	tool
-43
-D/home/porcupine/tool
-	metals
-18
 D/home/porcupine/codeheroes/chatbotize/monorepo
 	migration
 9
@@ -677,9 +668,18 @@ D/home/porcupine/codeheroes/chatbotize/monorepo/inbox
 D/home/porcupine/codeheroes/chatbotize/monorepo/inbox/inbox-suggestion-backend
 	clusterization.ipynb
 10
-D/home/porcupine/studies/iwium/lab5
-	kazmierczak-lukasz-sklearn.zip
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	..
+0
+D/home/porcupine/Downloads
+	Chris Ward - Winning With the Sicilian Dragon 3-Batsford (2001).pdf
 2
+D/home/porcupine/tool/languagetool/LanguageTool-4.8-stable
+	..
+0
+D/home/porcupine/Downloads
+	..
+0
 
 # Command line history (oldest to newest):
 :touch README.org
@@ -736,6 +736,7 @@ D/home/porcupine/studies/iwium/lab5
 
 # Search history (oldest to newest):
 /learnin
+/stu
 /cou
 /screen
 /wal
@@ -834,7 +835,8 @@ D/home/porcupine/studies/iwium/lab5
 /zen
 /sca
 /backend
-/kam
+/summ
+/su
 
 # Prompt history (oldest to newest):
 pWymiana_multimediow_w_sieciach_oportunistycznych.pdf

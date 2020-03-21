@@ -8,12 +8,13 @@
 (package! reason-mode)
 (package! string-inflection)
 (package! ob-ammonite)
-;; (package! company-tabnine)
 (package! ox-reveal)
 (package! keychain-environment)
 (package! flycheck-mypy)
 (package! flycheck-joker)
 (package! vlf)
+(package! org-fancy-priorities)
+(package! org-super-agenda)
 
 (package! org-jira)
 
