@@ -1,6 +1,14 @@
 separator_block_width=45
 markup=none
 
+[corona]
+command=$HOME/dotfiles/scripts/corona
+interval=360
+
+[corona_deaths]
+command=$HOME/dotfiles/scripts/corona_deaths
+interval=360
+
 [wifi]
 INTERFACE=wlp0s20f3
 label=📡 

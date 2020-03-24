@@ -15,6 +15,7 @@
 (package! vlf)
 (package! org-fancy-priorities)
 (package! org-super-agenda)
+(package! org-re-reveal)
 
 (package! org-jira)
 

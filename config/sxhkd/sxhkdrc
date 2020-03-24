@@ -33,8 +33,8 @@ super + F8
 	playerctl play-pause
 super + F9
 	playerctl previous
-super + shift + F4
-	maim -s ~/Pictures/$(date +%s).png
+#super + shift + F4
+#   maim -s ~/Pictures/$(date +%s).png
 super + shift + p
 	sxiv ~/Desktop/plan.png
 XF86AudioMute
