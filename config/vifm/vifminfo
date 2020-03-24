@@ -78,9 +78,6 @@ l8,2
 r2
 
 # Left window history (oldest to newest):
-d/home/porcupine/codeheroes/agentpanel
-	ap-configuration-service
-1
 d/home/porcupine/codeheroes/chatbotize/monorepo
 	creator
 10
@@ -378,20 +375,11 @@ d/home/porcupine/Pictures
 d/home/porcupine/Pictures/wallpapers
 	two.jpg
 2
-
-# Right window history (oldest to newest):
-D/home/porcupine/.local
-	kitty.app
-3
-D/home/porcupine/.local/share/fonts
-	NerdFonts
-1
-D/home/porcupine/.local/share/fonts/NerdFonts
+d/home/porcupine
 	..
 0
-D/home/porcupine/.local/share/fonts
-	weathericons.ttf
-8
+
+# Right window history (oldest to newest):
 D/home/porcupine
 	.bloop
 9
@@ -680,6 +668,18 @@ D/home/porcupine/dotfiles
 D/home/porcupine/dotfiles/wallpaper
 	wallpaper.jpg
 1
+D/home/porcupine
+	dotfiles
+5
+D/home/porcupine/dotfiles
+	config
+4
+D/home/porcupine/dotfiles/config
+	i3blocks
+3
+D/home/porcupine/dotfiles/config/i3blocks
+	config
+2
 
 # Command line history (oldest to newest):
 :mkdir mobile_systems
@@ -734,6 +734,7 @@ D/home/porcupine/dotfiles/wallpaper
 :mkdir finance
 :q
 :mkdir iwium
+:wq
 
 # Search history (oldest to newest):
 /screen
@@ -869,7 +870,7 @@ pwallpaper.jpg
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/porcupine/Pictures/wallpapers/two.jpg
+""/home/porcupine/.local/share/vifm/Trash/000_corona-UWb
 
 # Directory stack (oldest to newest):
 
@@ -1038,6 +1039,8 @@ t/home/porcupine/.local/share/vifm/Trash/000_nlp-book
 	/home/porcupine/studies/semantics/nlp-book
 t/home/porcupine/.local/share/vifm/Trash/000_mobileorg.org
 	/home/porcupine/Dropbox/Apps/MobileOrg/mobileorg.org
+t/home/porcupine/.local/share/vifm/Trash/000_corona-UWb
+	/home/porcupine/dotfiles/config/i3blocks/corona-UWb
 
 # State:
 f
