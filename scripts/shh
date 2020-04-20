@@ -24,6 +24,6 @@ if [[ "$TO_FORWARD" == "none" ]]; then
 else
     PORT="${PORTS["$TO_FORWARD"]}"
     DOCKER_PS=$(ssh $HOST "sudo docker ps")
-    INTERNAL_IP=$(echo "$DOCKER_PS" | grep "$TO_FORWARD" | sd '.*?((?:\d+\.){3}\d+).*' '$1' | head -n1 | sd "\s+" "")
+    INTERNAL_IP=$(echo "$DOCKER_PS" | grep "192" | grep "$TO_FORWARD" | sd '.*?((?:\d+\.){3}\d+).*' '$1' | head -n1 | sd "\s+" "")
     ssh -L "$PORT:$INTERNAL_IP:$PORT" $HOST
 fi

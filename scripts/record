@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+
+# Usage:
+# `record`: Ask for recording type via dmenu
+# `record screencast`: Record both audio and screen
+# `record video`: Record only screen
+# `record video-area`: Record only screen area
+# `record audio`: Record only audio
+# `record kill`: Kill existing recording
+#
+# If there is already a running instance, user will be prompted to end it.
+
+updateicon() {
+	echo "$1" >/tmp/recordingicon
+	pkill -RTMIN+9 i3blocks
+}
+
+killrecording() {
+	recpid="$(cat /tmp/recordingpid)"
+	# kill with SIGTERM, allowing finishing touches.
+	kill -15 "$recpid"
+	rm -f /tmp/recordingpid
+	updateicon ""
+	killall lemonbar #FIXME - make is less specific
+	pkill -RTMIN+9 i3blocks
+	# even after SIGTERM, ffmpeg may still run, so SIGKILL it.
+	sleep 3
+	kill -9 "$recpid"
+	exit
+}
+
+screencast() {
+	ffmpeg -y \
+		-f x11grab \
+		-framerate 60 \
+		-s $(xdpyinfo | grep dimensions | awk '{print $2;}') \
+		-i $DISPLAY \
+		-f alsa -i default \
+		-r 30 \
+		-c:v libx264rgb -crf 0 -preset ultrafast -c:a flac \
+		"$HOME/screencast-$(date '+%y%m%d-%H%M-%S').mkv" &
+	echo $! >/tmp/recordingpid
+	updateicon "⏺️🎙️"
+}
+
+video_area() {
+	read -r X Y W H < <(slop -f "%x %y %w %h") #FIXME - make it POSIX and switch to sh
+
+	# FIXME - move slightly to remove
+	line_width=5
+	overlaybuilder $(($X - $line_width)) $(($Y - $line_width)) $(($X + $W + $line_width)) $(($Y + $H + $line_width)) $line_width
+	ffmpeg -y -f x11grab \
+		-s "$W"x"$H" -i :0.0+$X,$Y \
+		-framerate 30 \
+		"$HOME/video-area-$(date '+%y%m%d-%H%M-%S').mkv" &
+	echo $! >/tmp/recordingpid
+	updateicon "⏺ "
+}
+
+video() {
+	ffmpeg \
+		-f x11grab \
+		-s $(xdpyinfo | grep dimensions | awk '{print $2;}') \
+		-i $DISPLAY \
+		-c:v libx264 -qp 0 -r 30 \
+		"$HOME/video-$(date '+%y%m%d-%H%M-%S').mkv" &
+	echo $! >/tmp/recordingpid
+	updateicon "⏺ "
+}
+
+webcamhidef() {
+	ffmpeg \
+		-f v4l2 \
+		-i /dev/video0 \
+		-video_size 1920x1080 \
+		"$HOME/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+	echo $! >/tmp/recordingpid
+	updateicon "🎥"
+}
+
+webcam() {
+	ffmpeg \
+		-f v4l2 \
+		-i /dev/video0 \
+		-video_size 640x480 \
+		"$HOME/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+	echo $! >/tmp/recordingpid
+	updateicon "🎥"
+}
+
+audio() {
+	ffmpeg \
+		-f alsa -i default \
+		-c:a flac \
+		"$HOME/audio-$(date '+%y%m%d-%H%M-%S').flac" &
+	echo $! >/tmp/recordingpid
+	updateicon "🎙️"
+}
+
+askrecording() {
+	choice=$(printf "screencast\\nvideo\\nvideo-area\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -i -p "Select recording style:")
+	case "$choice" in
+	screencast) screencast ;;
+	audio) audio ;;
+	video) video ;;
+	video-area) video_area ;;
+	webcam) webcam ;;
+	"webcam (hi-def)") webcamhidef ;;
+	esac
+}
+
+asktoend() {
+	response=$(printf "No\\nYes" | dmenu -i -p "Recording still active. End recording?") &&
+		[ "$response" = "Yes" ] && killrecording
+}
+
+case "$1" in
+screencast) screencast ;;
+audio) audio ;;
+video) video ;;
+video-area) video_area ;;
+kill) killrecording ;;
+*)
+	if [ -f /tmp/recordingpid ]; then
+		asktoend
+		exit 0
+	else
+		askrecording
+	fi
+	;;
+esac

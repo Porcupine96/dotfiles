@@ -4,6 +4,7 @@
 
 ;; ADD PACKAGES
 
+(package! helm :disable t)
 (package! zoom-window)
 (package! reason-mode)
 (package! string-inflection)
@@ -14,15 +15,18 @@
 (package! flycheck-joker)
 (package! vlf)
 (package! org-fancy-priorities)
-(package! org-super-agenda)
 (package! org-re-reveal)
-
+(package! org-super-agenda)
+(package! org-pomodoro)
 (package! org-jira)
 
 (package! prettier-js)
 (package! emojify)
 
 (package! org-ref)
+
+;; (package! helm-bibtex
+;;   :recipe (:host github :repo "tmalsburg/helm-bibtex") :pin "3cff6bd702e61ed658ada07c88b7550d0dd836fd")
 
 ;; DISABLE PACKAGES
 
@@ -39,9 +43,6 @@
 (package! sass-mode :disable t)
 (package! sws-mode :disable t)
 (package! less-css-mode :disable t)
-
-;;helm
-(package! helm)
 
 ;;magit
 (package! magit-gitflow :disable t)

@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: rpc
+# key: rpc
+# --
+rpc $1 ($1Request) returns ($1Response);
+
+message $1Request {
+
+}
+
+message $1Response {
+
+}

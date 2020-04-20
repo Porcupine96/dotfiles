@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rpc
+# key: rpc
+# --
+rpc $0 ($0:Request) ($0:Response);

@@ -15,6 +15,11 @@
 (setq
   doom-font (font-spec :family "SF Mono" :size 32)
   doom-big-font (font-spec :family "SF Mono" :size 42))
+
+(custom-set-faces
+  '(mode-line ((t (:family "SF Mono" :height 1.0))))
+  '(mode-line-inactive ((t (:family "SF Mono" :height 1.0)))))
+
 ;; (setq doom-font (font-spec :family "Hack" :size 28))
 ;; (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 28))
 
@@ -92,6 +97,10 @@
                              (:name "Due soon"
                                     :deadline future))))
 
+;; magit
+(setq git-commit-style-convention-checks
+      (remove 'overlong-summary-line git-commit-style-convention-checks))
+
 ;; }}}
 
 ;; FUNCTIONS {{{
@@ -119,6 +128,10 @@
 (global-set-key (kbd "C-j") #'evil-window-down)
 (global-set-key (kbd "C-k") #'evil-window-up)
 (global-set-key (kbd "C-l") #'evil-window-right)
+
+
+(global-set-key (kbd "C-c m u") #'smerge-keep-upper)
+(global-set-key (kbd "C-c m l") #'smerge-keep-lower)
 
 ;; buffer movements
 ;; (global-set-key (kbd "C-[") #'previous-buffer)
@@ -168,6 +181,7 @@
      :desc "Switch to last workpace" :nv "TAB" #'+workspace/other)
    (:prefix "e"
      :desc "elfeed" :nv "e" #'elfeed)
+   (:nv "k" #'helm-show-kill-ring)
  ))
 
 
@@ -188,7 +202,8 @@
 
 ;; evil
 (map! :map evil-normal-state-map
-      "U" #'lsp-ui-doc-glance)
+      "U" #'lsp-ui-doc-glance
+      "g i" #'lsp-find-implementation)
 
 ;; python
 (map! :map python-mode-map
@@ -253,7 +268,17 @@
 ;; turn off continuing comments
  +evil-want-o/O-to-continue-comments nil
 ;; relative line numbers
- display-line-numbers-type 'relative)
+ display-line-numbers-type 'relative
+
+ ;; pomodoro
+ org-pomodoro-short-break-sound "~/dotfiles/fish.wav"
+ org-pomodoro-long-break-sound "~/dotfiles/fish.wav"
+ org-pomodoro-finished-sound "~/dotfiles/fish.wav"
+
+ org-pomodoro-format " %s"
+ org-pomodoro-short-break-format "  %s"
+ org-pomodoro-long-break-format "  %s")
+
 
 (global-auto-revert-mode t)
 

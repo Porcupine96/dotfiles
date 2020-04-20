@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: {j| |j}
+# key: {j}
+# --
+{j| $0 |j}

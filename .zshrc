@@ -101,7 +101,7 @@ alias vf="vifm"
 alias sizes="du -h -d1 -a | sort -h"
 alias pbcopy="xclip -selection cipboard"
 
-alias doom_reinstall='rm -rf ~/.emacs.d/ && git clone https://github.com/hlissner/doom-emacs ~/.emacs.d && ~/.emacs.d/bin/doom install'
+alias doom_reinstall='rm -rf ~/doom-emacs && git clone --depth 1 https://github.com/hlissner/doom-emacs ~/doom-emacs && cd ~/doom-emacs && git checkout develop && ~/doom-emacs/bin/doom install'
 
 def() {
   sdcv $1 | less
@@ -142,20 +142,9 @@ eval "$(rbenv init -)"
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/porcupine/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/porcupine/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/porcupine/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/porcupine/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
-
 
 source /home/porcupine/.config/broot/launcher/bash/br
+
+# fnm
+export PATH=/home/porcupine/.fnm:$PATH
+eval "`fnm env --multi`"
