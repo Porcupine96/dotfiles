@@ -63,17 +63,6 @@
       (clojure . t)
       ))
 
-  (setq org-tag-faces
-        '(("@AGH" . (:foreground "cyan"))
-          ("@work" . (:foreground "yellow"))
-          ("@private" . (:foreground "pink"))
-          ("@book" . (:foreground "green")))
-
-        org-priority-faces '((65 :foreground "#e45649")
-                             (66 :foreground "#da8548")
-                             (67 :foreground "#0098dd"))))
-
-
 (use-package! org-fancy-priorities
   :hook (org-mode . org-fancy-priorities-mode)
   :config
@@ -154,7 +143,7 @@
   (setq treemacs-follow-mode 't)
   (map! :map evil-treemacs-state-map "M-p" #'+treemacs/toggle)
   (map! :map treemacs-mode-map "M-p" #'+treemacs/toggle)
-  (map! :map treemacs-copy-map "f" #'+treemacs/copy-rename))
+  (map! :map treemacs-mode-map "cc" #'+treemacs/copy-rename))
 
 ;; jk to switch to normal-mode
 (setq-default evil-escape-key-sequence "jk")

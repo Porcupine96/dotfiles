@@ -19,14 +19,12 @@
 (package! org-super-agenda)
 (package! org-pomodoro)
 (package! org-jira)
+(package! academic-phrases)
 
 (package! prettier-js)
 (package! emojify)
 
 (package! org-ref)
-
-;; (package! helm-bibtex
-;;   :recipe (:host github :repo "tmalsburg/helm-bibtex") :pin "3cff6bd702e61ed658ada07c88b7550d0dd836fd")
 
 ;; DISABLE PACKAGES
 
