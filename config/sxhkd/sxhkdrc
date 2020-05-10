@@ -6,6 +6,8 @@ super + alt + d
 	exec dmenu_run
 super + t
 	kitty
+super + shift + m
+    emacs --with-profile mine
 super + b
 	rofi-books
 super + c

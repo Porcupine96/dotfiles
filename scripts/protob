@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if grep -q "ProtobufResolver" build.sbt; then
+    sbt generateProto protocGenerate bloopInstall
+else
+    sbt protocGenerate bloopInstall
+fi
+

@@ -11,7 +11,7 @@ interval=360
 
 [wifi]
 INTERFACE=wlp0s20f3
-label=📡 
+label=📡
 command=$HOME/.config/i3blocks/modules/wifi
 interval=10
 separator=false
@@ -28,17 +28,17 @@ command=$HOME/.config/i3blocks/modules/nord_vpn
 interval=10
 
 [memory]
-label=🧠 
+label=🧠
 command=$HOME/.config/i3blocks/modules/memory
 interval=10
 
 [disk]
-label=💽 
+label=💽
 command=$HOME/.config/i3blocks/modules/disk
 interval=30
 
 [volume]
-label=🔉 
+label=🔉
 command=$HOME/.config/i3blocks/modules/volume
 interval=once
 signal=10
@@ -50,16 +50,17 @@ interval=once
 signal=10
 
 [temperature]
-label=🌡️ 
+label=🌡️
 command=$HOME/.config/i3blocks/modules/temperature
 interval=10
 
 [battery]
+BAT_NUMBER=0
 command=$HOME/.config/i3blocks/modules/battery
 interval=30
 
 [time]
-label=⏱ 
+label=⏱
 command=date '+%H:%M:%S %d-%m-%Y'
 interval=5
 

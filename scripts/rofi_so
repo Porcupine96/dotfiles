@@ -15,7 +15,7 @@ declare -a options=(
 function to_url() {
   case "$1" in
     "Monorepo Pull Requests") echo "https://github.com/chatbotizeteam/monorepo/pulls" ;;
-    "Herochat Stage")         echo "--incognito https://at-herochat.test.codeheroes.tech/0fecdde7f2964ec79aa7cfbfd8e9e499" ;;
+    "Herochat Stage")         echo "--incognito https://at-herochat.test.codeheroes.tech/384fc79042264756bb76f0412a8d812e" ;;
     "Chatbotize Jenkins")     echo "https://jenkins.codeheroes.tech/blue/organizations/jenkins/monorepo/activity" ;;
     "Chatbotize Stage")       echo "https://creator-chatbotize.stage.codeheroes.tech" ;;
     "GitLab Activity")        echo "https://gitlab.com/dashboard/activity" ;;

@@ -18,13 +18,11 @@
 (package! org-re-reveal)
 (package! org-super-agenda)
 (package! org-pomodoro)
-(package! org-jira)
 (package! academic-phrases)
 
 (package! prettier-js)
 (package! emojify)
-
-(package! org-ref)
+(package! protobuf-mode)
 
 ;; DISABLE PACKAGES
 

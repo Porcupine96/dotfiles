@@ -10,7 +10,7 @@
 ;; (load-theme 'doom-solarized-light t)
 ;; (load-theme 'doom-dracula t)
 ;; (load-theme 'doom-nord t)
-(load-theme 'doom-dark+ t)
+(load-theme 'porcupine-light t)
 
 (setq
   doom-font (font-spec :family "SF Mono" :size 32)
@@ -61,7 +61,7 @@
       (sql . t)
       (ammonite . t)
       (clojure . t)
-      ))
+      )))
 
 (use-package! org-fancy-priorities
   :hook (org-mode . org-fancy-priorities-mode)
@@ -87,8 +87,9 @@
                                     :deadline future))))
 
 ;; magit
-(setq git-commit-style-convention-checks
-      (remove 'overlong-summary-line git-commit-style-convention-checks))
+(after! magit
+  (setq git-commit-style-convention-checks
+        (remove 'overlong-summary-line git-commit-style-convention-checks)))
 
 ;; }}}
 
@@ -182,7 +183,7 @@
       "]" #'+workspace/switch-right
       "C-o" #'zoom-window-zoom
       "p" #'+treemacs/toggle
-      "C-v" #'clone-indirect-buffer-other-window)
+      "|" #'clone-indirect-buffer-other-window)
 
 ;; evil
 (map! :map evil-insert-state-map
@@ -319,6 +320,18 @@
 ;; use smartparens
 (sp-use-smartparens-bindings)
 
+;; resizer-mode
+(defvar resizer-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "h") 'evil-window-decrease-width)
+    (define-key map (kbd "l") 'evil-window-increase-width)
+    map))
+
+(define-minor-mode resizer-mode "A mode for resizing windows."
+  :keymap resizer-mode-map)
+
+(global-set-key (kbd "C-c r") #'resizer-mode)
+
 ;; elfeed
 (setq
  elfeed-root "~/Dropbox/rss/"
@@ -329,7 +342,7 @@
    ("https://www.reddit.com/r/scala.rss" reddit scala)))
 
 ;; jira
-(setq jiralib-url "https://chatbotize.atlassian.net")
+;; (setq jiralib-url "https://chatbotize.atlassian.net")
 
 ;; plantUML
 (setq plantuml-jar-path "/home/porcupine/tool/plantuml.jar")
