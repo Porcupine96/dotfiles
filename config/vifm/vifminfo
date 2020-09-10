@@ -34,9 +34,13 @@
 	..
 1574010110
 'j
-	/home/porcupine/studies/neural_networks
-	opracowanie_neurony_2018-2019_bardziej_matematyczne.pdf
-1579990162
+	/home/porcupine/Downloads
+	trudne.txt
+1594892936
+'k
+	/home/porcupine/Downloads
+	trudne.txt
+1594892941
 'm
 	/home/porcupine/studies/master
 	..
@@ -78,141 +82,6 @@ l8,2
 r8,2
 
 # Left window history (oldest to newest):
-d/home/porcupine/studies
-	..
-0
-d/home/porcupine/scripts
-	wifi
-2
-d/home/porcupine
-	dotfiles
-45
-d/home/porcupine/dotfiles
-	config
-4
-d/home/porcupine/dotfiles/config
-	vifm
-10
-d/home/porcupine/dotfiles/config/vifm
-	scripts
-2
-d/home/porcupine/dotfiles/config/vifm/scripts
-	..
-0
-d/home/porcupine/dotfiles/config/vifm
-	scripts
-2
-d/home/porcupine/dotfiles/config
-	vifm
-10
-d/home/porcupine/dotfiles
-	.vimrc
-10
-d/home/porcupine/tool/icons-in-terminal
-	..
-0
-d/home/porcupine
-	.emacs
-37
-d/home/porcupine/studies/iwium/lab5/detekcja-anomalii-kod/ex1
-	..
-0
-d/home/porcupine/studies/iwium/lab5/detekcja-anomalii-kod
-	ex1
-2
-d/home/porcupine/Downloads
-	archlinux-2020.02.01-x86_64.iso
-44
-d/home/porcupine/codeheroes/chatbotize/monorepo
-	core
-6
-d/home/porcupine/codeheroes/chatbotize/monorepo/core
-	core-organization-setup-service
-8
-d/home/porcupine/codeheroes/chatbotize/monorepo/core/core-organization-setup-service
-	.metals
-2
-d/home/porcupine/Downloads
-	Chris Ward - Winning With the Sicilian Dragon 3-Batsford (2001).pdf
-5
-d/home/porcupine
-	Desktop
-4
-d/home/porcupine/Desktop
-	..
-0
-d/home/porcupine
-	Documents
-5
-d/home/porcupine/Documents
-	..
-0
-d/home/porcupine
-	Dropbox
-6
-d/home/porcupine/Dropbox
-	..
-0
-d/home/porcupine
-	Dropbox
-6
-d/home/porcupine/Dropbox
-	Neural Networks.pdf
-9
-d/home/porcupine/Downloads
-	David Allen - Getting Things Done_ The Art of Stress-Free Productivity-Penguin Books (2003).mobi
-1
-d/home/porcupine
-	finance
-15
-d/home/porcupine/finance
-	notebook.ipynb
-1
-d/home/porcupine
-	foss
-16
-d/home/porcupine/foss
-	..
-0
-d/home/porcupine
-	intel
-17
-d/home/porcupine/studies/iwium/lab5/detekcja-anomalii-kod/ex1
-	..
-0
-d/home/porcupine/studies/iwium/lab5/detekcja-anomalii-kod
-	ex2
-3
-d/home/porcupine/studies/iwium/lab5
-	zad1.py
-3
-d/home/porcupine/studies/iwium
-	lab2
-2
-d/home/porcupine/studies/iwium/lab2
-	balance.py
-2
-d/home/porcupine/codeheroes/chatbotize
-	..
-0
-d/home/porcupine/studies
-	mobile_systems
-10
-d/home/porcupine/studies/mobile_systems
-	android
-2
-d/home/porcupine/studies/mobile_systems/android
-	calculator.webm
-1
-d/home/porcupine/codeheroes/postgres
-	..
-0
-d/home/porcupine/codeheroes/chatbotize/monorepo
-	creator
-11
-d/home/porcupine/codeheroes/chatbotize/monorepo/creator
-	creator-campaign-service
-2
 d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-campaign-service
 	.gitignore
 7
@@ -378,287 +247,143 @@ d/home/porcupine/studies/master/using-albert
 d/home/porcupine/studies
 	..
 0
-
-# Right window history (oldest to newest):
-D/home/porcupine/Downloads
-	Chris Ward - Winning With the Sicilian Dragon 3-Batsford (2001).pdf
-55
-D/home/porcupine/codeheroes/chatbotize
+d/home/porcupine/dotfiles
 	..
 0
-D/home/porcupine/codeheroes
-	chatbotize
-2
-D/home/porcupine/codeheroes/chatbotize
+d/home/porcupine/codeheroes/chatbotize/monorepo/ai
+	
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-protobufs
+	
+0
+d/home/porcupine/studies/iwium/lab14/detekcja-anomalii-kod/ex5
+	
+0
+d/home/porcupine/studies/iwium/lab14/detekcja-anomalii-kod/ex4
+	
+0
+d/home/porcupine/codeheroes/chatbotize/monorepo/ai/ai-intent-backend
+	
+0
+d/home/porcupine/codeheroes/chatbotize/prod-deploy
+	
+0
+d/home/porcupine/codeheroes/research-repo
+	
+0
+d/home/porcupine/my-emacs
 	..
 0
-D/home/porcupine/codeheroes
-	chatbotize
-2
-D/home/porcupine/codeheroes/chatbotize
+d/home/porcupine/Downloads
 	..
 0
-D/home/porcupine/codeheroes
-	chatbotize
-2
-D/home/porcupine/codeheroes/chatbotize
-	monorepo
+d/home/porcupine/Dropbox
+	org
 3
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	migration
-8
-D/home/porcupine/codeheroes/chatbotize/monorepo/migration
-	inbox-inpost-chat-fix
+d/home/porcupine
+	.gitconfig
+18
+d/home/porcupine/Dropbox/org/resources/papers
+	master-thesis
+2
+d/home/porcupine/Dropbox/org/resources/papers/master-thesis
+	Automatic_Extraction_of_Polish_Language_Errors_from_Text_Edition_History.pdf
 3
-D/home/porcupine/codeheroes/chatbotize/monorepo/migration/inbox-inpost-chat-fix
-	.bloop
-1
-D/home/porcupine
-	Downloads
-37
-D/home/porcupine/Downloads
-	sensors-20-00543.pdf
-28
-D/home/porcupine
-	Downloads
-37
-D/home/porcupine/Downloads
-	Eric Redmond, Jim R. Wilson - Seven Databases in Seven Weeks_ A Guide to Modern Databases and the NoSQL Movement-Pragmatic Bookshelf (2012).mobi
-30
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	core
-6
-D/home/porcupine/codeheroes/chatbotize/monorepo/core
-	core-organization-setup-service
-8
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-organization-setup-service
-	..
-0
-D/home/porcupine/studies/iwium/project/text_similarity_iwium/SCWAD-CDSCorpus/CDSCorpus
-	..
-0
-D/home/porcupine/Downloads
-	sjp-myspell-pl-20200327.zip
-31
-D/home/porcupine/studies
-	iwium
-8
-D/home/porcupine/studies/iwium
-	project
-5
-D/home/porcupine/studies/iwium/project
-	text_similarity_iwium
-1
-D/home/porcupine/studies/iwium/project/text_similarity_iwium
+d/home/porcupine/studies/iwium/project/text_similarity_iwium
 	SCWAD-CDSCorpus
 3
-D/home/porcupine/studies/iwium/project/text_similarity_iwium/SCWAD-CDSCorpus
-	..
-0
-D/home/porcupine/studies/iwium/project/text_similarity_iwium
-	SCWAD-CDSCorpus
-3
-D/home/porcupine/studies/iwium/project/text_similarity_iwium/SCWAD-CDSCorpus
+d/home/porcupine/studies/iwium/project/text_similarity_iwium/SCWAD-CDSCorpus
 	CDSCorpus
 1
-D/home/porcupine/studies/iwium/project/text_similarity_iwium/SCWAD-CDSCorpus/CDSCorpus
-	scwad_enriched_v1.zip
-5
-D/home/porcupine/codeheroes/chatbotize
-	monorepo
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	migration
-8
-D/home/porcupine/codeheroes/chatbotize/monorepo/migration
-	inbox-inpost-chat-fix
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo/migration/inbox-inpost-chat-fix
-	.bloop
+d/home/porcupine/studies/iwium/project/text_similarity_iwium/SCWAD-CDSCorpus/CDSCorpus
+	..
+0
+d/home/porcupine/studies/iwium/project/text_similarity_iwium/SCWAD-CDSCorpus
+	CDSCorpus
 1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr
-	src
+d/home/porcupine/studies/iwium/project/text_similarity_iwium
+	data
 4
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src
-	main
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src/main
-	scala
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src/main/scala
-	com
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src/main/scala/com
-	chatbotize
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src/main/scala/com/chatbotize
-	plugins
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src/main/scala/com/chatbotize/plugins
-	faq
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src/main/scala/com/chatbotize/plugins/faq
-	domain
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src/main/scala/com/chatbotize/plugins/faq/domain
-	service
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src/main/scala/com/chatbotize/plugins/faq/domain/service
+d/home/porcupine/studies/iwium/project/text_similarity_iwium/data
 	..
 0
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src/main/scala/com/chatbotize/plugins/faq/domain
-	scheduler
-2
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-plugin-gdpr/src/main/scala/com/chatbotize/plugins/faq/domain/scheduler
-	ScheduledProcessor.scala
-1
-D/home/porcupine/studies
-	mobile_systems
-10
-D/home/porcupine/studies/mobile_systems
-	processing
-3
-D/home/porcupine/studies/mobile_systems/processing
-	..
-0
-D/home/porcupine/codeheroes/chatbotize
-	monorepo
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	migration
-8
-D/home/porcupine/codeheroes/chatbotize/monorepo/migration
-	inbox-inpost-chat-fix
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	migration
-8
-D/home/porcupine/Downloads
-	textured_paper.zip
-41
-D/home/porcupine/codeheroes/chatbotize
-	monorepo
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	inbox
-7
-D/home/porcupine/codeheroes/chatbotize/monorepo/inbox
-	inbox-suggestion-backend
-18
-D/home/porcupine/codeheroes/chatbotize/monorepo/inbox/inbox-suggestion-backend
-	..
-0
-D/home/porcupine/codeheroes/chatbotize/monorepo/inbox
-	inbox-suggestion-service
-19
-D/home/porcupine/codeheroes/chatbotize/monorepo/inbox/inbox-suggestion-service
-	.bloop
-1
-D/home/porcupine/dotfiles/scripts
-	..
-0
-D/home/porcupine/dotfiles
-	scripts
+d/home/porcupine/studies/iwium/project/text_similarity_iwium
+	docker
 5
-D/home/porcupine
-	codeheroes
-14
-D/home/porcupine/codeheroes
-	research-repository
-10
-D/home/porcupine/codeheroes/research-repository
-	research
-1
-D/home/porcupine/codeheroes/research-repository/research
-	thesis
-4
-D/home/porcupine/codeheroes/research-repository/research/thesis
-	thesis.loa
-2
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	inbox
-7
-D/home/porcupine/codeheroes/chatbotize/monorepo/inbox
-	inbox-suggestion-backend
-18
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	creator
-11
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator
-	creator-intent-service
-17
-D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-intent-service
-	.bloop
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs/environment_service
-	api
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs/environment_service/api
-	environment_service.proto
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs/environment_service
-	common
-2
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs/environment_service/common
-	environment_service.proto
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs/environment_service
-	common
-2
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs
-	environment_service
-2
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs/environment_service
-	notification
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs/environment_service/notification
-	environment_service.proto
-1
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs/environment_service
-	notification
-3
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs
-	environment_service
-2
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs/environment_service
-	common
-2
-D/home/porcupine
+d/home/porcupine/studies/iwium/project/text_similarity_iwium/docker
 	..
 0
-D/home/porcupine/codeheroes/chatbotize/monorepo
-	core
+d/home/porcupine/studies/iwium/project/text_similarity_iwium
+	env
 6
-D/home/porcupine/codeheroes/chatbotize/monorepo/core
-	core-environment-service
-5
-D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-environment-service
+d/home/porcupine/studies/iwium/project/text_similarity_iwium/env
 	..
 0
-D/home/porcupine/studies/iwium/project/text_similarity_iwium
-	Notebook.ipynb
-12
-D/home/porcupine
+d/home/porcupine/studies/iwium/project/text_similarity_iwium
+	slides
+7
+d/home/porcupine/studies/iwium/project/text_similarity_iwium/slides
+	img
+1
+d/home/porcupine/studies/iwium/project/text_similarity_iwium
+	src
+8
+d/home/porcupine/studies/iwium/project/text_similarity_iwium/src
 	..
 0
-D/home/porcupine/foss/XLM/data/wiki/txt
-	..
-0
-D/home/porcupine/studies/iwium/project/text_similarity_iwium
-	..
-0
-D/home/porcupine/studies
-	neural_networks
-11
-D/home/porcupine
-	studies
-38
-D/home/porcupine/codeheroes/research-repository/research
-	thesis
-4
-D/home/porcupine/codeheroes/research-repository/research/thesis
-	thesis.pdf
+d/home/porcupine/studies/iwium/project/text_similarity_iwium
+	ensemble_tree.png
 21
+d/home/porcupine/Downloads/Telegram Desktop
+	video_2020-06-01_09-08-57.mp4
+3
+d/home/porcupine/Downloads
+	pytania201819.txt
+13
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	..
+0
+d/home/porcupine/Downloads
+	Telegram Desktop
+3
+d/home/porcupine/Downloads/Telegram Desktop
+	training.jpg
+5
+d/home/porcupine/codeheroes/chatbotize/monorepo
+	..
+0
+d/home/porcupine/Downloads
+	eye_tracker_dokumentacja.pdf
+10
+d/mnt/nlp
+	..
+0
+d/mnt
+	nlp
+4
+d/mnt/nlp
+	ner_slavic_bert
+3
+d/mnt/nlp/ner_slavic_bert
+	ner_bert_slav
+1
+d/mnt/nlp/ner_slavic_bert/ner_bert_slav
+	..
+0
+d/mnt/nlp/ner_slavic_bert
+	ner_bert_slav.json
+2
+d/home/porcupine/codeheroes/research-repo/thesis
+	..
+0
+d/home/porcupine/codeheroes/chatbotize
+	..
+0
+d/home/porcupine/Downloads
+	..
+0
+
+# Right window history (oldest to newest):
 D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-protobufs
 	..
 0
@@ -680,6 +405,285 @@ D/home/porcupine/studies/master
 D/home/porcupine/studies/master/lm_gec
 	..
 0
+D/home/porcupine/dotfiles
+	..
+0
+D/home/porcupine
+	studies
+38
+D/home/porcupine/studies
+	mobile_systems
+10
+D/home/porcupine/studies/mobile_systems
+	processing
+3
+D/home/porcupine/studies/mobile_systems/processing
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo/ai
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	creator
+15
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-clustering-service
+5
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-clustering-service
+	project
+3
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-clustering-service/project
+	CompilerOpts.scala
+9
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator/creator-protobufs
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo/creator
+	creator-protobufs
+55
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	ai
+5
+D/home/porcupine/codeheroes/chatbotize/monorepo/ai
+	ai-protobufs
+3
+D/home/porcupine/codeheroes/chatbotize/monorepo/ai/ai-protobufs
+	language-resolver-backend
+1
+D/home/porcupine/studies/iwium/lab14/detekcja-anomalii-kod/ex5
+	..
+0
+D/home/porcupine/studies/iwium/lab14/detekcja-anomalii-kod
+	ex3
+3
+D/home/porcupine/studies/iwium/lab14/detekcja-anomalii-kod/ex3
+	..
+0
+D/home/porcupine/studies/iwium/lab14/detekcja-anomalii-kod/ex4
+	..
+0
+D/home/porcupine/studies/iwium/lab14/detekcja-anomalii-kod
+	ex4
+4
+D/home/porcupine/studies/iwium/lab14
+	detekcja-anomalii-kod
+1
+D/home/porcupine/studies/iwium
+	project
+7
+D/home/porcupine/studies/iwium/project
+	text_similarity_iwium
+1
+D/home/porcupine/studies/iwium/project/text_similarity_iwium
+	src
+7
+D/home/porcupine/codeheroes/chatbotize/monorepo/ai/ai-intent-backend
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo/ai
+	ai-intent-backend
+1
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	core
+8
+D/home/porcupine/codeheroes/chatbotize/monorepo/core
+	core-user-gateway
+15
+D/home/porcupine/codeheroes/chatbotize/monorepo/core/core-user-gateway
+	.bloop
+1
+D/home/porcupine/codeheroes/chatbotize/prod-deploy
+	..
+0
+D/home/porcupine/codeheroes/chatbotize
+	prod-ansible
+6
+D/home/porcupine/codeheroes/chatbotize/prod-ansible
+	hosts
+13
+D/home/porcupine/codeheroes/research-repo
+	img
+3
+D/home/porcupine/codeheroes/research-repo/img
+	pipeline.png
+3
+D/home/porcupine/codeheroes/research-repo
+	img
+3
+D/home/porcupine/codeheroes/research-repo/img
+	..
+0
+D/home/porcupine/codeheroes/research-repo
+	thesis
+5
+D/home/porcupine/codeheroes/research-repo/thesis
+	img
+1
+D/home/porcupine/codeheroes/research-repo/thesis/img
+	..
+0
+D/home/porcupine/my-emacs
+	..
+0
+D/home/porcupine/Downloads
+	porcupine.jpg
+16
+D/home/porcupine/studies/iwium/project/text_similarity_iwium
+	
+0
+D/home/porcupine/Downloads/Telegram Desktop
+	
+0
+D/home/porcupine/Downloads
+	
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	
+0
+D/mnt/nlp
+	jola_chatbot
+1
+D/home/porcupine/studies
+	data_mining
+5
+D/home/porcupine/.config
+	..
+0
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	..
+0
+D/home/porcupine/codeheroes/chatbotize
+	prod-ansible
+6
+D/home/porcupine/codeheroes
+	research-repo
+11
+D/home/porcupine/codeheroes/research-repo
+	code
+2
+D/home/porcupine/codeheroes/research-repo/code
+	slavic-bert-ner
+5
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner
+	..
+0
+D/home/porcupine/codeheroes/research-repo/code
+	slavic-bert-ner
+5
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner
+	Slavic-BERT-NER
+1
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner/Slavic-BERT-NER
+	ner_bert_slav
+1
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner/Slavic-BERT-NER/ner_bert_slav
+	..
+0
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner/Slavic-BERT-NER
+	ner_bert_slav
+1
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner/Slavic-BERT-NER/ner_bert_slav
+	..
+0
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner/Slavic-BERT-NER
+	ner_bert_slav
+1
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner/Slavic-BERT-NER/ner_bert_slav
+	..
+0
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner/Slavic-BERT-NER
+	..
+0
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner
+	.python-version
+2
+D/home/porcupine/codeheroes/research-repo/thesis
+	..
+0
+D/home/porcupine/codeheroes/research-repo
+	code
+2
+D/home/porcupine/codeheroes/research-repo/code
+	fastai
+2
+D/home/porcupine/codeheroes/research-repo/code/fastai
+	..
+0
+D/home/porcupine/codeheroes/research-repo/code
+	evaluation
+1
+D/home/porcupine/codeheroes/research-repo/code/evaluation
+	labeling
+3
+D/home/porcupine/codeheroes/research-repo/code
+	slavic-bert-ner
+5
+D/home/porcupine/codeheroes/research-repo/code/slavic-bert-ner
+	.python-version
+2
+D/home/porcupine/codeheroes/research-repo/code
+	evaluation
+1
+D/home/porcupine/codeheroes/research-repo/code/evaluation
+	prepare_gec_for_evaluation.org
+7
+D/home/porcupine/codeheroes/chatbotize
+	monorepo
+4
+D/home/porcupine/codeheroes/chatbotize/monorepo
+	crm
+9
+D/home/porcupine/codeheroes/chatbotize/monorepo/crm
+	crm-service
+2
+D/home/porcupine/codeheroes/chatbotize/monorepo/crm/crm-service
+	src
+4
+D/home/porcupine/Downloads
+	STG-backups-linux-20191031085722
+1
+D/home/porcupine/studies
+	math
+10
+D/home/porcupine/studies/math
+	łatwe.txt
+2
+D/home/porcupine/Downloads
+	..
+0
+D/home/porcupine
+	Dropbox
+11
+D/home/porcupine/Dropbox
+	org
+4
+D/home/porcupine/Dropbox/org
+	resources
+3
+D/home/porcupine/Dropbox/org/resources
+	papers
+2
+D/home/porcupine/Dropbox/org/resources/papers
+	books
+1
+D/home/porcupine/Dropbox/org/resources/papers/books
+	..
+0
+D/home/porcupine/Dropbox/org/resources/papers
+	master-thesis
+2
+D/home/porcupine/Dropbox/org/resources/papers/master-thesis
+	Attention_Is_All_You_Need.pdf
+14
+D/home/porcupine/Downloads
+	..
+0
+D/home/porcupine
+	.xmonad
+4
+D/home/porcupine/.xmonad
+	test.hs
+2
 
 # Command line history (oldest to newest):
 :mkdir english
@@ -739,31 +743,6 @@ D/home/porcupine/studies/master/lm_gec
 :mkdir processing
 
 # Search history (oldest to newest):
-/d
-/drop
-/stud
-/mongo
-/sbt
-/scalafi
-/data
-/tym
-/s
-/seman
-/git
-/mono
-/aviv
-/ch
-/w
-/downlo
-/wor
-/crawl
-/codehe
-/mo
-/ba
-/ze
-/my
-/confi
-/tmux
 /cha
 /migrao
 /sx
@@ -771,7 +750,6 @@ D/home/porcupine/studies/master/lm_gec
 /mig
 /fos
 /migra
-/cluste
 /ro
 /tool
 /robo
@@ -794,7 +772,6 @@ D/home/porcupine/studies/master/lm_gec
 /campai
 //creat
 /create
-/plugin-fa
 /faq
 /emac
 /7
@@ -811,7 +788,6 @@ D/home/porcupine/studies/master/lm_gec
 /sars
 /graph
 /ronte
-/cre
 /meed
 /med
 /creat
@@ -832,15 +808,44 @@ D/home/porcupine/studies/master/lm_gec
 /codeher
 /in
 /intent
-/core
 /enbir
 /line
 /chat
 /plan
 /fil
 /mas
+/stu
+/plugin-fa
+/pre
+/mogi
+/cre
+/cluste
+/ai
+/3
+/core
+/user
+/hosts
+/5
+/min
+/sick
+/tree
+/eye
+/hkk
+/mojjjjkjjk
+/crm
+/trudne
+/math
+/łatw
+/lat
+/dropbox
+/dece
+/preproce
+/hask
+/haskell
+/xmonad
 
 # Prompt history (oldest to newest):
+pprediction.jpg
 pcore-environment-service
 pplan.png
 pwallpaper.jpg
@@ -871,6 +876,11 @@ pnotebook.ipynb
 pmaterial-design-icons2.ttf
 pmaterial-design-icons.ttf
 penvironment_service.proto
+pMinimally Augmented Grammatical Error Correction.pdf
+pmenu.jpg
+ptracking.jpg
+ptraining.jpg
+płatwe.txt
 
 # Local filter history (oldest to newest):
 
@@ -1053,6 +1063,14 @@ t/home/porcupine/.local/share/vifm/Trash/000_plan.png
 	/home/porcupine/Desktop/plan.png
 t/home/porcupine/.local/share/vifm/Trash/000_sic_unimodel.png
 	/home/porcupine/studies/iwium/project/text_similarity_iwium/sic_unimodel.png
+t/home/porcupine/.local/share/vifm/Trash/000_photo_2020-05-25_23-27-31.jpg
+	/home/porcupine/Downloads/Telegram Desktop/photo_2020-05-25_23-27-31.jpg
+t/home/porcupine/.local/share/vifm/Trash/000_Zmiany-nawyków-żywieniowych-studentów-stomatologii-podczas-izolacji-społecznej (1).pptx
+	/home/porcupine/Downloads/Zmiany-nawyków-żywieniowych-studentów-stomatologii-podczas-izolacji-społecznej (1).pptx
+t/home/porcupine/.local/share/vifm/Trash/000_zadania_latwe(1).pdf
+	/home/porcupine/studies/math/zadania_latwe(1).pdf
+t/home/porcupine/.local/share/vifm/Trash/000_Podanie_o_przedluzenie_terminu_zlozenia_pracy_dyplomowej_-_II_stopien-1.doc
+	/home/porcupine/Downloads/Podanie_o_przedluzenie_terminu_zlozenia_pracy_dyplomowej_-_II_stopien-1.doc
 
 # State:
 f

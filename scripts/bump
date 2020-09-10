@@ -1,0 +1,5 @@
+#!/bin/bash
+
+message=`python3 ~/scripts/bump.py "$(git diff | grep image)"`
+
+git commit -am "$message"

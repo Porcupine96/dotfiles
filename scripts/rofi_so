@@ -2,25 +2,27 @@
 
 
 declare -a options=(
-  "Monorepo Pull Requests"
-  "Herochat Stage"
-  "Chatbotize Jenkins"
   "Chatbotize Stage"
-  "Jira Chatbotize Board"
+  "Chatbotize Dev"
+  "Herochat Stage (Private)"
+  "Monorepo Pull Requests"
+  "Chatbotize Jenkins"
+  "Jira Chatbotize Dev"
+  "Jira Chatbotize FF"
   "GitLab Activity"
-  "GitLab Merge Requests"
 )
 
 
 function to_url() {
   case "$1" in
-    "Monorepo Pull Requests") echo "https://github.com/chatbotizeteam/monorepo/pulls" ;;
-    "Herochat Stage")         echo "--incognito https://at-herochat.test.codeheroes.tech/384fc79042264756bb76f0412a8d812e" ;;
-    "Chatbotize Jenkins")     echo "https://jenkins.codeheroes.tech/blue/organizations/jenkins/monorepo/activity" ;;
-    "Chatbotize Stage")       echo "https://creator-chatbotize.stage.codeheroes.tech" ;;
-    "GitLab Activity")        echo "https://gitlab.com/dashboard/activity" ;;
-    "GitLab Merge Requests")  echo "https://gitlab.com/dashboard/merge_requests?author_username=Porcupine96" ;;
-    "Jira Chatbotize Board")  echo "https://codeheroesdev.atlassian.net/secure/RapidBoard.jspa?rapidView=18&projectKey=CP&view=planning" ;;
+    "Chatbotize Stage")         echo "https://core-chatbotize.stage.codeheroes.tech" ;;
+    "Chatbotize Dev")           echo "https://core-chatbotize.dev.codeheroes.tech" ;;
+    "Herochat Stage (Private)") echo "--incognito https://at-herochat.test.codeheroes.tech/384fc79042264756bb76f0412a8d812e" ;;
+    "Monorepo Pull Requests")   echo "https://github.com/chatbotizeteam/monorepo/pulls" ;;
+    "Chatbotize Jenkins")       echo "https://jenkins.codeheroes.tech/blue/organizations/jenkins/monorepo/activity" ;;
+    "GitLab Activity")          echo "https://gitlab.com/dashboard/activity" ;;
+    "Jira Chatbotize Dev")      echo "https://chatbotize.atlassian.net/jira/software/projects/CD/boards/1" ;;
+    "Jira Chatbotize FF")       echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/FF/queues/custom/25" ;;
   esac
 }
 

@@ -68,7 +68,7 @@ ZSH_THEME=""
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git fd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,6 +103,7 @@ alias pbcopy="xclip -selection cipboard"
 alias python=python3
 
 alias doom_reinstall='rm -rf ~/doom-emacs && git clone --depth 1 https://github.com/hlissner/doom-emacs ~/doom-emacs && cd ~/doom-emacs && git checkout develop && ~/doom-emacs/bin/doom install'
+alias prod-vpn='sudo openfortivpn -c /etc/openfortivpn/prod'
 
 def() {
   sdcv $1 | less

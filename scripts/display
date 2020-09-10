@@ -1,10 +1,11 @@
 #!/bin/bash
 
-choice=$(printf "basic\\nwork\\nhome" | dmenu)
+choice=$(printf "basic\\nwork\\nhome\\nhome2" | dmenu)
 
 case "$choice" in
     "work") bash -c "~/.screenlayout/work.sh" ;;
     "home") bash -c "~/.screenlayout/home.sh" ;;
+    "home2") bash -c "~/.screenlayout/home2.sh" ;;
     "basic") bash -c "~/.screenlayout/basic.sh" ;;
     *) echo "Unknown choice" ;;
 esac

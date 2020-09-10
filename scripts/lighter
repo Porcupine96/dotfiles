@@ -1,0 +1,34 @@
+#!/bin/bash
+
+
+current=`light -G`
+small_step=0.5
+big_step=5.0
+use_small=false
+
+if (( $(echo "$current > 5.0" | bc -l) ));
+then
+    use_small=true;
+fi
+
+if [[ "$1" == "up" ]];
+then
+     cmd="light -A"
+elif [[ "$1" == "down" ]];
+then
+     cmd="light -U"
+else
+    echo "Unknown command: [$1]";
+    exit 1;
+fi
+     
+if [[ "$use_small" == "true" ]]; 
+then
+    step="$small_step";
+else
+    step="$big_step";
+fi
+
+bash -c "$cmd $step"
+       
+ 

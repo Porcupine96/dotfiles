@@ -225,7 +225,8 @@ bar {
 
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [class="brave"] floating_maximum_size 2560 x 1280
-for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
+for_window [title="^floating$"] floating enable floating_maximum_size 2560 x 1280
+for_window [instance="sun-awt-X11-WindowPeer"] border pixel 0
 
 assign [class=".*Firefox.*"] 2
 for_window [class=".*Firefox.*"] focus
