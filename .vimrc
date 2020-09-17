@@ -17,12 +17,6 @@ set noswapfile
 " Command history
 set history=100
 
-" Always show cursor
-set ruler
-
-" Show incomplete commands
-set showcmd
-
 " Incremental searching (search as you type)
 set incsearch
 
@@ -75,9 +69,6 @@ set laststatus=2
 " Set the status line to something useful
 set statusline=%f\ %=L:%l/%L\ %c\ (%p%%)
 
-" Hide the toolbar
-set guioptions-=T
-
 " UTF encoding
 set encoding=utf-8
 set enc=utf-8
@@ -89,7 +80,7 @@ set autoread
 
 " Use system clipboard
 " http://stackoverflow.com/questions/8134647/copy-and-paste-in-vim-via-keyboard-between-different-mac-terminals
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 " Don't show intro
 set shortmess+=I
@@ -110,125 +101,58 @@ set lazyredraw
 " highlight a matching [{()}] when cursor is placed on start/end character
 set showmatch
 
-" Set built-in file system explorer to use layout similar to the NERDTree plugin
+" Netrw setting
+let g:netrw_banner = 0
 let g:netrw_liststyle=3
 
-" Set a proper font
-" set macligatures
-set guifont=Fira\ Code
-
-" Highlight the current line
-" set cursorline
-
-" set guifont=Roboto\ Mono\ Light\ for\ Powerline:h11
-
-" Always highlight column 80 so it's easier to see where
-" cutoff appears on longer screens
-" autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
-" set colorcolumn=80
+set noemoji
 " }}}
 
 " Plugins {{{
 
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'VundleVim/Vundle.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-sensible'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'"
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'zxqfl/tabnine-vim'
 
-Plugin 'scrooloose/nerdtree'
-" Plugin 'w0rp/ale'
-Plugin 'sbdchd/neoformat'
-Plugin 'sickill/vim-pasta'
-Plugin 'ervandew/supertab'
-Plugin 'Raimondi/delimitMate'
-Plugin 'simeji/winresizer'
-
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
-
-Plugin 'vimwiki/vimwiki'
+" Scala
+Plug 'derekwyatt/vim-scala'
 
 " CoC
-Plugin 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-
-" ReasonML
-Plugin 'reasonml-editor/vim-reason-plus'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Themes
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-scripts/xoria256.vim'
-Plugin 'dracula/vim'
+Plug 'dracula/vim'
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
 " Theme
 set background=dark
-colorscheme nord
+colorscheme dracula
 
-" Neoformat
-let g:neoformat_run_all_formatters = 1
-" Or build from source code
-
-" LanguageClient
-" let g:LanguageClient_serverCommands = {
-"     \ 'reason': ['/Users/porcupine/tool/reason-language-server/reason-language-server.exe'],
-"     \ }
-
-" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
-" nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<cr>
-" nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
-
-" Airline (status line)
-let g:airline_powerline_fonts = 1
-let g:airline_theme='nord'
-
-" Gist authorisation settings
-let g:github_user = $GITHUB_USER
-let g:github_token = $GITHUB_TOKEN
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-" Related plugins:
-" https://github.com/mattn/webapi-vim
-" https://github.com/vim-scripts/Gist.vim
-" https://github.com/tpope/vim-fugitive
-
-" HTML generation using 'emmet-vim'
-" NORMAL mode Ctrl+y then , <C-y,>
-
-" Git gutter
-let g:gitgutter_enabled = 1
-let g:gitgutter_eager = 0
-let g:gitgutter_sign_column_always = 1
-highlight clear SignColumn
-
-" Searching the file system
-map <leader>' :NERDTreeToggle<cr>
-
-" Tabularize
-map <Leader>e :Tabularize /=<cr>
-map <Leader>c :Tabularize /:<cr>
-map <Leader>es :Tabularize /=\zs<cr>
-map <Leader>cs :Tabularize /:\zs<cr>
-
-let delimitMate_expand_cr = 2
+" Make status line transparent
+" hi StatusLine ctermfg=246 ctermbg=235 guifg=#909194 guibg=#44475a
+" hi LineNr ctermfg=246 ctermbg=235 guifg=#909194 guibg=#44475a" 
+hi FoldColumn ctermbg=0 cterm=NONE
 
 " }}}
 
 " Mappings {{{
 
+" Quit Vim
+map <C-x><C-x> :w<cr>
 
 " Moving between splits
 map <C-j> <C-W>j
@@ -246,139 +170,27 @@ endif
 map <leader>cc :e ~/.vimrc<cr>
 
 " NERDTree shortucts
-nmap <C-\> :NERDTreeToggle<cr>
+nmap <C-p> :NERDTreeToggle<cr>
 
 " Clear search buffer
-:nnoremap § :nohlsearch<cr>
 :nnoremap <C-g> :nohlsearch<cr>
-
-" Command to use sudo when needed
-cmap w!! %!sudo tee > /dev/null %
-
-" File System Explorer (in horizontal split)
-map <leader>. :Sexplore<cr>
-
-" Make splitting Vim windows easier
-map <leader>; <C-W>s
-map <leader>` <C-W>v
 
 " COpen
 map <leader>o :Copen<cr>
 
-" Tmux style window selection
-" map <Leader>ws :ChooseWin<cr>
-
-" Prettier mappings
-map <Leader>p :Prettier<cr>
-
 " FZF
-nmap <C-p> :Files<cr>
-nmap <C-t> :Rg<space>
-nmap <C-f> :BLines<cr>
-nmap <C-s> :Buffers<cr>
-nmap <C-i> :History:<cr>
+
+nmap <C-s> :BLines<cr>
 
 " }}}
 
 " Commands {{{
-" jump to last cursor
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal g`\"" |
-  \ endif
-
-fun! StripTrailingWhitespace()
-  " don't strip on these filetypes
-  if &ft =~ 'markdown'
-    return
-  endif
-  %s/\s\+$//e
-endfun
-autocmd BufWritePre * call StripTrailingWhitespace()
-
-" file formats
-autocmd Filetype gitcommit setlocal spell textwidth=72
-autocmd Filetype markdown setlocal wrap linebreak nolist textwidth=0 wrapmargin=0 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
-autocmd FileType sh,cucumber,ruby,yaml,zsh,vim setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType py setlocal shiftwidth=4 tabstop=4 expandtab
-
-" specify syntax highlighting for specific files
-autocmd Bufread,BufNewFile *.spv set filetype=php
-autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
-
-" Triger `autoread` when files changes on disk
-" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
-" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-" Notification after file change
-" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-
-" Create a 'scratch buffer' which is a temporary buffer Vim wont ask to save
-" http://vim.wikia.com/wiki/Display_output_of_shell_commands_in_new_window
-command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
-function! s:RunShellCommand(cmdline)
-  echo a:cmdline
-  let expanded_cmdline = a:cmdline
-  for part in split(a:cmdline, ' ')
-    if part[0] =~ '\v[%#<]'
-      let expanded_part = fnameescape(expand(part))
-      let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
-    endif
-  endfor
-  botright new
-  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-  call setline(1, 'You entered:    ' . a:cmdline)
-  call setline(2, 'Expanded Form:  ' .expanded_cmdline)
-  call setline(3,substitute(getline(2),'.','=','g'))
-  execute '$read !'. expanded_cmdline
-  setlocal nomodifiable
-  1
-endfunction
-
-" Close all folds when opening a new buffer
-autocmd BufRead * setlocal foldmethod=marker
-autocmd BufRead * normal zM
-
-" Rainbow parenthesis always on!
-if exists(':RainbowParenthesesToggle')
-  autocmd VimEnter * RainbowParenthesesToggle
-  autocmd Syntax * RainbowParenthesesLoadRound
-  autocmd Syntax * RainbowParenthesesLoadSquare
-  autocmd Syntax * RainbowParenthesesLoadBraces
-endif
-
-" Reset spelling colours when reading a new buffer
-" This works around an issue where the colorscheme is changed by .local.vimrc
-fun! SetSpellingColors()
-  highlight SpellBad cterm=bold ctermfg=white ctermbg=red
-  highlight SpellCap cterm=bold ctermfg=red ctermbg=white
-endfun
-autocmd BufWinEnter * call SetSpellingColors()
-autocmd BufNewFile * call SetSpellingColors()
-autocmd BufRead * call SetSpellingColors()
-autocmd InsertEnter * call SetSpellingColors()
-autocmd InsertLeave * call SetSpellingColors()
-
-" Change colourscheme when diffing
-fun! SetDiffColors()
-  highlight DiffAdd    cterm=bold ctermfg=white ctermbg=DarkGreen
-  highlight DiffDelete cterm=bold ctermfg=white ctermbg=DarkGrey
-  highlight DiffChange cterm=bold ctermfg=white ctermbg=DarkBlue
-  highlight DiffText   cterm=bold ctermfg=white ctermbg=DarkRed
-endfun
-autocmd FilterWritePre * call SetDiffColors()
-
-" Cursor underline rather than underscore
-highlight clear CursorLine
-highlight CursorLine gui=underline cterm=underline
 
 " }}}
 
 " CoC Configuration {{{
 
-" Better display for messages
+"" Better display for messages
 set cmdheight=2
 
 " Smaller updatetime for CursorHold & CursorHoldI
@@ -472,8 +284,6 @@ let g:lightline = {
       \ },
       \ }
 
-
-
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
@@ -492,5 +302,4 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-
-" }}}
+"" }}}
