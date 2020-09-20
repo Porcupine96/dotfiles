@@ -25,6 +25,9 @@ floating_modifier $mod
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# dmenu
+bindsym $mod+Shift+d exec dmenu_run
+
 # change focus
 bindsym $mod+Ctrl+h focus left
 bindsym $mod+Ctrl+j focus down

@@ -90,9 +90,9 @@ source $ZSH/oh-my-zsh.sh
 source ~/.profile
 
 export EDITOR="nvim"
-export BROWSER="firefox.desktop"
+export BROWSER="brave.desktop"
 
-alias r="ranger"
+# aliases
 alias vim="nvim"
 alias ta="tmux attach"
 alias gs="gst"
@@ -125,12 +125,6 @@ eval "$(pyenv virtualenv-init -)"
 # autojump configuration
 [[ -s /home/porcupine/.autojump/etc/profile.d/autojump.sh ]] && source /home/porcupine/.autojump/etc/profile.d/autojump.sh
 
-# opam
-. /home/porcupine/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# tmuxinator
-source ~/.bin/tmuxinator.zsh
-
 autoload -U compinit && compinit -u
 
 # the pure prompt
@@ -138,15 +132,4 @@ fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
 
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-eval "$(rbenv init -)"
-
-
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
-
-
-source /home/porcupine/.config/broot/launcher/bash/br
-
-# fnm
-export PATH=/home/porcupine/.fnm:$PATH
-eval "`fnm env --multi`"
