@@ -117,13 +117,14 @@ bindkey "^X^E" edit-command-line
 # pyenv configuration
 export PATH="/home/porcupine/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # fzf configuration
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 
 # autojump configuration
-[[ -s /home/porcupine/.autojump/etc/profile.d/autojump.sh ]] && source /home/porcupine/.autojump/etc/profile.d/autojump.sh
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 autoload -U compinit && compinit -u
 
