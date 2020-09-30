@@ -1,0 +1,58 @@
+#!/bin/sh
+# https://gist.githubusercontent.com/jvalrog/fcf7744f6997d4463577a5a5ab91c001/raw/fc44b961207aa19f361660f8caf958c35fa9d70e/scratchpad
+# SCRATCHPAD
+#
+# An i3-like scratchpad using xdotool.
+#
+# Example:
+#   ~$ scratchpad htop-pad urxvt -T htop-pad -e htop
+#
+# Explanation:
+#   * If there is no window with title "htop-pad", a new
+#   urxvt terminal will be run with "htop-pad" as title and
+#   executing an htop instance.
+#
+#   * If the window already exists (visible or not), its
+#   visibility will be toggled.
+# ;;TODO: WIP
+
+
+current_desktop_pids(){
+	xdotool search --desktop "$(xdotool get_desktop)" --name ".*"
+}
+
+
+if ! ignore=$(xdotool search --name "^spotify$"); then
+	ignore="nevermind"
+fi
+
+
+if [ $# -lt 2 ]; then
+	echo "usage: $(basename $0) <window class> <program>" >&2
+	exit 1
+fi
+
+class="$1"
+shift
+program="$*"
+
+if ! wid=$(xdotool search --class "$class" | grep -v "$ignore"); then
+	$program &
+elif echo $wid | grep -q " "; then
+	echo "error: several windows matched." >&2
+	exit 1
+else
+	if xdotool search --onlyvisible --class "$class" 2>&1 >/dev/null; then
+		for w in $wid; do
+			xdotool windowunmap $w
+		done
+	else
+		for w in $wid; do
+			xdotool set_desktop_for_window $w $(xdotool get_desktop) \
+				windowmap --sync $w windowfocus $w #&& \
+				# xdotool windowsize "$(xdotool getactivewindow)" 1400 1000 && \
+				# i3-msg fullscreen toggle
+
+		done
+	fi
+fi

@@ -117,7 +117,7 @@ bindkey "^X^E" edit-command-line
 # pyenv configuration
 export PATH="/home/porcupine/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # fzf configuration
 source /usr/share/fzf/completion.zsh
@@ -132,5 +132,7 @@ autoload -U compinit && compinit -u
 fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
+
+eval $(keychain --noask --quiet --eval id_rsa)
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx

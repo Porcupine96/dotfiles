@@ -1,19 +1,19 @@
 super + d
-	rofi -show combi -combi-modi window,drun,run -dpi 196 -show-icons -font "Fira Mono 11"
+	rofi -show combi -combi-modi window,drun,run -show-icons -font "Fira Mono 11"
+	#rofi -show combi -combi-modi window,drun,run -dpi 196 -show-icons -font "Fira Mono 11"
 super + o
-	rofi -dpi 196 -show window -show-icons -font "Fira Mono 11"
+	rofi -show window -show-icons -font "Fira Mono 11"
+	# rofi -dpi 196 -show window -show-icons -font "Fira Mono 11"
 super + alt + d
 	exec dmenu_run
 super + t
 	kitty
 super + shift + p
-    emacs --with-profile mine
+    emacs
 super + b
 	rofi-books
 super + c
 	rofi-cheatsheets
-#super + shift + g
-#	rofi-list "Documents/planck";
 super + shift + n
 	zathura /home/porcupine/studies/math/zadania_trudne.pdf
 super + p
@@ -26,7 +26,6 @@ super + F12
 	prompt 'Suspend the computer?' 'lock'
 super + F4
 	deepin-screenshot
-	#maim-clipboard
 # super + alt + r
 	# clear rofi cache
 super + F7
@@ -35,15 +34,15 @@ super + F8
 	playerctl play-pause
 super + F9
 	playerctl previous
-#super + shift + F4
-#   maim -s ~/Pictures/$(date +%s).png
+super + ctrl + m
+	scratchpad "floating_ncspot" 'st -c floating_ncspot -g 140x35 -e ncspot'
 XF86AudioMute
-	volume toggle; exec pkill -SIGRTMIN+10 i3blocks
+	volume toggle
 XF86AudioLowerVolume
-	volume down; exec pkill -SIGRTMIN+10 i3blocks
+	volume down
 XF86AudioRaiseVolume
-	volume up; exec pkill -SIGRTMIN+10 i3blocks
+	volume up
 XF86MonBrightnessDown
-	light -U 5; exec pkill -SIGRTMIN+10 i3blocks
+	light -U 5
 XF86MonBrightnessUp
-	light -A 5; exec pkill -SIGRTMIN+10 i3blocks
+	light -A 5
