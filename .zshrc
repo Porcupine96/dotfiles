@@ -101,6 +101,7 @@ alias vf="vifm"
 alias sizes="du -h -d1 -a | sort -h"
 alias pbcopy="xclip -selection cipboard"
 alias python=python3
+alias mux=tmuxinator
 
 alias doom_reinstall='rm -rf ~/doom-emacs && git clone --depth 1 https://github.com/hlissner/doom-emacs ~/doom-emacs && cd ~/doom-emacs && git checkout develop && ~/doom-emacs/bin/doom install'
 alias prod-vpn='sudo openfortivpn -c /etc/openfortivpn/prod'
@@ -128,11 +129,56 @@ source /usr/share/fzf/key-bindings.zsh
 
 autoload -U compinit && compinit -u
 
+# vterm integration
+vterm_printf(){
+    if [ -n "$TMUX" ]; then
+        # Tell tmux to pass the escape sequences through
+        # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+
+vterm_prompt_end() {
+    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)";
+}
+
+vterm_cmd() {
+    local vterm_elisp
+    vterm_elisp=""
+    while [ $# -gt 0 ]; do
+        vterm_elisp="$vterm_elisp""$(printf '"%s" ' "$(printf "%s" "$1" | sed -e 's|\\|\\\\|g' -e 's|"|\\"|g')")"
+        shift
+    done
+    vterm_printf "51;E$vterm_elisp"
+}
+
+ff() {
+    vterm_cmd find-file "$(realpath "${@:-.}")"
+}
+
+setopt PROMPT_SUBST
+PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
+
 # the pure prompt
 fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
 
+print -Pn "\e]2;%m:%2~\a"
+
+autoload -U add-zsh-hook
+add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
+
 eval $(keychain --noask --quiet --eval id_rsa)
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+
+# bash completions
+autoload -U bashcompinit
+bashcompinit
+if [ -e /home/porcupine/.nix-profile/etc/profile.d/nix.sh ]; then . /home/porcupine/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

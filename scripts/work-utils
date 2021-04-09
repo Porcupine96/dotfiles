@@ -1,0 +1,17 @@
+#!/bin/bash
+
+declare -a options=(
+    "Copy Chatbot ID"
+)
+
+function copy_chatbot_id() {
+    choice=$( | wofi -i --show dmenu --allow-images -G)
+}
+
+choice=$(printf "%s\n" "${options[@]}" | wofi -i --show dmenu --allow-images -G)
+
+if [[ ! -z "$choice" ]]; then
+  case "$choice" in
+    "Copy Chatbot ID") copy_chatbot_id() ;;
+  esac
+fi

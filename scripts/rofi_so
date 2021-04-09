@@ -7,7 +7,8 @@ declare -a options=(
   "Herochat Stage (Private)"
   "Monorepo Pull Requests"
   "Chatbotize Jenkins"
-  "Jira Chatbotize Dev"
+  "Jira Chatbotize Dev" 
+  "Jira Chatbotize SUP" 
   "Jira Chatbotize FF"
   "GitLab Activity"
 )
@@ -22,15 +23,18 @@ function to_url() {
     "Chatbotize Jenkins")       echo "https://jenkins.codeheroes.tech/blue/organizations/jenkins/monorepo/activity" ;;
     "GitLab Activity")          echo "https://gitlab.com/dashboard/activity" ;;
     "Jira Chatbotize Dev")      echo "https://chatbotize.atlassian.net/jira/software/projects/CD/boards/1" ;;
+    "Jira Chatbotize SUP")      echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/SUP/queues/custom" ;;
     "Jira Chatbotize FF")       echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/FF/queues/custom/25" ;;
   esac
 }
 
 
-choice=$(printf "%s\n" "${options[@]}" | rofi -i -dmenu -dpi 196 -show-icons -font "Fira Mono 11")
+#choice=$(printf "%s\n" "${options[@]}" | rofi -i -dmenu -show-icons -font "Fira Mono 11")
+#choice=$(printf "%s\n" "${options[@]}" | rofi -i -dmenu -dpi 192 -show-icons -font "Fira Mono 11")
+choice=$(printf "%s\n" "${options[@]}" | wofi -i --show dmenu --allow-images -G)
 
 if [[ ! -z "$choice" ]]; then
   url=$(to_url "$choice")
 
-  bash -c "brave-browser $url; (true)" >> /dev/null 2>&1
+  bash -c "xdg-open $url; (true)" >> /dev/null 2>&1
 fi

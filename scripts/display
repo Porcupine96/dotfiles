@@ -11,7 +11,8 @@ case "$choice" in
 esac
 
 # reload background
-~/.fehbg &
+# ~/.fehbg &
+xwallpaper --zoom ~/dotfiles/wallpaper/wallpaper.png
 
 # synchronize the touch screen
-xinput map-to-output 10 eDP-1-1
+# xinput map-to-output 10 eDP-1-1

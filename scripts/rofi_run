@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rofi -show combi -combi-modi window,drun,run -show-icons -font "Fira Mono 11"

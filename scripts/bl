@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 projects=$(bloop projects)
 current_project=$(echo "$projects" | head -n1)
@@ -7,7 +7,7 @@ run=false
 test=false
 only=false
 copy=false
-flags=" "
+flags=""
 
 while test $# != 0
 do
@@ -26,8 +26,8 @@ done
 
 if [ "$only" = true ]; then
   class_file=$(find . -name '*Test.scala' | fzf)
-  package=$(grep '^package ' $class_file | sed 's/package //')
-  class_name=$(echo $class_file | sed 's/.*\/\(.*\)\.scala/\1/')
+  package=$(grep '^package ' "$class_file" | sed 's/package //')
+  class_name=$(echo "$class_file" | sed 's/.*\/\(.*\)\.scala/\1/')
   class="$package.$class_name"
 
   flags="$flags --only $class "
@@ -46,5 +46,7 @@ if [ "$copy" = true ]; then
   echo "$command" | xclip -selection clipboard
   echo "Command copied to clipboard!"
 else
+  echo "$command"
+  echo "$command" | tr "[:print:]" "-"
   eval "$command"
 fi

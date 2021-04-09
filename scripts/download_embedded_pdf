@@ -1,0 +1,7 @@
+#!/bin/bash
+
+location=$(mktemp)
+wget -q -O "$location" "$1"
+first_url=$(rg "(http.*\.pdf)" "$location" -r '$1' -oN | head -n1)
+
+wget -q "$first_url"

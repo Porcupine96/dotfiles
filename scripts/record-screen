@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wf-recorder --audio=0 -g "$(slurp)"

@@ -1,0 +1,94 @@
+#!/bin/sh
+
+set -e
+
+if command -v sk >/dev/null; then
+	fuzzy_command=sk
+else
+	fuzzy_command=fzf
+fi
+
+cache_dir="$HOME/.fzgcloud"
+cache_file="$cache_dir/cache"
+
+run_ssh() {
+	row=$("$fuzzy_command" --header-lines=1 <"$cache_file")
+	zone=$(echo "$row" | awk '{print $2}')
+	machine=$(echo "$row" | awk '{print $1}')
+	gcloud beta compute ssh --zone "$zone" "$machine" "$@"
+}
+
+stop() {
+	echo "#!/bin/sh" >stop.sh
+	grep -E "(NAME|RUNNING)" <"$cache_file" | "$fuzzy_command" -m --header-lines=1 |
+		awk '{zones[$2][$1] = 1} END { for(zone in zones){print ""; printf "gcloud compute instances stop --zone " zone " "; for(c in zones[zone]){printf c " "} }}' >>stop.sh
+	chmod u+x ./stop.sh
+	echo "Check and run ./stop.sh"
+}
+
+start() {
+	echo "#!/bin/sh" >start.sh
+	grep -v "RUNNING" <"$cache_file" | "$fuzzy_command" -m --header-lines=1 |
+		awk '{zones[$2][$1] = 1} END { for(zone in zones){print ""; printf "gcloud compute instances start --zone " zone " "; for(c in zones[zone]){printf c " "} }}' >>start.sh
+	chmod u+x ./start.sh
+	echo "Check and run ./start.sh"
+}
+
+switch() {
+	account=$(gcloud auth list 2>/dev/null | tail -n +3 | sed 's/*/âœ”/' | "$fuzzy_command" -p "Choose account")
+	gcloud config set account "$account"
+
+	projects=$(gcloud projects list)
+
+	if [ "$(echo "$projects" | wc -l)" -gt 2 ]; then
+		project=$(echo "$projects" | "$fuzzy_command" --header-lines=1)
+	else
+		project=$(echo "$projects" | tail -n +2)
+	fi
+	project=$(echo "$project" | awk '{print $1}')
+
+	gcloud config set project "$project"
+
+	echo "Switched to $account and project $project"
+}
+
+cache_instances_list() {
+	mkdir -p "$cache_dir"
+	gcloud compute instances list >"$cache_file"
+}
+
+run() {
+	case "$1" in
+	"list")
+		bat "$cache_file"
+		;;
+	"stop")
+		stop
+		;;
+
+	"start")
+		start
+		;;
+	"cache")
+		cache_instances_list
+		;;
+	*)
+		run_ssh "$@"
+		;;
+	esac
+}
+
+case "$1" in
+"switch")
+	switch
+	;;
+"-f" | "--force")
+	cache_instances_list
+	shift
+	run "$@"
+	;;
+*)
+	[ -f "$cache_file" ] || cache_instances_list
+	run "$@"
+	;;
+esac

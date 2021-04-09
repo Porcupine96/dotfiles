@@ -1,0 +1,31 @@
+#!/bin/bash
+
+master="user@192.168.0.11"
+
+if [ $# -lt 2 ]; then
+    echo "Usage: STACK QUERY ARGS"
+else
+    stack="$1"; shift
+    query="$1"; shift
+    args="$@"
+
+    output=$(ssh "$master" docker stack ps "$stack" | grep "Running" | grep "$query")
+    choice=$(echo "$output" | fzf)
+    node_id=$(echo "$choice" | sed "s/\\\_//" | awk '{ print $4 }')
+
+    n_bit=""
+    case "${node_id:0:1}" in
+	"m") n_bit="1" ;;
+	"s") n_bit="2" ;;
+	*) echo "Error: Invalid node $node_id"; exit 1 ;;
+    esac
+
+    node="user@192.168.0.$n_bit${node_id:2:3}"
+
+    output=$(ssh "$node" docker ps | grep "$stack" | grep "$query")
+    choice=$(echo "$output" | fzf)
+    container_id=$(echo "$choice" | cut -d' ' -f1)
+
+    ssh "$node" docker logs --follow "$container_id" $args
+fi
+

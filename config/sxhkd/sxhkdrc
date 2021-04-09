@@ -1,9 +1,9 @@
 super + d
 	rofi -show combi -combi-modi window,drun,run -show-icons -font "Fira Mono 11"
-	#rofi -show combi -combi-modi window,drun,run -dpi 196 -show-icons -font "Fira Mono 11"
+	#rofi -show combi -combi-modi window,drun,run -dpi 192 -show-icons -font "Fira Mono 11"
 super + o
 	rofi -show window -show-icons -font "Fira Mono 11"
-	# rofi -dpi 196 -show window -show-icons -font "Fira Mono 11"
+	#rofi -dpi 192 -show window -show-icons -font "Fira Mono 11"
 super + alt + d
 	exec dmenu_run
 super + t
@@ -26,8 +26,6 @@ super + F12
 	prompt 'Suspend the computer?' 'lock'
 super + F4
 	deepin-screenshot
-# super + alt + r
-	# clear rofi cache
 super + F7
 	playerctl previous
 super + F8
@@ -35,7 +33,9 @@ super + F8
 super + F9
 	playerctl previous
 super + ctrl + m
-	scratchpad "floating_ncspot" 'st -c floating_ncspot -g 140x35 -e ncspot'
+	fullscreen-i3-wrap scratchpad "floating_ncspot" 'st -c floating_ncspot -g 140x35 -e ncspot' &
+super + ctrl + c
+	copyq toggle
 XF86AudioMute
 	volume toggle
 XF86AudioLowerVolume

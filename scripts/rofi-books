@@ -3,7 +3,7 @@
 path="$HOME/Dropbox/org/resources/papers"
 
 list() {
-    choice=$(ls $1 | rofi -i -dmenu -dpi 196 -show-icons -font "Fira Mono 11")
+    choice=$(ls $1 | wofi -i --show dmenu --allow-images -G)
 
     if [[ ! -z "$choice" ]]; then
         case $(stat -c "%F" "$1/$choice") in
