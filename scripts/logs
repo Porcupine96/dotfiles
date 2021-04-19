@@ -26,6 +26,6 @@ else
     choice=$(echo "$output" | fzf)
     container_id=$(echo "$choice" | cut -d' ' -f1)
 
-    ssh "$node" docker logs --follow "$container_id" $args
+    ssh "$node" docker logs --follow "$container_id" $args 
 fi
 

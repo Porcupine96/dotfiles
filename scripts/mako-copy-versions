@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+notification=$(makoctl list | jq '.data | first | first | .body | .data')
+
+printf "$notification" | grep -i 'published' | sd '.*<(.*)>.*' '$1' | wl-copy
