@@ -3,4 +3,22 @@
 
 notification=$(makoctl list | jq '.data | first | first | .body | .data')
 
-printf "$notification" | grep -i 'published' | sd '.*<(.*)>.*' '$1' | wl-copy
+build_successful=$(echo "$notification" | grep "finished successfully")
+build_failed=$(echo "$notification" | grep "has failed")
+
+echo "Successful: $build_successful"
+echo "Failed: $build_failed"
+
+
+if [[ "$build_failed" ]]; then
+    version=1
+    branch="feat/CD-1810_environment-features"
+    encoded_branch=$(urlencode "$branch")
+
+    url="https://jenkins.codeheroes.tech/job/monorepo/job/$encoded_branch/$version/display/redirect"
+
+    xdg-open "$url"
+else
+    printf "$notification" | grep -i 'published' | sd '.*<(.*)>.*' '$1' | wl-copy
+fi
+

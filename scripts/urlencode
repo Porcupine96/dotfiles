@@ -1,0 +1,3 @@
+#!/bin/bash
+
+jq -rn --arg x "$1" '$x|@uri'
