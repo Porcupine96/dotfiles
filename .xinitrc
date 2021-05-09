@@ -1,4 +1,4 @@
-compton &
+xcompmgr &
 sxhkd &
 dunst &
 #nordvpn connect &

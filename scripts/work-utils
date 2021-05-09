@@ -5,7 +5,7 @@ declare -a options=(
 )
 
 function copy_chatbot_id() {
-    choice=$( | wofi -i --show dmenu --allow-images -G)
+    choice=$( | selector)
 }
 
 choice=$(printf "%s\n" "${options[@]}" | wofi -i --show dmenu --allow-images -G)

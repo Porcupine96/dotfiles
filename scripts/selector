@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+if command -v rofi &> /dev/null; then 
+  rofi -i -dmenu "$1"
+else
+  wofi -i --show dmenu --allow-images -G "$1"
+fi

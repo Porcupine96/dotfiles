@@ -2,9 +2,6 @@
 
 
 declare -a options=(
-  "Chatbotize Stage"
-  "Chatbotize Dev"
-  "Herochat Stage (Private)"
   "Monorepo Pull Requests"
   "Chatbotize Jenkins"
   "Jira Chatbotize Dev" 
@@ -16,9 +13,6 @@ declare -a options=(
 
 function to_url() {
   case "$1" in
-    "Chatbotize Stage")         echo "https://core-chatbotize.stage.codeheroes.tech" ;;
-    "Chatbotize Dev")           echo "https://core-chatbotize.dev.codeheroes.tech" ;;
-    "Herochat Stage (Private)") echo "--incognito https://at-herochat.test.codeheroes.tech/384fc79042264756bb76f0412a8d812e" ;;
     "Monorepo Pull Requests")   echo "https://github.com/chatbotizeteam/monorepo/pulls" ;;
     "Chatbotize Jenkins")       echo "https://jenkins.codeheroes.tech/blue/organizations/jenkins/monorepo/activity" ;;
     "GitLab Activity")          echo "https://gitlab.com/dashboard/activity" ;;
@@ -29,9 +23,7 @@ function to_url() {
 }
 
 
-#choice=$(printf "%s\n" "${options[@]}" | rofi -i -dmenu -show-icons -font "Fira Mono 11")
-#choice=$(printf "%s\n" "${options[@]}" | rofi -i -dmenu -dpi 192 -show-icons -font "Fira Mono 11")
-choice=$(printf "%s\n" "${options[@]}" | wofi -i --show dmenu --allow-images -G)
+choice=$(printf "%s\n" "${options[@]}" | selector)
 
 if [[ ! -z "$choice" ]]; then
   url=$(to_url "$choice")

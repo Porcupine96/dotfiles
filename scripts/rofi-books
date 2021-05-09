@@ -2,8 +2,9 @@
 
 path="$HOME/Dropbox/org/resources/papers"
 
+
 list() {
-    choice=$(ls $1 | wofi -i --show dmenu --allow-images -G)
+    choice=$(ls "$1" | selector)
 
     if [[ ! -z "$choice" ]]; then
         case $(stat -c "%F" "$1/$choice") in

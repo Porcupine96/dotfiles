@@ -36,9 +36,9 @@ Settings config = {
     /** List of enabled modi. */
     /** -modi */
 #ifdef WINDOW_MODE
-    .modi                   = "window,run,ssh",
+    .modi                   = "window,run,ssh,drun",
 #else
-    .modi                   = "run,ssh",
+    .modi                   = "run,ssh,drun",
 #endif
     /** Border width around the window. */
     .menu_bw                = 1,

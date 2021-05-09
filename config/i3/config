@@ -213,20 +213,20 @@ popup_during_fullscreen smart
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3blocks
-        position top
-        font Roboto Mono for Powerline 8
+# bar {
+#         status_command i3blocks
+#         position top
+#         font Roboto Mono for Powerline 8
 
-        colors {
-                background $bg-color
-                separator #757575
-                #                  border             background         text
-                focused_workspace  $bg-color          $bg-color          $text-color
-                inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-                urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-        }
-}
+#         colors {
+#                 background $bg-color
+#                 separator #757575
+#                 #                  border             background         text
+#                 focused_workspace  $bg-color          $bg-color          $text-color
+#                 inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#                 urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#         }
+# }
 
 for_window [class="brave"] floating_maximum_size 2560 x 1280
 for_window [title="^floating$"] floating enable floating_maximum_size 2560 x 1280
@@ -242,5 +242,6 @@ assign [class="Spotify.*"] 5
 exec --no-startup-id ~/.fehbg
 #exec "bash -c ~/scripts/reload-theme"
 
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/run.sh 
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh --docky
 

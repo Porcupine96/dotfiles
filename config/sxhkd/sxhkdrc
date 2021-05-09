@@ -10,6 +10,8 @@ super + t
 	kitty
 super + shift + p
     emacs
+super + ctrl + s
+    flameshot gui
 super + b
 	rofi-books
 super + c
