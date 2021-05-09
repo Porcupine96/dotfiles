@@ -1,7 +1,7 @@
 xcompmgr &
 sxhkd &
 dunst &
-#nordvpn connect &
+flameshot &
 dropbox start &
 xfce4-clipman &
 nm-applet &
