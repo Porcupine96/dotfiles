@@ -1,5 +1,5 @@
 #!/bin/bash
 
-grim -g "$(slurp)" "$1"
+# grim -g "$(slurp)" "$1"
 
-# grim -g "$(slurp)" - | swappy -o "$1" -f  -
+flameshot gui --path "$1"

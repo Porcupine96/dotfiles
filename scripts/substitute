@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+
+
+dict_file="$1"
+target_file="$2"

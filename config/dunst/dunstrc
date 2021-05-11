@@ -4,7 +4,7 @@
     format               = "<b>%s</b>\n%b"
     monitor              = 0
     follow               = mouse
-    geometry             = "800x30-10+10"
+    geometry             = "400x30-10+10"
     indicate_hidden      = yes
     sort                 = yes
     alignment            = left

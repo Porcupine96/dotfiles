@@ -14,7 +14,7 @@ smart_borders on
 floating_minimum_size 888 x 500
 #floating_Raximum_size 1000 x 800
 
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 3
 for_window [class="floating_*"] floating enable, move position center
 for_window [class="copyq*"] floating enable, move position center
 # }}}
@@ -200,7 +200,8 @@ set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
-set $focused-bg-color    #4c7899
+set $focused-bg-color    #3f51b5
+# set $focused-bg-color    #4c7899
 
 client.focused          $focused-bg-color  $focused-bg-color  $text-color
 client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color
@@ -231,6 +232,7 @@ popup_during_fullscreen smart
 for_window [class="brave"] floating_maximum_size 2560 x 1280
 for_window [title="^floating$"] floating enable floating_maximum_size 2560 x 1280
 for_window [instance="sun-awt-X11-WindowPeer"] border pixel 0
+for_window [title="Firefox — Sharing Indicator"] kill
 
 assign [class=".*Firefox.*"] 2
 for_window [class=".*Firefox.*"] focus

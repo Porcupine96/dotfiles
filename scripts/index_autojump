@@ -5,6 +5,7 @@ index_file="/home/porcupine/.local/share/z/data"
 timestamp=$(date +"%s" )
 
 declare -a root_files=(
+    "requirements.txt"
     "build.sbt"
 )
 
