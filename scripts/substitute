@@ -1,7 +1,19 @@
 #!/bin/bash
 
+set -e
 
-
+if [[ "$#" != 3 ]]; then
+  echo "Usage: dict_file key target_file"
+  exit 1
+fi
 
 dict_file="$1"
-target_file="$2"
+key="$2"
+target_file="$3"
+
+jq -c '.[]' "$dict_file" | while read i; do
+    id=$(echo "$i" | jq ".$key" | tr -d '"')
+    name=$(echo "$i" | jq ".name" | tr -d '"')
+
+    sd "(?P<before>\"?$key\"?.*)($id)(?P<after>.*)" '${before}'"$name"'${after}' "$target_file"
+done
