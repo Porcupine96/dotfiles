@@ -11,9 +11,14 @@ dict_file="$1"
 key="$2"
 target_file="$3"
 
+matches=($(grep "$key" "$target_file" | sd "$key"': (.*) *' '$1' | tr -d '"'))
+uniq_matches=($(echo "${matches[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+
 jq -c '.[]' "$dict_file" | while read i; do
     id=$(echo "$i" | jq ".$key" | tr -d '"')
     name=$(echo "$i" | jq ".name" | tr -d '"')
 
-    sd "(?P<before>\"?$key\"?.*)($id)(?P<after>.*)" '${before}'"$name"'${after}' "$target_file"
+    if [[ " ${uniq_matches[@]} " =~ " $id " ]]; then 
+	sd "(?P<before>\"?$key\"?.*)($id)(?P<after>.*)" '${before}'"$name"'${after}' "$target_file"
+    fi
 done

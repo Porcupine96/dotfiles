@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+
+display_count=$(xrandr | grep -i ' connected' | wc -l)
+
+case $display_count in
+    1) 
+	./.screenlayout/single.sh
+	
+	setxkbmap -option altwin:swap_lalt_lwin
+	setxkbmap -layout pl -option ctrl:nocaps -option nodeadkeys
+	;;
+    3)
+	./.screenlayout/home.sh
+	setxkbmap -layout pl
+	;;
+    *)
+	exit 1
+	;;
+esac
+
+xset r rate 200 50
+xset m 30/12 0
+
+./.fehbg
+
+i3-msg restart
