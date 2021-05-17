@@ -1,4 +1,5 @@
 vifminfo
+config/vifm/vifminfo.json
 .xmonad/xmonad.o
 .xmonad/xmonad.hi
 .xmonad/xmonad.errors
