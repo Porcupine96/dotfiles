@@ -11,7 +11,8 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 if type "xrandr"; then
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload -q main -c "$DIR"/config.ini &
+    t=$(xrandr --query | grep "$m connected primary" >> /dev/null && echo "right" || echo "none")
+    TRAY_POSITION=$t MONITOR=$m polybar --reload -q main -c "$DIR"/config.ini &
   done
 else
   polybar --reload -q main -c "$DIR"/config.ini &
