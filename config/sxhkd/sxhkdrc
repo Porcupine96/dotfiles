@@ -38,6 +38,14 @@ super + ctrl + m
 	fullscreen-i3-wrap scratchpad "floating_ncspot" 'st -c floating_ncspot -g 140x35 -e ncspot' &
 super + ctrl + c
 	copyq toggle
+XF86AudioPlay
+	playerctl play-pause
+XF86AudioPause
+	playerctl play-pause
+XF86AudioPrev
+	playerctl prev
+XF86AudioNext
+	playerctl next
 XF86AudioMute
 	volume toggle
 XF86AudioLowerVolume
