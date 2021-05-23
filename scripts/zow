@@ -1,0 +1,18 @@
+#!/bin/env bash
+
+
+url=$(rofi -dmenu) 
+environment_id=$(echo "$url" | sd '.*zowie.ai/e/(.*?)/.*' '$1')
+
+declare -a options=(
+    "Open in Browser"
+    "Copy environment_id"
+)
+
+choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu)
+
+case "$choice" in
+    "Open in Browser") xdg-open "https://admin.chatbotize.com/environments/$environment_id" ;;
+    "Copy environment_id") echo "$environment_id" | xclip -selection clipboard ;;
+    *)
+esac

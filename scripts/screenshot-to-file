@@ -2,4 +2,4 @@
 
 # grim -g "$(slurp)" "$1"
 
-flameshot gui --path "$1"
+flameshot gui --raw > "$1"
