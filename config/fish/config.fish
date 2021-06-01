@@ -44,3 +44,5 @@ function vterm_cmd --description 'Run an Emacs command among the ones been defin
     vterm_printf '51;E'(string join '' $vterm_elisp)
 end
 
+# use VI bindings
+fish_vi_key_bindings
