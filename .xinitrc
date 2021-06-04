@@ -1,4 +1,4 @@
-xcompmgr &
+picom &
 sxhkd &
 dunst &
 flameshot &
