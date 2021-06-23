@@ -10,6 +10,10 @@ case $display_count in
 	setxkbmap -option altwin:swap_lalt_lwin
 	setxkbmap -layout pl -option ctrl:nocaps -option nodeadkeys
 	;;
+    2)
+	./.screenlayout/yolk.sh
+	setxkbmap -layout pl
+	;;
     3)
 	./.screenlayout/home.sh
 	setxkbmap -layout pl
