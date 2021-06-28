@@ -6,6 +6,7 @@ dropbox start &
 xfce4-clipman &
 nm-applet &
 blueman-applet &
+copyq &
 
 xset r rate 200 40
 xset m 20/12 0
