@@ -4,6 +4,8 @@ super + d
 super + o
 	rofi -show window -show-icons -font "Fira Mono 11"
 	#rofi -dpi 192 -show window -show-icons -font "Fira Mono 11"
+super + grave
+        dunstctl history-pop
 super + alt + d
 	exec dmenu_run
 super + t
@@ -27,7 +29,7 @@ super + shift + F12
 super + F12
 	prompt 'Suspend the computer?' 'lock'
 super + F4
-	deepin-screenshot
+      	flameshot gui
 super + F7
 	playerctl previous
 super + F8
