@@ -16,7 +16,7 @@ floating_minimum_size 888 x 500
 
 for_window [class=".*"] border pixel 3
 for_window [class="floating_*"] floating enable, move position center
-for_window [class="copyq*"] floating enable, move position center
+for_window [class="copyq"] floating enable, resize set 1200 720, move position center, sticky enable
 # }}}
 
 
