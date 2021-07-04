@@ -1,0 +1,17 @@
+#!/bin/bash
+
+address="38:18:4C:6D:E3:49"
+
+declare -a options=(
+    "connect"
+    "disconnect"
+)
+
+choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu)
+
+case "$choice" in 
+    "connect") bluetoothctl connect "$address" ;;
+    "disconnect") bluetoothctl disconnect "$address" ;;
+    *)
+esac
+
