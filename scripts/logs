@@ -13,14 +13,8 @@ else
     choice=$(echo "$output" | fzf)
     node_id=$(echo "$choice" | sed "s/\\\_//" | awk '{ print $4 }')
 
-    n_bit=""
-    case "${node_id:0:1}" in
-	"m") n_bit="1" ;;
-	"s") n_bit="2" ;;
-	*) echo "Error: Invalid node $node_id"; exit 1 ;;
-    esac
-
-    node="user@192.168.0.$n_bit${node_id:2:3}"
+    node_ip=$(ssh "$master" "docker node inspect --format '{{ .Status.Addr }}' $node_id")
+    node="user@$node_ip"
 
     output=$(ssh "$node" docker ps | grep "$stack" | grep "$query")
     choice=$(echo "$output" | fzf)
