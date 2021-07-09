@@ -40,6 +40,8 @@ super + ctrl + m
 	fullscreen-i3-wrap scratchpad "floating_ncspot" 'st -c floating_ncspot -g 140x35 -e ncspot' &
 super + ctrl + c
       	i3-msg fullscreen disable && copyq toggle
+super + ctrl + p
+      	copy-test-password
 XF86AudioPlay
 	playerctl play-pause
 XF86AudioPause
