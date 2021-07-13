@@ -11,6 +11,7 @@ case $display_count in
 	i3-msg '[class="Emacs"] move to workspace number 3'
 	i3-msg '[class="Ferdi"] move to workspace number 4'
 	i3-msg '[class="Spotify"] move to workspace number 5'
+	;;
     2)
 	i3-msg '[class="kitty"] move to workspace number 1' 
         i3-msg 'workspace number1; move workspace to output "DP-3"'
@@ -19,9 +20,8 @@ case $display_count in
 	i3-msg '[class="Emacs"] move to workspace number 3'
         i3-msg 'workspace number3; move workspace to output "DP-3"'
 	i3-msg '[class="Ferdi"] move to workspace number 4'
+	i3-msg '[class="Spotify"] move to workspace number 4'
         i3-msg 'workspace number4; move workspace to output "eDP-1"'
-	i3-msg '[class="Spotify"] move to workspace number 5'
-        i3-msg 'workspace number5; move workspace to output "eDP-1"'
 	;;
     3)
 	echo "3" ;;
