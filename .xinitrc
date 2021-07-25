@@ -8,7 +8,9 @@ nm-applet &
 blueman-applet &
 copyq &
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) || echo "gnome-keyring-daemon not found or failed"
+dbus-update-activation-environment --systemd DISPLAY || echo "dbus-update-activation-environment not found"
+eval $(/usr/bin/gnome-keyring-daemon --start) || echo "gnome-keyring-daemon not found or failed"
+export SSH_AUTH_SOCK
 
 xset r rate 200 40
 xset m 20/12 0

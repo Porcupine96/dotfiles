@@ -1,6 +1,6 @@
 !#/bin/bash
 
-kitty &
+kitty --session ~/dotfiles/config/kitty/tmux_session &
 firefox &
 emacs &
 ferdi &
