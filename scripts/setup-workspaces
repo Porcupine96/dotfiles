@@ -14,11 +14,11 @@ case $display_count in
 	;;
     2)
 	i3-msg '[class="kitty"] move to workspace number 1' 
-        i3-msg 'workspace number 1; move workspace to output "DP-3"'
+        i3-msg 'workspace number 1; move workspace to output "DP-4"'
 	i3-msg '[class="firefox"] move to workspace number 2'
-        i3-msg 'workspace number 2; move workspace to output "DP-3"'
+        i3-msg 'workspace number 2; move workspace to output "DP-4"'
 	i3-msg '[class="Emacs"] move to workspace number 3'
-        i3-msg 'workspace number 3; move workspace to output "DP-3"'
+        i3-msg 'workspace number 3; move workspace to output "DP-4"'
 	i3-msg '[class="Ferdi"] move to workspace number 4'
 	i3-msg '[class="Spotify"] move to workspace number 4'
         i3-msg 'workspace number 4; move workspace to output "eDP-1"'

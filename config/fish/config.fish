@@ -23,7 +23,7 @@ status --is-interactive; and pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
 
 # keychain
-status --is-interactive; and keychain --quiet --agents ssh --eval ~/.ssh/id_rsa | source
+# status --is-interactive; and keychain --quiet --agents ssh --eval ~/.ssh/id_rsa | source
 
 # vterm configuration
 function vterm_printf;

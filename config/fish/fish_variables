@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export SSH_AGENT_PID:2078
-SETUVAR --export SSH_AUTH_SOCK:/tmp/ssh\x2dXXXXXXAwvxAg/agent\x2e2077
+SETUVAR --export SSH_AGENT_PID:1462
+SETUVAR --export SSH_AUTH_SOCK:/tmp/ssh\x2dXXXXXXT61Dy0/agent\x2e1461
 SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
 SETUVAR Z_DATA:/home/porcupine/\x2elocal/share/z/data
