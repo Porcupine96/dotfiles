@@ -5,6 +5,7 @@ address="38:18:4C:6D:E3:49"
 declare -a options=(
     "connect"
     "disconnect"
+    "reconnect"
 )
 
 choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu)
@@ -12,6 +13,11 @@ choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu)
 case "$choice" in 
     "connect") bluetoothctl connect "$address" ;;
     "disconnect") bluetoothctl disconnect "$address" ;;
+    "reconnect") 
+        bluetoothctl disconnect "$address"
+	sleep 2
+        bluetoothctl connect "$address"
+	;;
     *)
 esac
 

@@ -2,7 +2,7 @@
 
 set -e
 
-master="user@192.168.0.11"
+master="lkazmierczak@192.168.0.11"
 
 if [ $# -lt 2 ]; then
     echo "Usage: STACK QUERY ARGS"
@@ -11,17 +11,17 @@ else
     query="$1"; shift
     args="$@"
 
-    output=$(ssh "$master" docker stack ps "$stack" | grep "Running" | grep "$query")
+    output=$(ssh "$master" sudo docker stack ps "$stack" | grep "Running" | grep "$query")
     choice=$(echo "$output" | fzf)
     node_id=$(echo "$choice" | sed "s/\\\_//" | awk '{ print $4 }')
 
-    node_ip=$(ssh "$master" "docker node inspect --format '{{ .Status.Addr }}' $node_id")
-    node="user@$node_ip"
+    node_ip=$(ssh "$master" "sudo docker node inspect --format '{{ .Status.Addr }}' $node_id")
+    node="lkazmierczak@$node_ip"
 
-    output=$(ssh "$node" docker ps | grep "$stack" | grep "$query")
+    output=$(ssh "$node" sudo docker ps | grep "$stack" | grep "$query")
     choice=$(echo "$output" | fzf)
     container_id=$(echo "$choice" | cut -d' ' -f1)
 
-    ssh "$node" docker logs --follow "$container_id" $args 2>&1
+    ssh "$node" sudo docker logs --follow "$container_id" $args 2>&1
 fi
 

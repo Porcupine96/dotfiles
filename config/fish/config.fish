@@ -12,6 +12,7 @@ alias vf='vifm'
 alias vim='nvim'
 alias gp='git push'
 alias gl='git pull'
+alias gs='git status'
 
 # prompt
 set pure_color_git_branch "green"
@@ -24,6 +25,9 @@ status --is-interactive; and pyenv virtualenv-init - | source
 
 # keychain
 # status --is-interactive; and keychain --quiet --agents ssh --eval ~/.ssh/id_rsa | source
+
+# gnome-keyring-daemon
+set -x (gnome-keyring-daemon --start | string split "=")
 
 # vterm configuration
 function vterm_printf;

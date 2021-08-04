@@ -28,4 +28,8 @@ xset m 30/12 0
 
 ./.fehbg
 
+# restart copyq
+pkill copyq
+copyq &
+
 i3-msg restart
