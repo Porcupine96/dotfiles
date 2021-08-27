@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# = 2 ]; then
+    originKey="$1"
+    key="$2"
+
+    rm /tmp/webappsstore.sqlite
+    cp ~/.mozilla/firefox/3ws4xukx.default-release/webappsstore.sqlite /tmp/
+
+    sql="
+    select value
+    from webappsstore2
+    where originKey = '$originKey' and key = '$key';
+    "
+
+    sqlite3 /tmp/webappsstore.sqlite "$sql"
+else
+    echo "Usage: originKey localStorageKey"
+fi

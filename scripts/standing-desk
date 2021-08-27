@@ -1,0 +1,17 @@
+#!/bin/bash
+
+script="/home/porcupine/.pyenv/versions/idasen/bin/idasen-controller"
+
+declare -a options=(
+    "stand"
+    "sit"
+    "eat"
+)
+
+choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu)
+
+case "$choice" in 
+    "stand") eval "$script --stand" ;;
+    "sit") eval "$script --sit" ;;
+    "eat") eval "$script --move-to 850" ;;
+esac

@@ -12,7 +12,7 @@ declare -a options=(
 choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu)
 
 case "$choice" in
-    "Open in Browser") xdg-open "https://admin.chatbotize.com/environments/$environment_id" ;;
+    "Open in Browser") xdg-open "https://admin.vpn.zowie.ai/environments/$environment_id" ;;
     "Copy environment_id") echo "$environment_id" | xclip -selection clipboard ;;
     *)
 esac

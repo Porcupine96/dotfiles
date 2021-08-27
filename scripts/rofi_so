@@ -4,10 +4,9 @@
 declare -a options=(
   "Monorepo Pull Requests"
   "Chatbotize Jenkins"
+  "Admin Test Account"
   "Jira Chatbotize Dev" 
   "Jira Chatbotize SUP" 
-  "Jira Chatbotize FF"
-  "GitLab Activity"
 )
 
 
@@ -15,17 +14,16 @@ function to_url() {
   case "$1" in
     "Monorepo Pull Requests")   echo "https://github.com/chatbotizeteam/monorepo/pulls" ;;
     "Chatbotize Jenkins")       echo "https://jenkins.codeheroes.tech/blue/organizations/jenkins/monorepo/activity" ;;
-    "GitLab Activity")          echo "https://gitlab.com/dashboard/activity" ;;
+    "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
     "Jira Chatbotize Dev")      echo "https://chatbotize.atlassian.net/jira/software/projects/CD/boards/1" ;;
     "Jira Chatbotize SUP")      echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/SUP/queues/custom" ;;
-    "Jira Chatbotize FF")       echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/FF/queues/custom/25" ;;
   esac
 }
 
 
 choice=$(printf "%s\n" "${options[@]}" | selector)
 
-if [[ ! -z "$choice" ]]; then
+if [[ -n "$choice" ]]; then
   url=$(to_url "$choice")
 
   bash -c "xdg-open $url; (true)" >> /dev/null 2>&1

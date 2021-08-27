@@ -24,6 +24,8 @@ super + p
 	rofi_so
 super + F11
 	pkill -USR1 -x sxhkd; notify-send "sxhkd refreshed!";
+super + shift + F11
+	i3lock -c 1d2021 -e;
 super + shift + F12
 	playerctl pause; i3lock -c 1d2021 -e;
 super + F12
