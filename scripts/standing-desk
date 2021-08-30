@@ -2,13 +2,17 @@
 
 script="/home/porcupine/.pyenv/versions/idasen/bin/idasen-controller"
 
-declare -a options=(
-    "stand"
-    "sit"
-    "eat"
-)
+if [ $# = 1 ]; then
+    choice="$1"
+else
+    declare -a options=(
+	"stand"
+	"sit"
+	"eat"
+    )
 
-choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu)
+    choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu)
+fi
 
 case "$choice" in 
     "stand") eval "$script --stand" ;;
