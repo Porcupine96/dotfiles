@@ -5,6 +5,9 @@ set fish_greeting
 fish_add_path -p ~/scripts
 fish_add_path -p ~/work/nlp-scripts/bin
 fish_add_path -p ~/.local/share/coursier/bin
+fish_add_path -p ~/.local/bin
+fish_add_path -p ~/projects/zowier
+fish_add_path -p /usr/share/applications
 
 # aliases
 alias prod-vpn='sudo openfortivpn -c /etc/openfortivpn/admin'

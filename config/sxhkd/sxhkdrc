@@ -4,6 +4,8 @@ super + d
 super + o
 	rofi -show window -show-icons -font "Fira Mono 11"
 	#rofi -dpi 192 -show window -show-icons -font "Fira Mono 11"
+ctrl + space
+	dunstctl close
 super + grave
         dunstctl history-pop
 super + alt + d
@@ -44,6 +46,12 @@ super + ctrl + c
       	i3-msg fullscreen disable && copyq toggle
 super + ctrl + p
       	copy-test-password
+super + ctrl + shift + i
+        standing-desk stand
+super + ctrl + shift + o
+        standing-desk eat
+super + ctrl + shift + p
+        standing-desk sit
 XF86AudioPlay
 	playerctl play-pause
 XF86AudioPause

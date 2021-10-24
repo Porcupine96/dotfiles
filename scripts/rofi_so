@@ -7,6 +7,9 @@ declare -a options=(
   "Admin Test Account"
   "Jira Chatbotize Dev" 
   "Jira Chatbotize SUP" 
+  "Weather"
+  "Knowledge Base"
+  "Home Assistant"
 )
 
 
@@ -17,6 +20,9 @@ function to_url() {
     "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
     "Jira Chatbotize Dev")      echo "https://chatbotize.atlassian.net/jira/software/projects/CD/boards/1" ;;
     "Jira Chatbotize SUP")      echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/SUP/queues/custom" ;;
+    "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
+    "Knowledge Base")           echo "/home/porcupine/kb/index.html" ;;
+    "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
   esac
 }
 

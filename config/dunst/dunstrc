@@ -4,7 +4,8 @@
     format               = "<b>%s</b>\n%b"
     monitor              = 0
     follow               = mouse
-    geometry             = "400x30-10+10"
+    origin               = top-right
+    width                = (500, 700)
     indicate_hidden      = yes
     sort                 = yes
     alignment            = left
@@ -26,17 +27,11 @@
     title                = Dunst
     class                = Dunst
     browser              = /usr/bin/brave-browser
-    startup_notification = false
     always_run_script    = true
     icon_position        = left
     frame_color          = "#000000"
     frame_width          = 1
-
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    context = ctrl+shift+p
-    history = ctrl+grave
+    max_icon_size        = 300
 
 [urgency_low]
     background = "#121c21"
