@@ -2,16 +2,15 @@
 
 
 declare -a options=(
-  "Monorepo Pull Requests"
-  "Chatbotize Jenkins"
-  "Admin Test Account"
-  "Jira Chatbotize Dev" 
-  "Jira Chatbotize SUP" 
-  "Weather"
-  "Knowledge Base"
-  "Home Assistant"
+  "Monorepo Pull Requests\0icon\x1f~/dotfiles/logos/github.png"
+  "Chatbotize Jenkins\0icon\x1f~/dotfiles/logos/jenkins.png"
+  "Admin Test Account\0icon\x1f~/dotfiles/logos/zowie.png"
+  "Jira Chatbotize Dev\0icon\x1f~/dotfiles/logos/jira.png" 
+  "Jira Chatbotize SUP\0icon\x1f~/dotfiles/logos/jira.png" 
+  "Weather\0icon\x1f~/dotfiles/logos/weather.png"
+  "Knowledge Base\0icon\x1f~/dotfiles/logos/knowledge.png"
+  "Home Assistant\0icon\x1f~/dotfiles/logos/home-assistant.png"
 )
-
 
 function to_url() {
   case "$1" in
@@ -26,8 +25,7 @@ function to_url() {
   esac
 }
 
-
-choice=$(printf "%s\n" "${options[@]}" | selector)
+choice=$(printf "%b\n" "${options[@]}" | rofi -i -dmenu)
 
 if [[ -n "$choice" ]]; then
   url=$(to_url "$choice")

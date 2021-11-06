@@ -5,7 +5,7 @@
     monitor              = 0
     follow               = mouse
     origin               = top-right
-    width                = (500, 700)
+    width                = (300, 400)
     indicate_hidden      = yes
     sort                 = yes
     alignment            = left

@@ -16,6 +16,6 @@ fi
 
 case "$choice" in 
     "stand") eval "$script --stand" ;;
-    "sit") eval "$script --move-to 675" ;;
+    "sit") eval "$script --move-to 655" ;;
     "eat") eval "$script --move-to 850" ;;
 esac
