@@ -26,8 +26,7 @@ status is-login; and pyenv init --path | source
 status --is-interactive; and pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
 
-# keychain
-# status --is-interactive; and keychain --quiet --agents ssh --eval ~/.ssh/id_rsa | source
+set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # gnome-keyring-daemon
 set -x (gnome-keyring-daemon --start | string split "=")
@@ -55,3 +54,5 @@ end
 
 # use VI bindings
 fish_vi_key_bindings
+
+source /home/porcupine/dotfiles/config/fish/zowie.fish

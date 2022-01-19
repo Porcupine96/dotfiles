@@ -1,0 +1,12 @@
+#!/bin/bash
+
+path=$(mktemp "/tmp/copyq-ocr-XXXXXXX")
+
+screenshot-to-file "$path.png"
+
+tesseract -l "pol+eng" --oem 2 "$path.png" "$path"
+
+text=$(cat "$path.txt")
+
+copyq add "$text"
+copyq copy "$text"

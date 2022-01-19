@@ -2,6 +2,7 @@
 
 
 display_count=$(xrandr | grep -i ' connected' | wc -l)
+displays=$(xrandr | grep -i ' connected' | cut -d' ' -f1)
 
 case $display_count in
     1) 

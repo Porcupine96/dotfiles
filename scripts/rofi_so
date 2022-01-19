@@ -5,6 +5,7 @@ declare -a options=(
   "Monorepo Pull Requests\0icon\x1f~/dotfiles/logos/github.png"
   "Chatbotize Jenkins\0icon\x1f~/dotfiles/logos/jenkins.png"
   "Admin Test Account\0icon\x1f~/dotfiles/logos/zowie.png"
+  "Zowier\0icon\x1f~/dotfiles/logos/zowie.png"
   "Jira Chatbotize Dev\0icon\x1f~/dotfiles/logos/jira.png" 
   "Jira Chatbotize SUP\0icon\x1f~/dotfiles/logos/jira.png" 
   "Weather\0icon\x1f~/dotfiles/logos/weather.png"
@@ -22,6 +23,9 @@ function to_url() {
     "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
     "Knowledge Base")           echo "/home/porcupine/kb/index.html" ;;
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
+    # hack
+    "Zowier") zowier
+	      exit 0;;
   esac
 }
 
