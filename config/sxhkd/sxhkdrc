@@ -1,9 +1,7 @@
 super + d
 	rofi -show combi -combi-modi window,drun,run -show-icons -font "Fira Mono 11"
-	#rofi -show combi -combi-modi window,drun,run -dpi 192 -show-icons -font "Fira Mono 11"
 super + o
 	rofi -show window -show-icons -font "Fira Mono 11"
-	#rofi -dpi 192 -show window -show-icons -font "Fira Mono 11"
 ctrl + space
 	dunstctl close
 super + grave
@@ -42,6 +40,8 @@ super + F9
 	playerctl previous
 super + ctrl + m
 	fullscreen-i3-wrap scratchpad "floating_ncspot" 'st -c floating_ncspot -g 140x35 -e ncspot' &
+super + ctrl + e
+        rofi -show emoji -modi emoji
 super + ctrl + c
       	i3-msg fullscreen disable && copyq toggle
 super + ctrl + t

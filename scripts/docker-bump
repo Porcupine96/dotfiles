@@ -1,0 +1,44 @@
+#!/bin/bash
+
+
+input=""
+
+image_prefix="eu.gcr.io"
+
+clean=$(echo "$input" | awk -v prefix="$image_prefix" '{ line=$0; gsub(".*" prefix, prefix, line); print line }')
+
+update_in_kustomization() {
+    image="$1"
+    version="$2"
+
+    if grep -q "$image" kustomization.yaml; then 
+	# update existing version
+	image_esc=$(echo "$image" | sed "s=/=\\\/=")
+	awk -v version="$version" \
+	    -v image="$image" \
+	    '{ if (update_next) { update_next=0; printf "    newTag: %s\n", version } else { print } } { if ($0 ~ ".*name: "image".*" ) { update_next=1 } }' \
+	    kustomization.yaml > updated.yaml
+	mv updated.yaml kustomization.yaml
+    else
+	# add a new image
+	if  ! grep -q "images:" kustomization.yaml; then
+	    echo "images:" >> kustomization.yaml
+	fi
+	echo "  - name: $image
+    newTag: $version" >> kustomization.yaml
+    fi
+}
+
+while IFS= read -r line; do
+    IFS=":" read -ra chunks <<< "$line"
+    image="${chunks[0]}"
+    version="${chunks[1]}"
+
+    if grep -q "$image" app/*; then
+	# replace image in app/...
+	path=$(grep -l "$image" app/*)
+	sed -i "s=$image:.*=$image:$version=" "$path"
+    else
+	update_in_kustomization "$image" "$version"
+    fi
+done <<< "$clean"
