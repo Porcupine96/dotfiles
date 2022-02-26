@@ -7,14 +7,18 @@
     packages = with pkgs; [
       # Core
       arandr
+      fd
       feh
       flameshot
       fzf
       (gl_wrap pkgs { bin = "kitty"; })
       neofetch
+      neovim
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
+      protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
       rofi
+      ripgrep
       tmux
       vifm
       wget
@@ -33,6 +37,7 @@
 
       # Scala
       ammonite
+      sbt
 
       # JS
       yarn
@@ -54,6 +59,9 @@
       grpcurl
       httpie
       jq
+      kubectl
+      kustomize
+      k9s
       languagetool
       ngrok
       (gl_wrap pkgs {
@@ -62,7 +70,9 @@
       })
       ocrmypdf
       pandoc
+      postman
       pdftk
+      pgcli
       robo3t # TODO: fix QT scaling - "don't scale my apps" in Kuba's config
       (gl_wrap pkgs { bin = "zeal"; })
       zathura
