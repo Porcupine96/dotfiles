@@ -29,6 +29,9 @@ bindsym $mod+Shift+q kill
 
 # dmenu
 bindsym $mod+Shift+d exec dmenu_run
+bindsym $mod+p exec rofi_so
+bindsym $mod+d exec "rofi -show combi -combi-modi window,drun,run -show-icons -font 'Fira Mono 11'"
+bindsym $mod+Ctrl+c exec "i3-msg fullscreen disable && copyq toggle"
 
 # change focus
 bindsym $mod+Ctrl+h focus left

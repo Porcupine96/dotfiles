@@ -1,5 +1,3 @@
-super + d
-	rofi -show combi -combi-modi window,drun,run -show-icons -font "Fira Mono 11"
 super + o
 	rofi -show window -show-icons -font "Fira Mono 11"
 ctrl + space
@@ -20,8 +18,6 @@ super + c
 	rofi-cheatsheets
 super + shift + n
 	zathura /home/porcupine/studies/math/zadania_trudne.pdf
-super + p
-	rofi_so
 super + F11
 	pkill -USR1 -x sxhkd; notify-send "sxhkd refreshed!";
 super + shift + F11
@@ -40,10 +36,6 @@ super + F9
 	playerctl previous
 super + ctrl + m
 	fullscreen-i3-wrap scratchpad "floating_ncspot" 'st -c floating_ncspot -g 140x35 -e ncspot' &
-super + ctrl + e
-        rofi -show emoji -modi emoji
-super + ctrl + c
-      	i3-msg fullscreen disable && copyq toggle
 super + ctrl + t
       	copyq-ocr
 super + ctrl + p
