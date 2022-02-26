@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+git add -A 
+nix build --experimental-features "nix-command flakes" '.#porcupine'
+./result/activate 
+rm result

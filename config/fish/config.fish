@@ -16,6 +16,7 @@ alias vim='nvim'
 alias gp='git push'
 alias gl='git pull'
 alias gs='git status'
+alias nix-flakes='nix --extra-experimental-features nix-command --extra-experimental-features flakes'
 
 # prompt
 set pure_color_git_branch "green"

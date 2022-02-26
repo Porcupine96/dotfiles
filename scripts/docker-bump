@@ -13,7 +13,6 @@ update_in_kustomization() {
 
     if grep -q "$image" kustomization.yaml; then 
 	# update existing version
-	image_esc=$(echo "$image" | sed "s=/=\\\/=")
 	awk -v version="$version" \
 	    -v image="$image" \
 	    '{ if (update_next) { update_next=0; printf "    newTag: %s\n", version } else { print } } { if ($0 ~ ".*name: "image".*" ) { update_next=1 } }' \
