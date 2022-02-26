@@ -5,12 +5,13 @@
 
   home = {
     packages = with pkgs; [
-      # Linux Tools
+      # Core
+      arandr
       flameshot
       fzf
       neofetch
-      imv
-      picom
+      (gl_wrap pkgs { bin = "imv"; })
+      (gl_wrap pkgs { bin = "picom"; })
       rofi
       tmux
 
@@ -37,6 +38,7 @@
       # TODO: mypy-protobuf
 
       # other
+      ansible
       (gl_wrap pkgs {
         bin = "anki";
         package = anki-bin;
@@ -44,6 +46,11 @@
       # freetube <- issue with audio
       # ferdi <- issue with audio
       copyq
+      dropbox
+      grpcurl
+      httpie
+      jq
+      languagetool
       ngrok
       (gl_wrap pkgs {
         bin = "obs";
