@@ -16,6 +16,7 @@
       nixfmt
 
       # other
+      (gl_wrap pkgs { bin="anki"; package=anki-bin; })
     ];
 
     stateVersion = "20.09";

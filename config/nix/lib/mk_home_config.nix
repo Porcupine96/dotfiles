@@ -7,7 +7,9 @@ home-manager.lib.homeManagerConfiguration {
   homeDirectory = "/home/${username}";
   system = "x86_64-linux";
   configuration = { ... }: {
-    nixpkgs.overlays = overlays;
+    nixpkgs.overlays = overlays ++ [
+      (self: super: { gl_wrap = import ./gl_wrap.nix {}; })
+    ];
     imports = [ ../home.nix entrypoint ];
   };
 }
