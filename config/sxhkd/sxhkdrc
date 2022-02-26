@@ -1,5 +1,3 @@
-super + o
-	rofi -show window -show-icons -font "Fira Mono 11"
 ctrl + space
 	dunstctl close
 super + grave
@@ -14,8 +12,6 @@ super + ctrl + s
     flameshot gui
 super + b
 	rofi-books
-super + c
-	rofi-cheatsheets
 super + shift + n
 	zathura /home/porcupine/studies/math/zadania_trudne.pdf
 super + F11
