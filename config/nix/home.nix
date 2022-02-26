@@ -7,6 +7,7 @@
     packages = with pkgs; [
       # Core
       arandr
+      feh
       flameshot
       fzf
       (gl_wrap pkgs { bin = "kitty"; })
