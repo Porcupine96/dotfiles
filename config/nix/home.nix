@@ -6,8 +6,11 @@
   home = {
     packages = with pkgs; [
       # Linux Tools
-      neofetch
       flameshot
+      fzf
+      neofetch
+      imv
+      picom
       rofi
       tmux
 
@@ -15,12 +18,6 @@
       cachix
       nixGLIntel
       nixfmt
-
-      # other
-      (gl_wrap pkgs {
-        bin = "anki";
-        package = anki-bin;
-      })
 
       # LaTeX
       (texlive.combine {
@@ -35,7 +32,18 @@
       # JS
       yarn
 
+      # Python
+      mypy
+      # TODO: mypy-protobuf
+
+      # other
+      (gl_wrap pkgs {
+        bin = "anki";
+        package = anki-bin;
+      })
       # freetube <- issue with audio
+      # ferdi <- issue with audio
+      copyq
       ngrok
       (gl_wrap pkgs {
         bin = "obs";
