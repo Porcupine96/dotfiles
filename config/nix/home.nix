@@ -9,11 +9,14 @@
       arandr
       flameshot
       fzf
+      (gl_wrap pkgs { bin = "kitty"; })
       neofetch
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
       rofi
       tmux
+      vifm
+      wget
 
       # nix
       cachix
@@ -59,6 +62,7 @@
       ocrmypdf
       pandoc
       pdftk
+      robo3t # TODO: fix QT scaling - "don't scale my apps" in Kuba's config
       (gl_wrap pkgs { bin = "zeal"; })
       zathura
     ];
