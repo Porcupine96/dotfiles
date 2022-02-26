@@ -7,10 +7,13 @@
     packages = with pkgs; [
       # Core
       arandr
+      dunst
       fd
       feh
       flameshot
       fzf
+      i3blocks
+      i3lock
       (gl_wrap pkgs { bin = "kitty"; })
       neofetch
       neovim
@@ -19,9 +22,10 @@
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
       rofi
       ripgrep
+      rsync
       tmux
-      vifm
       wget
+      vifm
 
       # nix
       cachix
@@ -43,8 +47,8 @@
       yarn
 
       # Python
-      mypy
-      # TODO: mypy-protobuf
+      mypy # TODO: mypy-protobuf
+      pyright
 
       # other
       ansible
