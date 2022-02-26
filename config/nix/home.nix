@@ -7,7 +7,6 @@
     packages = with pkgs; [
       # Core
       arandr
-      dunst
       fd
       feh
       flameshot
@@ -20,6 +19,7 @@
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
+      pass-otp
       rofi
       ripgrep
       rsync
