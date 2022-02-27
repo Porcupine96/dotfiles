@@ -13,6 +13,7 @@ declare -a options=(
   "Home Assistant\0icon\x1f~/dotfiles/logos/home-assistant.png"
   "Status\0icon\x1f~/dotfiles/logos/zowie.png"
   "Grafana\0icon\x1f~/dotfiles/logos/grafana.png"
+  "Kibana\0icon\x1f~/dotfiles/logos/kibana.png"
 )
 
 function to_url() {
@@ -26,6 +27,7 @@ function to_url() {
     "Knowledge Base")           echo "/home/porcupine/kb/index.html" ;;
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
     "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
+    "Kibana")                   echo "https://kibana.vpn.zowie.ai" ;;
     # hack
     "Zowier") zowier
 	      exit 0;;

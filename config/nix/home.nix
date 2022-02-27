@@ -12,7 +12,7 @@
       flameshot
       fzf
       i3blocks
-      i3lock
+      # i3lock TODO: doesn't work 
       (gl_wrap pkgs { bin = "kitty"; })
       neofetch
       neovim
