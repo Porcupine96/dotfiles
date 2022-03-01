@@ -27,8 +27,10 @@ function to_url() {
     "Knowledge Base")           echo "/home/porcupine/kb/index.html" ;;
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
     "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
-    "Kibana")                   echo "https://kibana.vpn.zowie.ai" ;;
     # hack
+    "Kibana") brave "https://kibana.vpn.zowie.ai"
+	      exit 0;;
+
     "Zowier") zowier
 	      exit 0;;
 

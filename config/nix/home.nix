@@ -19,7 +19,7 @@
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
-      pass-otp
+      (pass.withExtensions (ext: [ext.pass-otp])) 
       rofi
       ripgrep
       rsync

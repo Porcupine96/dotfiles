@@ -30,8 +30,13 @@ status --is-interactive; and pyenv virtualenv-init - | source
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # make rofi work: https://github.com/nix-community/home-manager/issues/354
-set -x LOCALE_ARCHIVE (nix-build '<nixpkgs>' -A glibcLocales)/lib/locale/locale-archive
+# set -x LOCALE_ARCHIVE (nix-build '<nixpkgs>' -A glibcLocales)/lib/locale/locale-archive
+set -x LOCALE_ARCHIVE "/nix/store/ahzi8gfj34762a0yccafanspwylqj1z4-glibc-locales-2.33-108/lib/locale/locale-archive"
 set -x XDG_DATA_DIRS "/usr/share:/usr/local/share:$HOME/.local/share:$HOME/.nix-profile/share"
+
+set -x QT_STYLE_OVERRIDE Fusion
+set -x QT_AUTO_SCREEN_SCALE_FACTOR 0
+
 
 # gnome-keyring-daemon
 set -x (gnome-keyring-daemon --start | string split "=")
