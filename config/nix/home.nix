@@ -7,6 +7,7 @@
     packages = with pkgs; [
       # Core
       arandr
+      curl
       fd
       feh
       flameshot
