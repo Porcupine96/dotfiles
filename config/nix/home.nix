@@ -53,7 +53,7 @@
       pyright
 
       (let
-        jupyterlab_vim = ps: ps.callPackage ./python/jupyterlab_vim.nix {};
+        jupyterlab_vim = callPackage ./python/jupyterlab_vim.nix {};
 
         my-python-packages = python-packages:
           with python-packages; [
