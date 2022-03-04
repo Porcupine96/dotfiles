@@ -7,6 +7,7 @@
     packages = with pkgs; [
       # Core
       arandr
+      bat
       curl
       fd
       feh
@@ -20,7 +21,7 @@
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
-      (pass.withExtensions (ext: [ext.pass-otp])) 
+      (pass.withExtensions (ext: [ ext.pass-otp ]))
       rofi
       ripgrep
       rsync
@@ -50,6 +51,18 @@
       # Python
       mypy # TODO: mypy-protobuf
       pyright
+
+      (let
+        jupyterlab_vim = ps: ps.callPackage ./python/jupyterlab_vim.nix {};
+
+        my-python-packages = python-packages:
+          with python-packages; [
+            pandas
+            jupyterlab
+            jupyterlab_vim
+          ];
+        python-with-my-packages = python3.withPackages my-python-packages;
+      in python-with-my-packages)
 
       # other
       ansible
