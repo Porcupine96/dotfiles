@@ -1,6 +1,0 @@
-{
-    "coc.preferences.formatOnSaveFiletypes": ["scala", "python"],
-    "metals.javaHome": "/usr/lib/jvm/jdk-11.0.6",
-    "metals.serverVersion": "0.9.0"
-}
-
