@@ -60,6 +60,7 @@
           with python-packages; [
             pip 
             pandas
+            idasen
             jupyterlab
             jupyterlab_vim
             virtualenv
