@@ -11,18 +11,13 @@ buildPythonPackage rec {
     sha256 = "d9dc4b3318f310e34c82951ea5d6683f67bed7def4b259fafbfe4f1beb1d8e5f";
   };
 
- propagatedBuildInputs = [
-   jupyterlab
-   jupyter_console
-   qtconsole
-   ipywidgets
- ];
+  propagatedBuildInputs = [ jupyter_console qtconsole ipywidgets ];
 
   meta = with lib; {
     description = "jupyterlab vim";
     homepage = "https://github.com/jupyterlab-contrib/jupyterlab-vim";
     license = licenses.bsd3;
     platforms = platforms.all;
-    priority = 100; 
+    priority = 100;
   };
 }

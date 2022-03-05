@@ -8,6 +8,7 @@
       # Core
       arandr
       bat
+      blueman
       curl
       fd
       feh
@@ -57,9 +58,11 @@
 
         my-python-packages = python-packages:
           with python-packages; [
+            pip 
             pandas
             jupyterlab
             jupyterlab_vim
+            virtualenv
           ];
         python-with-my-packages = python3.withPackages my-python-packages;
       in python-with-my-packages)
