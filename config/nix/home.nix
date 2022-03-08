@@ -10,6 +10,7 @@
       bat
       blueman
       curl
+      direnv
       fd
       feh
       flameshot
@@ -54,7 +55,7 @@
       pyright
 
       (let
-        jupyterlab_vim = callPackage ./python/jupyterlab_vim.nix {};
+        # jupyterlab_vim = callPackage ./python/jupyterlab_vim.nix {};
 
         my-python-packages = python-packages:
           with python-packages; [
@@ -62,8 +63,12 @@
             pandas
             idasen
             jupyterlab
-            jupyterlab_vim
+            # jupyterlab_vim
             virtualenv
+            # temporary
+            grpcio
+            grpcio-tools
+            tqdm
           ];
         python-with-my-packages = python3.withPackages my-python-packages;
       in python-with-my-packages)
@@ -95,7 +100,8 @@
       postman
       pdftk
       pgcli
-      robo3t # TODO: fix QT scaling - "don't scale my apps" in Kuba's config
+      robo3t
+      up
       (gl_wrap pkgs { bin = "zeal"; })
       zathura
     ];
