@@ -12,6 +12,7 @@
       blueman
       curl
       direnv
+      dunst
       fd
       feh
       flameshot
@@ -20,15 +21,19 @@
       # i3lock TODO: doesn't work 
       (gl_wrap pkgs { bin = "kitty"; })
       neofetch
+      gnome.nautilus
       neovim
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
+      polybar
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
       (pass.withExtensions (ext: [ ext.pass-otp ]))
       rofi
       ripgrep
       rsync
+      sd
       tmux
+      unrar
       wget
       vifm
 
@@ -82,9 +87,11 @@
       })
       # freetube <- issue with audio
       # ferdi <- issue with audio
+      burpsuite
       copyq
       coursier
       dropbox
+      gron
       grpcurl
       httpie
       jq
@@ -102,6 +109,7 @@
       postman
       pdftk
       pgcli
+      pup
       robo3t
       up
       (gl_wrap pkgs { bin = "zeal"; })
