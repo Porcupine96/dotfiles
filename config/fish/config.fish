@@ -37,6 +37,8 @@ set -x XDG_DATA_DIRS "/usr/share:/usr/local/share:$HOME/.local/share:$HOME/.nix-
 # set -x QT_STYLE_OVERRIDE Fusion
 set -x QT_AUTO_SCREEN_SCALE_FACTOR 0
 
+# direnv
+set -x DIRENV_LOG_FORMAT ""
 
 # gnome-keyring-daemon
 set -x (gnome-keyring-daemon --start | string split "=")

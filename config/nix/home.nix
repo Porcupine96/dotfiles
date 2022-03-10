@@ -2,6 +2,7 @@
   nixpkgs.config.allowUnfree = true;
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
+  services.lorri.enable = true;
 
   home = {
     packages = with pkgs; [
@@ -82,6 +83,7 @@
       # freetube <- issue with audio
       # ferdi <- issue with audio
       copyq
+      coursier
       dropbox
       grpcurl
       httpie
