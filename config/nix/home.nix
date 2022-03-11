@@ -4,6 +4,17 @@
   programs.home-manager.enable = true;
   services.lorri.enable = true;
 
+  programs.fish.enable = true;
+  programs.fish.plugins = [{
+    name = "z";
+    src = pkgs.fetchFromGitHub {
+      owner = "jethrokuan";
+      repo = "z";
+      rev = "e0e1b9dfdba362f8ab1ae8c1afc7ccf62b89f7eb";
+      sha256 = "0dbnir6jbwjpjalz14snzd3cgdysgcs3raznsijd6savad3qhijc";
+    };
+  }];
+
   home = {
     packages = with pkgs; [
       # Core
@@ -15,9 +26,12 @@
       dunst
       fd
       feh
+      fishPlugins.pure
       flameshot
       fzf
+      htop-vim
       i3blocks
+      libreoffice
       # i3lock TODO: doesn't work 
       (gl_wrap pkgs { bin = "kitty"; })
       neofetch
@@ -25,7 +39,7 @@
       neovim
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
-      polybar
+      # polybar
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
       (pass.withExtensions (ext: [ ext.pass-otp ]))
       rofi
@@ -65,7 +79,7 @@
 
         my-python-packages = python-packages:
           with python-packages; [
-            pip 
+            pip
             pandas
             idasen
             jupyterlab
@@ -91,6 +105,7 @@
       copyq
       coursier
       dropbox
+      google-cloud-sdk
       gron
       grpcurl
       httpie
