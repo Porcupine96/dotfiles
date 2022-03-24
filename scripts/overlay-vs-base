@@ -1,0 +1,56 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' 
+
+overlay=$(
+cat kustomization.yaml | awk '
+BEGIN {
+  images=0
+}
+
+/images/ { images = 1 }
+
+{
+
+   if (images) {
+      if ($0 ~ /name: /) {
+         split($0, chunks, "name: ");
+         name = chunks[2];
+      }
+      else if ($0 ~ /newTag: /) {
+         split($0, chunks, "newTag: ");
+         tag = chunks[2];
+
+	 printf "%s %s\n", name, tag;
+      }
+   }
+}')
+
+
+while IFS= read -r line; do
+    chunks=($line)
+    image=${chunks[0]}
+    tag=$(echo ${chunks[1]} | sed 's/"//g')
+
+    matched=$(grep -rh "$image" ../../base/app)
+    IFS=':' read -r -a chunks <<< "$matched"
+
+    base_tag=${chunks[2]}
+
+
+
+
+    if [[ "$tag" == "$base_tag" ]]; then
+	echo -e "${GREEN}$image${NC}"
+    else
+	echo -e "${RED}$image${NC}"
+	echo -e "${RED}$tag vs. $base_tag${NC}"
+    fi
+
+    echo -e "\n"
+
+
+
+done <<< "$overlay"

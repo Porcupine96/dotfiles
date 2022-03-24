@@ -4,29 +4,19 @@
   programs.home-manager.enable = true;
   services.lorri.enable = true;
 
-  programs.fish.enable = true;
-  programs.fish.plugins = [{
-    name = "z";
-    src = pkgs.fetchFromGitHub {
-      owner = "jethrokuan";
-      repo = "z";
-      rev = "e0e1b9dfdba362f8ab1ae8c1afc7ccf62b89f7eb";
-      sha256 = "0dbnir6jbwjpjalz14snzd3cgdysgcs3raznsijd6savad3qhijc";
-    };
-  }];
-
   home = {
     packages = with pkgs; [
       # Core
       arandr
       bat
       blueman
+      bluez
       curl
       direnv
       dunst
       fd
       feh
-      fishPlugins.pure
+      fish
       flameshot
       fzf
       htop-vim
@@ -37,6 +27,7 @@
       neofetch
       gnome.nautilus
       neovim
+      noto-fonts
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
       # polybar
@@ -109,11 +100,13 @@
       gron
       grpcurl
       httpie
+      isync
       jq
       kubectl
       kustomize
       k9s
       languagetool
+      mu
       ngrok
       (gl_wrap pkgs {
         bin = "obs";

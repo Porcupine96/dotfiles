@@ -13,6 +13,7 @@ declare -a options=(
   "Home Assistant\0icon\x1f~/dotfiles/logos/home-assistant.png"
   "Status\0icon\x1f~/dotfiles/logos/zowie.png"
   "Grafana\0icon\x1f~/dotfiles/logos/grafana.png"
+  "Jaeger\0icon\x1f~/dotfiles/logos/jaeger.png"
   "Kibana\0icon\x1f~/dotfiles/logos/kibana.png"
 )
 
@@ -26,10 +27,9 @@ function to_url() {
     "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
     "Knowledge Base")           echo "/home/porcupine/kb/index.html" ;;
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
+    "Jaeger")                   echo "https://jaeger.vpn.zowie.ai" ;;
+    "Kibana")                   echo "https://kibana.vpn.zowie.ai" ;;
     "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
-    # hack
-    "Kibana") brave "https://kibana.vpn.zowie.ai"
-	      exit 0;;
 
     "Zowier") zowier
 	      exit 0;;

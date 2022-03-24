@@ -22,12 +22,8 @@ alias nix-flakes='nix --extra-experimental-features nix-command --extra-experime
 set pure_color_git_branch "green"
 set pure_color_virtualenv "yellow"
 
-# pyenv-virtualenv support
-# status is-login; and pyenv init --path | source
-# status --is-interactive; and pyenv init - | source
-# status --is-interactive; and pyenv virtualenv-init - | source
-
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+set -x LC_ALL "en_US.UTF-8"
 
 # make rofi work: https://github.com/nix-community/home-manager/issues/354
 # set -x LOCALE_ARCHIVE (nix-build '<nixpkgs>' -A glibcLocales)/lib/locale/locale-archive
