@@ -9,7 +9,6 @@ declare -a options=(
   "Jira Chatbotize Dev\0icon\x1f~/dotfiles/logos/jira.png" 
   "Jira Chatbotize SUP\0icon\x1f~/dotfiles/logos/jira.png" 
   "Weather\0icon\x1f~/dotfiles/logos/weather.png"
-  "Knowledge Base\0icon\x1f~/dotfiles/logos/knowledge.png"
   "Home Assistant\0icon\x1f~/dotfiles/logos/home-assistant.png"
   "Status\0icon\x1f~/dotfiles/logos/zowie.png"
   "Grafana\0icon\x1f~/dotfiles/logos/grafana.png"
@@ -25,7 +24,6 @@ function to_url() {
     "Jira Chatbotize Dev")      echo "https://chatbotize.atlassian.net/jira/software/projects/CD/boards/1" ;;
     "Jira Chatbotize SUP")      echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/SUP/queues/custom" ;;
     "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
-    "Knowledge Base")           echo "/home/porcupine/kb/index.html" ;;
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
     "Jaeger")                   echo "https://jaeger.vpn.zowie.ai" ;;
     "Kibana")                   echo "https://kibana.vpn.zowie.ai" ;;
