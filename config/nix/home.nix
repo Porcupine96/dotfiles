@@ -90,7 +90,7 @@
         bin = "anki";
         package = anki-bin;
       })
-      # freetube <- issue with audio
+      freetube # <- issue with audio
       # ferdi <- issue with audio
       burpsuite
       copyq
