@@ -25,6 +25,7 @@
       # i3lock TODO: doesn't work 
       (gl_wrap pkgs { bin = "kitty"; })
       neofetch
+      man-db
       gnome.nautilus
       neovim
       noto-fonts
@@ -73,7 +74,7 @@
             pip
             pandas
             idasen
-            jupyterlab
+            # jupyterlab
             # jupyterlab_vim
             virtualenv
             # temporary
@@ -90,9 +91,10 @@
         bin = "anki";
         package = anki-bin;
       })
-      freetube # <- issue with audio
+      # freetube # <- issue with audio
       # ferdi <- issue with audio
-      burpsuite
+      firefox
+      # burpsuite
       copyq
       coursier
       dropbox
