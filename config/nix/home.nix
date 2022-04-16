@@ -1,5 +1,6 @@
 { pkgs, lib, ... }: {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
   services.lorri.enable = true;
@@ -121,6 +122,7 @@
       pgcli
       pup
       robo3t
+      tmpmail
       up
       (gl_wrap pkgs { bin = "zeal"; })
       zathura
