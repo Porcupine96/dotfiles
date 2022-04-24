@@ -33,7 +33,9 @@
       noto-fonts
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
-      polybar
+      (polybar.override {
+        i3Support = true;
+      })
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
       (pass.withExtensions (ext: [ ext.pass-otp ]))
       rofi
@@ -97,7 +99,7 @@
       })
       # freetube # <- issue with audio
       # ferdi <- issue with audio
-      firefox
+      (gl_wrap pkgs { bin = "firefox"; })
       # burpsuite
       copyq
       coursier
