@@ -1,3 +1,4 @@
 #!/bin/bash
 
-cp ~/dotfiles/nix/jupyter-env .
+cp -rT ~/dotfiles/nix/jupyter-env .
+direnv allow

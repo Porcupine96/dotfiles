@@ -28,11 +28,12 @@
       neofetch
       man-db
       gnome.nautilus
+      jdk
       neovim
       noto-fonts
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
-      # polybar
+      polybar
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
       (pass.withExtensions (ext: [ ext.pass-otp ]))
       rofi
@@ -72,12 +73,14 @@
 
         my-python-packages = python-packages:
           with python-packages; [
+            black
             pip
             pandas
             idasen
             # jupyterlab
             # jupyterlab_vim
             virtualenv
+            mypy-protobuf
             # temporary
             grpcio
             grpcio-tools
