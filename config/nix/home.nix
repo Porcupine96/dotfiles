@@ -42,6 +42,7 @@
       ripgrep
       rsync
       sd
+      spicetify-cli
       tmux
       unrar
       wget
