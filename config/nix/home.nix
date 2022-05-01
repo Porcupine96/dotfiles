@@ -100,6 +100,7 @@
       })
       # freetube # <- issue with audio
       # ferdi <- issue with audio
+      (gl_wrap pkgs { bin = "brave"; })
       (gl_wrap pkgs { bin = "firefox"; })
       # burpsuite
       copyq

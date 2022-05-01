@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1650920743,
-        "narHash": "sha256-7xxdtLp295HswhyEjr991QJsBFeadUo43NiAsHnQ5+8=",
+        "lastModified": 1651415224,
+        "narHash": "sha256-O/EzwxUMa1OawWEwhS10Xki7RX3+hSgaJJziHeI4d7c=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "223a73c2ba7d358b23666937cb13a59b31df511c",
+        "rev": "26858fc0dbed71fa0609490fc2f2643e0d175328",
         "type": "github"
       },
       "original": {
@@ -37,12 +37,15 @@
       }
     },
     "nixGL": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
       "locked": {
-        "lastModified": 1644013836,
-        "narHash": "sha256-8J6HqBr8+JlZzjyMV8FrCS6ZI6rHo1pTMPilSBf6TaE=",
+        "lastModified": 1651078744,
+        "narHash": "sha256-+S/NEzZoTt7EoSOMEUsR/LuNTtzYhbribFaIewNxdCQ=",
         "owner": "guibou",
         "repo": "nixGL",
-        "rev": "17658df1e17a64bc23ee5c93cfa9e8b663a4ac81",
+        "rev": "56f2fbcce7a08c60c98394a64e900d5e9227bcb2",
         "type": "github"
       },
       "original": {
@@ -54,11 +57,25 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1650937716,
-        "narHash": "sha256-3Tuspfl36JKnQekMVII3kiL2afj+ngPY2iPVN3zeReU=",
+        "lastModified": 1651369430,
+        "narHash": "sha256-d86uUm0s11exU9zLo2K1AwtJQJDKubFpoF0Iw767uT4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b283b64580d1872333a99af2b4cef91bb84580cf",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1651369430,
+        "narHash": "sha256-d86uUm0s11exU9zLo2K1AwtJQJDKubFpoF0Iw767uT4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "293a5455f31039a590cca0b844d134736fedae46",
+        "rev": "b283b64580d1872333a99af2b4cef91bb84580cf",
         "type": "github"
       },
       "original": {
@@ -73,7 +90,7 @@
         "emacs": "emacs",
         "home-manager": "home-manager",
         "nixGL": "nixGL",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },

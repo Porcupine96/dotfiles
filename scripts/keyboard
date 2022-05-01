@@ -4,5 +4,6 @@
 #setxkbmap -layout pl -option ctrl:nocaps -option nodeadkeys
 setxkbmap -layout pl
 
-xset r rate 200 50
+xset r rate 180 70
 xset m 30/12 0
+
