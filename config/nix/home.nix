@@ -31,6 +31,7 @@
       jdk
       neovim
       noto-fonts
+      noto-fonts-emoji
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
       (polybar.override {
@@ -44,6 +45,7 @@
       sd
       spicetify-cli
       tmux
+      tree
       unrar
       wget
       vifm
@@ -63,6 +65,7 @@
       # Scala
       ammonite
       sbt
+      scala_2_13
 
       # JS
       yarn
