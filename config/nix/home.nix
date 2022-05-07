@@ -49,6 +49,7 @@
       unrar
       wget
       vifm
+      xclip
 
       # nix
       cachix
@@ -132,6 +133,7 @@
       pgcli
       pup
       robo3t
+      termdown
       tmpmail
       up
       (gl_wrap pkgs { bin = "zeal"; })
