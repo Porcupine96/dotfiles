@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
 git add -A 
-nix build --experimental-features "nix-command flakes" '.#porcupine' #--show-trace
+NIXPKGS_ALLOW_UNFREE=1 nix build --impure --experimental-features "nix-command flakes" '.#porcupine' --show-trace
 ./result/activate 
 rm result

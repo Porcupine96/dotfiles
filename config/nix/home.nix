@@ -22,7 +22,7 @@
       fzf
       htop-vim
       i3blocks
-      libreoffice
+      libreoffice-fresh
       # i3lock TODO: doesn't work 
       (gl_wrap pkgs { bin = "kitty"; })
       neofetch
@@ -84,11 +84,8 @@
             pip
             pandas
             idasen
-            # jupyterlab
-            # jupyterlab_vim
             virtualenv
             mypy-protobuf
-            # temporary
             grpcio
             grpcio-tools
             tqdm
@@ -113,6 +110,7 @@
       google-cloud-sdk
       gron
       grpcurl
+      home-assistant-cli
       httpie
       isync
       jq
@@ -146,6 +144,8 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacsGcc;
-    extraPackages = (epkgs: [ epkgs.vterm epkgs.pdf-tools ]);
+    extraPackages = (epkgs: [ epkgs.vterm
+                              # epkgs.pdf-tools
+                            ]);
   };
 }
