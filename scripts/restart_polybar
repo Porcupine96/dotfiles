@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pkill polybar
+i3-msg -t run_command restart

@@ -5,8 +5,8 @@ choice=$(printf "A2DP\nHandsfree Head Unit" | rofi -dmenu)
 
 
 case "$choice" in
-    "A2DP") pacmd set-card-profile 20 a2dp_sink ;;
-    "Handsfree Head Unit") pacmd set-card-profile 20 handsfree_head_unit ;;
+    "A2DP") pacmd set-card-profile bluez_card.38_18_4C_6D_E3_49 a2dp_sink ;;
+    "Handsfree Head Unit") pacmd set-card-profile bluez_card.38_18_4C_6D_E3_49 handsfree_head_unit ;;
     *)  # ignore
 esac
 

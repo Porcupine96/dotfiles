@@ -17,10 +17,13 @@ alias gp='git push'
 alias gl='git pull'
 alias gs='git status'
 alias nix-flakes='nix --extra-experimental-features nix-command --extra-experimental-features flakes'
+alias jupyter='jupyter-notebook'
 
 # prompt
 set pure_color_git_branch "green"
 set pure_color_virtualenv "yellow"
+
+set -x XDG_CONFIG_HOME "/home/porcupine/.config"
 
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x LC_ALL "en_US.UTF-8"

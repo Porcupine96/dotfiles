@@ -11,6 +11,7 @@ case $display_count in
 	i3-msg '[class="Emacs"] move to workspace number 3'
 	i3-msg '[class="Ferdi"] move to workspace number 4'
 	i3-msg '[class="Spotify"] move to workspace number 5'
+	restart_polybar
 	;;
     2)
 	snd_display=$(xrandr | grep -i ' connected' | cut -d' ' -f1 | grep -v "$primary_display")
@@ -24,6 +25,7 @@ case $display_count in
 	i3-msg '[class="Ferdi"] move to workspace number 4'
 	i3-msg '[class="Spotify"] move to workspace number 4'
         i3-msg "workspace number 4; move workspace to output $primary_display"
+	restart_polybar
 	;;
     3)
 	i3-msg '[class="kitty"] move to workspace number 1' 
@@ -36,6 +38,7 @@ case $display_count in
         i3-msg 'workspace number 4; move workspace to output "DP-2"'
 	i3-msg '[class="Spotify"] move to workspace number 5'
         i3-msg "workspace number 5; move workspace to output $primary_display"
+	restart_polybar
 	;;
     *)
 	exit 1

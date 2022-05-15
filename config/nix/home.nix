@@ -28,15 +28,13 @@
       neofetch
       man-db
       gnome.nautilus
-      jdk
+      openjdk8
       neovim
       noto-fonts
       noto-fonts-emoji
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
-      (polybar.override {
-        i3Support = true;
-      })
+      (polybar.override { i3Support = true; })
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
       (pass.withExtensions (ext: [ ext.pass-otp ]))
       rofi
@@ -67,6 +65,7 @@
       ammonite
       sbt
       scala_2_13
+      scalafmt
 
       # JS
       yarn
@@ -74,6 +73,7 @@
       # Python
       mypy # TODO: mypy-protobuf
       pyright
+      # jupyter
 
       (let
         # jupyterlab_vim = callPackage ./python/jupyterlab_vim.nix {};
@@ -144,8 +144,11 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacsGcc;
-    extraPackages = (epkgs: [ epkgs.vterm
-                              # epkgs.pdf-tools
-                            ]);
+    extraPackages = (epkgs:
+      [
+        epkgs.vterm
+        # epkgs.pdf-tools
+      ]);
   };
+
 }
