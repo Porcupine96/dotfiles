@@ -12,7 +12,7 @@ do
 done
 
 # remove scala project files
-rm -rf project/project project/target target
+rm -rf project/project project/target target project/.bloop
 
 # remove protobuf files
 rm -rf *protobufs

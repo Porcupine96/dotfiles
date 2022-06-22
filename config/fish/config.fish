@@ -11,6 +11,7 @@ fish_add_path -p /usr/share/applications
 
 # aliases
 alias prod-vpn='sudo openfortivpn -c /etc/openfortivpn/admin'
+alias l='ls -alih'
 alias vf='vifm'
 alias vim='nvim'
 alias gp='git push'

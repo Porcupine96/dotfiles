@@ -37,10 +37,11 @@
       (polybar.override { i3Support = true; })
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
       (pass.withExtensions (ext: [ ext.pass-otp ]))
-      rofi
+      (rofi.override { plugins = [ rofi-emoji ]; })
       ripgrep
       rsync
       sd
+      symbola
       spicetify-cli
       tmux
       tree
@@ -48,6 +49,8 @@
       wget
       vifm
       xclip
+
+      # mongo
 
       # nix
       cachix
@@ -58,7 +61,8 @@
       (texlive.combine {
         inherit (texlive)
           scheme-medium minted wrapfig capt-of fvextra upquote catchfile xstring
-          kvoptions fancyvrb pdftexcmds etoolbox xcolor lineno framed;
+          kvoptions fancyvrb pdftexcmds etoolbox xcolor lineno framed ucs preprint
+          cm-super unicode-math libertine;
       })
 
       # Scala
@@ -73,8 +77,8 @@
       # Python
       mypy # TODO: mypy-protobuf
       pyright
-      # jupyter
 
+      # jupyter
       (let
         # jupyterlab_vim = callPackage ./python/jupyterlab_vim.nix {};
 
@@ -83,6 +87,7 @@
             black
             pip
             pandas
+            regex
             idasen
             virtualenv
             mypy-protobuf
@@ -100,7 +105,6 @@
         package = anki-bin;
       })
       # freetube # <- issue with audio
-      # ferdi <- issue with audio
       (gl_wrap pkgs { bin = "brave"; })
       (gl_wrap pkgs { bin = "firefox"; })
       # burpsuite
@@ -136,6 +140,7 @@
       up
       (gl_wrap pkgs { bin = "zeal"; })
       zathura
+      zip
     ];
 
     stateVersion = "20.09";

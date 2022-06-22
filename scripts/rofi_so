@@ -14,6 +14,7 @@ declare -a options=(
   "Grafana\0icon\x1f~/dotfiles/logos/grafana.png"
   "Jaeger\0icon\x1f~/dotfiles/logos/jaeger.png"
   "Kibana\0icon\x1f~/dotfiles/logos/kibana.png"
+  "Figma"
 )
 
 function to_url() {
@@ -21,13 +22,14 @@ function to_url() {
     "Monorepo Pull Requests")   echo "https://github.com/chatbotizeteam/monorepo/pulls" ;;
     "Chatbotize Jenkins")       echo "https://jenkins.codeheroes.tech/blue/organizations/jenkins/monorepo/activity" ;;
     "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
-    "Jira Chatbotize DEVS")      echo "https://chatbotize.atlassian.net/jira/software/c/projects/DEVS/boards/19" ;;
+    "Jira Chatbotize DEVS")     echo "https://chatbotize.atlassian.net/jira/software/c/projects/DEVS/boards/19" ;;
     "Jira Chatbotize SUP")      echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/SUP/queues/custom" ;;
     "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
     "Jaeger")                   echo "https://jaeger.vpn.zowie.ai" ;;
     "Kibana")                   echo "https://kibana.vpn.zowie.ai" ;;
     "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
+    "Figma")                    echo "https://www.figma.com/file/I7yLNQqF4F63vh2PpYSZBc/Zowie-Redesign" ;;
 
     "Zowier") zowier
 	      exit 0;;

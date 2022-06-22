@@ -40,6 +40,9 @@ bindsym $mod+Ctrl+j focus down
 bindsym $mod+Ctrl+k focus up
 bindsym $mod+Ctrl+l focus right
 
+# emoji
+bindsym $mod+Ctrl+e exec --no-startup-id "rofi -show emoji -modi emoji"
+
 bindsym $mod+Ctrl+Shift+h focus output left
 bindsym $mod+Ctrl+Shift+j focus output down
 bindsym $mod+Ctrl+Shift+k focus output up

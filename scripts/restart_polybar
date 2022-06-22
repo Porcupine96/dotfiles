@@ -1,4 +1,3 @@
 #!/bin/bash
 
-pkill polybar
-i3-msg -t run_command restart
+pkill polybar && sleep 5 && i3-msg -t run_command restart

@@ -1,6 +1,5 @@
-# https://idasen.readthedocs.io/en/latest/index.html#configuration
 mac_address: ED:2A:2F:E9:5E:77
 positions:
-  sit: 0.69
+  sit: 0.668
   eat: 0.8
   stand: 1.06
