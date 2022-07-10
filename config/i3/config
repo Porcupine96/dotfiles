@@ -33,6 +33,7 @@ bindsym $mod+p exec --no-startup-id rofi_so
 bindsym $mod+d exec --no-startup-id "rofi -show combi -combi-modi drun,run -show-icons -font 'Fira Mono 11'"
 bindsym $mod+o exec --no-startup-id "rofi -show window -show-icons -font 'Fira Mono 11'"
 bindsym $mod+Ctrl+c exec --no-startup-id "i3-msg fullscreen disable && copyq toggle"
+bindsym $mod+Ctrl+z exec --no-startup-id zowier
 
 # change focus
 bindsym $mod+Ctrl+h focus left

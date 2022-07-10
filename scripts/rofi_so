@@ -22,7 +22,7 @@ function to_url() {
     "Monorepo Pull Requests")   echo "https://github.com/chatbotizeteam/monorepo/pulls" ;;
     "Chatbotize Jenkins")       echo "https://jenkins.codeheroes.tech/blue/organizations/jenkins/monorepo/activity" ;;
     "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
-    "Jira Chatbotize DEVS")     echo "https://chatbotize.atlassian.net/jira/software/c/projects/DEVS/boards/19" ;;
+    "Jira Chatbotize DEVS")     echo "https://chatbotize.atlassian.net/jira/software/c/projects/DEVS/boards/21" ;;
     "Jira Chatbotize SUP")      echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/SUP/queues/custom" ;;
     "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
