@@ -224,7 +224,8 @@ hide_edge_borders both
 popup_during_fullscreen smart
 
 # for_window [class="brave"] floating_maximum_size 2560 x 1280
-for_window [title="^floating$"] floating enable floating_maximum_size 2560 x 1280
+for_window [class="robo3t"] floating_maximum_size 640 x 480
+for_window [title="^floating$"] floating enable floating_maximum_size 640 x 480
 for_window [instance="sun-awt-X11-WindowPeer"] border pixel 0
 for_window [title="Firefox — Sharing Indicator"] kill
 for_window [title="meet.google.com is sharing your screen."] resize set 640 480

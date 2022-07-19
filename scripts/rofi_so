@@ -11,10 +11,12 @@ declare -a options=(
   "Weather\0icon\x1f~/dotfiles/logos/weather.png"
   "Home Assistant\0icon\x1f~/dotfiles/logos/home-assistant.png"
   "Status\0icon\x1f~/dotfiles/logos/zowie.png"
+  "Meet\0icon\x1f~/dotfiles/logos/zowie.png"
   "Grafana\0icon\x1f~/dotfiles/logos/grafana.png"
   "Jaeger\0icon\x1f~/dotfiles/logos/jaeger.png"
   "Kibana\0icon\x1f~/dotfiles/logos/kibana.png"
-  "Figma"
+  "Figma\0icon\x1f~/dotfiles/logos/figma.png"
+  "TOTP (dev)\0icon\x1f~/dotfiles/logos/key.png"
 )
 
 function to_url() {
@@ -22,7 +24,7 @@ function to_url() {
     "Monorepo Pull Requests")   echo "https://github.com/chatbotizeteam/monorepo/pulls" ;;
     "Chatbotize Jenkins")       echo "https://jenkins.codeheroes.tech/blue/organizations/jenkins/monorepo/activity" ;;
     "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
-    "Jira Chatbotize DEVS")     echo "https://chatbotize.atlassian.net/jira/software/c/projects/DEVS/boards/21" ;;
+    "Jira Chatbotize DEVS")     echo "https://chatbotize.atlassian.net/jira/software/c/projects/DEVS/boards/21?sprint=133" ;;
     "Jira Chatbotize SUP")      echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/SUP/queues/custom" ;;
     "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
@@ -32,10 +34,16 @@ function to_url() {
     "Figma")                    echo "https://www.figma.com/file/I7yLNQqF4F63vh2PpYSZBc/Zowie-Redesign" ;;
 
     "Zowier") zowier
-	      exit 0;;
+	      exit 0 ;;
 
     "Status") brave "https://meet.google.com/ozj-ajia-dfw"
-	      exit 0;;
+	      exit 0 ;;
+
+    "Meet") brave "https://meet.google.com"
+	      exit 0 ;;
+
+    "TOTP (dev)") pass otp zowie | xclip -selection clipboard
+	      exit 0 ;;
   esac
 }
 

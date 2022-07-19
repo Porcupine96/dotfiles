@@ -1,34 +1,35 @@
-{ pkgs ? import <nixpkgs> { } }:
 let
-  jupyter = import (builtins.fetchGit {
-    url = https://github.com/tweag/jupyterWith;
-    rev = "93f75799b527b03de9acc09ae18cc4b8817fb0c5";
-  }) {};
-
-  python-packages = p: with p; [
-    numpy
-    matplotlib
-    seaborn
-    pandas
-  ];
-
-  python-der = pkgs.python39.withPackages python-packages;
-
-  iPython = jupyter.kernels.iPythonWith {
-    name = "notebook";
-    packages = python-packages;
+  mach-nix = import (builtins.fetchGit {
+    url = "https://github.com/DavHau/mach-nix";
+    ref = "refs/tags/3.5.0";  
+  }) {
+    python = "python39";
   };
 
-  jupyterEnvironment =
-    jupyter.jupyterlabWith {
-      kernels = [ iPython ];
-      directory = jupyter.mkDirectoryWith {
-        extensions = [ "@axlair/jupyterlab_vim" ];
-      };
-    };
+  python-env = mach-nix.mkPython rec {
+    requirements = ''
+      numpy
+      matplotlib
+      seaborn
+      pandas
+    '';
+
+    # requirements = builtins.readFile ./requirements.txt;
+  };
+
+  jupyter = import (builtins.fetchGit {
+    url = https://github.com/tweag/jupyterWith;
+    rev = "79dd05b3d703cd0034296dd367422f7298fe99d6";
+  }) {};
+
+  iPython = jupyter.kernels.iPythonWith {
+    name = "basic-python";
+    python3 = python-env.python;
+    packages = python-env.python.pkgs.selectPkgs;
+  };
+
+  jupyterEnvironment = jupyter.jupyterlabWith {
+    kernels = [ iPython ];
+  };
 in
-with pkgs;
-jupyterEnvironment.env.overrideAttrs (old: {
-  buildInputs = [python-der] ++ old.buildInputs;
-  shellHook = old.shellHook;
-})
+ jupyterEnvironment.env
