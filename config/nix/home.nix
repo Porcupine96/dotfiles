@@ -23,9 +23,60 @@
       htop-vim
       i3blocks
       libreoffice-fresh
-      # i3lock py # TODO: mypy-protobuf
+      # i3lock TODO: doesn't work 
+      (gl_wrap pkgs { bin = "kitty"; })
+      neofetch
+      man-db
+      gnome.nautilus
+      openjdk8
+      neovim
+      noto-fonts
+      noto-fonts-emoji
+      (gl_wrap pkgs { bin = "imv"; })
+      (gl_wrap pkgs { bin = "picom"; })
+      (polybar.override { i3Support = true; })
+      protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
+      (pass.withExtensions (ext: [ ext.pass-otp ]))
+      (rofi.override { plugins = [ rofi-emoji ]; })
+      ripgrep
+      rsync
+      sd
+      symbola
+      spicetify-cli
+      tmux
+      tree
+      unrar
+      wget
+      vifm
+      xclip
+
+      # mongo
+
+      # nix
+      cachix
+      nixGLIntel
+      nixfmt
+
+      # LaTeX
+      (texlive.combine {
+        inherit (texlive)
+          scheme-medium minted wrapfig capt-of fvextra upquote catchfile xstring
+          kvoptions fancyvrb pdftexcmds etoolbox xcolor lineno framed ucs preprint
+          cm-super unicode-math libertine;
+      })
+
+      # Scala
+      ammonite
+      sbt
+      scala_2_13
+      scalafmt
+
+      # JS
+      yarn
+
+      # Python
+      mypy # TODO: mypy-protobuf
       pyright
-      rofi
 
       # jupyter
       (let
