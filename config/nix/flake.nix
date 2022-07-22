@@ -15,6 +15,13 @@
       repo = "emacs-overlay";
       ref = "1a6ceb2d7500c3ff93a0385148d0f1f6a53222c0";
     };
+
+    mach-nix = {
+      type = "github";
+      owner = "DavHau";
+      repo = "mach-nix";
+      ref = "51caf584f26acdfaa51bbf7ee1ffa365aea7bc64";
+    };
   };
 
   outputs = { self, ... }@inputs:

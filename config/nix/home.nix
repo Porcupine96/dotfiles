@@ -25,6 +25,7 @@
       libreoffice-fresh
       # i3lock py # TODO: mypy-protobuf
       pyright
+      rofi
 
       # jupyter
       (let
