@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cp -rT ~/dotfiles/nix/py-nix .
+direnv allow

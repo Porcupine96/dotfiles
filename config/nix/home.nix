@@ -123,6 +123,7 @@
       kustomize
       k9s
       languagetool
+      mach-nix
       mu
       ngrok
       (gl_wrap pkgs {
@@ -141,6 +142,7 @@
       up
       (gl_wrap pkgs { bin = "zeal"; })
       zathura
+      zotero
       zip
     ];
 

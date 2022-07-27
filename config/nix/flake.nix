@@ -32,6 +32,8 @@
         (self: super: {
           nixGLIntel =
             (super.callPackage "${inputs.nixGL}/nixGL.nix" { }).nixGLIntel;
+
+          mach-nix = inputs.mach-nix.packages.x86_64-linux.mach-nix;
         })
       ];
     in {
