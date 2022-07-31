@@ -71,3 +71,5 @@ end
 fish_vi_key_bindings
 
 source /home/porcupine/dotfiles/config/fish/zowie.fish
+
+direnv hook fish | source
