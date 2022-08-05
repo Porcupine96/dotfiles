@@ -134,7 +134,7 @@
       pandoc
       postman
       pdftk
-      pgcli
+      # pgcli
       pup
       robo3t
       termdown
