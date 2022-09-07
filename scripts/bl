@@ -25,7 +25,7 @@ done
 
 
 if [ "$only" = true ]; then
-  class_file=$(find . -name '*Test.scala' | fzf)
+  class_file=$(find . -name '*Tests.scala' | fzf)
   package=$(grep '^package ' "$class_file" | sed 's/package //')
   class_name=$(echo "$class_file" | sed 's/.*\/\(.*\)\.scala/\1/')
   class="$package.$class_name"

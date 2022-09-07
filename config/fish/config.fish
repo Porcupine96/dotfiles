@@ -19,6 +19,7 @@ alias gl='git pull'
 alias gs='git status'
 alias nix-flakes='nix --extra-experimental-features nix-command --extra-experimental-features flakes'
 alias jupyter='jupyter-notebook'
+alias metals-emacs='metals'
 
 # prompt
 set pure_color_git_branch "green"

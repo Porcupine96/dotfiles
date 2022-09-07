@@ -13,14 +13,14 @@
       type = "github";
       owner = "nix-community";
       repo = "emacs-overlay";
-      ref = "1a6ceb2d7500c3ff93a0385148d0f1f6a53222c0";
+      ref = "30a3d95bb4d9812e26822260b6ac45efde0d7700";
     };
 
     mach-nix = {
       type = "github";
       owner = "DavHau";
       repo = "mach-nix";
-      ref = "51caf584f26acdfaa51bbf7ee1ffa365aea7bc64";
+      ref = "f15ea8677df951cb4fe608945fd98725dcd033b3";
     };
   };
 

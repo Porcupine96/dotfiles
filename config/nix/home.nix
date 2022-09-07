@@ -28,7 +28,7 @@
       neofetch
       man-db
       gnome.nautilus
-      openjdk8
+      openjdk11
       neovim
       noto-fonts
       noto-fonts-emoji
@@ -60,9 +60,9 @@
       # LaTeX
       (texlive.combine {
         inherit (texlive)
-          scheme-medium minted wrapfig capt-of fvextra upquote catchfile xstring
-          kvoptions fancyvrb pdftexcmds etoolbox xcolor lineno framed ucs preprint
-          cm-super unicode-math libertine;
+        scheme-medium minted wrapfig capt-of fvextra upquote catchfile xstring
+        kvoptions fancyvrb pdftexcmds etoolbox xcolor lineno framed ucs preprint
+        cm-super unicode-math libertine;
       })
 
       # Scala
@@ -83,18 +83,19 @@
         # jupyterlab_vim = callPackage ./python/jupyterlab_vim.nix {};
 
         my-python-packages = python-packages:
-          with python-packages; [
-            black
-            pip
-            pandas
-            regex
-            idasen
-            virtualenv
-            mypy-protobuf
-            grpcio
-            grpcio-tools
-            tqdm
-          ];
+        with python-packages; [
+          black
+          pip
+          pandas
+          regex
+          idasen
+          virtualenv
+          matplotlib
+          mypy-protobuf
+          grpcio
+          grpcio-tools
+          tqdm
+        ];
         python-with-my-packages = python3.withPackages my-python-packages;
       in python-with-my-packages)
 
@@ -121,7 +122,6 @@
       jq
       kubectl
       kustomize
-      k9s
       languagetool
       mach-nix
       mu
@@ -151,12 +151,14 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGcc;
+    package = pkgs.emacsPgtkNativeComp.override {
+      imagemagick = pkgs.imagemagick;
+    };
     extraPackages = (epkgs:
-      [
-        epkgs.vterm
-        # epkgs.pdf-tools
-      ]);
+    [
+      epkgs.vterm
+      # epkgs.pdf-tools
+    ]);
   };
 
 }

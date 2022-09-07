@@ -1,0 +1,5 @@
+#!/bin/bash
+
+fix-displays
+sleep 1.5
+setup-workspaces

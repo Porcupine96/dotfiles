@@ -1,0 +1,1 @@
+2022.08.25 10:47:33 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/porcupine/dotfiles/config/nix/.metals/lsp.trace.json or /home/porcupine/.cache/metals/lsp.trace.json[0m

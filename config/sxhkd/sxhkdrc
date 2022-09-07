@@ -16,6 +16,8 @@ super + shift + n
 	zathura /home/porcupine/studies/math/zadania_trudne.pdf
 super + F11
 	pkill -USR1 -x sxhkd; notify-send "sxhkd refreshed!";
+super + shift + F9
+	setup-desktop;
 super + shift + F11
 	i3lock -c 1d2021 -e;
 super + shift + F12
