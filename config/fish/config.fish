@@ -32,7 +32,7 @@ set -x LC_ALL "en_US.UTF-8"
 
 # make rofi work: https://github.com/nix-community/home-manager/issues/354
 # set -x LOCALE_ARCHIVE (nix-build '<nixpkgs>' -A glibcLocales)/lib/locale/locale-archive
-set -x LOCALE_ARCHIVE "/nix/store/ahzi8gfj34762a0yccafanspwylqj1z4-glibc-locales-2.33-108/lib/locale/locale-archive"
+set -x LOCALE_ARCHIVE "/nix/store/9wsgngjxqir8gyw4ppwn66nzb8vjk1l5-glibc-locales-2.34-210/lib/locale/locale-archive"
 set -x XDG_DATA_DIRS "/usr/share:/usr/local/share:$HOME/.local/share:$HOME/.nix-profile/share"
 
 # set -x QT_STYLE_OVERRIDE Fusion

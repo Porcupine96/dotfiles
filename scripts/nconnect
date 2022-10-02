@@ -1,0 +1,16 @@
+#!/bin/bash
+
+user="lkazmierczak"
+host_file="$HOME/work/prod-ansible/docs/atman-overview/infrastructure.md"
+
+names=$(cat "$host_file" | grep "^|" | awk -F'|' '{ print $2 }' | grep -v '\-\-' 2>/dev/null | grep -v "name" | grep -v "NAME")
+choice=$(echo "$names" | sort -u | fzf)
+
+host=""
+if [[ ! -z "$choice" ]]; then
+    host=$(cat "$host_file" | grep "$choice" | awk -F'|' '{ print $4}' | tr -d ' ')
+fi
+
+if [[ ! -z "$host" ]]; then
+    ssh -t "$user@$host" "sudo -i"
+fi

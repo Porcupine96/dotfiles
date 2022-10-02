@@ -114,6 +114,7 @@
       coursier
       dropbox
       google-cloud-sdk
+      gtk3
       gron
       grpcurl
       home-assistant-cli
@@ -134,6 +135,7 @@
       pandoc
       postman
       pdftk
+      pkgconfig
       # pgcli
       pup
       robo3t
