@@ -109,12 +109,11 @@
       (gl_wrap pkgs { bin = "brave"; })
       (gl_wrap pkgs { bin = "firefox"; })
       # burpsuite
-      calibre
+      # calibre
       copyq
       coursier
       dropbox
       google-cloud-sdk
-      gtk3
       gron
       grpcurl
       home-assistant-cli
@@ -135,7 +134,7 @@
       pandoc
       postman
       pdftk
-      pkgconfig
+      pkg-config
       # pgcli
       pup
       robo3t
@@ -153,13 +152,13 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsPgtkNativeComp.override {
+    package = pkgs.emacsNativeComp.override {
       imagemagick = pkgs.imagemagick;
     };
     extraPackages = (epkgs:
     [
       epkgs.vterm
-      # epkgs.pdf-tools
+      epkgs.pdf-tools
     ]);
   };
 

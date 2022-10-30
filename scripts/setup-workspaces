@@ -21,14 +21,20 @@ case $display_count in
         i3-msg "workspace number 2; move workspace to output $snd_display"
 	i3-msg '[class="Emacs"] move to workspace number 3'
         i3-msg "workspace number 3; move workspace to output $snd_display"
+        i3-msg "workspace number 8; move workspace to output $snd_display"
 	i3-msg '[class="Ferdium"] move to workspace number 4'
 	i3-msg '[class="Spotify"] move to workspace number 4'
         i3-msg "workspace number 4; move workspace to output $primary_display"
 	restart_polybar
 	;;
     3)
-	snd_display="DVI-I-1-1"
-	trd_display="DVI-I-2-2"
+        if xrandr | grep -i ' connected' | grep -q 'HDMI'; then
+	    snd_display="HDMI-1"
+	    trd_display="DP-2"
+	else
+	    snd_display="DVI-I-1-1"
+	    trd_display="DVI-I-2-2"
+	fi
 
 	i3-msg '[class="kitty"] move to workspace number 1' 
         i3-msg "workspace number 1; move workspace to output $snd_display"
@@ -36,6 +42,7 @@ case $display_count in
         i3-msg "workspace number 2; move workspace to output $snd_display"
 	i3-msg '[class="Emacs"] move to workspace number 3'
         i3-msg "workspace number 3; move workspace to output $snd_display"
+        i3-msg "workspace number 8; move workspace to output $snd_display"
 	i3-msg '[class="Ferdium"] move to workspace number 4'
         i3-msg "workspace number 4; move workspace to output $trd_display"
 	i3-msg '[class="Spotify"] move to workspace number 5'
