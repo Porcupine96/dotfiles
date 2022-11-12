@@ -87,8 +87,11 @@
           black
           pip
           pandas
+          poetry
           regex
           idasen
+          ipykernel
+          ipython
           virtualenv
           matplotlib
           mypy-protobuf
