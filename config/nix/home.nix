@@ -155,14 +155,21 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsNativeComp.override {
-      imagemagick = pkgs.imagemagick;
-    };
-    extraPackages = (epkgs:
-    [
-      epkgs.vterm
-      epkgs.pdf-tools
-    ]);
+    package = pkgs.emacs28WithPackages (epkgs:
+      (with epkgs.melpaPackages; [
+        vterm
+        pdf-tools
+      ])
+    );
+
+    # package = pkgs.emacsNativeComp.override {
+    #   imagemagick = pkgs.imagemagick;
+    # };
+    # extraPackages = (epkgs:
+    # [
+    #   epkgs.vterm
+    #   epkgs.pdf-tools
+    # ]);
   };
 
 }
