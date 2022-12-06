@@ -1,0 +1,8 @@
+#!/bin/bash
+
+input=$(rofi -dmenu -p "Define > " -theme-str 'listview { enabled: false;}')
+definitions=$(dictionary "$input" | jq '.[].definitions[0].definition')
+choice=$(echo -e "$definitions" | rofi -i -dmenu )
+
+echo "$choice" | xclip -selection clipboard
+

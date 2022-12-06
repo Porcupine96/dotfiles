@@ -2,6 +2,8 @@ ctrl + space
 	dunstctl close
 super + grave
         dunstctl history-pop
+super + ctrl + d
+        rofi-dictionary	
 super + alt + d
 	exec dmenu_run
 super + t

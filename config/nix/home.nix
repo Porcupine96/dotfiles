@@ -39,6 +39,7 @@
       (pass.withExtensions (ext: [ ext.pass-otp ]))
       (rofi.override { plugins = [ rofi-emoji ]; })
       ripgrep
+      ripgrep-all
       rsync
       sd
       symbola
@@ -87,7 +88,6 @@
           black
           pip
           pandas
-          poetry
           regex
           idasen
           ipykernel
