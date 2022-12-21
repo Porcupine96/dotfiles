@@ -28,6 +28,7 @@
       neofetch
       man-db
       gnome.nautilus
+      onlyoffice-bin
       openjdk11
       neovim
       noto-fonts
@@ -89,11 +90,13 @@
           pip
           pandas
           regex
+          requests
           idasen
           ipykernel
           ipython
           virtualenv
           matplotlib
+          motor
           mypy-protobuf
           grpcio
           grpcio-tools
