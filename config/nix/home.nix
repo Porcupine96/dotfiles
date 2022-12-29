@@ -123,7 +123,7 @@
       gron
       grpcurl
       home-assistant-cli
-      httpie
+      # httpie
       isync
       jq
       kubectl
