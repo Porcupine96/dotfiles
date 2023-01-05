@@ -13,7 +13,7 @@
       type = "github";
       owner = "nix-community";
       repo = "emacs-overlay";
-      ref = "30a3d95bb4d9812e26822260b6ac45efde0d7700";
+      ref = "b7ce6bbf53b52f2059020ecf14127ffd1c375e90";
     };
 
     mach-nix = {

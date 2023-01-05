@@ -8,7 +8,7 @@ case $display_count in
 	i3-msg '[class="kitty"] move to workspace number 1' 
 	i3-msg '[class="firefox"] move to workspace number 2'
 	i3-msg '[class="Emacs"] move to workspace number 3'
-	i3-msg '[class="Ferdium"] move to workspace number 4'
+	i3-msg '[class="Slack"] move to workspace number 4'
 	i3-msg '[class="Spotify"] move to workspace number 5'
 	restart_polybar
 	;;
@@ -22,7 +22,7 @@ case $display_count in
 	i3-msg '[class="Emacs"] move to workspace number 3'
         i3-msg "workspace number 3; move workspace to output $snd_display"
         i3-msg "workspace number 8; move workspace to output $snd_display"
-	i3-msg '[class="Ferdium"] move to workspace number 4'
+	i3-msg '[class="Slack"] move to workspace number 4'
 	i3-msg '[class="Spotify"] move to workspace number 4'
         i3-msg "workspace number 4; move workspace to output $primary_display"
 	restart_polybar
@@ -43,7 +43,7 @@ case $display_count in
 	i3-msg '[class="Emacs"] move to workspace number 3'
         i3-msg "workspace number 3; move workspace to output $snd_display"
         i3-msg "workspace number 8; move workspace to output $snd_display"
-	i3-msg '[class="Ferdium"] move to workspace number 4'
+	i3-msg '[class="Slack"] move to workspace number 4'
         i3-msg "workspace number 4; move workspace to output $trd_display"
 	i3-msg '[class="Spotify"] move to workspace number 5'
         i3-msg "workspace number 5; move workspace to output $primary_display"

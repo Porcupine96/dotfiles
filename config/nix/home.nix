@@ -62,9 +62,9 @@
       # LaTeX
       (texlive.combine {
         inherit (texlive)
-        scheme-medium minted wrapfig capt-of fvextra upquote catchfile xstring
-        kvoptions fancyvrb pdftexcmds etoolbox xcolor lineno framed ucs preprint
-        cm-super unicode-math libertine;
+          scheme-medium minted wrapfig capt-of fvextra upquote catchfile xstring
+          kvoptions fancyvrb pdftexcmds etoolbox xcolor lineno framed ucs
+          preprint cm-super unicode-math libertine;
       })
 
       # Scala
@@ -85,23 +85,23 @@
         # jupyterlab_vim = callPackage ./python/jupyterlab_vim.nix {};
 
         my-python-packages = python-packages:
-        with python-packages; [
-          black
-          pip
-          pandas
-          regex
-          requests
-          idasen
-          ipykernel
-          ipython
-          virtualenv
-          matplotlib
-          motor
-          mypy-protobuf
-          grpcio
-          grpcio-tools
-          tqdm
-        ];
+          with python-packages; [
+            black
+            pip
+            pandas
+            regex
+            requests
+            idasen
+            ipykernel
+            ipython
+            virtualenv
+            matplotlib
+            motor
+            mypy-protobuf
+            grpcio
+            grpcio-tools
+            tqdm
+          ];
         python-with-my-packages = python3.withPackages my-python-packages;
       in python-with-my-packages)
 
@@ -158,12 +158,15 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs28WithPackages (epkgs:
-      (with epkgs.melpaPackages; [
-        vterm
-        pdf-tools
-      ])
-    );
+    package = pkgs.emacsPgtk;
+    extraPackages = (epkgs: with epkgs; [ vterm ]);
+
+    # package = pkgs.emacs28WithPackages (epkgs:
+    #   (with epkgs.melpaPackages; [
+    #     vterm
+    #     pdf-tools
+    #   ])
+    # );
 
     # package = pkgs.emacsNativeComp.override {
     #   imagemagick = pkgs.imagemagick;
