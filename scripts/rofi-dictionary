@@ -3,7 +3,7 @@
 input=$(rofi -dmenu -p "Define " -theme gruvbox-dark -theme-str 'listview { enabled: false;}')
 definitions=$(dictionary "$input")
 meanings=$(echo "$definitions" | jq -r '.[].meaning')
-choice=$(echo -e "$meanings" | rofi -i -dmenu -theme gruvbox-dark -kb-custom-1 "Control-c")
+choice=$(echo -e "$meanings" | rofi -p "Definition " -i -dmenu -theme gruvbox-dark -kb-custom-1 "Control-c")
 
 case "$?" in
     "10")
@@ -11,7 +11,7 @@ case "$?" in
 	;;
      *)
 	examples=$(echo "$definitions" | jq --raw-output --arg meaning "$choice" '.[] | select(.meaning == $meaning).examples | flatten | .[]')
-	choice=$(echo -e "$examples" | rofi -i -dmenu -theme gruvbox-dark)
+	choice=$(echo -e "$examples" | rofi -p "Example " -i -dmenu -theme gruvbox-dark)
         echo "$choice" | xclip -selection clipboard
 	;;
 esac
