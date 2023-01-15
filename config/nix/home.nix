@@ -39,6 +39,7 @@
       protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
       (pass.withExtensions (ext: [ ext.pass-otp ]))
       (rofi.override { plugins = [ rofi-emoji ]; })
+      redshift
       ripgrep
       ripgrep-all
       rsync
@@ -156,26 +157,27 @@
     stateVersion = "22.05";
   };
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacsPgtk;
-    extraPackages = (epkgs: with epkgs; [ vterm ]);
+ programs.emacs = {
+   enable = true;
+   package = pkgs.emacsPgtk;
+   extraPackages = (epkgs: with epkgs; [ vterm pdf-tools ]);
 
-    # package = pkgs.emacs28WithPackages (epkgs:
-    #   (with epkgs.melpaPackages; [
-    #     vterm
-    #     pdf-tools
-    #   ])
-    # );
+ #package = pkgs.emacs28WithPackages (epkgs:
+ #  (with epkgs.melpaPackages; [
+ #    vterm
+ #    #pdf-tools
+ #  ])
+ #);
 
-    # package = pkgs.emacsNativeComp.override {
-    #   imagemagick = pkgs.imagemagick;
-    # };
-    # extraPackages = (epkgs:
-    # [
-    #   epkgs.vterm
-    #   epkgs.pdf-tools
-    # ]);
-  };
+#   package = pkgs.emacsNativeComp.override {
+#     imagemagick = pkgs.imagemagick;
+#   };
+#   extraPackages = (epkgs:
+#   [
+#     epkgs.vterm
+#     epkgs.pdf-tools
+#   ]);
+
+ };
 
 }

@@ -1,8 +1,19 @@
 #!/bin/bash
 
-input=$(rofi -dmenu -p "Define > " -theme-str 'listview { enabled: false;}')
-definitions=$(dictionary "$input" | jq '.[].definitions[0].definition')
-choice=$(echo -e "$definitions" | rofi -i -dmenu )
+input=$(rofi -dmenu -p "Define " -theme gruvbox-dark -theme-str 'listview { enabled: false;}')
+definitions=$(dictionary "$input")
+meanings=$(echo "$definitions" | jq -r '.[].meaning')
+choice=$(echo -e "$meanings" | rofi -i -dmenu -theme gruvbox-dark -kb-custom-1 "Control-c")
 
-echo "$choice" | xclip -selection clipboard
+case "$?" in
+    "10")
+        echo "$choice" | xclip -selection clipboard
+	;;
+     *)
+	examples=$(echo "$definitions" | jq --raw-output --arg meaning "$choice" '.[] | select(.meaning == $meaning).examples | flatten | .[]')
+	choice=$(echo -e "$examples" | rofi -i -dmenu -theme gruvbox-dark)
+        echo "$choice" | xclip -selection clipboard
+	;;
+esac
+
 
