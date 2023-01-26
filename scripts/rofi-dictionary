@@ -11,8 +11,11 @@ case "$?" in
 	;;
      *)
 	examples=$(echo "$definitions" | jq --raw-output --arg meaning "$choice" '.[] | select(.meaning == $meaning).examples | flatten | .[]')
-	choice=$(echo -e "$examples" | rofi -p "Example " -i -dmenu -theme gruvbox-dark)
-        echo "$choice" | xclip -selection clipboard
+
+	if [[ ! -z "$examples" ]]; then
+	    choice=$(echo -e "$examples" | rofi -p "Example " -i -dmenu -theme gruvbox-dark)
+	    echo "$choice" | xclip -selection clipboard
+	fi;
 	;;
 esac
 
