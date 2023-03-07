@@ -1,0 +1,19 @@
+#!/bin/bash
+
+declare -a options=(
+  "ai-project-service"
+  "ai-import-service"
+  "creator-automation-statistics-service"
+  "creator-phrase-query-service"
+  "crm-service"
+  "inbox-search-service"
+)
+
+env="sl-dev-short-lived-env-kb-list"
+#env="sl-dev-short-lived-env-kj"
+db=$(printf "%s\n" "${options[@]}" | fzf)
+
+
+PGPASSWORD="$env" pgcli -U "$env-app" -h \
+  zowie-dev-psql1.cluster-c4mxgrjdwroj.eu-west-1.rds.amazonaws.com \
+  -p 5432 -d "$env-$db"

@@ -7,6 +7,7 @@ xfce4-clipman &
 nm-applet &
 blueman-applet &
 copyq &
+porcupine_waiter &
 
 dbus-update-activation-environment --systemd DISPLAY || echo "dbus-update-activation-environment not found"
 eval $(/usr/bin/gnome-keyring-daemon --start) || echo "gnome-keyring-daemon not found or failed"

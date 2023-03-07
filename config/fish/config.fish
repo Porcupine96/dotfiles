@@ -6,12 +6,13 @@ fish_add_path -p ~/scripts
 fish_add_path -p ~/work/nlp-scripts/bin
 fish_add_path -p ~/.local/share/coursier/bin
 fish_add_path -p ~/.local/bin
-fish_add_path -p ~/projects/zowier
 fish_add_path -p /usr/share/applications
 fish_add_path -p /home/porcupine/.nix-profile/bin
 
 # aliases
 alias prod-vpn='sudo openfortivpn -c /etc/openfortivpn/admin'
+alias dev-vpn='sudo openvpn /etc/openvpn/client.ovpn'
+alias k='kubectl'
 alias l='ls -alih'
 alias vf='vifm'
 alias vim='nvim'

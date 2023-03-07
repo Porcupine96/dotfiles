@@ -2,8 +2,7 @@
 
 
 declare -a options=(
-  "Monorepo Pull Requests\0icon\x1f~/dotfiles/logos/github.png"
-  "Chatbotize Jenkins\0icon\x1f~/dotfiles/logos/jenkins.png"
+  "Monorepo Merge Requests\0icon\x1f~/dotfiles/logos/gitlab.png"
   "Admin Test Account\0icon\x1f~/dotfiles/logos/zowie.png"
   "Zowier\0icon\x1f~/dotfiles/logos/zowie.png"
   "Jira Chatbotize DEVS\0icon\x1f~/dotfiles/logos/jira.png" 
@@ -18,12 +17,13 @@ declare -a options=(
   "Kibana\0icon\x1f~/dotfiles/logos/kibana.png"
   "Figma\0icon\x1f~/dotfiles/logos/figma.png"
   "TOTP (dev)\0icon\x1f~/dotfiles/logos/key.png"
+  "Deflect Review\0icon\x1f~/dotfiles/logos/google-docs.png"
+  "Pause/Resume ENV\0icon\x1f~/dotfiles/logos/gitlab.png"
 )
 
 function to_url() {
   case "$1" in
-    "Monorepo Pull Requests")   echo "https://github.com/chatbotizeteam/monorepo/pulls" ;;
-    "Chatbotize Jenkins")       echo "https://jenkins.codeheroes.tech/blue/organizations/jenkins/monorepo/activity" ;;
+    "Monorepo Merge Requests")  echo "https://gitlab.vpn.zowie.ai/platform/monorepo/-/merge_requests" ;;
     "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
     "Jira Chatbotize DEVS")     echo "https://chatbotize.atlassian.net/jira/software/c/projects/DEVS/boards/21" ;;
     "Jira Chatbotize SH")       echo "https://chatbotize.atlassian.net/jira/software/projects/SH/boards/31" ;;
@@ -34,6 +34,8 @@ function to_url() {
     "Kibana")                   echo "https://kibana.vpn.zowie.ai" ;;
     "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
     "Figma")                    echo "https://www.figma.com/file/I7yLNQqF4F63vh2PpYSZBc/Zowie-Redesign" ;;
+    "Deflect Review")           echo "https://docs.google.com/document/d/1aglxUSNMlkbs8-wsGcRKqh0KykOuMKHGWFwMFl6F_rM/edit#heading=h.gsns1bkmjeqh" ;;
+    "Pause/Resume ENV")         echo "https://gitlab.vpn.zowie.ai/infrastructure/cluster-conf/-/pipelines/new" ;;
 
     "Zowier") zowier
 	      exit 0 ;;

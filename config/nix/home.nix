@@ -30,13 +30,14 @@
       gnome.nautilus
       onlyoffice-bin
       openjdk11
+      openvpn
       neovim
       noto-fonts
       noto-fonts-emoji
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
       (polybar.override { i3Support = true; })
-      protobuf # TODO: remove from pacman (python-protobuf, protobuf-c conflicts)
+      protobuf 
       (pass.withExtensions (ext: [ ext.pass-otp ]))
       (rofi.override { plugins = [ rofi-emoji ]; })
       redshift
@@ -77,41 +78,10 @@
       # JS
       yarn
 
-      # Python
-      mypy # TODO: mypy-protobuf
-      pyright
-
-      # jupyter
-      (let
-        # jupyterlab_vim = callPackage ./python/jupyterlab_vim.nix {};
-
-        my-python-packages = python-packages:
-        with python-packages; [
-	        aiohttp
-          black
-	        gql
-          pip
-          pandas
-	        psycopg2
-	        papis-python-rofi
-          regex
-          requests
-          idasen
-          ipykernel
-          ipython
-          virtualenv
-          matplotlib
-          motor
-          mypy-protobuf
-          grpcio
-          grpcio-tools
-          tqdm
-        ];
-        python-with-my-packages = python3.withPackages my-python-packages;
-      in python-with-my-packages)
-
       # other
       ansible
+      argocd
+      awscli
       (gl_wrap pkgs {
         bin = "anki";
         package = anki-bin;
@@ -128,11 +98,13 @@
       gron
       grpcurl
       home-assistant-cli
-      # httpie
+      httpie
+      idasen
       isync
       jq
       kubectl
       kustomize
+      k9s
       languagetool
       mach-nix
       mu
