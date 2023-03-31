@@ -23,7 +23,7 @@ declare -a options=(
 
 function to_url() {
   case "$1" in
-    "Monorepo Merge Requests")  echo "https://gitlab.vpn.zowie.ai/platform/monorepo/-/merge_requests" ;;
+    "Monorepo Merge Requests")  echo "https://gitlab.vpn.zowie.ai/platform/monorepo/-/merge_requests?scope=all&state=opened&author_username=lukasz.kazmierczak" ;;
     "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
     "Jira Chatbotize DEVS")     echo "https://chatbotize.atlassian.net/jira/software/c/projects/DEVS/boards/21" ;;
     "Jira Chatbotize SH")       echo "https://chatbotize.atlassian.net/jira/software/projects/SH/boards/31" ;;

@@ -76,7 +76,7 @@
       scalafmt
 
       # JS
-      yarn
+      # yarn
 
       # other
       ansible
@@ -115,7 +115,7 @@
       })
       ocrmypdf
       pandoc
-      postman
+      # postman
       pdftk
       pkg-config
       # pgcli

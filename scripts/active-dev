@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kubectl --context zowie-dev-k8s get namespaces | grep sl-dev- | cut -d' ' -f1 | xargs -I {} bash -c 'echo -n "{} "; kubectl --context zowie-dev-k8s get pods --namespace {} | wc -l;' | awk -F' ' '{ print $2, $1 }' | sort -nr
