@@ -7,10 +7,10 @@ declare -a options=(
   "creator-phrase-query-service"
   "crm-service"
   "inbox-search-service"
+  "inbox-integration-product-feed-service"
 )
 
-env="sl-dev-short-lived-env-kb-list"
-#env="sl-dev-short-lived-env-kj"
+env="sl-dev-grow"
 db=$(printf "%s\n" "${options[@]}" | fzf)
 
 

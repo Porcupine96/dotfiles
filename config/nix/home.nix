@@ -120,7 +120,7 @@
       pkg-config
       # pgcli
       pup
-      robo3t
+      # robo3t
       termdown
       tmpmail
       up
