@@ -1,0 +1,17 @@
+#!/bin/bash
+
+revert() {
+	xset dpms 0 0 0
+	xset dpms force off
+}
+
+
+lock() {
+	trap revert HUP INT TERM
+	xset +dpms dpms 0 0 5
+	swaylock -c '#1d2021' -e -f
+	revert
+}
+
+sleep 5
+lock & systemctl suspend

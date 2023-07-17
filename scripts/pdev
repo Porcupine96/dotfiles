@@ -10,7 +10,7 @@ declare -a options=(
   "inbox-integration-product-feed-service"
 )
 
-env="sl-dev-grow"
+env="sl-dev-regions"
 db=$(printf "%s\n" "${options[@]}" | fzf)
 
 

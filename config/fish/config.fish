@@ -38,8 +38,10 @@ set -x LC_ALL "en_US.UTF-8"
 set -x LOCALE_ARCHIVE "/nix/store/9wsgngjxqir8gyw4ppwn66nzb8vjk1l5-glibc-locales-2.34-210/lib/locale/locale-archive"
 set -x XDG_DATA_DIRS "/usr/share:/usr/local/share:$HOME/.local/share:$HOME/.nix-profile/share"
 
-# set -x QT_STYLE_OVERRIDE Fusion
+set -x QT_QPA_PLATFORM "wayland"
 set -x QT_AUTO_SCREEN_SCALE_FACTOR 0
+
+set -x GTK_USE_PORTAL 0
 
 # direnv
 set -x DIRENV_LOG_FORMAT ""
@@ -75,5 +77,3 @@ end
 fish_vi_key_bindings
 
 source /home/porcupine/dotfiles/config/fish/zowie.fish
-
-direnv hook fish | source

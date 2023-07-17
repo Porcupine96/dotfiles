@@ -1,14 +1,32 @@
 #!/bin/bash
 
+export EDITOR="nvim"
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
-export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_AUTO_SCREEN_SCALE_FACTOR=0 
+export GTK_USE_PORTAL=0
+export ANKI_WAYLAND=1
+
+
+# eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+# export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+# systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
+# dbus-update-activation-environment --systemd DISPLAY
+
+eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) || echo "gnome-keyring-daemon not found or failed"
+export SSH_AUTH_SOCK
 
 dropbox &
 copyq &
-flameshot &
 dunst &
 
-exec sway
+if command -v nixGLIntel >/dev/null; then
+	exec nixGLIntel sway
+else
+	exec sway
+fi

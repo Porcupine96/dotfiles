@@ -1,0 +1,41 @@
+#!/bin/bash
+
+zowie-psql(){
+
+  _psql_envs=("zowie/prod/eu" "zowie/prod/us" "zowie/dev")
+  _SELECTED=$(printf "%s\n" "${_psql_envs[@]}" | fzf)
+
+  echo "PSQL: \"$_SELECTED\""
+  echo "---"
+
+  case $_SELECTED in
+
+    zowie/prod/eu)
+       local PGPASSWORD=$(aws ssm --profile zowie/prod/eu --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1/password --with-decryption  --output text --query Parameter.Value)
+       local _PHOST=$(aws ssm --profile zowie/prod/eu --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1/endpoint --with-decryption  --output text --query Parameter.Value)
+       local _PUSER=root
+      ;;
+
+    zowie/prod/us)
+       local PGPASSWORD=$(aws ssm --profile zowie/prod/us --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1/password --with-decryption  --output text --query Parameter.Value)
+       local _PHOST=$(aws ssm --profile zowie/prod/us --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1/endpoint --with-decryption  --output text --query Parameter.Value)
+       local _PUSER=root
+      ;;
+
+
+    zowie/dev)
+       local PGPASSWORD=$(aws ssm --profile zowie/dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/password --with-decryption  --output text --query Parameter.Value)
+       local _PHOST=$(aws ssm --profile zowie/dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/endpoint --with-decryption  --output text --query Parameter.Value)
+       local _PUSER=root
+      ;;
+
+  esac
+
+  echo " HOST: $_PHOST"
+  echo " USER: $_PUSER"
+  echo " PASS: ***"
+  sleep 2
+
+  PGPASSWORD="${PGPASSWORD}" psql --host $_PHOST --user $_PUSER postgres
+
+}

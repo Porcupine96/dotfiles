@@ -4,3 +4,4 @@ kitty --session ~/dotfiles/config/kitty/tmux_session &
 firefox &
 emacs &
 slack &
+gpt &

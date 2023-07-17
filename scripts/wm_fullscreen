@@ -1,0 +1,80 @@
+#!/usr/bin/env sh
+
+sway=""
+if command -v swaymsg >/dev/null; then
+	sway="1"
+fi
+
+focused_output() {
+	if [ -n "$sway" ]; then
+
+		swaymsg -r -t get_workspaces | jq -r '.[] | select(.focused).output'
+	else
+		i3-msg -t get_workspaces | jq -r '.[] | select(.focused).output'
+	fi
+}
+
+fill_main_monitor() {
+	xrandr -q | awk '$3 == "primary" {print $1; exit}' >/tmp/main-monitor
+	cat "/tmp/main-monitor"
+}
+
+primary_monitor() {
+	cat "/tmp/main-monitor" || fill_main_monitor
+}
+
+full_on() {
+	if command -v swaymsg >/dev/null; then
+		## FIXME
+		swaymsg fullscreen enable
+	else
+		i3-msg fullscreen enable
+
+		if [ "$(primary_monitor)" = "$(focused_output)" ]; then
+			bottom_bar_toggle hide
+		fi
+	fi
+}
+
+full_off() {
+	if [ -n "$sway" ]; then
+		## FIXME
+		swaymsg fullscreen disable
+	else
+		# notify-send  "Monitory" "$(primary_monitor) $(focused_output)"
+		if [ "$(primary_monitor)" = "$(focused_output)" ]; then
+			i3-msg fullscreen disable &
+			bottom_bar_toggle show
+			echo ""
+		else
+			i3-msg fullscreen disable
+		fi
+	fi
+}
+
+toggle() {
+	if [ -n "$sway" ]; then
+		notify-send "wm_fullscreen" "not implemented for wayland"
+
+	else
+		focused=$(xprop -root _NET_ACTIVE_WINDOW | awk -F' ' '{print $NF}')
+		if xprop -id "${focused}" _NET_WM_STATE | grep -q _NET_WM_STATE_FULLSCREEN; then
+			full_off
+		else
+			full_on
+		fi
+	fi
+
+}
+
+case "$1" in
+"on")
+	full_on
+	;;
+"off")
+	full_off
+	;;
+*)
+	toggle
+	;;
+esac

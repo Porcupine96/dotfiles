@@ -1,0 +1,5 @@
+#!/bin/bash
+
+HASS_SERVER=http://192.168.1.29:8123 \
+HASS_TOKEN=$(cat ~/.hass-token) \
+hass-cli state toggle switch.0x54ef4410000fd6f5

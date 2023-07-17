@@ -1,3 +1,4 @@
 #!/bin/bash
 
-rofi -show combi -combi-modi window,drun,run -show-icons -font "Fira Mono 11"
+monitor="$(swaymsg -t get_outputs | jq '[.[].focused] | index(true)')"
+rofi -monitor "$monitor" -show combi -combi-modi drun,run -show-icons -font 'Fira Mono 11'

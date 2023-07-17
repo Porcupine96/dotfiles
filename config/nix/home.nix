@@ -28,6 +28,7 @@
       neofetch
       man-db
       gnome.nautilus
+      gummy
       onlyoffice-bin
       openjdk11
       openvpn
@@ -39,7 +40,7 @@
       (polybar.override { i3Support = true; })
       protobuf 
       (pass.withExtensions (ext: [ ext.pass-otp ]))
-      (rofi.override { plugins = [ rofi-emoji ]; })
+      (rofi-wayland.override { plugins = [ rofi-emoji ]; })
       redshift
       ripgrep
       ripgrep-all
@@ -93,6 +94,7 @@
       # calibre
       copyq
       coursier
+      dbeaver
       dropbox
       google-cloud-sdk
       gron
@@ -133,27 +135,27 @@
     stateVersion = "22.05";
   };
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacsPgtk;
-    extraPackages = (epkgs: with epkgs; [ vterm pdf-tools ]);
+  #programs.emacs = {
+  #  enable = true;
+  #  package = pkgs.emacsPgtk;
+  #  extraPackages = (epkgs: with epkgs; [ vterm pdf-tools ]);
 
-    #package = pkgs.emacs28WithPackages (epkgs:
-    #  (with epkgs.melpaPackages; [
-      #    vterm
-      #    #pdf-tools
-      #  ])
-      #);
+  #  #package = pkgs.emacs28WithPackages (epkgs:
+  #  #  (with epkgs.melpaPackages; [
+  #    #    vterm
+  #    #    #pdf-tools
+  #    #  ])
+  #    #);
 
-      #   package = pkgs.emacsNativeComp.override {
-        #     imagemagick = pkgs.imagemagick;
-        #   };
-        #   extraPackages = (epkgs:
-        #   [
-          #     epkgs.vterm
-          #     epkgs.pdf-tools
-          #   ]);
+  #    #   package = pkgs.emacsNativeComp.override {
+  #      #     imagemagick = pkgs.imagemagick;
+  #      #   };
+  #      #   extraPackages = (epkgs:
+  #      #   [
+  #        #     epkgs.vterm
+  #        #     epkgs.pdf-tools
+  #        #   ]);
 
-  };
+  #};
 
 }
