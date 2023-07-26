@@ -119,7 +119,7 @@
       pandoc
       # postman
       pdftk
-      pkg-config
+      # pkg-config
       # pgcli
       pup
       # robo3t

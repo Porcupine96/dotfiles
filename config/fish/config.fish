@@ -43,6 +43,15 @@ set -x QT_AUTO_SCREEN_SCALE_FACTOR 0
 
 set -x GTK_USE_PORTAL 0
 
+# fcitx for Japanese
+set -x GTK_IM_MODULE 'fcitx'
+set -x QT_IM_MODULE 'fcitx'
+set -x SDL_IM_MODULE 'fcitx'
+set -x XMODIFIERS '@im=fcitx'
+
+# for kitty to work with fcitx
+set -x GLFW_IM_MODULE 'ibus'
+
 # direnv
 set -x DIRENV_LOG_FORMAT ""
 

@@ -3,8 +3,8 @@
 export EDITOR="nvim"
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_DESKTOP=Hyprland
 export XDG_SESSION_TYPE=wayland
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt6ct
@@ -32,7 +32,7 @@ dunst &
 fcitx5 &
 
 if command -v nixGLIntel >/dev/null; then
-	exec nixGLIntel sway
+	exec nixGLIntel Hyprland
 else
-	exec sway
+	exec Hyprland
 fi

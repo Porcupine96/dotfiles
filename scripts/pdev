@@ -1,5 +1,12 @@
 #!/bin/bash
 
+
+function choose_dev {
+    choices=$(kubectl get namespaces --context zowie-dev-k8s | grep sl-dev | cut -d' ' -f1)
+    dev=$(printf "%s\n" "${choices[@]}" | fzf)
+    return dev
+}
+
 declare -a options=(
   "ai-project-service"
   "ai-import-service"
@@ -9,6 +16,8 @@ declare -a options=(
   "inbox-search-service"
   "inbox-integration-product-feed-service"
 )
+
+#choose_dev
 
 env="sl-dev-regions"
 db=$(printf "%s\n" "${options[@]}" | fzf)

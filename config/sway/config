@@ -1,0 +1,173 @@
+gaps inner 5
+gaps outer 3 
+
+set $mod Mod4
+
+set $left h
+set $right l
+set $up k
+set $down j
+
+default_border pixel 3
+
+smart_borders on
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+set $primary "DP-2"
+set $secondary "HDMI-1-A"
+set $ternary "eDP-1"
+workspace $ws1 output $primary
+workspace $ws2 output $primary
+workspace $ws3 output $primary
+workspace $ws4 output $secondary
+workspace $ws5 output $ternary
+
+assign [class="kitty"] $ws1
+assign [class="firefox"] $ws2
+assign [class="Emacs"] $ws3
+
+bindsym $mod+grave exec dunstctl close
+bindsym $mod+Shift+grave exec dunstctl history-pop
+
+bindsym $mod+f fullscreen toggle
+bindsym $mod+d exec --no-startup-id rofi_run
+bindsym $mod+p exec --no-startup-id rofi_so 
+bindsym $mod+o exec --no-startup-id "rofi -show window -show-icons -font 'Fira Mono 11' && wm_fullscreen off"
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+r mode "resize"
+
+bindsym $mod+Ctrl+d exec --no-startup-id rofi-dictionary
+bindsym $mod+Ctrl+s exec screenshot-edit
+bindsym $mod+Ctrl+c exec wm_fullscreen off && copyq toggle
+bindsym $mod+Ctrl+e exec --no-startup-id "rofi -show emoji -modi emoji"
+bindsym $mod+Ctrl+p exec copy-test-password
+bindsym $mod+Ctrl+z exec --no-startup-id zowier
+
+bindsym $mod+Shift+d exec -- dmenu
+bindsym $mod+Shift+r exec swaymsg reload
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+t gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+o gaps inner current set 5; gaps outer current set 3
+bindsym $mod+Shift+s exec flameshot gui
+
+bindsym $mod+Shift+F12 exec swaylock -c 1d2021 -e
+
+bindsym XF86AudioMute exec volume toggle
+bindsym XF86AudioLowerVolume exec volume down
+bindsym XF86AudioRaiseVolume exec volume up
+bindsym XF86MonBrightnessDown exec light -U 1
+bindsym XF86MonBrightnessUp exec light -A 1
+
+# change focus
+bindsym $mod+Ctrl+h focus left
+bindsym $mod+Ctrl+j focus down
+bindsym $mod+Ctrl+k focus up
+bindsym $mod+Ctrl+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10
+
+# move focused container to workspace and focus
+bindsym $mod+shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+shift+0 move container to workspace $ws10; workspace $ws10
+
+# standing desk
+bindsym $mod+shift+ctrl+i exec --no-startup-id "standing-desk stand"
+bindsym $mod+shift+ctrl+o exec --no-startup-id "standing-desk eat"
+bindsym $mod+shift+ctrl+p exec --no-startup-id "standing-desk sit"
+
+mode "resize" {
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+for_window [app_id="com.github.hluk.copyq"] floating enable, resize set 1200 720, move position center, sticky enable
+for_window [title="Firefox — Sharing Indicator"] floating enable
+for_window [title="^swappy$"] floating enable
+
+bar {
+    swaybar_command waybar
+    position bottom
+}
+
+input * {
+    xkb_layout "pl"
+    repeat_delay 200
+    repeat_rate 80
+}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_options "altwin:swap_lalt_lwin"
+    xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin"
+    xkb_layout "pl"
+    repeat_delay 200
+    repeat_rate 80
+}
+
+output "*" bg /home/porcupine/dotfiles/wallpaper/skrillex.png fill
+
+# exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+exec eval $(gnome-keyring-daemon --start)
+exec export SSH_AUTH_SOCK
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
+exec dbus-update-activation-environment --systemd --all
+
+exec nm-applet --indicator 
+exec gammastep-indicator -l 50.0:19.94 -t 2400:2400
+exec_always --no-startup-id flashfocus
+exec_always pkill kanshi || echo 1; kanshi
