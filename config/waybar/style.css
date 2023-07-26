@@ -31,6 +31,15 @@ window#waybar {
   border-radius: 0;
 }
 
+#workspaces button.active {
+  border-radius: 4px;
+  background-color: #7cafc2;
+}
+
+#workspaces button.urgent {
+  color: rgba(238, 46, 36, 1);
+}
+
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
   background: rgba(0, 0, 0, 0.2);

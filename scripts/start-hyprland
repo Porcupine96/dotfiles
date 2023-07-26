@@ -26,10 +26,10 @@ export XMODIFIERS='@im=fcitx'
 eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) || echo "gnome-keyring-daemon not found or failed"
 export SSH_AUTH_SOCK
 
-dropbox &
-copyq &
-dunst &
-fcitx5 &
+# dropbox &
+# copyq &
+# dunst &
+# fcitx5 &
 
 if command -v nixGLIntel >/dev/null; then
 	exec nixGLIntel Hyprland
