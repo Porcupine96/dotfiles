@@ -33,11 +33,14 @@ window#waybar {
 
 #workspaces button.active {
   border-radius: 4px;
+  color: #ffffff;
   background-color: #7cafc2;
 }
 
 #workspaces button.urgent {
-  color: rgba(238, 46, 36, 1);
+  border-radius: 4px;
+  color: #ffffff;
+  background-color: #eb4d4b;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -49,10 +52,6 @@ window#waybar {
 #workspaces button.focused {
   background-color: #64727d;
   box-shadow: inset 0 -3px #ffffff;
-}
-
-#workspaces button.urgent {
-  background-color: #eb4d4b;
 }
 
 #clock,
@@ -69,5 +68,6 @@ window#waybar {
 #battery.plugged,
 #battery.full {
   color: #ffffff;
-  background-color: #26a65b;
+  background-color: transparent;
+  /* background-color: #26a65b; */
 }
