@@ -19,7 +19,7 @@ declare -a options=(
 
 #choose_dev
 
-env="sl-dev-regions"
+env="sl-dev-kj"
 db=$(printf "%s\n" "${options[@]}" | fzf)
 
 

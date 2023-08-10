@@ -3,6 +3,7 @@
   nixpkgs.config.allowBroken = true;
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
+  # programs.hyprland.enable = true;
   services.lorri.enable = true;
 
   home = {
@@ -37,7 +38,7 @@
       noto-fonts-emoji
       (gl_wrap pkgs { bin = "imv"; })
       (gl_wrap pkgs { bin = "picom"; })
-      (polybar.override { i3Support = true; })
+      # (polybar.override { i3Support = true; })
       protobuf 
       (pass.withExtensions (ext: [ ext.pass-otp ]))
       (rofi-wayland.override { plugins = [ rofi-emoji ]; })
@@ -109,6 +110,8 @@
       k9s
       languagetool
       mach-nix
+      # for GBM to work (hyperland) ❓
+      mesa 
       mu
       ngrok
       (gl_wrap pkgs {

@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nixGL = { url = "github:guibou/nixGL/main"; };
 
@@ -8,6 +8,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "github:hyprwm/Hyprland";
 
     emacs = {
       type = "github";
