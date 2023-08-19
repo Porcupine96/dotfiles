@@ -2,3 +2,15 @@
 
 
 display_count=$(hyprctl monitors -j | jq length)
+
+case $display_count in
+    1) hyprctl dispatch movetoworkspace "1,kitty" 
+       hyprctl dispatch movetoworkspace "2,firefox" 
+       hyprctl dispatch movetoworkspace "3,emacs" 
+       hyprctl dispatch movetoworkspace "5,Slack" 
+       hyprctl dispatch movetoworkspace "5,Spotify" 
+        ;;
+    *)
+	exit 1
+	;;
+esac
