@@ -27,6 +27,9 @@ alias metals-emacs='metals'
 # prompt
 set pure_color_git_branch "green"
 set pure_color_virtualenv "yellow"
+set --universal pure_show_system_time true
+set pure_symbol_prompt "λ"
+set pure_symbol_reverse_prompt "N"
 
 set -x XDG_CONFIG_HOME "/home/porcupine/.config"
 
@@ -86,3 +89,7 @@ end
 fish_vi_key_bindings
 
 source /home/porcupine/dotfiles/config/fish/zowie.fish
+
+set -Ux PYENV_ROOT $HOME/.pyenv
+fish_add_path $PYENV_ROOT/bin
+pyenv init - | source

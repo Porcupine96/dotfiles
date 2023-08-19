@@ -8,6 +8,7 @@
     "modules-center": ["clock"],
     "modules-right": [
       "pulseaudio",
+      "backlight",
       "disk",
       "tray",
       "battery#bat1",
