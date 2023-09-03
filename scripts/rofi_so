@@ -13,7 +13,8 @@ declare -a options=(
   "Status\0icon\x1f~/dotfiles/logos/zowie.png"
   "Meet\0icon\x1f~/dotfiles/logos/zowie.png"
   "Grafana\0icon\x1f~/dotfiles/logos/grafana.png"
-  "Grafana New Prod\0icon\x1f~/dotfiles/logos/grafana.png"
+  "Grafana EU1\0icon\x1f~/dotfiles/logos/grafana.png"
+  "Grafana US1\0icon\x1f~/dotfiles/logos/grafana.png"
   "Jaeger\0icon\x1f~/dotfiles/logos/jaeger.png"
   "Kibana\0icon\x1f~/dotfiles/logos/kibana.png"
   "Kibana New Prod\0icon\x1f~/dotfiles/logos/kibana.png"
@@ -37,7 +38,8 @@ function to_url() {
     "Kibana")                   echo "https://kibana.vpn.zowie.ai/app/discover" ;;
     "Kibana New Prod")          echo "https://kibana-prod-eu1.vpn.zowie.ai/app/discover" ;;
     "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
-    "Grafana New Prod")         echo "https://grafana-prod-eu1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
+    "Grafana EU1")              echo "https://grafana-prod-eu1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
+    "Grafana US1")              echo "https://grafana-prod-us1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
     "Figma")                    echo "https://www.figma.com/file/I7yLNQqF4F63vh2PpYSZBc/Zowie-Redesign" ;;
     "Deflect Review")           echo "https://docs.google.com/document/d/1aglxUSNMlkbs8-wsGcRKqh0KykOuMKHGWFwMFl6F_rM/edit#heading=h.gsns1bkmjeqh" ;;
     "Pause/Resume ENV")         echo "https://gitlab.vpn.zowie.ai/infrastructure/cluster-conf/-/pipelines/new" ;;

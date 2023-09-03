@@ -1,0 +1,13 @@
+#!/bin/bash
+
+mem_used=$(free | awk '/Mem:/ { print $3 }')
+mem_limit=28000000
+
+while true
+do
+    if [ $mem_used -gt $mem_limit ]; then
+	notify-send "⚠️ Reaching the RAM limit"
+    fi
+
+    sleep 5
+done
