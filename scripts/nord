@@ -1,8 +1,0 @@
-#!/bin/bash
-
-COUNTRY=$(nordvpn countries | awk 1 RS="	| " | tr -d ",-" | grep -v "^$"  | dmenu -i -p "Country")
-
-if [[ ! -z $COUNTRY ]]; then
-    nordvpn disconnect
-    nordvpn connect $COUNTRY
-fi;

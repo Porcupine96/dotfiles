@@ -9,7 +9,7 @@
   home = {
     packages = with pkgs; [
       # Core
-      arandr
+      # arandr
       bat
       blueman
       bluez
@@ -17,19 +17,18 @@
       direnv
       dunst
       fd
-      feh
+      # feh
       fish
-      flameshot
+      # flameshot
       fzf
       htop-vim
-      i3blocks
+      # i3blocks
       libreoffice-fresh
       # i3lock TODO: doesn't work 
       (gl_wrap pkgs { bin = "kitty"; })
       neofetch
       man-db
       gnome.nautilus
-      gummy
       onlyoffice-bin
       openjdk11
       openvpn
@@ -37,18 +36,18 @@
       noto-fonts
       noto-fonts-emoji
       (gl_wrap pkgs { bin = "imv"; })
-      (gl_wrap pkgs { bin = "picom"; })
+      # (gl_wrap pkgs { bin = "picom"; })
       # (polybar.override { i3Support = true; })
       protobuf 
       (pass.withExtensions (ext: [ ext.pass-otp ]))
       (rofi-wayland.override { plugins = [ rofi-emoji ]; })
-      redshift
+      # redshift
       ripgrep
-      ripgrep-all
+      # ripgrep-all
       rsync
       sd
       symbola
-      spicetify-cli
+      # spicetify-cli
       tmux
       tree
       unrar
@@ -95,7 +94,7 @@
       # calibre
       copyq
       coursier
-      dbeaver
+      # dbeaver
       dropbox
       google-cloud-sdk
       gron
@@ -108,8 +107,8 @@
       kubectl
       kustomize
       k9s
-      languagetool
-      mach-nix
+      # languagetool
+      # mach-nix
       # for GBM to work (hyperland) ❓
       mesa 
       mu
@@ -129,7 +128,7 @@
       termdown
       tmpmail
       up
-      (gl_wrap pkgs { bin = "zeal"; })
+      # (gl_wrap pkgs { bin = "zeal"; })
       zathura
       zotero
       zip

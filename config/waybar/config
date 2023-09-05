@@ -4,7 +4,7 @@
     "layer": "bottom",
     "position": "bottom",
     "height": 24,
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": [
       "pulseaudio",
@@ -13,10 +13,10 @@
       "tray",
       "battery#bat1",
     ],
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "sort-by-number": true,
-        "format": "{icon}",
-        "format-active": " {icon} ",
+        "format": "{name}",
+        "format-active": " {name} ",
         "on-click": "activate"
     },
     "tray": {
