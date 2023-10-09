@@ -17,7 +17,8 @@ declare -a options=(
   "Grafana US1\0icon\x1f~/dotfiles/logos/grafana.png"
   "Jaeger\0icon\x1f~/dotfiles/logos/jaeger.png"
   "Kibana\0icon\x1f~/dotfiles/logos/kibana.png"
-  "Kibana New Prod\0icon\x1f~/dotfiles/logos/kibana.png"
+  "Kibana EU1\0icon\x1f~/dotfiles/logos/kibana.png"
+  "Kibana US1\0icon\x1f~/dotfiles/logos/kibana.png"
   "Figma\0icon\x1f~/dotfiles/logos/figma.png"
   "TOTP (dev)\0icon\x1f~/dotfiles/logos/key.png"
   "Deflect Review\0icon\x1f~/dotfiles/logos/google-docs.png"
@@ -36,7 +37,8 @@ function to_url() {
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
     "Jaeger")                   echo "https://jaeger.vpn.zowie.ai" ;;
     "Kibana")                   echo "https://kibana.vpn.zowie.ai/app/discover" ;;
-    "Kibana New Prod")          echo "https://kibana-prod-eu1.vpn.zowie.ai/app/discover" ;;
+    "Kibana EU1")               echo "https://kibana-prod-eu1.vpn.zowie.ai/app/discover" ;;
+    "Kibana US1")               echo "https://kibana-prod-us1.vpn.zowie.ai/app/discover" ;;
     "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
     "Grafana EU1")              echo "https://grafana-prod-eu1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
     "Grafana US1")              echo "https://grafana-prod-us1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;

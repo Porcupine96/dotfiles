@@ -32,7 +32,7 @@ set pure_symbol_reverse_prompt "N"
 
 set -x XDG_CONFIG_HOME "/home/porcupine/.config"
 
-set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+# set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x LC_ALL "en_US.UTF-8"
 
 # make rofi work: https://github.com/nix-community/home-manager/issues/354
