@@ -26,7 +26,10 @@ alias metals-emacs='metals'
 # prompt
 set pure_color_git_branch "green"
 set pure_color_virtualenv "yellow"
+
+set --universal pure_color_system_time pure_color_mute
 set --universal pure_show_system_time true
+
 set pure_symbol_prompt "λ"
 set pure_symbol_reverse_prompt "N"
 

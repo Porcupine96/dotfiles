@@ -8,6 +8,8 @@ declare -a options=(
     "reconnect"
 )
 
+bluetoothctl power on
+
 choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu)
 
 case "$choice" in 

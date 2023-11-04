@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo uhubctl -l '4-1.4.2' -p 2 -a toggle

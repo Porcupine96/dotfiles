@@ -3,8 +3,9 @@
   nixpkgs.config.allowBroken = true;
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
+  # mu.enable = true;
   # programs.hyprland.enable = true;
-  services.lorri.enable = true;
+  # services.lorri.enable = true;
 
   home = {
     packages = with pkgs; [
@@ -25,7 +26,7 @@
       # i3blocks
       libreoffice-fresh
       # i3lock TODO: doesn't work 
-      (gl_wrap pkgs { bin = "kitty"; })
+      # (gl_wrap pkgs { bin = "kitty"; })
       neofetch
       man-db
       gnome.nautilus
@@ -35,7 +36,7 @@
       neovim
       noto-fonts
       noto-fonts-emoji
-      (gl_wrap pkgs { bin = "imv"; })
+      # (gl_wrap pkgs { bin = "imv"; })
       # (gl_wrap pkgs { bin = "picom"; })
       # (polybar.override { i3Support = true; })
       protobuf 
@@ -54,12 +55,14 @@
       wget
       vifm
       xclip
+      # xdg-desktop-portal
+      # xdg-desktop-portal-hyprland
 
       # mongo
 
       # nix
       cachix
-      nixGLIntel
+      # nixGLIntel
       nixfmt
 
       # LaTeX
@@ -83,13 +86,13 @@
       ansible
       argocd
       awscli
-      (gl_wrap pkgs {
-        bin = "anki";
-        package = anki-bin;
-      })
+      # (gl_wrap pkgs {
+      #   bin = "anki";
+      #   package = anki-bin;
+      # })
       # freetube # <- issue with audio
-      (gl_wrap pkgs { bin = "brave"; })
-      (gl_wrap pkgs { bin = "firefox"; })
+      # (gl_wrap pkgs { bin = "brave"; })
+      # (gl_wrap pkgs { bin = "firefox"; })
       # burpsuite
       # calibre
       copyq
@@ -102,7 +105,7 @@
       home-assistant-cli
       httpie
       idasen
-      isync
+      # isync
       jq
       kubectl
       kustomize
@@ -110,13 +113,13 @@
       # languagetool
       # mach-nix
       # for GBM to work (hyperland) ❓
-      mesa 
-      mu
+      # mesa 
+      # mu
       ngrok
-      (gl_wrap pkgs {
-        bin = "obs";
-        package = obs-studio;
-      })
+      # (gl_wrap pkgs {
+      #   bin = "obs";
+      #   package = obs-studio;
+      # })
       ocrmypdf
       pandoc
       # postman

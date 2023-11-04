@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gammastep -l 50.0:19.94 -t 2400:2400
