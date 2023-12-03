@@ -45,7 +45,7 @@
       # redshift
       ripgrep
       # ripgrep-all
-      rsync
+      # rsync
       sd
       symbola
       # spicetify-cli

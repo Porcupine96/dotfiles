@@ -4,6 +4,7 @@
     "layer": "bottom",
     "position": "bottom",
     "height": 24,
+    "mode": "dock",
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": [

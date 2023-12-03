@@ -15,6 +15,7 @@ declare -a options=(
   "Grafana\0icon\x1f~/dotfiles/logos/grafana.png"
   "Grafana EU1\0icon\x1f~/dotfiles/logos/grafana.png"
   "Grafana US1\0icon\x1f~/dotfiles/logos/grafana.png"
+  "Chatbotize Kafka Lag\0icon\x1f~/dotfiles/logos/grafana.png"
   "Jaeger\0icon\x1f~/dotfiles/logos/jaeger.png"
   "Kibana\0icon\x1f~/dotfiles/logos/kibana.png"
   "Kibana EU1\0icon\x1f~/dotfiles/logos/kibana.png"
@@ -42,6 +43,7 @@ function to_url() {
     "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
     "Grafana EU1")              echo "https://grafana-prod-eu1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
     "Grafana US1")              echo "https://grafana-prod-us1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
+    "Chatbotize Kafka Lag")     echo "https://grafana.vpn.zowie.ai/d/u6bwjxvWz/full-monitoring?viewPanel=4&orgId=1&refresh=5s" ;;
     "Figma")                    echo "https://www.figma.com/file/I7yLNQqF4F63vh2PpYSZBc/Zowie-Redesign" ;;
     "Deflect Review")           echo "https://docs.google.com/document/d/1aglxUSNMlkbs8-wsGcRKqh0KykOuMKHGWFwMFl6F_rM/edit#heading=h.gsns1bkmjeqh" ;;
     "Pause/Resume ENV")         echo "https://gitlab.vpn.zowie.ai/infrastructure/cluster-conf/-/pipelines/new" ;;

@@ -17,8 +17,8 @@ rm -rf project/project project/target target project/.bloop
 # remove protobuf files
 rm -rf *protobufs
 
-# remove bloop / metals
-rm -rf .bloop .metals
+# remove bloop / metals / bsp
+rm -rf .bloop .metals .bsp project/metals.sbt
 
 if [ "$reinitialize_git" = true ]; then
   # remove old git repository

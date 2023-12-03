@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ps aux | grep gammastep | head -n1 | awk '{ print $2 }' | xargs kill
+light -S 80

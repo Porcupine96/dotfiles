@@ -1,0 +1,4 @@
+#!/bin/bash
+
+light -S 20
+gammastep -l 50.0:19.94 -t 2400:2400
