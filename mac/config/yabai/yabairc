@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+# some inspiration for the future
+# https://github.com/koekeishiya/dotfiles/blob/master/yabai/yabairc
+# https://github.com/koekeishiya/dotfiles/blob/master/skhd/skhdrc
+
+launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
+
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
+yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+
+BAR_HEIGHT=$(sketchybar -m --query bar | jq -r '.height')
+
+yabai -m space 1 --label term
+yabai -m space 2 --label web
+yabai -m space 3 --label coding
+# yabai -m space 4 --label 
+yabai -m space 5 --label slack
+yabai -m space 6 --label media
+# yabai -m space 7 --label 
+# yabai -m space 8 --label 
+
+# window rules
+yabai -m rule --add app="^(Calculator|System Preferences)$" manage=off
+yabai -m rule --add title='Settings$' manage=off
+yabai -m rule --add title='League of Legends' manage=off
+yabai -m rule --add app="^choose$" opacity=1.0 manage=off
+
+yabai -m rule --add app="^CopyQ$" opacity=1.0 manage=off grid=4:4:1:1:2:2
+yabai -m rule --add title="^ShiftRead$" opacity=1.0 sticky=on layer=above manage=off grid=4:4:1:1:2:2
+
+# global settings
+yabai -m config                                 \
+    external_bar all:35:0                       \
+    mouse_follows_focus          on             \
+    focus_follows_mouse          autoraise      \
+    window_origin_display        default        \
+    window_placement             second_child   \
+    window_zoom_persist          on             \
+    window_topmost               off            \
+    window_shadow                off            \
+    window_animation_duration    0.             \
+    window_opacity_duration      0.15           \
+    active_window_opacity        1.0            \
+    normal_window_opacity        0.85           \
+    window_opacity               on             \
+    insert_feedback_color        0xaad75f5f     \
+    active_window_border_color   0xBF775759     \
+    normal_window_border_color   0x7f353535     \
+    window_border_width          4              \
+    window_border_radius         12             \
+    window_border_blur           on             \
+    window_border_hidpi          on             \
+    window_border                on             \
+    split_ratio                  0.50           \
+    split_type                   auto           \
+    auto_balance                 off            \
+    top_padding                  20             \
+    bottom_padding               10             \
+    left_padding                 10             \
+    right_padding                10             \
+    window_gap                   06             \
+    layout                       bsp            \
+    mouse_modifier               fn             \
+    mouse_action1                move           \
+    mouse_action2                resize         \
+    mouse_drop_action            swap
+
