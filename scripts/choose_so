@@ -1,0 +1,78 @@
+#!/bin/bash
+
+
+declare -a options=(
+  "Monorepo Merge Requests"
+  "Admin Test Account"
+  "Zowier"
+  "Jira Chatbotize DEVS"
+  "Jira Chatbotize SUP"
+  "Jira Chatbotize SH"
+  "Weather"
+  "Home Assistant"
+  "Status"
+  "Meet"
+  "Grafana"
+  "Grafana EU1"
+  "Grafana US1"
+  "Argo Dev"
+  "Argo EU1"
+  "Argo US1"
+  "Chatbotize Kafka Lag"
+  "Jaeger"
+  "Kibana"
+  "Kibana EU1"
+  "Kibana US1"
+  "Figma"
+  "TOTP (dev)"
+  "Deflect Review"
+  "Pause/Resume ENV"
+  "Datadog"
+)
+
+function to_url() {
+  case "$1" in
+    "Monorepo Merge Requests")  echo "https://gitlab.vpn.zowie.ai/platform/monorepo/-/merge_requests?scope=all&state=opened&author_username=lukasz.kazmierczak" ;;
+    "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
+    "Jira Chatbotize DEVS")     echo "https://chatbotize.atlassian.net/jira/software/c/projects/DEVS/boards/21" ;;
+    "Jira Chatbotize SH")       echo "https://chatbotize.atlassian.net/jira/software/projects/SH/boards/31" ;;
+    "Jira Chatbotize SUP")      echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/SUP/queues/custom" ;;
+    "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
+    "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
+    "Jaeger")                   echo "https://jaeger.vpn.zowie.ai" ;;
+    "Kibana")                   echo "https://kibana.vpn.zowie.ai/app/discover" ;;
+    "Kibana EU1")               echo "https://kibana-prod-eu1.vpn.zowie.ai/app/discover" ;;
+    "Kibana US1")               echo "https://kibana-prod-us1.vpn.zowie.ai/app/discover" ;;
+    "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
+    "Grafana EU1")              echo "https://grafana-prod-eu1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
+    "Grafana US1")              echo "https://grafana-prod-us1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
+    "Argo Dev")                 echo "https://argocd-dev.zowie.tech" ;; 
+    "Argo EU1")                 echo "https://argocd-prod-eu1.vpn.zowie.ai" ;; 
+    "Argo US1")                 echo "https://argocd-prod-us1.vpn.zowie.ai" ;; 
+    "Chatbotize Kafka Lag")     echo "https://grafana.vpn.zowie.ai/d/u6bwjxvWz/full-monitoring?viewPanel=4&orgId=1&refresh=5s" ;;
+    "Figma")                    echo "https://www.figma.com/file/I7yLNQqF4F63vh2PpYSZBc/Zowie-Redesign" ;;
+    "Deflect Review")           echo "https://docs.google.com/document/d/1aglxUSNMlkbs8-wsGcRKqh0KykOuMKHGWFwMFl6F_rM/edit#heading=h.gsns1bkmjeqh" ;;
+    "Pause/Resume ENV")         echo "https://gitlab.vpn.zowie.ai/infrastructure/cluster-conf/-/pipelines/new" ;;
+    "Datadog")                  echo "https://app.datadoghq.eu/dashboard/lists" ;;
+
+    "Zowier") zowier
+	      exit 0 ;;
+
+    "Status") brave "https://meet.google.com/ozj-ajia-dfw"
+	      exit 0 ;;
+
+    "Meet") brave "https://meet.google.com"
+	      exit 0 ;;
+
+    "TOTP (dev)") pass otp zowie | wl-copy
+	      exit 0 ;;
+  esac
+}
+
+choice=$(printf "%b\n" "${options[@]}" | choose)
+
+if [[ -n "$choice" ]]; then
+  url=$(to_url "$choice")
+
+  open "$url"
+fi

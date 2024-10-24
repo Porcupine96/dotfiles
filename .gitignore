@@ -1,7 +1,11 @@
+.DS_Store
+
 vifminfo
 vifminfo.json
+
 .xmonad/xmonad.o
 .xmonad/xmonad.hi
 .xmonad/xmonad.errors
 .xmonad/xmonad-x86_64-linux
+
 config/nix/result

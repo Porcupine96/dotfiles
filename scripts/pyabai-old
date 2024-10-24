@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+function move_to_space() {
+	local app=$1
+	local space=$2
+	local win=$(yabai -m query --windows | jq ".[] | select(.app | contains(\"$app\")) | .id")
+
+	if [ -n "$win" ]; then
+		yabai -m window $win --space $space
+	fi
+}
+
+function move_space_to_display() {
+	local space=$1
+	local display=$2
+	local space_id=$(yabai -m query --spaces | jq ".[] | select(.index == $space) | .id")
+	yabai -m space $space_id --display $display
+}
+
+# move_space_to_display 1 2
+# move_space_to_display 2 2
+# move_space_to_display 3 2
+# move_space_to_display 4 2
+
+move_to_space "kitty" 1
+move_to_space "Arc" 2
+move_to_space "Emacs" 3
+move_to_space "Slack" 5
+move_to_space "Code" 8

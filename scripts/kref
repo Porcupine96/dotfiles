@@ -1,0 +1,5 @@
+#!/bin/bash
+
+totp=$(oathtool -b --totp "$(cat ~/.aws-key)")
+
+~/work/aws-refresh-mfa-token/aws-refresh-mfa-token.sh -c="$totp" -a="arn:aws:iam::165460035576:mfa/CLI"

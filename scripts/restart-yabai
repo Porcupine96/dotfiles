@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+pkill flameshot
+flameshot &
+
+yabai --restart-service && yabai --load-sa

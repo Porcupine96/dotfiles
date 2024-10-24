@@ -1,0 +1,12 @@
+#!/bin/bash
+
+tp=$(yabai -m config top_padding)
+
+if [ "$tp" -eq 3 ]; then
+    yabai -m config external_bar all:35:0 top_padding 20 bottom_padding 10 left_padding 10 right_padding 10             
+    sketchybar --bar hidden=off
+else
+    yabai -m config external_bar all:0:0 top_padding 3 bottom_padding 3 left_padding 3 right_padding 3
+    sketchybar --bar hidden=on
+fi
+
