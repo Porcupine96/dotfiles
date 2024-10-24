@@ -1,5 +1,10 @@
 #!/bin/bash
 
+env="sl-dev-main-ll"
+if [ $# = 1 ]; then
+   env="$1"
+fi   
+
 
 function choose_dev {
     choices=$(kubectl get namespaces --context zowie-dev-k8s | grep sl-dev | cut -d' ' -f1)
@@ -19,7 +24,6 @@ declare -a options=(
 
 #choose_dev
 
-env="sl-dev-kj"
 db=$(printf "%s\n" "${options[@]}" | fzf)
 
 

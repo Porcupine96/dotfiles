@@ -61,7 +61,7 @@ set -x GLFW_IM_MODULE 'ibus'
 set -x DIRENV_LOG_FORMAT ""
 
 # gnome-keyring-daemon
-set -x (gnome-keyring-daemon --start | string split "=")
+# set -x (gnome-keyring-daemon --start | string split "=")
 
 # vterm configuration
 function vterm_printf;
@@ -90,9 +90,21 @@ end
 # use VI bindings
 fish_vi_key_bindings
 
-source /home/porcupine/dotfiles/config/fish/zowie.fish
+# set -Ux PYENV_ROOT $HOME/.pyenv
+# fish_add_path $PYENV_ROOT/bin
+# pyenv init - | source
+# pyenv virtualenv-init - | source
 
-set -Ux PYENV_ROOT $HOME/.pyenv
-fish_add_path $PYENV_ROOT/bin
-pyenv init - | source
-pyenv virtualenv-init - | source
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /Users/lukaszkazmierczak/anaconda3/bin/conda
+    eval /Users/lukaszkazmierczak/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/Users/lukaszkazmierczak/anaconda3/etc/fish/conf.d/conda.fish"
+        . "/Users/lukaszkazmierczak/anaconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/Users/lukaszkazmierczak/anaconda3/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
+

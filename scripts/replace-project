@@ -1,10 +1,17 @@
 #!/bin/bash
 
-
 if [[ "$#" != 2 ]]; then
-  echo "usage: [old_name] [new_name]"
+    echo "usage: [old_name] [new_name]"
+    exit 1
 fi
 
 match="^((import|package).*)$1(.*)$"
 
-rg "$match" --files-with-matches | xargs -I{} sed -i -E "s/$match/\1$2\3/g" {}
+OS="$(uname)"
+if [ "$OS" = "Darwin" ]; then
+    sed_cmd="sed -i '' -E"
+else
+    sed_cmd="sed -i -E"
+fi
+
+rg "$match" --files-with-matches | xargs -I{} $sed_cmd "s/$match/\1$2\3/g" {}

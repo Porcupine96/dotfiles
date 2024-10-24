@@ -1,6 +1,6 @@
 #!/bin/bash
 
 # grim -g "$(slurp)" "$1"
-grim -g "$(slurp)" - | swappy -o "$1" -f -
+# grim -g "$(slurp)" - | swappy -o "$1" -f -
 
-# flameshot gui --raw > "$1"
+flameshot gui --raw > "$1"
