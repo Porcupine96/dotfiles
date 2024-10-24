@@ -11,3 +11,7 @@ ln -s ~/dotfiles/mac/config/idasen ~/.config/idasen
 ln -s ~/dotfiles/mac/config/karabiner ~/.config/karabiner
 ln -s ~/dotfiles/mac/config/htop ~/.config/htop
 ln -s ~/dotfiles/mac/config/sketchybar ~/.config/sketchybar
+
+# global
+
+ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
