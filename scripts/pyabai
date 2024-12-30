@@ -44,3 +44,5 @@ for s in current_display:
 
 
 subprocess.check_output(["sketchybar", "--reload"])
+
+#yabai --restart-service
