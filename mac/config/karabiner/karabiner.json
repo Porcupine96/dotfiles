@@ -5,7 +5,233 @@
                 "parameters": { "basic.to_if_held_down_threshold_milliseconds": 300 },
                 "rules": [
                     {
-                        "description": "PS4: Anki Repeat",
+                        "description": "8BitDo: Anki (8Bit)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button1" },
+                                "to": [
+                                    { "key_code": "r" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button8" },
+                                "to": [
+                                    { "key_code": "return_or_enter" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button6" },
+                                "to": [
+                                    { "key_code": "return_or_enter" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button3" },
+                                "to": [
+                                    { "key_code": "return_or_enter" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button4" },
+                                "to": [
+                                    { "key_code": "1" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button5" },
+                                "to": [
+                                    { "key_code": "1" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button2" },
+                                "to": [
+                                    {
+                                        "key_code": "z",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button14" },
+                                "to": [
+                                    {
+                                        "key_code": "f",
+                                        "modifiers": ["left_command", "left_shift", "left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "generic_desktop": "dpad_up" },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": ["left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "generic_desktop": "dpad_down" },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 736,
+                                                "vendor_id": 1118
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button7" },
+                                "to": [{ "key_code": "d" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "PS4: Anki",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -26,12 +252,107 @@
                                     { "key_code": "escape" }
                                 ],
                                 "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "PS4: Anki Ctrl z",
-                        "manipulators": [
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button8" },
+                                "to": [
+                                    { "key_code": "return_or_enter" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button6" },
+                                "to": [
+                                    { "key_code": "return_or_enter" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button2" },
+                                "to": [
+                                    { "key_code": "return_or_enter" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button7" },
+                                "to": [
+                                    { "key_code": "1" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button5" },
+                                "to": [
+                                    { "key_code": "1" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
                             {
                                 "conditions": [
                                     {
@@ -52,11 +373,112 @@
                                     }
                                 ],
                                 "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button14" },
+                                "to": [
+                                    {
+                                        "key_code": "f",
+                                        "modifiers": ["left_command", "left_shift", "left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "generic_desktop": "dpad_up" },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": ["left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "generic_desktop": "dpad_down" },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "generic_desktop": "dpad_left" },
+                                "to": [
+                                    {
+                                        "key_code": "d",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button11" },
+                                "to": [{ "pointing_button": "button1" }],
+                                "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "PS4: Anki Success #3",
+                        "description": "8BitDo: Anki (DualShock)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -72,67 +494,32 @@
                                 ],
                                 "from": { "pointing_button": "button2" },
                                 "to": [
+                                    { "key_code": "r" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button8" },
+                                "to": [
                                     { "key_code": "return_or_enter" },
                                     { "key_code": "escape" },
                                     { "key_code": "escape" }
                                 ],
                                 "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "PS4: Anki Fail #2",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "pointing_button": "button5" },
-                                "to": [
-                                    { "key_code": "1" },
-                                    { "key_code": "escape" },
-                                    { "key_code": "escape" }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "PS4: Anki Fail #1",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "pointing_button": "button7" },
-                                "to": [
-                                    { "key_code": "1" },
-                                    { "key_code": "escape" },
-                                    { "key_code": "escape" }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "PS4: Anki Success #2",
-                        "manipulators": [
+                            },
                             {
                                 "conditions": [
                                     {
@@ -152,12 +539,7 @@
                                     { "key_code": "escape" }
                                 ],
                                 "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "PS4: Anki Success #1",
-                        "manipulators": [
+                            },
                             {
                                 "conditions": [
                                     {
@@ -170,11 +552,156 @@
                                         "type": "device_if"
                                     }
                                 ],
-                                "from": { "pointing_button": "button8" },
+                                "from": { "pointing_button": "button1" },
                                 "to": [
                                     { "key_code": "return_or_enter" },
                                     { "key_code": "escape" },
                                     { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button4" },
+                                "to": [
+                                    { "key_code": "1" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button5" },
+                                "to": [
+                                    { "key_code": "1" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button3" },
+                                "to": [
+                                    {
+                                        "key_code": "z",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "pointing_button": "button14" },
+                                "to": [
+                                    {
+                                        "key_code": "f",
+                                        "modifiers": ["left_command", "left_shift", "left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "generic_desktop": "dpad_up" },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": ["left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "generic_desktop": "dpad_down" },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1476,
+                                                "vendor_id": 1356
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "generic_desktop": "dpad_left" },
+                                "to": [
+                                    {
+                                        "key_code": "d",
+                                        "modifiers": []
+                                    }
                                 ],
                                 "type": "basic"
                             }
@@ -362,6 +889,28 @@
                         "vendor_id": 1356
                     },
                     "ignore": false
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 6505,
+                        "vendor_id": 12951
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "grave_accent_and_tilde" },
+                            "to": [{ "key_code": "non_us_backslash" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_game_pad": true,
+                        "is_pointing_device": true,
+                        "product_id": 736,
+                        "vendor_id": 1118
+                    },
+                    "ignore": false
                 }
             ],
             "name": "Default profile",
@@ -372,14 +921,11 @@
                     "to": [{ "key_code": "right_control" }]
                 },
                 {
-                    "from": { "key_code": "non_us_backslash" },
-                    "to": [{ "key_code": "grave_accent_and_tilde" }]
-                },
-                {
                     "from": { "key_code": "right_command" },
                     "to": [{ "key_code": "right_option" }]
                 }
-            ]
+            ],
+            "virtual_hid_keyboard": { "keyboard_type_v2": "iso" }
         }
     ]
 }

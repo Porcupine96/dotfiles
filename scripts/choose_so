@@ -21,6 +21,7 @@ declare -a options=(
   "Kibana"
   "Kibana EU1"
   "Kibana US1"
+  "Kibana DEV"
   "Figma"
   "TOTP (dev)"
   "Deflect Review"
@@ -39,6 +40,7 @@ function to_url() {
     "Kibana")                   echo "https://kibana.vpn.zowie.ai/app/discover" ;;
     "Kibana EU1")               echo "https://kibana-prod-eu1.vpn.zowie.ai/app/discover" ;;
     "Kibana US1")               echo "https://kibana-prod-us1.vpn.zowie.ai/app/discover" ;;
+    "Kibana DEV")               echo "https://kibana-k8s.zowie.tech/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-1h,to:now))&_a=(columns:!(stack,service,message,stack_trace,k8s_namespace),filters:!(),grid:(columns:(message:(width:203),service:(width:168),stack:(width:83))),index:fad3f51c-6ddf-4e1d-8fc2-5925371836f6,interval:auto,query:(language:kuery,query:'k8s_namespace:%20%22sl-dev-genai%22'),sort:!(!('@timestamp',desc)),viewMode:documents)" ;;
     "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
     "Grafana EU1")              echo "https://grafana-prod-eu1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
     "Grafana US1")              echo "https://grafana-prod-us1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
