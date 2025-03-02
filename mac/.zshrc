@@ -63,7 +63,6 @@ ZSH_THEME=""
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
@@ -84,8 +83,9 @@ plugins=(
     docker
     git
     z
-    zsh-vi-mode
+  # zsh-vi-mode
 )
+
 
 
 source $ZSH/oh-my-zsh.sh
@@ -119,12 +119,14 @@ source $ZSH/oh-my-zsh.sh
 alias keu="k9s --context zowie-prod-eu1 -n app-prod-eu1"
 alias kus="k9s --context zowie-prod-us1 -n app-prod-us1"
 alias kmain="k9s --context zowie-dev -n sl-dev-main-ll"
+alias k="kubectx"
+alias kn="kubens"
 
 alias prod-vpn='sudo openfortivpn -c /etc/openfortivpn/admin'
-alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
-alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
-alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
-alias j21="export JAVA_HOME=`/usr/libexec/java_home -v 21`; java -version"
+#alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
+#alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
+#alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
+#alias j21="export JAVA_HOME=`/usr/libexec/java_home -v 21`; java -version"
 
 alias argoz='bash ~/dotfiles/scripts/argoz.sh'
 alias argos='bash ~/dotfiles/scripts/argos.sh'
@@ -133,7 +135,7 @@ alias copyq="/Applications/CopyQ.app/Contents/MacOS/CopyQ"
 
 # set the default java version
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
-export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+#export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
@@ -151,8 +153,9 @@ if [ -f '/Users/lukaszkazmierczak/Downloads/google-cloud-sdk/path.zsh.inc' ]; th
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/lukaszkazmierczak/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lukaszkazmierczak/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
@@ -166,4 +169,26 @@ source "${FZF_PATH}/shell/key-bindings.zsh"
 
 
 # disable bindkey
-#
+
+export PATH="$PATH:/Users/lukaszkazmierczak/Library/Application Support/Coursier/bin"
+export PATH="$PATH:/Users/lukaszkazmierczak/dotfiles/scripts"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

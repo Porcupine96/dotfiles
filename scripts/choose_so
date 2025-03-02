@@ -33,7 +33,7 @@ function to_url() {
   case "$1" in
     "Monorepo Merge Requests")  echo "https://gitlab.vpn.zowie.ai/platform/monorepo/-/merge_requests?scope=all&state=opened&author_username=lukasz.kazmierczak" ;;
     "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
-    "Jira")                     echo "https://chatbotize.atlassian.net/jira/software/projects/D2/boards/51" ;;
+    "Jira")                     echo "https://chatbotize.atlassian.net/jira/software/projects/EI/boards/65" ;;
     "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
     "Jaeger")                   echo "https://jaeger.vpn.zowie.ai" ;;

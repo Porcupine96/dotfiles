@@ -13,3 +13,6 @@ Plug 'tpope/vim-surround'
 "Plug 'stevearc/dressing.nvim'
 
 call plug#end()
+
+
+nnoremap <C-w>d <C-w>c
