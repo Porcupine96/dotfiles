@@ -1,8 +1,8 @@
 # focus window
 cmd + ctrl - h : yabai -m window --focus west || yabai -m display --focus west
 cmd + ctrl - l : yabai -m window --focus east || yabai -m display --focus east
-cmd + ctrl - j : yabai -m window --focus south
-cmd + ctrl - k : yabai -m window --focus north
+cmd + ctrl - j : yabai -m window --focus south || yabai -m display --focus south
+cmd + ctrl - k : yabai -m window --focus north ||  yabai -m display --focus north
 
 cmd + ctrl - o : yabai -m window --focus recent
 # cmd + ctrl - p : yabai -m window --focus prev
@@ -41,6 +41,8 @@ cmd - 7 : yabai -m space --focus 7
 cmd - 8 : yabai -m space --focus 8
 cmd - 9 : yabai -m space --focus 9
 cmd - 0 : yabai -m space --focus 10
+
+cmd - 0x32 : /Users/lukaszkazmierczak/dotfiles/scripts/cycle
 
 # move to a space
 cmd + ctrl - 1 : yabai -m window --space 1

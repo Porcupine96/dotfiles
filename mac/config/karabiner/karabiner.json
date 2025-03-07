@@ -19,7 +19,7 @@
                                         "type": "device_if"
                                     }
                                 ],
-                                "from": { "pointing_button": "button1" },
+                                "from": { "pointing_button": "button2" },
                                 "to": [
                                     { "key_code": "r" },
                                     { "key_code": "escape" },
@@ -79,7 +79,7 @@
                                         "type": "device_if"
                                     }
                                 ],
-                                "from": { "pointing_button": "button3" },
+                                "from": { "pointing_button": "button4" },
                                 "to": [
                                     { "key_code": "return_or_enter" },
                                     { "key_code": "escape" },
@@ -99,7 +99,7 @@
                                         "type": "device_if"
                                     }
                                 ],
-                                "from": { "pointing_button": "button4" },
+                                "from": { "pointing_button": "button3" },
                                 "to": [
                                     { "key_code": "1" },
                                     { "key_code": "escape" },
@@ -139,7 +139,7 @@
                                         "type": "device_if"
                                     }
                                 ],
-                                "from": { "pointing_button": "button2" },
+                                "from": { "pointing_button": "button1" },
                                 "to": [
                                     {
                                         "key_code": "z",
@@ -472,237 +472,6 @@
                                 ],
                                 "from": { "pointing_button": "button11" },
                                 "to": [{ "pointing_button": "button1" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "8BitDo: Anki (DualShock)",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "pointing_button": "button2" },
-                                "to": [
-                                    { "key_code": "r" },
-                                    { "key_code": "escape" },
-                                    { "key_code": "escape" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "pointing_button": "button8" },
-                                "to": [
-                                    { "key_code": "return_or_enter" },
-                                    { "key_code": "escape" },
-                                    { "key_code": "escape" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "pointing_button": "button6" },
-                                "to": [
-                                    { "key_code": "return_or_enter" },
-                                    { "key_code": "escape" },
-                                    { "key_code": "escape" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "pointing_button": "button1" },
-                                "to": [
-                                    { "key_code": "return_or_enter" },
-                                    { "key_code": "escape" },
-                                    { "key_code": "escape" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "pointing_button": "button4" },
-                                "to": [
-                                    { "key_code": "1" },
-                                    { "key_code": "escape" },
-                                    { "key_code": "escape" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "pointing_button": "button5" },
-                                "to": [
-                                    { "key_code": "1" },
-                                    { "key_code": "escape" },
-                                    { "key_code": "escape" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "pointing_button": "button3" },
-                                "to": [
-                                    {
-                                        "key_code": "z",
-                                        "modifiers": ["left_command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "pointing_button": "button14" },
-                                "to": [
-                                    {
-                                        "key_code": "f",
-                                        "modifiers": ["left_command", "left_shift", "left_control"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "generic_desktop": "dpad_up" },
-                                "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": ["left_shift"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "generic_desktop": "dpad_down" },
-                                "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": []
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1476,
-                                                "vendor_id": 1356
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": { "generic_desktop": "dpad_left" },
-                                "to": [
-                                    {
-                                        "key_code": "d",
-                                        "modifiers": []
-                                    }
-                                ],
                                 "type": "basic"
                             }
                         ]
