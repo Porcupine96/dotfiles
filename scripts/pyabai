@@ -63,11 +63,17 @@ if len(displays) == 3:
                 sleep(0.25)
 
 
-yabai -m rule --apply app=kitty manage=on space=1
-yabai -m rule --apply app=Zen manage=on space=2
-yabai -m rule --apply app=Emacs manage=on space=3
-yabai -m rule --apply app=Slack manage=on space=8
-yabai -m rule --apply app=Spotify manage=on space=8
+def move_to_space(app, space):
+    subprocess.check_output(
+        ["yabai", "-m", "rule", "--apply", f"app={app}", "manage=on", f"space={space}"]
+    )
+
+
+move_to_space("kitty", 1)
+move_to_space("Zen", 2)
+move_to_space("Emacs", 3)
+move_to_space("Slack", 8)
+move_to_space("Spotify", 8)
 
 
 subprocess.check_output(["sketchybar", "--reload"])
