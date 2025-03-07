@@ -5,9 +5,7 @@ declare -a options=(
   "Monorepo Merge Requests"
   "Admin Test Account"
   "Zowier"
-  "Jira Chatbotize DEVS"
-  "Jira Chatbotize SUP"
-  "Jira Chatbotize SH"
+  "Jira"
   "Weather"
   "Home Assistant"
   "Status"
@@ -35,9 +33,7 @@ function to_url() {
   case "$1" in
     "Monorepo Merge Requests")  echo "https://gitlab.vpn.zowie.ai/platform/monorepo/-/merge_requests?scope=all&state=opened&author_username=lukasz.kazmierczak" ;;
     "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
-    "Jira Chatbotize DEVS")     echo "https://chatbotize.atlassian.net/jira/software/c/projects/DEVS/boards/21" ;;
-    "Jira Chatbotize SH")       echo "https://chatbotize.atlassian.net/jira/software/projects/SH/boards/31" ;;
-    "Jira Chatbotize SUP")      echo "https://chatbotize.atlassian.net/jira/servicedesk/projects/SUP/queues/custom" ;;
+    "Jira")                     echo "https://chatbotize.atlassian.net/jira/software/projects/EI/boards/65" ;;
     "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
     "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
     "Jaeger")                   echo "https://jaeger.vpn.zowie.ai" ;;

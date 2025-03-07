@@ -15,12 +15,41 @@ current_display = {str(s["index"]): str(s["display"]) for s in spaces}
 print(current_display)
 
 # format: off
+layout_2 = {
+    "1": ["1", "2", "3", "4", "5", "6", "7"],
+    "2": ["8", "9", "10"],
+}
+# format: on
+
+# format: off
 layout_3 = {
     "1": ["1", "2", "3", "4"],
     "2": ["8", "9", "10"],
     "3": ["5", "6", "7"],
 }
 # format: on
+
+for i in range(SPACE_TARGET - len(spaces)):
+    subprocess.check_output(["yabai", "-m", "space", "--create"])
+
+
+for s in current_display:
+    if int(s) > SPACE_TARGET:
+        subprocess.check_output(["yabai", "-m", "space", s, "--destroy"])
+        sleep(0.25)
+
+
+if len(displays) == 2:
+    for tg_d, tg_s in layout_2.items():
+        for spc in tg_s:
+            c_d = current_display[spc]
+            if c_d != tg_d:
+                print(f"Moving {spc} from {c_d} to {tg_d}")
+                subprocess.check_output(
+                    ["yabai", "-m", "space", spc, "--display", tg_d]
+                )
+                sleep(0.25)
+
 
 if len(displays) == 3:
     for tg_d, tg_s in layout_3.items():
@@ -33,16 +62,18 @@ if len(displays) == 3:
                 )
                 sleep(0.25)
 
-for i in range(SPACE_TARGET - len(spaces)):
-    subprocess.check_output(["yabai", "-m", "space", "--create"])
 
-for s in current_display:
-    if int(s) > SPACE_TARGET:
-        subprocess.check_output(["yabai", "-m", "space", s, "--destroy"])
-        sleep(0.25)
+def move_to_space(app, space):
+    subprocess.check_output(
+        ["yabai", "-m", "rule", "--apply", f"app={app}", "manage=on", f"space={space}"]
+    )
 
+
+move_to_space("kitty", 1)
+move_to_space("Zen", 2)
+move_to_space("Emacs", 3)
+move_to_space("Slack", 8)
+move_to_space("Spotify", 8)
 
 
 subprocess.check_output(["sketchybar", "--reload"])
-
-#yabai --restart-service

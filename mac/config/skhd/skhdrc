@@ -56,6 +56,7 @@ cmd + ctrl - 8 : yabai -m window --space 8
 cmd + ctrl - 9 : yabai -m window --space 9
 cmd + ctrl - 0 : yabai -m window --space 10
 
+cmd - 0x32 : /Users/lukaszkazmierczak/dotfiles/scripts/cycle
 
 cmd + ctrl - u : /Users/lukaszkazmierczak/dotfiles/scripts/pyabai
 
