@@ -17,7 +17,7 @@ while [[ "$#" -gt 0 ]]
 
 pos=${pos:-1}
 
-focus="$(yabai -m query --windows | \
+focus="$(yabai -m query --windows | sed 's/},]/}]/g' | \
     jq -e --argjson pos $pos '(.[] | select(."has-focus")) as {$id, $app}
       | map( select( .app==$app and ((."is-hidden" or ."is-minimized") | not) ) )
       | sort_by(.space, .frame.x, .frame.y)
