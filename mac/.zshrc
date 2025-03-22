@@ -121,6 +121,7 @@ alias kus="k9s --context zowie-prod-us1 -n app-prod-us1"
 alias kmain="k9s --context zowie-dev -n sl-dev-main-ll"
 alias k="kubectx"
 alias kn="kubens"
+alias gs="git status"
 
 alias prod-vpn='sudo openfortivpn -c /etc/openfortivpn/admin'
 #alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
