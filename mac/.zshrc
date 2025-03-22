@@ -3,6 +3,8 @@
 #
 
 export ZVM_INIT_MODE=sourcing
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:/Users/lukaszkazmierczak/.npm-global/bin"
 export FZF_PATH=/opt/homebrew/opt/fzf
 export LC_CTYPE=en_US.UTF-8
