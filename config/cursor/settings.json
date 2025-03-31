@@ -1,0 +1,24 @@
+{
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "explorer.confirmDragAndDrop": false,
+    "editor.formatOnSave": true,
+    "roo-cline.allowedCommands": [
+        "npm test",
+        "npm install",
+        "tsc",
+        "git log",
+        "git diff",
+        "git show"
+    ],
+    "git.openRepositoryInParentFolders": "never",
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "editor.lineNumbers": "relative",
+    "vim.useSystemClipboard": true,
+    "workbench.colorTheme": "Dracula Theme",
+}

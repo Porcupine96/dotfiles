@@ -5,7 +5,8 @@
 export ZVM_INIT_MODE=sourcing
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export PATH="$PATH:/Users/lukaszkazmierczak/.npm-global/bin"
+export PATH="$PATH:/$HOME/.npm-global/bin"
+export GOOGLE_APPLICATION_CREDENTIALS="$HOME/work/prod-ansible/credentials/vertex-ai.json"
 export FZF_PATH=/opt/homebrew/opt/fzf
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -14,7 +15,8 @@ export LC_ALL=en_US.UTF-8
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-source ~/.bash_profile
+# Only source bash_profile if it exists and contains content
+[[ -s ~/.bash_profile ]] && source ~/.bash_profile
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -166,10 +168,6 @@ eval "$(jenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source "${FZF_PATH}/shell/key-bindings.zsh"
 
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 
 # disable bindkey
 
@@ -195,3 +193,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
