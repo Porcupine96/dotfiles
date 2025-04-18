@@ -3,7 +3,6 @@
         "asvetliakov.vscode-neovim": 1
     },
     "explorer.confirmDragAndDrop": false,
-    "editor.formatOnSave": true,
     "roo-cline.allowedCommands": [
         "npm test",
         "npm install",
@@ -21,4 +20,5 @@
     "editor.lineNumbers": "relative",
     "vim.useSystemClipboard": true,
     "workbench.colorTheme": "Dracula Theme",
+    "terminal.integrated.inheritEnv": false,
 }

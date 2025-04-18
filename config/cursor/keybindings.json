@@ -121,5 +121,9 @@
         "key": "[ e",
         "command": "editor.action.marker.prevInFiles",
         "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+    },
+    {
+        "key": "cmd+i",
+        "command": "composerMode.agent"
     }
 ]
