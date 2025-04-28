@@ -51,7 +51,7 @@ function to_url() {
     "Figma")                    echo "https://www.figma.com/file/I7yLNQqF4F63vh2PpYSZBc/Zowie-Redesign" ;;
     "Deflect Review")           echo "https://docs.google.com/document/d/1aglxUSNMlkbs8-wsGcRKqh0KykOuMKHGWFwMFl6F_rM/edit#heading=h.gsns1bkmjeqh" ;;
     "Pause/Resume ENV")         echo "https://gitlab.vpn.zowie.ai/infrastructure/cluster-conf/-/pipelines/new" ;;
-    "Datadog")                  echo "https://app.datadoghq.eu/dashboard/lists" ;;
+    "Datadog")                  echo "https://app.datadoghq.eu/software" ;;
 
     "Zowier") zowier
 	      exit 0 ;;
