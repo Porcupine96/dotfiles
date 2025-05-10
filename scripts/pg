@@ -1,0 +1,46 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Usage: ./pg <eu|us|dev>"
+    exit 1
+fi
+
+DC=$1
+
+case $DC in
+    eu)
+        PG_HOST=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1/endpoint --with-decryption --output text --query Parameter.Value)
+        PG_PASS=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1/password --with-decryption --output text --query Parameter.Value)
+        PG_USER="root"
+        ;;
+    us)
+        PG_HOST=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1/endpoint --with-decryption --output text --query Parameter.Value)
+        PG_PASS=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1/password --with-decryption --output text --query Parameter.Value)
+        PG_USER="root"
+        ;;
+    dev)
+        PG_HOST=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/endpoint --with-decryption --output text --query Parameter.Value)
+        PG_PASS=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/password --with-decryption --output text --query Parameter.Value)
+        PG_USER=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/master_username --with-decryption --output text --query Parameter.Value)
+        ;;
+    *)
+        echo "Invalid datacenter. Use eu, us, or dev."
+        exit 1
+        ;;
+esac
+
+DATABASES=$(PGPASSWORD=$PG_PASS psql -h $PG_HOST -U $PG_USER -d postgres -c "SELECT datname FROM pg_database WHERE datistemplate = false ORDER BY datname;" -t | tr -d ' ')
+
+if ! command -v fzf &> /dev/null; then
+    echo "fzf is not installed. Please install it first."
+    exit 1
+fi
+
+SELECTED_DB=$(echo "$DATABASES" | fzf --height 40% --border)
+
+if [ -z "$SELECTED_DB" ]; then
+    echo "No database selected."
+    exit 1
+fi
+
+PGPASSWORD=$PG_PASS pgcli -h $PG_HOST -U $PG_USER -d $SELECTED_DB 
