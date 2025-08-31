@@ -26,6 +26,7 @@ declare -a options=(
   "Deflect Review\0icon\x1f~/dotfiles/logos/google-docs.png"
   "Pause/Resume ENV\0icon\x1f~/dotfiles/logos/gitlab.png"
   "Datadog\0icon\x1f~/dotfiles/logos/datadog.png"
+  "Cloudflare"
 )
 
 function to_url() {
@@ -50,6 +51,7 @@ function to_url() {
     "Deflect Review")           echo "https://docs.google.com/document/d/1aglxUSNMlkbs8-wsGcRKqh0KykOuMKHGWFwMFl6F_rM/edit#heading=h.gsns1bkmjeqh" ;;
     "Pause/Resume ENV")         echo "https://gitlab.vpn.zowie.ai/infrastructure/cluster-conf/-/pipelines/new" ;;
     "Datadog")                  echo "https://app.datadoghq.eu/dashboard/lists" ;;
+    "Cloudflare")               echo "https://dash.cloudflare.com/f1efca907e53049611b5480ca6f845c6/getzowie.com/analytics/traffic?origin-status-code~geq=500&time-window=30" ;;
 
     "Zowier") zowier
 	      exit 0 ;;

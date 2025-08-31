@@ -13,6 +13,13 @@ yabai -m signal --add event=window_focused action="sketchybar --trigger window_f
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
+yabai -m rule --add app="^Fusion$" subrole="^AXDialog$" mouse_follows_focus=off
+yabai -m rule --add app="^Fusion$" subrole="^AXDialog$" manage=off
+yabai -m rule --add app="^Fusion$" subrole="^AXDialog$" focus_follows_mouse=off
+yabai -m rule --add app="^Fusion$" mouse_follows_focus=off
+yabai -m rule --add app="^Fusion$" manage=off
+yabai -m rule --add app="^Fusion$" focus_follows_mouse=off
+
 BAR_HEIGHT=$(sketchybar -m --query bar | jq -r '.height')
 
 yabai -m space 1 --label term

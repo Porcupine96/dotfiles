@@ -80,7 +80,7 @@
     {
         "key": "g d",
         "command": "editor.action.goToDeclaration",
-        "when": "editorHasImplementationProvider && editorTextFocus && vim.active && vim.mode == 'Normal'"
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
     },
     {
         "key": "g o",
@@ -90,7 +90,7 @@
     {
         "key": "g t",
         "command": "editor.action.goToTypeDefinition",
-        "when": "editorHasImplementationProvider && editorTextFocus && vim.active && vim.mode == 'Normal'"
+        "when": "editorHasTypeDefinitionProvider && editorTextFocus && vim.active && vim.mode == 'Normal'"
     },
     {
         "key": "g i",
@@ -125,5 +125,25 @@
     {
         "key": "cmd+i",
         "command": "composerMode.agent"
+    },
+    {
+        "key": "cmd+shift+w",
+        "command": "workbench.action.closeOtherEditors"
+    },
+    {
+        "key": "ctrl+x 0",
+        "command": "workbench.action.closeEditorsInOtherGroups"
+    },
+    {
+        "key": "cmd+e",
+        "command": "composerMode.background"
+    },
+    {
+        "key": "cmd+e",
+        "command": "composerMode.background"
+    },
+    {
+        "key": "cmd+e",
+        "command": "composerMode.background"
     }
 ]

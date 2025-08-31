@@ -6,7 +6,7 @@ export ZVM_INIT_MODE=sourcing
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:/$HOME/.npm-global/bin"
-export GOOGLE_APPLICATION_CREDENTIALS="$HOME/work/prod-ansible/credentials/vertex-ai.json"
+#export GOOGLE_APPLICATION_CREDENTIALS="$HOME/work/prod-ansible/credentials/vertex-ai.json"
 export FZF_PATH=/opt/homebrew/opt/fzf
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -168,11 +168,13 @@ eval "$(jenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source "${FZF_PATH}/shell/key-bindings.zsh"
 
+bindkey -s ^f "tmux-sessionizer\n"
 
 # disable bindkey
 
 export PATH="$PATH:/Users/lukaszkazmierczak/Library/Application Support/Coursier/bin"
 export PATH="$PATH:/Users/lukaszkazmierczak/dotfiles/scripts"
+export PATH="$PATH:/Users/lukaszkazmierczak/projects/watcher/bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

@@ -21,4 +21,17 @@
     "vim.useSystemClipboard": true,
     "workbench.colorTheme": "Dracula Theme",
     "terminal.integrated.inheritEnv": false,
+    "search.exclude": {
+        "**/.git": true,
+        "**/node_modules": true,
+        "**/.metals": true,
+        "**/.bloop": true,
+        "**/tmp": true
+    },
+    "metals.startMcpServer": true,
+    "vscode_custom_css.imports": [
+        "file:///Users/lukaszkazmierczak/projects/cursor-auto-resume/cursor-auto-resume.js"
+    ],
+    "git.autofetch": true,
+    "go.toolsManagement.autoUpdate": true
 }

@@ -9,7 +9,6 @@ declare -a options=(
   "Weather"
   "Home Assistant"
   "Status"
-  "Meet"
   "Grafana"
   "Grafana EU1"
   "Grafana US1"
@@ -27,6 +26,12 @@ declare -a options=(
   "Deflect Review"
   "Pause/Resume ENV"
   "Datadog"
+  "Cloudflare"
+  "Linear"
+  "CMAK EU1"
+  "CMAK US1"
+  "CMAK WAW"
+  "Admin ZE3"
 )
 
 function to_url() {
@@ -52,14 +57,18 @@ function to_url() {
     "Deflect Review")           echo "https://docs.google.com/document/d/1aglxUSNMlkbs8-wsGcRKqh0KykOuMKHGWFwMFl6F_rM/edit#heading=h.gsns1bkmjeqh" ;;
     "Pause/Resume ENV")         echo "https://gitlab.vpn.zowie.ai/infrastructure/cluster-conf/-/pipelines/new" ;;
     "Datadog")                  echo "https://app.datadoghq.eu/software" ;;
+    "Cloudflare")               echo "https://dash.cloudflare.com/f1efca907e53049611b5480ca6f845c6/getzowie.com/analytics/traffic?origin-status-code~geq=500&time-window=30" ;;
+    "Linear")                   echo "https://linear.app/zowieai/view/assigned-to-lukasz-54642b5d9c85" ;;
+    "CMAK EU1") 	        echo "https://cmak-prod-eu1.vpn.zowie.ai/" ;;
+    "CMAK US1") 	        echo "https://cmak-prod-us1.vpn.zowie.ai/" ;;
+    "CMAK WAW") 	        echo "http://192.168.0.51:9000/clusters/Production/topics" ;;
+    "Admin ZE3") 	        echo "https://admin-sl-dev-zowie-engine3.zowie.tech/environments" ;;
+
 
     "Zowier") zowier
 	      exit 0 ;;
 
     "Status") brave "https://meet.google.com/ozj-ajia-dfw"
-	      exit 0 ;;
-
-    "Meet") brave "https://meet.google.com"
 	      exit 0 ;;
 
     "TOTP (dev)") pass otp zowie | wl-copy

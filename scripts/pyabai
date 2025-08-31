@@ -33,10 +33,28 @@ for i in range(SPACE_TARGET - len(spaces)):
     subprocess.check_output(["yabai", "-m", "space", "--create"])
 
 
+# Build a mapping of display -> list of spaces for safe destruction
+display_spaces = {}
+for space_id, display_id in current_display.items():
+    if display_id not in display_spaces:
+        display_spaces[display_id] = []
+    display_spaces[display_id].append(int(space_id))
+
+# Sort spaces in each display by ID
+for display_id in display_spaces:
+    display_spaces[display_id].sort()
+
+# Safely destroy spaces > SPACE_TARGET, ensuring each display keeps at least one space
 for s in current_display:
     if int(s) > SPACE_TARGET:
-        subprocess.check_output(["yabai", "-m", "space", s, "--destroy"])
-        sleep(0.25)
+        display_id = current_display[s]
+        # Only destroy if this display will still have at least one space remaining
+        if len(display_spaces[display_id]) > 1:
+            subprocess.check_output(["yabai", "-m", "space", s, "--destroy"])
+            display_spaces[display_id].remove(int(s))
+            sleep(0.25)
+        else:
+            print(f"Skipping destruction of space {s} - would leave display {display_id} with no spaces")
 
 
 if len(displays) == 2:

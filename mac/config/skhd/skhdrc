@@ -96,7 +96,9 @@ cmd + ctrl - left : yabai -m window --resize left:-20:0
 cmd + ctrl - right : yabai -m window --resize left:20:0
 cmd + ctrl - up : yabai -m window --resize top:0:-20
 cmd + ctrl - down : yabai -m window --resize top:0:20
-cmd + ctrl - m : yabai -m space --balance
+cmd + ctrl - m : /Users/lukaszkazmierczak/dotfiles/scripts/cycle-fullscreen
+
+cmd + ctrl - i : terminal-notifier -remove ALL
 
 # ----------------------------------------
 

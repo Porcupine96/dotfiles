@@ -1,0 +1,10 @@
+#!/bin/bash
+
+unset GOOGLE_APPLICATION_CREDENTIALS
+
+export CLAUDE_CODE_USE_VERTEX=1
+export CLOUD_ML_REGION=europe-west1
+export ANTHROPIC_VERTEX_PROJECT_ID=zowie-product-tools
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+
+exec claude "$@"

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Get all windows in the current space, filtering for visible, manageable windows
+# Group by app and take only one window per app to avoid counting multiple instances
+windows=$(yabai -m query --windows --space | jq -r '
+  [.[] | select(
+    ."is-hidden" == false and 
+    ."is-minimized" == false and 
+    ."is-floating" == false and
+    .role == "AXWindow"
+  )]
+  | group_by(.app)
+  | map(.[0])
+  | .[].id
+')
+
+# Count the number of unique windows
+window_count=$(echo "$windows" | wc -l | tr -d ' ')
+
+# If there aren't exactly 2 windows, exit
+if [ "$window_count" -ne 2 ]; then
+    exit 1
+fi
+
+# Get the currently focused window
+focused_window=$(yabai -m query --windows --window | jq -r '.id')
+
+# Get the other window (the one that's not focused)
+other_window=$(echo "$windows" | grep -v "$focused_window")
+
+# Make it fullscreen
+yabai -m window --toggle zoom-fullscreen
+
+# Focus the other window
+yabai -m window --focus "$other_window"
+
+# Make it fullscreen
+yabai -m window --toggle zoom-fullscreen

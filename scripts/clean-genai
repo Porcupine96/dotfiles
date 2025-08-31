@@ -1,0 +1,23 @@
+#!/bin/bash
+
+cd ~/work/monorepo/creator/creator-genai-service
+
+ps aux | grep metals | awk '{ print $2 }' | xargs -I {} kill -9 {}
+ps aux | grep bloop | awk '{ print $2 }' | xargs -I {} kill -9 {}
+
+clean-project
+
+cd genai
+clean-project
+cd ..
+
+cd zowie-engine
+clean-project
+cd ..
+
+for dir in modules/*/
+do
+  cd "$dir"
+  clean-project
+  cd ../..
+done
