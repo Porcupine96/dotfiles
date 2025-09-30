@@ -21,9 +21,10 @@
                                 ],
                                 "from": { "pointing_button": "button2" },
                                 "to": [
-                                    { "key_code": "r" },
-                                    { "key_code": "escape" },
-                                    { "key_code": "escape" }
+                                    {
+                                        "key_code": "z",
+                                        "modifiers": ["left_command"]
+                                    }
                                 ],
                                 "type": "basic"
                             },
@@ -141,10 +142,9 @@
                                 ],
                                 "from": { "pointing_button": "button1" },
                                 "to": [
-                                    {
-                                        "key_code": "z",
-                                        "modifiers": ["left_command"]
-                                    }
+                                    { "key_code": "r" },
+                                    { "key_code": "escape" },
+                                    { "key_code": "escape" }
                                 ],
                                 "type": "basic"
                             },

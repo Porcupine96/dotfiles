@@ -4,7 +4,6 @@
 declare -a options=(
   "Monorepo Merge Requests"
   "Admin Test Account"
-  "Zowier"
   "Jira"
   "Weather"
   "Home Assistant"
@@ -12,6 +11,7 @@ declare -a options=(
   "Grafana"
   "Grafana EU1"
   "Grafana US1"
+  "Grafana EU1 Voice Metrics"
   "Argo Dev"
   "Argo EU1"
   "Argo US1"
@@ -32,41 +32,40 @@ declare -a options=(
   "CMAK US1"
   "CMAK WAW"
   "Admin ZE3"
+  "Google Vertex API"
 )
 
 function to_url() {
   case "$1" in
-    "Monorepo Merge Requests")  echo "https://gitlab.vpn.zowie.ai/platform/monorepo/-/merge_requests?scope=all&state=opened&author_username=lukasz.kazmierczak" ;;
-    "Admin Test Account")       echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
-    "Jira")                     echo "https://chatbotize.atlassian.net/jira/software/projects/EI/boards/65" ;;
-    "Weather")                  echo "https://m.meteo.pl/krakow/60" ;;
-    "Home Assistant")           echo "http://192.168.1.29:8123/" ;;
-    "Jaeger")                   echo "https://jaeger.vpn.zowie.ai" ;;
-    "Kibana")                   echo "https://kibana.vpn.zowie.ai/app/discover" ;;
-    "Kibana EU1")               echo "https://kibana-prod-eu1.vpn.zowie.ai/app/discover" ;;
-    "Kibana US1")               echo "https://kibana-prod-us1.vpn.zowie.ai/app/discover" ;;
-    "Kibana DEV")               echo "https://kibana-k8s.zowie.tech/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-1h,to:now))&_a=(columns:!(stack,service,message,stack_trace,k8s_namespace),filters:!(),grid:(columns:(message:(width:203),service:(width:168),stack:(width:83))),index:fad3f51c-6ddf-4e1d-8fc2-5925371836f6,interval:auto,query:(language:kuery,query:'k8s_namespace:%20%22sl-dev-genai%22'),sort:!(!('@timestamp',desc)),viewMode:documents)" ;;
-    "Grafana")                  echo "https://grafana.vpn.zowie.ai" ;;
-    "Grafana EU1")              echo "https://grafana-prod-eu1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
-    "Grafana US1")              echo "https://grafana-prod-us1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
-    "Argo Dev")                 echo "https://argocd-dev.zowie.tech" ;; 
-    "Argo EU1")                 echo "https://argocd-prod-eu1.vpn.zowie.ai" ;; 
-    "Argo US1")                 echo "https://argocd-prod-us1.vpn.zowie.ai" ;; 
-    "Chatbotize Kafka Lag")     echo "https://grafana.vpn.zowie.ai/d/u6bwjxvWz/full-monitoring?viewPanel=4&orgId=1&refresh=5s" ;;
-    "Figma")                    echo "https://www.figma.com/file/I7yLNQqF4F63vh2PpYSZBc/Zowie-Redesign" ;;
-    "Deflect Review")           echo "https://docs.google.com/document/d/1aglxUSNMlkbs8-wsGcRKqh0KykOuMKHGWFwMFl6F_rM/edit#heading=h.gsns1bkmjeqh" ;;
-    "Pause/Resume ENV")         echo "https://gitlab.vpn.zowie.ai/infrastructure/cluster-conf/-/pipelines/new" ;;
-    "Datadog")                  echo "https://app.datadoghq.eu/software" ;;
-    "Cloudflare")               echo "https://dash.cloudflare.com/f1efca907e53049611b5480ca6f845c6/getzowie.com/analytics/traffic?origin-status-code~geq=500&time-window=30" ;;
-    "Linear")                   echo "https://linear.app/zowieai/view/assigned-to-lukasz-54642b5d9c85" ;;
-    "CMAK EU1") 	        echo "https://cmak-prod-eu1.vpn.zowie.ai/" ;;
-    "CMAK US1") 	        echo "https://cmak-prod-us1.vpn.zowie.ai/" ;;
-    "CMAK WAW") 	        echo "http://192.168.0.51:9000/clusters/Production/topics" ;;
-    "Admin ZE3") 	        echo "https://admin-sl-dev-zowie-engine3.zowie.tech/environments" ;;
-
-
-    "Zowier") zowier
-	      exit 0 ;;
+    "Monorepo Merge Requests")    echo "https://gitlab.vpn.zowie.ai/platform/monorepo/-/merge_requests?scope=all&state=opened&author_username=lukasz.kazmierczak" ;;
+    "Admin Test Account")         echo "https://admin.vpn.zowie.ai/environments/aa23bb62336f43bf84710b834217564d" ;;
+    "Jira")                       echo "https://chatbotize.atlassian.net/jira/software/projects/EI/boards/65" ;;
+    "Weather")                    echo "https://m.meteo.pl/krakow/60" ;;
+    "Home Assistant")             echo "http://192.168.1.29:8123/" ;;
+    "Jaeger")                     echo "https://jaeger.vpn.zowie.ai" ;;
+    "Kibana")                     echo "https://kibana.vpn.zowie.ai/app/discover" ;;
+    "Kibana EU1")                 echo "https://kibana-prod-eu1.vpn.zowie.ai/app/discover" ;;
+    "Kibana US1")                 echo "https://kibana-prod-us1.vpn.zowie.ai/app/discover" ;;
+    "Kibana DEV")                 echo "https://kibana-k8s.zowie.tech/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-1h,to:now))&_a=(columns:!(stack,service,message,stack_trace,k8s_namespace),filters:!(),grid:(columns:(message:(width:203),service:(width:168),stack:(width:83))),index:fad3f51c-6ddf-4e1d-8fc2-5925371836f6,interval:auto,query:(language:kuery,query:'k8s_namespace:%20%22sl-dev-genai%22'),sort:!(!('@timestamp',desc)),viewMode:documents)" ;;
+    "Grafana")                    echo "https://grafana.vpn.zowie.ai" ;;
+    "Grafana EU1")                echo "https://grafana-prod-eu1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
+    "Grafana US1")                echo "https://grafana-prod-us1.vpn.zowie.ai/d/zowiefull/full-monitoring?orgId=1" ;;
+    "Grafana EU1 Voice Metrics")  echo "https://grafana-prod-eu1.vpn.zowie.ai/d/voicebot-metrics/voicebot-metrics?orgId=1&refresh=5s&from=now-12h&to=now" ;;
+    "Argo Dev")                   echo "https://argocd-dev.zowie.tech" ;; 
+    "Argo EU1")                   echo "https://argocd-prod-eu1.vpn.zowie.ai" ;; 
+    "Argo US1")                   echo "https://argocd-prod-us1.vpn.zowie.ai" ;; 
+    "Chatbotize Kafka Lag")       echo "https://grafana.vpn.zowie.ai/d/u6bwjxvWz/full-monitoring?viewPanel=4&orgId=1&refresh=5s" ;;
+    "Figma")                      echo "https://www.figma.com/file/I7yLNQqF4F63vh2PpYSZBc/Zowie-Redesign" ;;
+    "Deflect Review")             echo "https://docs.google.com/document/d/1aglxUSNMlkbs8-wsGcRKqh0KykOuMKHGWFwMFl6F_rM/edit#heading=h.gsns1bkmjeqh" ;;
+    "Pause/Resume ENV")           echo "https://gitlab.vpn.zowie.ai/infrastructure/cluster-conf/-/pipelines/new" ;;
+    "Datadog")                    echo "https://app.datadoghq.eu/software" ;;
+    "Cloudflare")                 echo "https://dash.cloudflare.com/f1efca907e53049611b5480ca6f845c6/getzowie.com/analytics/traffic?origin-status-code~geq=500&time-window=30" ;;
+    "Linear")                     echo "https://linear.app/zowieai/view/assigned-to-lukasz-54642b5d9c85" ;;
+    "CMAK EU1") 	          echo "https://cmak-prod-eu1.vpn.zowie.ai/" ;;
+    "CMAK US1") 	          echo "https://cmak-prod-us1.vpn.zowie.ai/" ;;
+    "CMAK WAW") 	          echo "http://192.168.0.51:9000/clusters/Production/topics" ;;
+    "Admin ZE3") 	          echo "https://admin-sl-dev-zowie-engine3.zowie.tech/environments" ;;
+    "Google Vertex API")          echo "https://console.cloud.google.com/monitoring/dashboards/integration/vertex_ai.vertex-ai-model-garden;filters=type:rlabel,key:model_user_id%2Btype:rlabel,key:location%2Btype:mlabel,key:request_type;duration=PT3H?inv=1&invt=Ab0AsQ&project=maximal-arcade-267011&pageState=(%22eventTypes%22:(%22selected%22:%5B%22CLOUD_ALERTING_ALERT%22,%22SERVICE_HEALTH_INCIDENT%22%5D))" ;;
 
     "Status") brave "https://meet.google.com/ozj-ajia-dfw"
 	      exit 0 ;;

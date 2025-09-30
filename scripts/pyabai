@@ -16,8 +16,8 @@ print(current_display)
 
 # format: off
 layout_2 = {
-    "1": ["1", "2", "3", "4", "5", "6", "7"],
-    "2": ["8", "9", "10"],
+    "1": ["1", "2", "3", "4", "5", "6", "7", "8"],
+    "2": ["9", "10"],
 }
 # format: on
 
@@ -90,8 +90,10 @@ def move_to_space(app, space):
 move_to_space("kitty", 1)
 move_to_space("Zen", 2)
 move_to_space("Emacs", 3)
-move_to_space("Slack", 8)
-move_to_space("Spotify", 8)
+move_to_space("Anki", 4)
+move_to_space("Slack", 5)
+move_to_space("Chrome", 8)
+move_to_space("Spotify", 9)
 
 
 subprocess.check_output(["sketchybar", "--reload"])
