@@ -6,6 +6,6 @@ export CLAUDE_CODE_USE_VERTEX=1
 export CLOUD_ML_REGION=europe-west1
 export ANTHROPIC_VERTEX_PROJECT_ID=zowie-product-tools
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
-export ANTHROPIC_MODEL='claude-sonnet-4@20250514'
+# export ANTHROPIC_MODEL='claude-sonnet-4@20250514'
 
 exec claude "$@"

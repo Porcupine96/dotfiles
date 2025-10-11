@@ -33,5 +33,9 @@
         "file:///Users/lukaszkazmierczak/projects/cursor-auto-resume/cursor-auto-resume.js"
     ],
     "git.autofetch": true,
-    "go.toolsManagement.autoUpdate": true
+    "go.toolsManagement.autoUpdate": true,
+    "remote.SSH.remotePlatform": {
+        "slurm-public": "linux",
+        "slurm": "linux"
+    }
 }
