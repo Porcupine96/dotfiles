@@ -141,6 +141,8 @@ alias argos='bash ~/dotfiles/scripts/argos.sh'
 
 alias copyq="/Applications/CopyQ.app/Contents/MacOS/CopyQ"
 
+alias slurm="ssh lkazmierczak@10.149.156.60"
+
 # set the default java version
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 #export JAVA_HOME=$(/usr/libexec/java_home -v 17)
@@ -178,6 +180,7 @@ bindkey -s ^f "tmux-sessionizer\n"
 export PATH="$PATH:/Users/lukaszkazmierczak/Library/Application Support/Coursier/bin"
 export PATH="$PATH:/Users/lukaszkazmierczak/dotfiles/scripts"
 export PATH="$PATH:/Users/lukaszkazmierczak/projects/watcher/bin"
+export PATH="$PATH:/Library/TeX/texbin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

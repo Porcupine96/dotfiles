@@ -3,6 +3,7 @@ set clipboard+=unnamedplus
 call plug#begin()
 
 Plug 'tpope/vim-surround'
+Plug 'hat0uma/csvview.nvim'
 
 "Plug 'nvim-lua/plenary.nvim'
 "Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
@@ -14,6 +15,7 @@ Plug 'tpope/vim-surround'
 
 call plug#end()
 
+lua require('csvview').setup()
 
 nnoremap <C-w>d <C-w>c
 

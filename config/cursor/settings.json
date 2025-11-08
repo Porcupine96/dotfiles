@@ -37,5 +37,6 @@
     "remote.SSH.remotePlatform": {
         "slurm-public": "linux",
         "slurm": "linux"
-    }
+    },
+    "remote.autoForwardPortsSource": "hybrid"
 }
