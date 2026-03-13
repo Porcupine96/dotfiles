@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/lukaszkazmierczak/.zsh/completions:"* ]]; then export FPATH="/Users/lukaszkazmierczak/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #
@@ -6,10 +8,13 @@ export ZVM_INIT_MODE=sourcing
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:/$HOME/.npm-global/bin"
+export PATH="$PATH:/Users/lukaszkazmierczak/Library/Application Support/Coursier/bin"
+export PATH="$HOME/.local/bin:$PATH"
 #export GOOGLE_APPLICATION_CREDENTIALS="$HOME/work/prod-ansible/credentials/vertex-ai.json"
 export FZF_PATH=/opt/homebrew/opt/fzf
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
 
 export LIBRARY_PATH="/opt/homebrew/lib:$LIBRARY_PATH"
 export CPATH="/opt/homebrew/include:$CPATH"
@@ -17,6 +22,9 @@ export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+# Cache brew prefix for faster startup
+BREW_PREFIX=$(brew --prefix)
 
 # Only source bash_profile if it exists and contains content
 [[ -s ~/.bash_profile ]] && source ~/.bash_profile
@@ -123,12 +131,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias mid="mirrord exec -f .mirrord/mirrord.json -- sbt -J-Xmx4096M -mem 8129 \"~creator-genai-gateway/run\""
 alias keu="k9s --context zowie-prod-eu1 -n app-prod-eu1"
 alias kus="k9s --context zowie-prod-us1 -n app-prod-us1"
+alias kze1="k9s --context zowie-dev -n sl-dev-zowie-engine1"
+alias kze2="k9s --context zowie-dev -n sl-dev-zowie-engine2"
+alias kze3="k9s --context zowie-dev -n sl-dev-zowie-engine3"
+alias kzem="k9s --context zowie-dev -n sl-dev-zem"
 alias kmain="k9s --context zowie-dev -n sl-dev-main-ll"
 alias k="kubectx"
 alias kn="kubens"
 alias gs="git status"
+alias pc="pclaude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
 
 alias prod-vpn='sudo openfortivpn -c /etc/openfortivpn/admin'
 #alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
@@ -143,18 +157,26 @@ alias copyq="/Applications/CopyQ.app/Contents/MacOS/CopyQ"
 
 alias slurm="ssh lkazmierczak@10.149.156.60"
 
+alias gemini="~/.nvm/versions/node/v22.14.0/bin/gemini"
+
 # set the default java version
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 #export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+fpath+=("$BREW_PREFIX/share/zsh/site-functions")
 
 autoload -U promptinit; promptinit
 prompt pure
 
 # >>> scala-cli completions >>>
 fpath=("/Users/lukaszkazmierczak/Library/Application Support/ScalaCli/completions/zsh" $fpath)
-compinit
+# Cache compinit for faster startup
+autoload -Uz compinit
+if [[ -n ${HOME}/.zcompdump(#qNmh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 # <<< scala-cli completions <<<
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -163,7 +185,7 @@ if [ -f '/Users/lukaszkazmierczak/Downloads/google-cloud-sdk/path.zsh.inc' ]; th
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/lukaszkazmierczak/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lukaszkazmierczak/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source $BREW_PREFIX/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -186,24 +208,64 @@ export PATH="$PATH:/Library/TeX/texbin"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
+# >>> conda initialize (lazy-loaded) >>>
+__conda_lazy_load() {
+    unset -f conda
+    unset -f __conda_lazy_load
+    __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/opt/anaconda3/bin:$PATH"
+        if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/opt/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/opt/anaconda3/bin:$PATH"
+        fi
     fi
-fi
-unset __conda_setup
+    unset __conda_setup
+    conda "$@"
+}
+conda() {
+    __conda_lazy_load "$@"
+}
 # <<< conda initialize <<<
 
+# Lazy load NVM for faster startup
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+_nvm_resolve=$(cat "$NVM_DIR/alias/default" 2>/dev/null)
+while [[ -f "$NVM_DIR/alias/$_nvm_resolve" ]]; do
+  _nvm_resolve=$(cat "$NVM_DIR/alias/$_nvm_resolve")
+done
+export PATH="$NVM_DIR/versions/node/$_nvm_resolve/bin:$PATH"
+unset _nvm_resolve
+nvm() {
+    unset -f nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm "$@"
+}
+node() {
+    unset -f node
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    node "$@"
+}
+npm() {
+    unset -f npm
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    npm "$@"
+}
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+
+# pnpm
+export PNPM_HOME="/Users/lukaszkazmierczak/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+. "/Users/lukaszkazmierczak/.deno/env"
+
+# opencode
+export PATH=/Users/lukaszkazmierczak/.opencode/bin:$PATH
+
+eval "$(direnv hook zsh)"

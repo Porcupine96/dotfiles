@@ -133,5 +133,10 @@
     {
         "key": "ctrl+x 0",
         "command": "workbench.action.closeEditorsInOtherGroups"
+    },
+    {
+        "key": "alt+cmd+s",
+        "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
+        "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
     }
 ]

@@ -8,4 +8,4 @@ export ANTHROPIC_VERTEX_PROJECT_ID=zowie-product-tools
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 # export ANTHROPIC_MODEL='claude-sonnet-4@20250514'
 
-exec claude "$@"
+exec /opt/homebrew/bin/claude "$@"
