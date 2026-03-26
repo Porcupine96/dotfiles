@@ -1,5 +1,7 @@
 let mapleader = " "
 set clipboard+=unnamedplus
+set relativenumber
+set textwidth=120
 
 call plug#begin()
 
@@ -19,14 +21,23 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'stevearc/conform.nvim'
+Plug 'github/copilot.vim'
+
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
 
 call plug#end()
+
+imap <M-w> <Plug>(copilot-accept-word)
+imap <M-h> <Plug>(copilot-previous)
+imap <M-l> <Plug>(copilot-next)
 
 colorscheme dracula
 
 autocmd FileType markdown setlocal foldmethod=expr foldexpr=v:lua.vim.treesitter.foldexpr() foldlevel=99
 
 lua require('csvview').setup()
+lua require('render-markdown').setup()
 lua require('telescope').setup()
 
 lua << EOF
@@ -49,6 +60,9 @@ EOF
 
 lua << EOF
 local metals_config = require("metals").bare_config()
+metals_config.settings = {
+  serverVersion = "2.0.0-M8",
+}
 local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "scala", "sbt", "java" },
@@ -117,5 +131,8 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>gc <cmd>edit $MYVIMRC<cr>
+nnoremap <leader>gb <cmd>Telescope git_branches<cr>
+nnoremap <leader>gl <cmd>Telescope git_commits<cr>
+nnoremap <leader>gs <cmd>Telescope git_status<cr>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <leader>yp <cmd>let @+ = expand('%:p')<cr>

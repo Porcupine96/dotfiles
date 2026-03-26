@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ -z "${1:-}" ]; then
+  echo "Usage: tt <name>" >&2
+  exit 1
+fi
+
+name="$1"
+mono="$HOME/work/mono"
+worktree_path="$mono/$name"
+
+cd "$mono"
+git fetch origin master
+git worktree add "$name" origin/master
+
+tmux new-session -d -s "$name" -c "$worktree_path" -e "HUSKY=0"
+tmux switch-client -t "$name"

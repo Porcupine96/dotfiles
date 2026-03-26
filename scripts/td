@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ -z "${1:-}" ]; then
+  echo "Usage: td <name>" >&2
+  exit 1
+fi
+
+name="$1"
+mono="$HOME/work/mono"
+worktree_path="$mono/$name"
+
+# Kill tmux session if it exists
+if tmux has-session -t "=$name" 2>/dev/null; then
+  tmux kill-session -t "=$name"
+  echo "Killed tmux session: $name"
+else
+  echo "No tmux session found: $name"
+fi
+
+# Remove git worktree if it exists
+if [ -d "$worktree_path" ]; then
+  cd "$mono"
+  git worktree remove "$name" --force
+  echo "Removed worktree: $worktree_path"
+else
+  echo "No worktree found: $worktree_path"
+fi

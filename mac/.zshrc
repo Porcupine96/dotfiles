@@ -159,6 +159,8 @@ alias slurm="ssh lkazmierczak@10.149.156.60"
 
 alias gemini="~/.nvm/versions/node/v22.14.0/bin/gemini"
 
+alias wt="webtorrent download"
+
 # set the default java version
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 #export JAVA_HOME=$(/usr/libexec/java_home -v 17)
@@ -269,3 +271,5 @@ esac
 export PATH=/Users/lukaszkazmierczak/.opencode/bin:$PATH
 
 eval "$(direnv hook zsh)"
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
