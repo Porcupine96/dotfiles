@@ -137,6 +137,7 @@ alias argoz='bash ~/dotfiles/scripts/argoz.sh'
 alias argos='bash ~/dotfiles/scripts/argos.sh'
 
 alias copyq="/Applications/CopyQ.app/Contents/MacOS/CopyQ"
+alias slurm="ssh  -p 22 lkazmierczak@10.149.156.60"
 
 # set the default java version
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
@@ -201,3 +202,4 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export DYLD_FALLBACK_LIBRARY_PATH="/opt/homebrew/opt/libxml2/lib:$DYLD_FALLBACK_LIBRARY_PATH"

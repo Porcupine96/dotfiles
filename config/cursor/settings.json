@@ -1,7 +1,4 @@
 {
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
     "explorer.confirmDragAndDrop": false,
     "roo-cline.allowedCommands": [
         "npm test",

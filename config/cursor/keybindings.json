@@ -135,15 +135,8 @@
         "command": "workbench.action.closeEditorsInOtherGroups"
     },
     {
-        "key": "cmd+e",
-        "command": "composerMode.background"
-    },
-    {
-        "key": "cmd+e",
-        "command": "composerMode.background"
-    },
-    {
-        "key": "cmd+e",
-        "command": "composerMode.background"
+        "key": "alt+cmd+s",
+        "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
+        "when": "!isAuxiliaryWindowFocusedContext"
     }
 ]
