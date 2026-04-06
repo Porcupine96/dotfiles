@@ -1,5 +1,3 @@
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/Users/lukaszkazmierczak/.zsh/completions:"* ]]; then export FPATH="/Users/lukaszkazmierczak/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #
@@ -265,7 +263,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-. "/Users/lukaszkazmierczak/.deno/env"
 
 # opencode
 export PATH=/Users/lukaszkazmierczak/.opencode/bin:$PATH
