@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import json
+import re
+import uuid
+from http.client import HTTPConnection
+
+
+def find_project_root():
+    path = os.getcwd()
+    while True:
+        if os.path.isdir(os.path.join(path, ".metals")):
+            return path
+        parent = os.path.dirname(path)
+        if parent == path:
+            break
+        path = parent
+    return None
+
+
+def get_metals_port(project_root):
+    log = os.path.join(project_root, ".metals", "metals.log")
+    if not os.path.exists(log):
+        return None
+    with open(log, "r") as f:
+        for line in reversed(f.readlines()):
+            m = re.search(r"MCP server started on port:\s*(\d+)", line)
+            if m:
+                return int(m.group(1))
+    return None
+
+
+def parse_sse_response(data):
+    for line in data.split("\n"):
+        if line.startswith("data: "):
+            return json.loads(line[6:])
+    return None
+
+
+def mcp_request(host, port, method, params=None, req_id=None, session_id=None):
+    msg = {"jsonrpc": "2.0", "method": method}
+    if params is not None:
+        msg["params"] = params
+    if req_id is not None:
+        msg["id"] = req_id
+    body = json.dumps(msg).encode()
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json, text/event-stream",
+    }
+    if session_id:
+        headers["Mcp-Session-Id"] = session_id
+    c = HTTPConnection(host, port, timeout=300)
+    c.request("POST", "/mcp", body=body, headers=headers)
+    r = c.getresponse()
+    sid = r.getheader("Mcp-Session-Id")
+    ct = r.getheader("Content-Type", "")
+    data = r.read().decode()
+    c.close()
+    if not data:
+        return None, sid
+    if "text/event-stream" in ct:
+        return parse_sse_response(data), sid
+    return json.loads(data), sid
+
+
+def main():
+    usage = (
+        "Usage: metals-compile <command> [args]\n"
+        "\n"
+        "Commands:\n"
+        "  module <name>   Compile a module (build target)\n"
+        "  file <path>     Compile a file\n"
+        "  full            Compile the whole project\n"
+        "  list            List available modules\n"
+    )
+
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
+        print(usage)
+        sys.exit(0)
+
+    cmd = sys.argv[1]
+    if cmd == "module" and len(sys.argv) < 3:
+        print("Error: module name required", file=sys.stderr)
+        sys.exit(1)
+    if cmd == "file" and len(sys.argv) < 3:
+        print("Error: file path required", file=sys.stderr)
+        sys.exit(1)
+
+    project_root = find_project_root()
+    if not project_root:
+        print("Error: no .metals/ directory found (is this a Metals project?)", file=sys.stderr)
+        sys.exit(1)
+
+    port = get_metals_port(project_root)
+    if not port:
+        print("Error: could not find Metals MCP port in metals.log", file=sys.stderr)
+        sys.exit(1)
+
+    host = "localhost"
+
+    try:
+        init_resp, session_id = mcp_request(host, port, "initialize", {
+            "protocolVersion": "2024-11-05",
+            "capabilities": {},
+            "clientInfo": {"name": "metals-cli", "version": "1.0.0"},
+        }, str(uuid.uuid4()))
+    except Exception:
+        print(f"Error: cannot connect to Metals on port {port} (is it running?)", file=sys.stderr)
+        sys.exit(1)
+
+    if not init_resp or "error" in init_resp:
+        print("Error: MCP initialize failed", file=sys.stderr)
+        sys.exit(1)
+
+    mcp_request(host, port, "notifications/initialized", session_id=session_id)
+
+    tool_map = {
+        "module": ("compile-module", lambda: {"module": sys.argv[2]}),
+        "file": ("compile-file", lambda: {"fileInFocus": os.path.abspath(sys.argv[2])}),
+        "full": ("compile-full", lambda: {}),
+        "list": ("list-modules", lambda: {}),
+    }
+
+    if cmd not in tool_map:
+        print(f"Error: unknown command '{cmd}'", file=sys.stderr)
+        print(usage, file=sys.stderr)
+        sys.exit(1)
+
+    tool_name, args_fn = tool_map[cmd]
+    resp, _ = mcp_request(host, port, "tools/call", {
+        "name": tool_name,
+        "arguments": args_fn(),
+    }, str(uuid.uuid4()), session_id=session_id)
+
+    if not resp:
+        print("Error: no response from Metals", file=sys.stderr)
+        sys.exit(1)
+
+    if "error" in resp:
+        print(f"Error: {resp['error'].get('message', resp['error'])}", file=sys.stderr)
+        sys.exit(1)
+
+    result = resp.get("result", {})
+    is_error = result.get("isError", False)
+    for item in result.get("content", []):
+        if item.get("type") == "text":
+            print(item["text"])
+
+    sys.exit(1 if is_error else 0)
+
+
+if __name__ == "__main__":
+    main()

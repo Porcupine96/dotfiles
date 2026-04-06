@@ -1,0 +1,272 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import json
+import re
+import uuid
+from http.client import HTTPConnection
+
+
+def find_project_root():
+    path = os.getcwd()
+    while True:
+        if os.path.isdir(os.path.join(path, ".metals")):
+            return path
+        parent = os.path.dirname(path)
+        if parent == path:
+            break
+        path = parent
+    return None
+
+
+def get_metals_port(project_root):
+    log = os.path.join(project_root, ".metals", "metals.log")
+    if not os.path.exists(log):
+        return None
+    with open(log, "r") as f:
+        for line in reversed(f.readlines()):
+            m = re.search(r"MCP server started on port:\s*(\d+)", line)
+            if m:
+                return int(m.group(1))
+    return None
+
+
+def parse_sse_events(data):
+    results = []
+    for block in data.split("\n\n"):
+        block = block.strip()
+        if not block:
+            continue
+        data_lines = []
+        for line in block.split("\n"):
+            if line.startswith("data:"):
+                data_lines.append(line[5:].strip())
+        if data_lines:
+            try:
+                results.append(json.loads(" ".join(data_lines)))
+            except json.JSONDecodeError:
+                pass
+    return results
+
+
+def mcp_request(host, port, method, params=None, req_id=None, session_id=None):
+    msg = {"jsonrpc": "2.0", "method": method}
+    if params is not None:
+        msg["params"] = params
+    if req_id is not None:
+        msg["id"] = req_id
+    body = json.dumps(msg).encode()
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json, text/event-stream",
+    }
+    if session_id:
+        headers["Mcp-Session-Id"] = session_id
+    c = HTTPConnection(host, port, timeout=600)
+    c.request("POST", "/mcp", body=body, headers=headers)
+    r = c.getresponse()
+    sid = r.getheader("Mcp-Session-Id")
+    ct = r.getheader("Content-Type", "")
+    data = r.read().decode()
+    c.close()
+    if not data:
+        return None, sid
+    if "text/event-stream" in ct:
+        events = parse_sse_events(data)
+        for event in events:
+            if event.get("id") == req_id:
+                return event, sid
+        return events[-1] if events else None, sid
+    return json.loads(data), sid
+
+
+def fqcn_from_file(filepath):
+    abs_path = os.path.abspath(filepath)
+    if not os.path.isfile(abs_path):
+        return None, None
+    class_name = os.path.splitext(os.path.basename(abs_path))[0]
+    packages = []
+    with open(abs_path, "r") as f:
+        for line in f:
+            m = re.match(r"^\s*package\s+([\w.]+)", line)
+            if m:
+                packages.append(m.group(1))
+            elif packages and not line.strip().startswith("package"):
+                break
+    if packages:
+        return f"{'.'.join(packages)}.{class_name}", abs_path
+    return class_name, abs_path
+
+
+class MetalsClient:
+    def __init__(self):
+        project_root = find_project_root()
+        if not project_root:
+            self._fail("no .metals/ directory found (is this a Metals project?)")
+
+        port = get_metals_port(project_root)
+        if not port:
+            self._fail("could not find Metals MCP port in metals.log")
+
+        self.host = "localhost"
+        self.port = port
+        self.session_id = None
+        self._initialize()
+
+    def _fail(self, msg):
+        print(f"Error: {msg}", file=sys.stderr)
+        sys.exit(1)
+
+    def _initialize(self):
+        try:
+            resp, self.session_id = mcp_request(
+                self.host, self.port, "initialize",
+                {"protocolVersion": "2024-11-05", "capabilities": {},
+                 "clientInfo": {"name": "metals-cli", "version": "1.0.0"}},
+                str(uuid.uuid4()),
+            )
+        except ConnectionRefusedError:
+            self._fail("cannot connect to Metals (is it running?)")
+        except Exception as e:
+            self._fail(f"cannot connect to Metals on port {self.port}: {e}")
+        if not resp or "error" in resp:
+            self._fail("MCP initialize failed")
+        mcp_request(self.host, self.port, "notifications/initialized",
+                     session_id=self.session_id)
+
+    def call(self, tool_name, arguments):
+        resp, _ = mcp_request(
+            self.host, self.port, "tools/call",
+            {"name": tool_name, "arguments": arguments},
+            str(uuid.uuid4()), session_id=self.session_id,
+        )
+        if not resp:
+            self._fail("no response from Metals")
+        if "error" in resp:
+            self._fail(resp["error"].get("message", str(resp["error"])))
+        result = resp.get("result", {})
+        is_error = result.get("isError", False)
+        for item in result.get("content", []):
+            if item.get("type") == "text":
+                print(item["text"])
+        return not is_error
+
+
+def parse_test_args(argv):
+    target = None
+    test_name = None
+    verbose = False
+    i = 0
+    while i < len(argv):
+        if argv[i] in ("-n", "--name"):
+            if i + 1 < len(argv):
+                test_name = argv[i + 1]
+                i += 2
+                continue
+            else:
+                print("Error: -n requires a test name", file=sys.stderr)
+                sys.exit(1)
+        elif argv[i] in ("-v", "--verbose"):
+            verbose = True
+        elif target is None:
+            target = argv[i]
+        i += 1
+    return target, test_name, verbose
+
+
+USAGE = """\
+Usage: metals <command> [args]
+
+Compile:
+  compile <module>          Compile a module (build target)
+  compile-file <path>       Compile a file
+  compile-full              Compile the whole project
+
+Test:
+  test <class> [-n name] [-v]       Run a test class (fully qualified name)
+  test-file <path> [-n name] [-v]   Run tests from a file (auto-detects FQCN)
+
+Other:
+  list                      List available modules
+  format <path>             Format a Scala file
+
+Options:
+  -n, --name <name>   Run a specific test by name
+  -v, --verbose       Verbose test output\
+"""
+
+
+def main():
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
+        print(USAGE)
+        sys.exit(0)
+
+    cmd = sys.argv[1]
+    rest = sys.argv[2:]
+
+    if cmd == "compile":
+        if not rest:
+            print("Error: module name required", file=sys.stderr)
+            sys.exit(1)
+        client = MetalsClient()
+        ok = client.call("compile-module", {"module": rest[0]})
+
+    elif cmd == "compile-file":
+        if not rest:
+            print("Error: file path required", file=sys.stderr)
+            sys.exit(1)
+        client = MetalsClient()
+        ok = client.call("compile-file", {"fileInFocus": os.path.abspath(rest[0])})
+
+    elif cmd == "compile-full":
+        client = MetalsClient()
+        ok = client.call("compile-full", {})
+
+    elif cmd == "test":
+        target, test_name, verbose = parse_test_args(rest)
+        if not target:
+            print("Error: test class required (fully qualified name)", file=sys.stderr)
+            sys.exit(1)
+        args = {"testClass": target, "verbose": verbose}
+        if test_name:
+            args["testName"] = test_name
+        client = MetalsClient()
+        ok = client.call("test", args)
+
+    elif cmd == "test-file":
+        target, test_name, verbose = parse_test_args(rest)
+        if not target:
+            print("Error: file path required", file=sys.stderr)
+            sys.exit(1)
+        fqcn, abs_path = fqcn_from_file(target)
+        if not fqcn:
+            print(f"Error: could not derive class name from '{target}'", file=sys.stderr)
+            sys.exit(1)
+        args = {"testClass": fqcn, "testFile": abs_path, "verbose": verbose}
+        if test_name:
+            args["testName"] = test_name
+        client = MetalsClient()
+        ok = client.call("test", args)
+
+    elif cmd == "list":
+        client = MetalsClient()
+        ok = client.call("list-modules", {})
+
+    elif cmd == "format":
+        if not rest:
+            print("Error: file path required", file=sys.stderr)
+            sys.exit(1)
+        client = MetalsClient()
+        ok = client.call("format-file", {"fileInFocus": os.path.abspath(rest[0])})
+
+    else:
+        print(f"Error: unknown command '{cmd}'", file=sys.stderr)
+        print(USAGE, file=sys.stderr)
+        sys.exit(1)
+
+    sys.exit(0 if ok else 1)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-env="sl-dev-main-ll"
+env="sl-dev-zowie-engine3"
 if [ $# = 1 ]; then
    env="$1"
 fi   
@@ -15,6 +15,7 @@ function choose_dev {
 declare -a options=(
   "ai-project-service"
   "ai-import-service"
+  "ai-supervisor-service"
   "creator-automation-statistics-service"
   "creator-phrase-query-service"
   "crm-service"

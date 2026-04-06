@@ -154,7 +154,6 @@ alias argoz='bash ~/dotfiles/scripts/argoz.sh'
 alias argos='bash ~/dotfiles/scripts/argos.sh'
 
 alias copyq="/Applications/CopyQ.app/Contents/MacOS/CopyQ"
-alias slurm="ssh  -p 22 lkazmierczak@10.149.156.60"
 
 alias slurm="ssh lkazmierczak@10.149.156.60"
 
@@ -257,4 +256,20 @@ npm() {
     npm "$@"
 }
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export DYLD_FALLBACK_LIBRARY_PATH="/opt/homebrew/opt/libxml2/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+
+
+# pnpm
+export PNPM_HOME="/Users/lukaszkazmierczak/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+. "/Users/lukaszkazmierczak/.deno/env"
+
+# opencode
+export PATH=/Users/lukaszkazmierczak/.opencode/bin:$PATH
+
+eval "$(direnv hook zsh)"
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit

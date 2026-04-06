@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Usage: focus_window_or_display <direction>
+# direction: west, east, south, north
+
+DIRECTION=$1
+
+# Check if current window is in fullscreen mode
+IS_FULLSCREEN=$(yabai -m query --windows --window | jq '."has-fullscreen-zoom"')
+
+if [ "$IS_FULLSCREEN" = "true" ]; then
+  # If fullscreen, switch to the display in the specified direction
+  yabai -m display --focus $DIRECTION
+else
+  # Otherwise, try to focus window first, fallback to display
+  yabai -m window --focus $DIRECTION || yabai -m display --focus $DIRECTION
+fi
