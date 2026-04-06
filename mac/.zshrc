@@ -24,10 +24,10 @@ export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:$PKG_CONFIG_PATH"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Cache brew prefix for faster startup
-BREW_PREFIX=$(brew --prefix)
+BREW_PREFIX=/opt/homebrew
 
-# Only source bash_profile if it exists and contains content
-[[ -s ~/.bash_profile ]] && source ~/.bash_profile
+# Cargo env (was previously loaded via bash_profile)
+[[ -s "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -95,13 +95,12 @@ ZSH_THEME=""
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    docker
     git
     z
   # zsh-vi-mode
 )
 
-
+fpath+=~/.zfunc
 
 source $ZSH/oh-my-zsh.sh
 
@@ -143,6 +142,9 @@ alias k="kubectx"
 alias kn="kubens"
 alias gs="git status"
 alias pc="pclaude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+alias pwp="pwd | pbcopy"
+alias docker="podman"
+alias docker-compose="podman-compose"
 
 alias prod-vpn='sudo openfortivpn -c /etc/openfortivpn/admin'
 #alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
@@ -172,13 +174,6 @@ prompt pure
 
 # >>> scala-cli completions >>>
 fpath=("/Users/lukaszkazmierczak/Library/Application Support/ScalaCli/completions/zsh" $fpath)
-# Cache compinit for faster startup
-autoload -Uz compinit
-if [[ -n ${HOME}/.zcompdump(#qNmh+24) ]]; then
-  compinit
-else
-  compinit -C
-fi
 # <<< scala-cli completions <<<
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -192,7 +187,11 @@ source $BREW_PREFIX/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+jenv() {
+    unset -f jenv
+    eval "$(command jenv init -)"
+    jenv "$@"
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source "${FZF_PATH}/shell/key-bindings.zsh"
@@ -272,4 +271,4 @@ export PATH=/Users/lukaszkazmierczak/.opencode/bin:$PATH
 
 eval "$(direnv hook zsh)"
 
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
+fpath+=~/.zfunc

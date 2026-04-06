@@ -2,7 +2,7 @@
 
 cd ~/work/monorepo/creator/creator-genai-service
 
-ps aux | grep metals | awk '{ print $2 }' | xargs -I {} kill -9 {}
+ps aux | grep metals | awk '{ print $3 }' | xargs -I {} kill -9 {}
 ps aux | grep bloop | awk '{ print $2 }' | xargs -I {} kill -9 {}
 
 clean-project
