@@ -139,6 +139,8 @@ alias kmain="k9s --context zowie-dev -n sl-dev-main-ll"
 alias k="kubectx"
 alias kn="kubens"
 alias gs="git status"
+alias glog='git log --graph --pretty=format:"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
+alias gloga='git log --graph --all --pretty=format:"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
 alias pc="pclaude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
 alias pwp="pwd | pbcopy"
 alias docker="podman"
