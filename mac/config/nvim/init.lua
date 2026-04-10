@@ -137,7 +137,7 @@ require("lazy").setup({
           scala = { "scalafmt" },
         },
         format_on_save = {
-          timeout_ms = 500,
+          timeout_ms = 5000,
           lsp_fallback = true,
         },
       })
@@ -198,6 +198,7 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gi", vim.diagnostic.open_float)
 vim.keymap.set("n", "gr", vim.lsp.buf.references)
+vim.keymap.set("n", "gR", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
@@ -232,6 +233,7 @@ vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>")
 vim.keymap.set("n", "<leader>lf", function() require("conform").format({ timeout_ms = 5000 }) end)
 
 -- Misc
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")
 vim.keymap.set("n", "<leader>cr", "<cmd>source $MYVIMRC<cr>")
 vim.keymap.set("n", "<leader>gc", "<cmd>edit $MYVIMRC<cr>")
 vim.keymap.set("n", "<leader>yp", function() vim.fn.setreg("+", vim.fn.expand("%:p")) end)
