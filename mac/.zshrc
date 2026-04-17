@@ -134,6 +134,7 @@ alias kus="k9s --context zowie-prod-us1 -n app-prod-us1"
 alias kze1="k9s --context zowie-dev -n sl-dev-zowie-engine1"
 alias kze2="k9s --context zowie-dev -n sl-dev-zowie-engine2"
 alias kze3="k9s --context zowie-dev -n sl-dev-zowie-engine3"
+alias kbch="k9s --context zowie-dev -n sl-dev-bch"
 alias kzem="k9s --context zowie-dev -n sl-dev-zem"
 alias kmain="k9s --context zowie-dev -n sl-dev-main-ll"
 alias k="kubectx"
@@ -166,6 +167,8 @@ alias wt="webtorrent download"
 # set the default java version
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 #export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+
+yp() { realpath "$1" | tr -d '\n' | pbcopy; }
 
 fpath+=("$BREW_PREFIX/share/zsh/site-functions")
 
