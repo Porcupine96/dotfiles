@@ -12,25 +12,16 @@ case $DC in
         PG_HOST=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1/endpoint --with-decryption --output text --query Parameter.Value)
         PG_PASS=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1/password --with-decryption --output text --query Parameter.Value)
         PG_USER="root"
-        PG_SEARCH_HOST=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1-search-service/endpoint --with-decryption --output text --query Parameter.Value)
-        PG_SEARCH_PASS=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1-search-service/password --with-decryption --output text --query Parameter.Value)
-        PG_SEARCH_USER=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1-search-service/master_username --with-decryption --output text --query Parameter.Value)
         ;;
     us)
         PG_HOST=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1/endpoint --with-decryption --output text --query Parameter.Value)
         PG_PASS=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1/password --with-decryption --output text --query Parameter.Value)
         PG_USER="root"
-        PG_SEARCH_HOST=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1-search-service/endpoint --with-decryption --output text --query Parameter.Value)
-        PG_SEARCH_PASS=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1-search-service/password --with-decryption --output text --query Parameter.Value)
-        PG_SEARCH_USER=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1-search-service/master_username --with-decryption --output text --query Parameter.Value)
         ;;
     dev)
         PG_HOST=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/endpoint --with-decryption --output text --query Parameter.Value)
         PG_PASS=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/password --with-decryption --output text --query Parameter.Value)
         PG_USER=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/master_username --with-decryption --output text --query Parameter.Value)
-        PG_SEARCH_HOST=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1-search-service/endpoint --with-decryption --output text --query Parameter.Value)
-        PG_SEARCH_PASS=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1-search-service/password --with-decryption --output text --query Parameter.Value)
-        PG_SEARCH_USER=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1-search-service/master_username --with-decryption --output text --query Parameter.Value)
         ;;
     *)
         echo "Invalid datacenter. Use eu, us, or dev."
@@ -39,7 +30,7 @@ case $DC in
 esac
 
 DATABASES=$(PGPASSWORD=$PG_PASS psql -h $PG_HOST -U $PG_USER -d postgres -c "SELECT datname FROM pg_database WHERE datistemplate = false ORDER BY datname;" -t | tr -d ' ')
-DATABASES=$(echo -e "inbox-search-service\n$DATABASES")
+DATABASES=$(echo -e "ai-supervisor-service\ninbox-search-service\n$DATABASES")
 
 if ! command -v fzf &> /dev/null; then
     echo "fzf is not installed. Please install it first."
@@ -53,7 +44,44 @@ if [ -z "$SELECTED_DB" ]; then
     exit 1
 fi
 
-if [ "$SELECTED_DB" = "inbox-search-service" ]; then
+if [ "$SELECTED_DB" = "ai-supervisor-service" ]; then
+    case $DC in
+        eu)
+            PG_SUPERVISOR_HOST=$(kubectl --context zowie-prod-eu1 -n app-prod-eu1 get secret postgres-credentials-app -o jsonpath='{.data.PGHOST_SUPERVISOR}' | base64 -d)
+            PG_SUPERVISOR_USER=$(kubectl --context zowie-prod-eu1 -n app-prod-eu1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_USER}' | base64 -d)
+            PG_SUPERVISOR_PASS=$(kubectl --context zowie-prod-eu1 -n app-prod-eu1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_PASS}' | base64 -d)
+            PG_SUPERVISOR_DB=$(kubectl --context zowie-prod-eu1 -n app-prod-eu1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_NAME}' | base64 -d)
+            ;;
+        us)
+            PG_SUPERVISOR_HOST=$(kubectl --context zowie-prod-us1 -n app-prod-us1 get secret postgres-credentials-app -o jsonpath='{.data.PGHOST_SUPERVISOR}' | base64 -d)
+            PG_SUPERVISOR_USER=$(kubectl --context zowie-prod-us1 -n app-prod-us1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_USER}' | base64 -d)
+            PG_SUPERVISOR_PASS=$(kubectl --context zowie-prod-us1 -n app-prod-us1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_PASS}' | base64 -d)
+            PG_SUPERVISOR_DB=$(kubectl --context zowie-prod-us1 -n app-prod-us1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_NAME}' | base64 -d)
+            ;;
+        *)
+            echo "ai-supervisor-service is not available for $DC."
+            exit 1
+            ;;
+    esac
+    PGPASSWORD=$PG_SUPERVISOR_PASS pgcli -h $PG_SUPERVISOR_HOST -U $PG_SUPERVISOR_USER -d $PG_SUPERVISOR_DB
+elif [ "$SELECTED_DB" = "inbox-search-service" ]; then
+    case $DC in
+        eu)
+            PG_SEARCH_HOST=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1-search-service/endpoint --with-decryption --output text --query Parameter.Value)
+            PG_SEARCH_PASS=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1-search-service/password --with-decryption --output text --query Parameter.Value)
+            PG_SEARCH_USER=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1-search-service/master_username --with-decryption --output text --query Parameter.Value)
+            ;;
+        us)
+            PG_SEARCH_HOST=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1-search-service/endpoint --with-decryption --output text --query Parameter.Value)
+            PG_SEARCH_PASS=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1-search-service/password --with-decryption --output text --query Parameter.Value)
+            PG_SEARCH_USER=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1-search-service/master_username --with-decryption --output text --query Parameter.Value)
+            ;;
+        dev)
+            PG_SEARCH_HOST=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1-search-service/endpoint --with-decryption --output text --query Parameter.Value)
+            PG_SEARCH_PASS=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1-search-service/password --with-decryption --output text --query Parameter.Value)
+            PG_SEARCH_USER=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1-search-service/master_username --with-decryption --output text --query Parameter.Value)
+            ;;
+    esac
     PGPASSWORD=$PG_SEARCH_PASS pgcli -h $PG_SEARCH_HOST -U $PG_SEARCH_USER -d $SELECTED_DB
 else
     PGPASSWORD=$PG_PASS pgcli -h $PG_HOST -U $PG_USER -d $SELECTED_DB

@@ -35,8 +35,16 @@ require("lazy").setup({
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
+    config = function()
+      require("telescope").setup({
+        defaults = require("telescope.themes").get_ivy(),
+      })
+      require("telescope").load_extension("fzf")
+    end,
   },
 
   {
@@ -129,7 +137,7 @@ require("lazy").setup({
           scala = { "scalafmt" },
         },
         format_on_save = {
-          timeout_ms = 500,
+          timeout_ms = 5000,
           lsp_fallback = true,
         },
       })
@@ -143,6 +151,20 @@ require("lazy").setup({
       vim.keymap.set("i", "<M-h>", "<Plug>(copilot-previous)")
       vim.keymap.set("i", "<M-l>", "<Plug>(copilot-next)")
     end,
+  },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    config = true,
+  },
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+    },
+    config = true,
   },
 
   {
@@ -176,6 +198,7 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gi", vim.diagnostic.open_float)
 vim.keymap.set("n", "gr", vim.lsp.buf.references)
+vim.keymap.set("n", "gR", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
@@ -186,19 +209,40 @@ vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help)
 
 -- Telescope
 vim.keymap.set("n", "<C-s>", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
-vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>")
+vim.keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+vim.keymap.set("n", "<leader>pf", "<cmd>Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>,", function()
+  require("telescope.builtin").live_grep({ cwd = vim.fn.expand("%:p:h") })
+end)
 vim.keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
 vim.keymap.set("n", "<leader>gl", "<cmd>Telescope git_commits<cr>")
 vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")
+
+-- Gitsigns
+vim.keymap.set("n", "<leader>gB", "<cmd>Gitsigns blame<cr>")
+vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>")
+vim.keymap.set("n", "]h", "<cmd>Gitsigns next_hunk<cr>")
+vim.keymap.set("n", "[h", "<cmd>Gitsigns prev_hunk<cr>")
+
+-- Neogit
+vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>")
 
 -- Conform
 vim.keymap.set("n", "<leader>lf", function() require("conform").format({ timeout_ms = 5000 }) end)
 
 -- Misc
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")
 vim.keymap.set("n", "<leader>cr", "<cmd>source $MYVIMRC<cr>")
-vim.keymap.set("n", "<leader>gc", "<cmd>edit $MYVIMRC<cr>")
+vim.keymap.set("n", "<leader>fc", "<cmd>edit $MYVIMRC<cr>")
 vim.keymap.set("n", "<leader>yp", function() vim.fn.setreg("+", vim.fn.expand("%:p")) end)
+vim.keymap.set("n", "<leader>bN", function()
+  vim.cmd("enew")
+  vim.bo.buftype = "nofile"
+  vim.bo.bufhidden = "hide"
+  vim.bo.swapfile = false
+end)
 vim.keymap.set("n", "<C-x>j", "<cmd>Explore %:p:h<cr>")
 vim.keymap.set("n", "<C-x><C-j>", "<cmd>Explore %:p:h<cr>")
