@@ -216,9 +216,9 @@ __conda_lazy_load() {
         eval "$__conda_setup"
     else
         if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "/opt/anaconda3/etc/profile.d/conda.sh"
+# . "/opt/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
         else
-            export PATH="/opt/anaconda3/bin:$PATH"
+# export PATH="/opt/anaconda3/bin:$PATH"  # commented out by conda initialize
         fi
     fi
     unset __conda_setup
@@ -269,3 +269,19 @@ export PATH=/Users/lukaszkazmierczak/.opencode/bin:$PATH
 eval "$(direnv hook zsh)"
 
 fpath+=~/.zfunc
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/lukaszkazmierczak/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/lukaszkazmierczak/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/lukaszkazmierczak/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/lukaszkazmierczak/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
