@@ -1,13 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [ -z "${1:-}" ]; then
-  echo "Usage: td <name>" >&2
-  exit 1
+mono="$HOME/work/mono"
+
+cd "$mono"
+
+if [ -n "${1:-}" ]; then
+  name="$1"
+else
+  name=$(git worktree list --porcelain \
+    | grep "^worktree $mono/" \
+    | sed "s|^worktree $mono/||" \
+    | fzf --prompt="Select worktree to delete: ") || exit 0
 fi
 
-name="$1"
-mono="$HOME/work/mono"
+if [ -z "$name" ]; then
+  exit 0
+fi
+
 worktree_path="$mono/$name"
 
 # Kill tmux session if it exists
@@ -20,7 +30,6 @@ fi
 
 # Remove git worktree if it exists
 if [ -d "$worktree_path" ]; then
-  cd "$mono"
   git worktree remove "$name" --force
   echo "Removed worktree: $worktree_path"
 else

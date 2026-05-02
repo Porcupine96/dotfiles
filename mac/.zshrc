@@ -143,9 +143,14 @@ alias gs="git status"
 alias glog='git log --graph --pretty=format:"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
 alias gloga='git log --graph --all --pretty=format:"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
 alias pc="pclaude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+alias pca="pclaude --allow-dangerously-skip-permissions --dangerously-skip-permissions --no-vertex"
 alias pwp="pwd | pbcopy"
 alias docker="podman"
 alias docker-compose="podman-compose"
+
+alias em="emacsclient -n"
+
+alias ss="sudo shutdown -s"
 
 alias prod-vpn='sudo openfortivpn -c /etc/openfortivpn/admin'
 #alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
