@@ -2,6 +2,8 @@ vim.g.mapleader = " "
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.relativenumber = true
 vim.opt.textwidth = 120
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -148,6 +150,7 @@ require("lazy").setup({
     "github/copilot.vim",
     config = function()
       vim.keymap.set("i", "<M-w>", "<Plug>(copilot-accept-word)")
+      vim.keymap.set("i", "<C-Tab>", "<Plug>(copilot-accept-word)")
       vim.keymap.set("i", "<M-h>", "<Plug>(copilot-previous)")
       vim.keymap.set("i", "<M-l>", "<Plug>(copilot-next)")
     end,
@@ -170,7 +173,16 @@ require("lazy").setup({
   {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = true,
+    opts = {
+      sign = { enabled = false },
+    },
+  },
+
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      window = { width = 155 },
+    },
   },
 })
 
@@ -208,7 +220,29 @@ vim.keymap.set("n", "gI", vim.lsp.buf.implementation)
 vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help)
 
 -- Telescope
-vim.keymap.set("n", "<C-s>", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+vim.keymap.set("n", "<C-s>", function()
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+  require("telescope.builtin").current_buffer_fuzzy_find({
+    attach_mappings = function(prompt_bufnr, _)
+      actions.select_default:replace(function()
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        local prompt = picker:_get_prompt()
+        local entry = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+        if entry then
+          vim.api.nvim_win_set_cursor(0, { entry.lnum, 0 })
+          vim.cmd("normal! ^")
+        end
+        if prompt ~= "" then
+          vim.fn.setreg("/", "\\V" .. vim.fn.escape(prompt, "\\"))
+          vim.opt.hlsearch = true
+        end
+      end)
+      return true
+    end,
+  })
+end)
 vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
@@ -232,6 +266,9 @@ vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>")
 
 -- Conform
 vim.keymap.set("n", "<leader>lf", function() require("conform").format({ timeout_ms = 5000 }) end)
+
+-- Zen Mode
+vim.keymap.set("n", "<leader>zz", "<cmd>ZenMode<cr>")
 
 -- Misc
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")

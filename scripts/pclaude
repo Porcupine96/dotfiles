@@ -2,11 +2,22 @@
 
 unset GOOGLE_APPLICATION_CREDENTIALS
 
-export CLAUDE_CODE_USE_VERTEX=1
-# export CLOUD_ML_REGION=europe-west1
-export CLOUD_ML_REGION=global
-export ANTHROPIC_VERTEX_PROJECT_ID=zowie-product-tools
-export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
-# export ANTHROPIC_MODEL='claude-sonnet-4@20250514'
+use_vertex=1
+args=()
+for arg in "$@"; do
+  if [[ "$arg" == "--no-vertex" ]]; then
+    use_vertex=0
+  else
+    args+=("$arg")
+  fi
+done
 
-exec ~/.local/bin/claude "$@"
+if [[ "$use_vertex" -eq 1 ]]; then
+  export CLAUDE_CODE_USE_VERTEX=1
+  export CLOUD_ML_REGION=global
+  export ANTHROPIC_VERTEX_PROJECT_ID=zowie-product-tools
+fi
+
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+
+exec /Users/lukaszkazmierczak/.local/bin/claude "${args[@]}"
