@@ -150,6 +150,7 @@ require("lazy").setup({
     "github/copilot.vim",
     config = function()
       vim.keymap.set("i", "<M-w>", "<Plug>(copilot-accept-word)")
+      vim.keymap.set("i", "<C-Tab>", "<Plug>(copilot-accept-word)")
       vim.keymap.set("i", "<M-h>", "<Plug>(copilot-previous)")
       vim.keymap.set("i", "<M-l>", "<Plug>(copilot-next)")
     end,
