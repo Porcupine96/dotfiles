@@ -1,0 +1,103 @@
+#!/bin/bash
+
+# Usage: bump-genai <dev|stg> <merge-request-url>
+#
+# Reads the version built by the creator-genai-service CI job in the given
+# merge request and writes it into the matching cluster-conf values file.
+#
+#   stg -> orange/stg/creator-genai-service-v2.values.yaml
+#   dev -> dev/short-lived-envs/dev-orange-stumps/creator-genai-service-v2.values.yaml
+#
+# Fails if the creator-genai-service job is missing or did not succeed.
+
+set -euo pipefail
+
+CLUSTER_CONF="/Users/lukaszkazmierczak/work/cluster-conf/kubeconfig/environment"
+STG_FILE="$CLUSTER_CONF/orange/stg/creator-genai-service-v2.values.yaml"
+DEV_FILE="$CLUSTER_CONF/dev/short-lived-envs/dev-orange-stumps/creator-genai-service-v2.values.yaml"
+
+die() { echo "error: $*" >&2; exit 1; }
+usage() { echo "usage: bump-genai <dev|stg> <merge-request-url>" >&2; exit 1; }
+
+ENV="${1:-}"
+MR_URL="${2:-}"
+
+[ -n "$MR_URL" ] || usage
+[ -n "$ENV" ] || usage
+
+case "$ENV" in
+  stg) VALUES_FILE="$STG_FILE" ;;
+  dev) VALUES_FILE="$DEV_FILE" ;;
+  *)   die "environment must be 'dev' or 'stg' (got '$ENV')" ;;
+esac
+
+[ -f "$VALUES_FILE" ] || die "values file not found: $VALUES_FILE"
+
+# --- Parse the merge request URL -------------------------------------------
+# https://gitlab.vpn.zowie.ai/platform/monorepo/-/merge_requests/15842
+rest="${MR_URL#*://}"
+HOST="${rest%%/*}"
+path="${rest#*/}"
+PROJECT_PATH="${path%%/-/merge_requests/*}"
+MR_IID="${path##*/merge_requests/}"
+MR_IID="${MR_IID%%/*}"
+MR_IID="${MR_IID%%\?*}"
+
+[ -n "$HOST" ] || die "could not parse host from URL: $MR_URL"
+[ -n "$PROJECT_PATH" ] || die "could not parse project from URL: $MR_URL"
+case "$MR_IID" in
+  ''|*[!0-9]*) die "could not parse merge request id from URL: $MR_URL" ;;
+esac
+
+PROJECT_ENC="${PROJECT_PATH//\//%2F}"
+
+# Filter glab's noisy "Multiple config files found" warning, keep real errors.
+gl() {
+  glab api --hostname "$HOST" "$@" 2> >(grep -vE 'Multiple config files|Using:|Ignoring:|Consider consolidating' >&2)
+}
+
+# --- Find the latest pipeline for the MR -----------------------------------
+PIPELINE_ID=$(gl "projects/$PROJECT_ENC/merge_requests/$MR_IID/pipelines" \
+  | jq -r 'if length == 0 then "" else (max_by(.id) | .id) end')
+[ -n "$PIPELINE_ID" ] || die "no pipelines found for $PROJECT_PATH MR !$MR_IID"
+
+# --- Locate the creator-genai-service bridge job ---------------------------
+BRIDGE=$(gl "projects/$PROJECT_ENC/pipelines/$PIPELINE_ID/bridges?per_page=100" \
+  | jq -c '[.[] | select(.name=="creator-genai-service")] | .[0] // empty')
+[ -n "$BRIDGE" ] || die "no creator-genai-service job in pipeline $PIPELINE_ID"
+
+STATUS=$(jq -r '.status' <<<"$BRIDGE")
+[ "$STATUS" = "success" ] || die "creator-genai-service job did not succeed (status: $STATUS)"
+
+DS_PIPELINE=$(jq -r '.downstream_pipeline.id // empty' <<<"$BRIDGE")
+DS_PROJECT=$(jq -r '.downstream_pipeline.project_id // empty' <<<"$BRIDGE")
+[ -n "$DS_PIPELINE" ] || die "creator-genai-service has no downstream pipeline"
+[ -n "$DS_PROJECT" ] || DS_PROJECT="$PROJECT_ENC"
+
+# --- Extract the built version from the build job trace ---------------------
+# The build job logs e.g.  export VERSION=0.618.6d351ef4.26-06-2026
+JOB_IDS=$(gl "projects/$DS_PROJECT/pipelines/$DS_PIPELINE/jobs?per_page=100" \
+  | jq -r 'sort_by(.name=="build"|not) | .[].id')
+[ -n "$JOB_IDS" ] || die "no jobs in downstream pipeline $DS_PIPELINE"
+
+VERSION=""
+for jid in $JOB_IDS; do
+  VERSION=$(gl "projects/$DS_PROJECT/jobs/$jid/trace" 2>/dev/null \
+    | grep -aoE 'VERSION=[0-9]+\.[0-9]+\.[0-9a-f]+\.[0-9]{2}-[0-9]{2}-[0-9]{4}' \
+    | head -1 | cut -d= -f2 || true)
+  [ -n "$VERSION" ] && break
+done
+[ -n "$VERSION" ] || die "could not find a built version in the creator-genai-service pipeline"
+
+# --- Update the values file (preserving comments/formatting) ----------------
+OLD_VERSION=$(grep -m1 -E '^[[:space:]]*tag:' "$VALUES_FILE" | sed -E 's/.*tag:[[:space:]]*//; s/^"//; s/"$//')
+
+VERSION="$VERSION" perl -pi -e '
+  if (!$done && /^([ \t]*tag:[ \t]*)/) { $_ = "$1\"$ENV{VERSION}\"\n"; $done = 1 }
+' "$VALUES_FILE"
+
+echo "MR:       $PROJECT_PATH !$MR_IID"
+echo "pipeline: https://$HOST/$PROJECT_PATH/-/pipelines/$PIPELINE_ID"
+echo "env:      $ENV"
+echo "file:     $VALUES_FILE"
+echo "version:  ${OLD_VERSION} -> ${VERSION}"

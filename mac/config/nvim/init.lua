@@ -42,8 +42,19 @@ require("lazy").setup({
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
+      local insert_path = function(prompt_bufnr)
+        local entry = require("telescope.actions.state").get_selected_entry()
+        require("telescope.actions").close(prompt_bufnr)
+        local path = entry.path or entry.filename or entry.value
+        vim.api.nvim_put({ vim.fn.fnamemodify(path, ":.") }, "c", true, true)
+      end
       require("telescope").setup({
-        defaults = require("telescope.themes").get_ivy(),
+        defaults = require("telescope.themes").get_ivy({
+          mappings = {
+            i = { ["<C-y>"] = insert_path },
+            n = { ["<C-y>"] = insert_path },
+          },
+        }),
       })
       require("telescope").load_extension("fzf")
     end,
@@ -176,14 +187,39 @@ require("lazy").setup({
     opts = {
       sign = { enabled = false },
     },
+    config = function(_, opts)
+      require("render-markdown").setup(opts)
+      local ok, ui = pcall(require, "render-markdown.core.ui")
+      if ok and ui.updater and ui.updater.run then
+        local run = ui.updater.run
+        ui.updater.run = function(self)
+          local success, err = pcall(run, self)
+          if not success and not tostring(err):find("Index out of bounds") then
+            error(err, 0)
+          end
+        end
+      end
+    end,
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = "cd app && ./install.sh",
   },
 
   {
     "folke/zen-mode.nvim",
     opts = {
-      window = { width = 155 },
+      window = { width = 130 },
     },
   },
+
+  {
+    'fei6409/log-highlight.nvim',
+    opts = {},
+  }
 })
 
 -- Markdown folding
@@ -204,6 +240,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Window close
 vim.keymap.set("n", "<C-w>d", "<C-w>c")
+
+-- Move lines
+vim.keymap.set("n", "<M-j>", "<cmd>m .+1<cr>==")
+vim.keymap.set("n", "<M-k>", "<cmd>m .-2<cr>==")
 
 -- LSP
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
@@ -269,6 +309,9 @@ vim.keymap.set("n", "<leader>lf", function() require("conform").format({ timeout
 
 -- Zen Mode
 vim.keymap.set("n", "<leader>zz", "<cmd>ZenMode<cr>")
+
+-- Markdown preview
+vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>")
 
 -- Misc
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")

@@ -102,6 +102,8 @@ fpath+=~/.zfunc
 
 source $ZSH/oh-my-zsh.sh
 
+SAVEHIST=50000
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -110,11 +112,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -136,14 +134,15 @@ alias kze2="k9s --context zowie-dev -n sl-dev-zowie-engine2"
 alias kze3="k9s --context zowie-dev -n sl-dev-zowie-engine3"
 alias kbch="k9s --context zowie-dev -n sl-dev-bch"
 alias kzem="k9s --context zowie-dev -n sl-dev-zem"
+alias kor="k9s --context zowie-dev -n sl-dev-orange-stumps"
 alias kmain="k9s --context zowie-dev -n sl-dev-main-ll"
 alias k="kubectx"
 alias kn="kubens"
 alias gs="git status"
 alias glog='git log --graph --pretty=format:"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
 alias gloga='git log --graph --all --pretty=format:"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
-alias pc="pclaude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
-alias pca="pclaude --allow-dangerously-skip-permissions --dangerously-skip-permissions --no-vertex"
+alias pc="pclaude --allow-dangerously-skip-permissions --dangerously-skip-permissions --permission-mode bypassPermissions"
+alias pca="pclaude --allow-dangerously-skip-permissions --dangerously-skip-permissions --permission-mode bypassPermissions --no-vertex"
 alias pwp="pwd | pbcopy"
 alias docker="podman"
 alias docker-compose="podman-compose"
@@ -169,9 +168,25 @@ alias gemini="~/.nvm/versions/node/v22.14.0/bin/gemini"
 
 alias wt="webtorrent download"
 
+
 # set the default java version
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 #export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
+
+gacp() {
+    git add .
+    git commit -m "$1"
+    git push
+}
+
 
 yp() { realpath "$1" | tr -d '\n' | pbcopy; }
 
@@ -294,4 +309,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

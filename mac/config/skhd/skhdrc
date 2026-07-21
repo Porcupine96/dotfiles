@@ -85,6 +85,10 @@ cmd + ctrl - b : /Users/lukaszkazmierczak/dotfiles/scripts/yabai_toggle_bar
 # toggle layout
 # cmd + ctrl - g : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
 
+# tile space into equal columns / rows
+cmd + ctrl - v : /Users/lukaszkazmierczak/dotfiles/scripts/tile columns
+# cmd + ctrl - v : /Users/lukaszkazmierczak/dotfiles/scripts/tile rows
+
 # rotate
 cmd + ctrl - r : yabai -m space --rotate 90
 

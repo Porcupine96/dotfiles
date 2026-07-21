@@ -21,7 +21,8 @@ yabai -m rule --add app="^Fusion$" manage=off
 yabai -m rule --add app=Emacs manage=on mouse_follows_focus=off
 yabai -m rule --add app=Emacs role="AXTextField" subrole="AXStandardWindow" manage=on title!="^$"
 
-BAR_HEIGHT=$(sketchybar -m --query bar | jq -r '.height')
+BAR_HEIGHT=$(timeout 2 sketchybar -m --query bar | jq -r '.height')
+BAR_HEIGHT=${BAR_HEIGHT:-35}
 
 yabai -m space 1 --label term
 yabai -m space 2 --label web

@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Usage: tile <columns|rows>
+# Arrange all managed windows in the current space into equal columns or rows.
+
+MODE="${1:-columns}"
+
+yabai -m space --layout bsp >/dev/null 2>&1
+
+case "$MODE" in
+  columns|cols|c) MODE=columns; SORT='sort_by(.frame.x, .frame.y)' ;;
+  rows|r)         MODE=rows;    SORT='sort_by(.frame.y, .frame.x)' ;;
+  *) echo "usage: tile <columns|rows>" >&2; exit 1 ;;
+esac
+
+IDS=($(yabai -m query --windows --space \
+  | jq -r "map(select(.\"is-floating\"==false and .\"is-minimized\"==false and .\"is-hidden\"==false)) | $SORT | .[].id"))
+
+[ "${#IDS[@]}" -lt 2 ] && exit 0
+
+PREV="${IDS[0]}"
+for ((i = 1; i < ${#IDS[@]}; i++)); do
+  W="${IDS[i]}"
+  yabai -m window "$W" --warp "$PREV" 2>/dev/null
+  read -r WX WY < <(yabai -m query --windows --window "$W" | jq -r '"\(.frame.x) \(.frame.y)"')
+  read -r PX PY < <(yabai -m query --windows --window "$PREV" | jq -r '"\(.frame.x) \(.frame.y)"')
+  # Decide the actual split from the two windows' relative position, not the
+  # display size: stacked => rows, side-by-side => columns. Flip if it's wrong.
+  if [ "$MODE" = "rows" ]; then
+    # want stacked; flip when they ended up side-by-side
+    awk "BEGIN{exit !( ($WX-$PX)^2 > ($WY-$PY)^2 )}" && yabai -m window "$W" --toggle split
+  else
+    # want side-by-side; flip when they ended up stacked
+    awk "BEGIN{exit !( ($WY-$PY)^2 > ($WX-$PX)^2 )}" && yabai -m window "$W" --toggle split
+  fi
+  PREV="$W"
+done
+
+yabai -m space --balance

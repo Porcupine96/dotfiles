@@ -1,0 +1,19 @@
+[[mgr.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin smart-enter"
+desc = "Enter the directory, or open the file"
+
+[[mgr.prepend_keymap]]
+on   = [ "'", "d" ]
+run  = "cd ~/Downloads"
+desc = "Go to ~/Downloads"
+
+[[mgr.prepend_keymap]]
+on   = [ "'", "w" ]
+run  = "cd ~/work"
+desc = "Go to ~/work"
+
+[[mgr.prepend_keymap]]
+on   = [ "'", "g" ]
+run  = "cd ~/work/monorepo/creator/creator-genai-service"
+desc = "Go to creator-genai-service"

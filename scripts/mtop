@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Usage: mtop <dc> [--events] [mongotop args...]
+# Run mongotop against the regular Mongo instance for the given DC.
+# With --events, run against the events (GenAI / Zowie Engine events) cluster instead.
+
+EVENTS=false
+ARGS=()
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --events) EVENTS=true ;;
+    *)        ARGS+=("$1") ;;
+  esac
+  shift
+done
+
+set -- "${ARGS[@]}"
+
+DC="$1"
+shift
+
+if [ "$EVENTS" = true ]; then
+  case "$(echo "$DC" | tr '[:upper:]' '[:lower:]')" in
+    eu)  HOST="10.101.234.195:27017" ;;
+    us)  HOST="10.102.245.145:27017" ;;
+    waw) HOST="192.168.0.46" ;;
+    *)   echo "usage: mtop <eu|us|waw> [--events] [mongotop args...]" >&2; exit 1 ;;
+  esac
+else
+  case "$(echo "$DC" | tr '[:upper:]' '[:lower:]')" in
+    eu)  HOST="10.101.234.226:27017" ;;
+    us)  HOST="10.102.234.193:27017" ;;
+    waw) HOST="192.168.0.46" ;;
+    *)   echo "usage: mtop <eu|us|waw> [--events] [mongotop args...]" >&2; exit 1 ;;
+  esac
+fi
+
+exec mongotop --host "$HOST" "$@"
