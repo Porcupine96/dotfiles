@@ -1,0 +1,18 @@
+#!/usr/bin/env osascript
+
+on run argv
+	set theText to item 1 of argv
+	tell application "Citrix Viewer" to activate
+	delay 0.5
+	tell application "System Events"
+		repeat with c in characters of theText
+			set ch to c as text
+			if ch is "." then
+				key code 47
+			else
+				keystroke ch
+			end if
+			delay 0.02
+		end repeat
+	end tell
+end run

@@ -1,0 +1,16 @@
+#!/usr/bin/env osascript
+
+set thePassword to do shell script "cat ~/.vdi-password"
+tell application "Citrix Viewer" to activate
+delay 0.5
+tell application "System Events"
+	repeat with c in characters of thePassword
+		set ch to c as text
+		if ch is "." then
+			key code 47
+		else
+			keystroke ch
+		end if
+		delay 0.02
+	end repeat
+end tell
