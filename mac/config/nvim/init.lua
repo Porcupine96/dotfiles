@@ -17,6 +17,70 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- The colourscheme follows the terminal's background.
+--
+-- pcode answers OSC 11 with the theme in force and pushes a fresh report on
+-- every toggle, so `&background` is correct before this file runs and changes
+-- while nvim is open. Two things stop that being enough on its own: dracula is
+-- dark-only, and its `set background=dark` makes nvim *delete* its own OSC 11
+-- handler at VimEnter -- so the handler below is that rule kept under our
+-- control rather than nvim's.
+--
+-- Swapping either scheme is one line.
+local DARK_SCHEME = "dracula"
+local LIGHT_SCHEME = "default"
+
+-- Leave the window's background unpainted so the terminal's own shows through.
+-- In pcode that is the app's `--bg` exactly, and it repaints on a theme toggle
+-- with nvim never learning anything happened. Re-applied on every colourscheme
+-- load, including the implicit re-source `set background` triggers.
+vim.g.dracula_colorterm = 0
+vim.api.nvim_create_autocmd("ColorScheme", {
+  desc = "Keep the terminal's own background",
+  callback = function()
+    for _, group in ipairs({ "Normal", "NormalNC", "SignColumn", "EndOfBuffer" }) do
+      vim.cmd(("highlight %s guibg=NONE ctermbg=NONE"):format(group))
+    end
+  end,
+})
+
+-- The scheme is loaded *before* `background` is set, and that order is
+-- load-bearing. Setting `background` re-sources whatever scheme is current, and
+-- dracula's own `set background=dark` then drags it straight back -- so setting
+-- it first leaves a light terminal showing the dark half of the light scheme.
+-- Loading dracula, by contrast, sets `background` itself, which is why the
+-- assignment below is usually a no-op on the way into the dark theme.
+local function apply_background(bg)
+  local want = bg == "light" and LIGHT_SCHEME or DARK_SCHEME
+  if vim.g.colors_name ~= want then
+    pcall(vim.cmd.colorscheme, want)
+  end
+  if vim.o.background ~= bg then
+    vim.o.background = bg
+  end
+end
+
+vim.api.nvim_create_autocmd("TermResponse", {
+  desc = "Follow the terminal's background colour, reported as OSC 11",
+  nested = true,
+  callback = function(ev)
+    local seq = type(ev.data) == "table" and ev.data.sequence or nil
+    if type(seq) ~= "string" then
+      return
+    end
+    local r, g, b = seq:match("^\27%]11;rgb:(%x+)/(%x+)/(%x+)$")
+    if not r then
+      return
+    end
+    -- Each channel is 1 to 4 hex digits, scaled by its own width.
+    local function channel(c)
+      return tonumber(c, 16) / tonumber(string.rep("f", #c), 16)
+    end
+    local luminance = 0.299 * channel(r) + 0.587 * channel(g) + 0.114 * channel(b)
+    apply_background(luminance < 0.5 and "dark" or "light")
+  end,
+})
+
 require("lazy").setup({
   {
     "dracula/vim",
@@ -24,7 +88,7 @@ require("lazy").setup({
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("dracula")
+      apply_background(vim.o.background)
     end,
   },
 
@@ -168,6 +232,38 @@ require("lazy").setup({
   },
 
   {
+    "ggml-org/llama.vim",
+    init = function()
+      vim.g.llama_config = {
+        -- The FIM suffix sits after the cursor in the prompt, so every edit
+        -- invalidates its KV cache and it is re-processed on each request.
+        -- Measured on M3 Pro / Qwen2.5-Coder-3B: 64 lines costs ~1.07s per
+        -- completion, 16 lines ~0.81s, 0 lines ~0.45s.
+        n_prefix = 256,
+        n_suffix = 16,
+        n_predict = 128,
+        t_max_prompt_ms = 500,
+        t_max_predict_ms = 500,
+        -- 16 chunks means a ~23s stall the first time the ring buffer fills.
+        ring_n_chunks = 8,
+        show_info = 2,
+        auto_fim = true,
+        -- Copilot owns <Tab> until <leader>lt switches engines.
+        enable_at_startup = false,
+        -- Defaults are <C-J>/<C-K>; <C-K> is signature_help in insert mode.
+        keymap_fim_next = "<M-n>",
+        keymap_fim_prev = "<M-p>",
+        -- These two are mapped in normal mode while the plugin is enabled, and
+        -- unmapped again on disable. Left at their defaults of <Tab> and <Esc>
+        -- they would shadow <C-i> in the jumplist and delete the nohlsearch
+        -- mapping below.
+        keymap_inst_accept = "<leader>lla",
+        keymap_inst_cancel = "<leader>llx",
+      }
+    end,
+  },
+
+  {
     "lewis6991/gitsigns.nvim",
     config = true,
   },
@@ -245,6 +341,9 @@ vim.keymap.set("n", "<C-w>d", "<C-w>c")
 vim.keymap.set("n", "<M-j>", "<cmd>m .+1<cr>==")
 vim.keymap.set("n", "<M-k>", "<cmd>m .-2<cr>==")
 
+-- Delete the previous word
+vim.keymap.set("i", "<M-BS>", "<C-w>")
+
 -- LSP
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
@@ -260,6 +359,104 @@ vim.keymap.set("n", "gI", vim.lsp.buf.implementation)
 vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help)
 
 -- Telescope
+-- live_grep hands the prompt to rg as a single regex, so "COLD ENABLED" searches
+-- for that literal string. Split the prompt on whitespace instead and AND the
+-- terms together with PCRE2 lookaheads, so they can match anywhere on the line
+-- in any order. A leading "!" negates a term, mirroring the fzf syntax the
+-- sorter already accepts.
+local function grep_pattern(prompt)
+  local terms = {}
+  for term in prompt:gmatch("%S+") do
+    terms[#terms + 1] = term
+  end
+  if #terms == 0 then
+    return nil, false
+  end
+  -- A single positive term is already a valid regex, so leave it on rg's default
+  -- engine, which is faster than PCRE2 over a big tree.
+  if #terms == 1 and terms[1]:sub(1, 1) ~= "!" then
+    return terms[1], false
+  end
+  local parts = {}
+  for _, term in ipairs(terms) do
+    if term:sub(1, 1) == "!" then
+      if #term > 1 then
+        parts[#parts + 1] = "(?!.*" .. term:sub(2) .. ")"
+      end
+    else
+      parts[#parts + 1] = "(?=.*" .. term .. ")"
+    end
+  end
+  return table.concat(parts), true
+end
+
+-- The stock grep highlighter fuzzy-matches the whole prompt against the result
+-- line, which is meaningless once the prompt is a set of terms. Highlight each
+-- term's own occurrences instead.
+local function highlight_grep_terms(_, prompt, display)
+  local positions = {}
+  local haystack = display:lower()
+  for term in prompt:gmatch("%S+") do
+    if term:sub(1, 1) ~= "!" then
+      local needle, init = term:lower(), 1
+      while true do
+        local s, e = haystack:find(needle, init, true)
+        if not s then
+          break
+        end
+        positions[#positions + 1] = { start = s, finish = e }
+        init = e + 1
+      end
+    end
+  end
+  return positions
+end
+
+local function live_grep_terms(opts)
+  opts = opts or {}
+  local conf = require("telescope.config").values
+  local finders = require("telescope.finders")
+  local make_entry = require("telescope.make_entry")
+  local pickers = require("telescope.pickers")
+  local sorters = require("telescope.sorters")
+
+  opts.cwd = opts.cwd or vim.uv.cwd()
+
+  local sorter = sorters.highlighter_only(opts)
+  sorter.highlighter = highlight_grep_terms
+
+  local finder = finders.new_job(function(prompt)
+    if not prompt or prompt == "" then
+      return nil
+    end
+    local pattern, needs_pcre2 = grep_pattern(prompt)
+    if not pattern then
+      return nil
+    end
+    local args = vim.deepcopy(conf.vimgrep_arguments)
+    if needs_pcre2 then
+      args[#args + 1] = "--pcre2"
+    end
+    args[#args + 1] = "--"
+    args[#args + 1] = pattern
+    return args
+  end, make_entry.gen_from_vimgrep(opts), opts.max_results, opts.cwd)
+
+  pickers
+    .new(opts, {
+      prompt_title = "Live Grep (all terms)",
+      finder = finder,
+      previewer = conf.grep_previewer(opts),
+      sorter = sorter,
+      attach_mappings = function(_, map)
+        map("i", "<c-space>", require("telescope.actions").to_fuzzy_refine)
+        return true
+      end,
+      push_cursor_on_edit = true,
+    })
+    :find()
+end
+
 vim.keymap.set("n", "<C-s>", function()
   local actions = require("telescope.actions")
   local action_state = require("telescope.actions.state")
@@ -275,7 +472,13 @@ vim.keymap.set("n", "<C-s>", function()
           vim.cmd("normal! ^")
         end
         if prompt ~= "" then
-          vim.fn.setreg("/", "\\V" .. vim.fn.escape(prompt, "\\"))
+          -- fzf-native treats the prompt as separate terms, so searching for it
+          -- verbatim would find nothing. Highlight the terms as alternatives.
+          local terms = {}
+          for term in prompt:gmatch("%S+") do
+            terms[#terms + 1] = vim.fn.escape(term, "\\")
+          end
+          vim.fn.setreg("/", "\\V\\(" .. table.concat(terms, "\\|") .. "\\)")
           vim.opt.hlsearch = true
         end
       end)
@@ -286,11 +489,13 @@ end)
 vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-vim.keymap.set("n", "<leader>pf", "<cmd>Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>pf", function() live_grep_terms() end)
+vim.keymap.set("n", "<leader>fg", function() live_grep_terms() end)
 vim.keymap.set("n", "<leader>,", function()
-  require("telescope.builtin").live_grep({ cwd = vim.fn.expand("%:p:h") })
+  live_grep_terms({ cwd = vim.fn.expand("%:p:h") })
 end)
+-- Stock single-regex live grep, for when a term contains spaces.
+vim.keymap.set("n", "<leader>fG", "<cmd>Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
 vim.keymap.set("n", "<leader>gl", "<cmd>Telescope git_commits<cr>")
 vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")
@@ -306,6 +511,46 @@ vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>")
 
 -- Conform
 vim.keymap.set("n", "<leader>lf", function() require("conform").format({ timeout_ms = 5000 }) end)
+
+-- Completion engine: Copilot and llama.vim both draw ghost text and both bind
+-- <Tab>, so exactly one of them is active at a time.
+local llama_active = false
+vim.keymap.set("n", "<leader>lt", function()
+  if llama_active then
+    vim.cmd("LlamaDisable")
+    vim.cmd("Copilot enable")
+    -- llama.vim binds <Tab> buffer-locally, but its own source flags these
+    -- unmaps as unreliable, so put Copilot's back if it went missing.
+    if vim.fn.maparg("<Tab>", "i") == "" then
+      vim.cmd([[imap <script><silent><nowait><expr> <Tab> copilot#Accept()]])
+    end
+    llama_active = false
+    vim.notify("Copilot on, llama.vim off")
+  else
+    vim.cmd("Copilot disable")
+    vim.cmd("LlamaEnable")
+    llama_active = true
+    vim.notify("llama.vim on (local), Copilot off")
+  end
+end, { desc = "Toggle between Copilot and llama.vim" })
+vim.keymap.set("n", "<leader>ls", "<cmd>LlamaStatus<cr>", { desc = "llama.vim server status" })
+
+-- Two completion models: the stock coder on 8012, and one fine-tuned on my own
+-- prompts on 8013. llama.vim reads endpoint_fim per request, so picking by
+-- filetype is enough to route between them.
+local PROSE_FILETYPES = {
+  markdown = true, text = true, gitcommit = true, org = true,
+  rst = true, tex = true, mail = true, [""] = true,
+}
+vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
+  group = vim.api.nvim_create_augroup("llama_endpoint_by_filetype", { clear = true }),
+  callback = function(args)
+    local port = PROSE_FILETYPES[vim.bo[args.buf].filetype] and 8013 or 8012
+    vim.g.llama_config = vim.tbl_extend("force", vim.g.llama_config, {
+      endpoint_fim = ("http://127.0.0.1:%d/infill"):format(port),
+    })
+  end,
+})
 
 -- Zen Mode
 vim.keymap.set("n", "<leader>zz", "<cmd>ZenMode<cr>")

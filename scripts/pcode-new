@@ -1,0 +1,183 @@
+#!/bin/bash
+#
+# pcode-new -- open a fresh pcode session for the current directory.
+#
+# Finds the running pcode, registers a project for $PWD if there is not one
+# already, creates an empty session in it, and brings the window forward with
+# that session selected. Prints the project and session ids as JSON.
+#
+#   pcode-new                     # session for $PWD
+#   pcode-new -C ~/work/monorepo  # ...for some other directory
+#   pcode-new --no-focus          # create it, leave the window where it is
+#   pcode-new -i wt-thing         # drive a named test instance instead
+#
+# The project is matched on the *canonical path of the directory itself*: run
+# from a subdirectory of a registered project and you get a new project for the
+# subdirectory, not a session in the parent.
+#
+# pcode answers POST /control only when it opts in: the user's own pcode needs
+# PCODE_CONTROL=1 in its environment at launch (a named -i instance always
+# answers). Without it there is no published address and this exits non-zero
+# saying so.
+#
+# Depends on curl and jq only, so it needs neither node nor the pcode checkout.
+
+set -euo pipefail
+
+BUNDLE="com.lukaszkazmierczak.pcode"
+SUPPORT="$HOME/Library/Application Support/$BUNDLE"
+
+instance="${PCODE_INSTANCE:-}"
+dir="$PWD"
+label=""
+project_name=""
+permission_mode=""
+focus=1
+
+fail() { echo "pcode-new: $*" >&2; exit 1; }
+
+usage() {
+  sed -n '3,24p' "$0" | sed -e 's/^# //' -e 's/^#$//'
+  exit "${1:-0}"
+}
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -i|--instance)     instance="${2:?-i needs a name}"; shift 2 ;;
+    -C|--dir)          dir="${2:?-C needs a directory}"; shift 2 ;;
+    --label)           label="${2:?--label needs a value}"; shift 2 ;;
+    --name)            project_name="${2:?--name needs a value}"; shift 2 ;;
+    --permission-mode) permission_mode="${2:?--permission-mode needs a value}"; shift 2 ;;
+    --no-focus)        focus=0; shift ;;
+    -h|--help)         usage 0 ;;
+    *)                 fail "unknown argument: $1 (try --help)" ;;
+  esac
+done
+
+command -v jq >/dev/null || fail "jq is required"
+
+# ---------------------------------------------------------------------------
+# Find the running pcode
+# ---------------------------------------------------------------------------
+
+if [ -n "$instance" ]; then
+  record="$SUPPORT/instances/$instance/instance.json"
+  which="instance \"$instance\""
+else
+  record="$SUPPORT/instance.json"
+  which="the default instance"
+fi
+
+if [ ! -f "$record" ]; then
+  fail "no running pcode for $which.
+  $record does not exist. The user's own pcode publishes an address only when
+  it is launched with PCODE_CONTROL=1; a test instance is reached with -i."
+fi
+
+port=$(jq -r '.port // empty' "$record")
+token=$(jq -r '.controlToken // empty' "$record")
+pid=$(jq -r '.pid // empty' "$record")
+[ -n "$port" ] && [ -n "$token" ] && [ -n "$pid" ] || fail "$record is incomplete"
+
+# The address outlives the process it named, and that port may since belong to
+# something else -- so the pid is checked before anything is sent to it.
+kill -0 "$pid" 2>/dev/null || fail "stale address in $record: pid $pid is gone"
+
+# One POST to /control, answering with the verb's result on stdout and a
+# non-zero status on any refusal, with the reason on stderr.
+#
+# It returns rather than exiting because two of its callers ask questions that
+# may legitimately be answered "no" -- a session the panel has not drawn yet,
+# and a background instance refusing the keyboard -- and an `exit` inside a
+# function reached from an `if` condition takes the whole script with it.
+#
+# No Origin header: the server refuses any request that carries one, which is
+# the DNS-rebinding guard a local server is meant to have. curl adds none.
+request() {
+  local verb="$1" args="${2:-}" body
+  [ -n "$args" ] || args="{}"
+  body=$(curl -sS -X POST "http://127.0.0.1:$port/control" \
+      -H "authorization: Bearer $token" \
+      -H "content-type: application/json" \
+      -d "$(jq -nc --arg v "$verb" --argjson a "$args" '{verb:$v,args:$a}')") || {
+    echo "pcode-new: could not reach pcode on 127.0.0.1:$port" >&2
+    return 1
+  }
+  if [ "$(jq -r '.ok // false' <<<"$body")" != "true" ]; then
+    echo "pcode-new: $verb: $(jq -r '.error // "pcode refused it"' <<<"$body")" >&2
+    return 1
+  fi
+  jq -c '.result' <<<"$body"
+}
+
+# The same call where a refusal is fatal, which is every step that has to work.
+call() { request "$@" || exit 1; }
+
+# ---------------------------------------------------------------------------
+# The project for this directory
+# ---------------------------------------------------------------------------
+
+[ -d "$dir" ] || fail "not a directory: $dir"
+# Resolved, because that is how the registry stores a path: an unresolved
+# spelling matches nothing and then fails to register as "already a project".
+dir=$(cd "$dir" && pwd -P)
+
+project=$(call projects.list | jq -c --arg p "$dir" 'first(.projects[]? | select(.path == $p)) // empty')
+
+created_project=false
+if [ -z "$project" ]; then
+  args=$(jq -nc --arg path "$dir" '{path: $path}')
+  if [ -n "$project_name" ]; then
+    args=$(jq -c --arg n "$project_name" '.name = $n' <<<"$args")
+  fi
+  project=$(call projects.create "$args" | jq -c '.project')
+  created_project=true
+fi
+
+project_id=$(jq -r '.id' <<<"$project")
+
+# ---------------------------------------------------------------------------
+# A new empty session in it
+# ---------------------------------------------------------------------------
+
+args=$(jq -nc --arg id "$project_id" '{projectId: $id}')
+if [ -n "$label" ]; then
+  args=$(jq -c --arg l "$label" '.label = $l' <<<"$args")
+fi
+if [ -n "$permission_mode" ]; then
+  args=$(jq -c --arg m "$permission_mode" '.permissionMode = $m' <<<"$args")
+fi
+
+session_id=$(call sessions.new "$args" | jq -r '.session.id')
+
+# ---------------------------------------------------------------------------
+# Put it on screen
+# ---------------------------------------------------------------------------
+
+focused=false
+raised=false
+if [ "$focus" = 1 ]; then
+  # ui.focus reads the panel's rendered list rather than the registry, so a
+  # session created a moment ago is refused by name until the projects-changed
+  # refresh lands. That is a round trip, not a failure -- hence the retry.
+  for _ in $(seq 1 20); do
+    if request ui.focus "$(jq -nc --arg id "$session_id" '{sessionId: $id}')" >/dev/null 2>&1; then
+      focused=true
+      break
+    fi
+    sleep 0.25
+  done
+  # A background instance refuses to take the keyboard, whoever asks, so a
+  # refusal here is reported rather than fatal: the session exists either way.
+  if request window.focus >/dev/null 2>&1; then raised=true; fi
+fi
+
+jq -nc \
+  --arg project "$project_id" \
+  --arg path "$dir" \
+  --arg session "$session_id" \
+  --argjson createdProject "$created_project" \
+  --argjson focused "$focused" \
+  --argjson raised "$raised" \
+  '{project: $project, path: $path, session: $session,
+    createdProject: $createdProject, focused: $focused, raised: $raised}'

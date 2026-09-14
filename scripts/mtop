@@ -29,10 +29,11 @@ if [ "$EVENTS" = true ]; then
   esac
 else
   case "$(echo "$DC" | tr '[:upper:]' '[:lower:]')" in
-    eu)  HOST="10.101.234.226:27017" ;;
-    us)  HOST="10.102.234.193:27017" ;;
-    waw) HOST="192.168.0.46" ;;
-    *)   echo "usage: mtop <eu|us|waw> [--events] [mongotop args...]" >&2; exit 1 ;;
+    eu)      HOST="10.101.234.226:27017" ;;
+    us)      HOST="10.102.234.193:27017" ;;
+    waw)     HOST="192.168.0.46" ;;
+    genesys) HOST="10.101.235.54:27017" ;;
+    *)       echo "usage: mtop <eu|us|waw|genesys> [--events] [mongotop args...]" >&2; exit 1 ;;
   esac
 fi
 

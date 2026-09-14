@@ -103,7 +103,9 @@ cmd + ctrl - down : yabai -m window --resize top:0:20
 # cmd + ctrl - m : /Users/lukaszkazmierczak/dotfiles/scripts/cycle-fullscreen
 cmd + ctrl - m : yabai -m space --focus recent
 
-cmd + ctrl - i : terminal-notifier -remove ALL
+# -remove only reaches notifications posted by the bundle it is run from, and
+# pcode session banners come from a pcode-branded copy, so both are cleared.
+cmd + shift + ctrl - i : terminal-notifier -remove ALL; /Users/lukaszkazmierczak/.claude/hooks/pcode-notifier.app/Contents/MacOS/terminal-notifier -remove ALL
 
 # ----------------------------------------
 

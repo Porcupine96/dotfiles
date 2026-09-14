@@ -1,88 +1,205 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-if [ $# -ne 1 ]; then
-    echo "Usage: ./pg <eu|us|dev>"
-    exit 1
-fi
+usage() {
+    cat >&2 <<'EOF'
+Usage: pg <eu|us|dev> [--ro|--rw]
 
-DC=$1
+  --ro, -r   read-only replica endpoint (default)
+  --rw, -w   writer / master endpoint
 
-case $DC in
-    eu)
-        PG_HOST=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1/endpoint --with-decryption --output text --query Parameter.Value)
-        PG_PASS=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1/password --with-decryption --output text --query Parameter.Value)
-        PG_USER="root"
-        ;;
-    us)
-        PG_HOST=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1/endpoint --with-decryption --output text --query Parameter.Value)
-        PG_PASS=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1/password --with-decryption --output text --query Parameter.Value)
-        PG_USER="root"
-        ;;
-    dev)
-        PG_HOST=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/endpoint --with-decryption --output text --query Parameter.Value)
-        PG_PASS=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/password --with-decryption --output text --query Parameter.Value)
-        PG_USER=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1/master_username --with-decryption --output text --query Parameter.Value)
-        ;;
-    *)
-        echo "Invalid datacenter. Use eu, us, or dev."
-        exit 1
-        ;;
-esac
+Defaults to the replica. Pass --rw only when you actually need to write.
 
-DATABASES=$(PGPASSWORD=$PG_PASS psql -h $PG_HOST -U $PG_USER -d postgres -c "SELECT datname FROM pg_database WHERE datistemplate = false ORDER BY datname;" -t | tr -d ' ')
-DATABASES=$(echo -e "ai-supervisor-service\ninbox-search-service\n$DATABASES")
+Credentials: if ~/.pg-devteam-<dc>.txt exists it is used for every cluster in
+that DC (line 1 = username, line 2 = password). Otherwise the per-cluster
+service accounts from SSM / the k8s secret are used.
+EOF
+}
 
-if ! command -v fzf &> /dev/null; then
-    echo "fzf is not installed. Please install it first."
-    exit 1
-fi
+# ---------------------------------------------------------------- arguments --
 
-SELECTED_DB=$(echo "$DATABASES" | fzf --height 40% --border)
+DC=""
+MODE="ro"
 
-if [ -z "$SELECTED_DB" ]; then
-    echo "No database selected."
-    exit 1
-fi
-
-if [ "$SELECTED_DB" = "ai-supervisor-service" ]; then
-    case $DC in
-        eu)
-            PG_SUPERVISOR_HOST=$(kubectl --context zowie-prod-eu1 -n app-prod-eu1 get secret postgres-credentials-app -o jsonpath='{.data.PGHOST_SUPERVISOR}' | base64 -d)
-            PG_SUPERVISOR_USER=$(kubectl --context zowie-prod-eu1 -n app-prod-eu1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_USER}' | base64 -d)
-            PG_SUPERVISOR_PASS=$(kubectl --context zowie-prod-eu1 -n app-prod-eu1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_PASS}' | base64 -d)
-            PG_SUPERVISOR_DB=$(kubectl --context zowie-prod-eu1 -n app-prod-eu1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_NAME}' | base64 -d)
-            ;;
-        us)
-            PG_SUPERVISOR_HOST=$(kubectl --context zowie-prod-us1 -n app-prod-us1 get secret postgres-credentials-app -o jsonpath='{.data.PGHOST_SUPERVISOR}' | base64 -d)
-            PG_SUPERVISOR_USER=$(kubectl --context zowie-prod-us1 -n app-prod-us1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_USER}' | base64 -d)
-            PG_SUPERVISOR_PASS=$(kubectl --context zowie-prod-us1 -n app-prod-us1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_PASS}' | base64 -d)
-            PG_SUPERVISOR_DB=$(kubectl --context zowie-prod-us1 -n app-prod-us1 get secret postgres-credentials-app -o jsonpath='{.data.PG_DATABASE_AI-SUPERVISOR-SERVICE_NAME}' | base64 -d)
-            ;;
+for arg in "$@"; do
+    case "$arg" in
+        eu|us|dev) DC="$arg" ;;
+        --ro|-r)   MODE="ro" ;;
+        --rw|-w)   MODE="rw" ;;
+        -h|--help) usage; exit 0 ;;
         *)
-            echo "ai-supervisor-service is not available for $DC."
+            echo "Unknown argument: $arg" >&2
+            usage
             exit 1
             ;;
     esac
-    PGPASSWORD=$PG_SUPERVISOR_PASS pgcli -h $PG_SUPERVISOR_HOST -U $PG_SUPERVISOR_USER -d $PG_SUPERVISOR_DB
-elif [ "$SELECTED_DB" = "inbox-search-service" ]; then
-    case $DC in
-        eu)
-            PG_SEARCH_HOST=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1-search-service/endpoint --with-decryption --output text --query Parameter.Value)
-            PG_SEARCH_PASS=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1-search-service/password --with-decryption --output text --query Parameter.Value)
-            PG_SEARCH_USER=$(aws ssm --profile zowie-prod-eu1 --region=eu-west-1 get-parameter --name /zowie-prod/infrastructure/rds/psql1-search-service/master_username --with-decryption --output text --query Parameter.Value)
-            ;;
-        us)
-            PG_SEARCH_HOST=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1-search-service/endpoint --with-decryption --output text --query Parameter.Value)
-            PG_SEARCH_PASS=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1-search-service/password --with-decryption --output text --query Parameter.Value)
-            PG_SEARCH_USER=$(aws ssm --profile zowie-prod-us1 --region=us-east-2 get-parameter --name /zowie-prod-us1/infrastructure/rds/psql1-search-service/master_username --with-decryption --output text --query Parameter.Value)
-            ;;
-        dev)
-            PG_SEARCH_HOST=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1-search-service/endpoint --with-decryption --output text --query Parameter.Value)
-            PG_SEARCH_PASS=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1-search-service/password --with-decryption --output text --query Parameter.Value)
-            PG_SEARCH_USER=$(aws ssm --profile zowie-dev --region=eu-west-1 get-parameter --name /zowie-dev/infrastructure/rds/psql1-search-service/master_username --with-decryption --output text --query Parameter.Value)
-            ;;
-    esac
-    PGPASSWORD=$PG_SEARCH_PASS pgcli -h $PG_SEARCH_HOST -U $PG_SEARCH_USER -d $SELECTED_DB
-else
-    PGPASSWORD=$PG_PASS pgcli -h $PG_HOST -U $PG_USER -d $SELECTED_DB
+done
+
+if [ -z "$DC" ]; then
+    echo "Missing datacenter. Use eu, us, or dev." >&2
+    usage
+    exit 1
 fi
+
+# ------------------------------------------------------------ dc / dc config --
+
+case $DC in
+    eu)
+        PROFILE="zowie-prod-eu1"; REGION="eu-west-1"
+        SSM_PREFIX="/zowie-prod/infrastructure/rds"
+        KCTX="zowie-prod-eu1"; KNS="app-prod-eu1"
+        ;;
+    us)
+        PROFILE="zowie-prod-us1"; REGION="us-east-2"
+        SSM_PREFIX="/zowie-prod-us1/infrastructure/rds"
+        KCTX="zowie-prod-us1"; KNS="app-prod-us1"
+        ;;
+    dev)
+        PROFILE="zowie-dev"; REGION="eu-west-1"
+        SSM_PREFIX="/zowie-dev/infrastructure/rds"
+        # dev only has the psql1 cluster: no per-service clusters, no k8s secret.
+        KCTX=""; KNS=""
+        ;;
+esac
+
+# Aurora publishes a writer and a reader endpoint per cluster. In SSM they are
+# the `endpoint` / `reader_endpoint` parameters; in the k8s `postgres-credentials-app`
+# secret they are the `PGHOST_*` / `PGHOST_*_REPLICA` keys.
+if [ "$MODE" = "ro" ]; then
+    EP_KEY="reader_endpoint"; K8S_SUFFIX="_REPLICA"; MODE_LABEL="READ-ONLY"
+    # The cluster-ro- endpoint already rejects writes, but during a failover it
+    # can briefly resolve to a writable instance. Belt and braces.
+    export PGOPTIONS='-c default_transaction_read_only=on'
+else
+    EP_KEY="endpoint"; K8S_SUFFIX=""; MODE_LABEL="READ-WRITE"
+fi
+
+# ---------------------------------------------------------------- credentials --
+
+# Per-DC credentials file: line 1 = username, line 2 = password. When present it
+# replaces the shared service accounts (`root` from SSM, `app` from the k8s
+# secret) for every cluster in that DC. Not committed anywhere; chmod 600.
+CRED_FILE="$HOME/.pg-devteam-$DC.txt"
+CRED_USER=""; CRED_PASS=""
+if [ -f "$CRED_FILE" ]; then
+    { IFS= read -r CRED_USER || true; IFS= read -r CRED_PASS || true; } < "$CRED_FILE"
+    CRED_USER=${CRED_USER%$'\r'}
+    CRED_PASS=${CRED_PASS%$'\r'}
+    if [ -z "$CRED_USER" ] || [ -z "$CRED_PASS" ]; then
+        echo "$CRED_FILE is malformed: expected username on line 1, password on line 2." >&2
+        exit 1
+    fi
+fi
+
+# ------------------------------------------------------------------ helpers --
+
+ssm() { # <cluster> <key>
+    aws ssm --profile "$PROFILE" --region="$REGION" get-parameter \
+        --name "$SSM_PREFIX/$1/$2" --with-decryption \
+        --output text --query Parameter.Value
+}
+
+ksec() { # <secret-key>
+    kubectl --context "$KCTX" -n "$KNS" get secret postgres-credentials-app \
+        -o jsonpath="{.data.$1}" | base64 -d
+}
+
+require_k8s() {
+    if [ -z "$KCTX" ]; then
+        echo "$SELECTED_DB is not available for $DC." >&2
+        exit 1
+    fi
+}
+
+# ------------------------------------------------------------- main cluster --
+
+PG_HOST=$(ssm psql1 "$EP_KEY")
+PG_PORT=$(ssm psql1 port)
+if [ -n "$CRED_USER" ]; then
+    PG_USER="$CRED_USER"; PG_PASS="$CRED_PASS"
+else
+    PG_PASS=$(ssm psql1 password)
+    if [ "$DC" = "dev" ]; then
+        PG_USER=$(ssm psql1 master_username)
+    else
+        PG_USER="root"
+    fi
+fi
+
+DATABASES=$(PGPASSWORD="$PG_PASS" psql -h "$PG_HOST" -p "$PG_PORT" -U "$PG_USER" -d postgres \
+    -Atc "SELECT datname FROM pg_database WHERE datistemplate = false ORDER BY datname;")
+
+# Databases living in their own cluster, so not listed by the query above.
+EXTRA_DBS=""
+if [ "$DC" != "dev" ]; then
+    EXTRA_DBS=$'ai-supervisor-service\ninbox-search-service\nzowie-messaging-service'
+fi
+
+DATABASES=$(printf '%s\n%s\n' "$EXTRA_DBS" "$DATABASES" | grep -v '^[[:space:]]*$' | sort -u)
+
+if ! command -v fzf &> /dev/null; then
+    echo "fzf is not installed. Please install it first." >&2
+    exit 1
+fi
+
+SELECTED_DB=$(echo "$DATABASES" | fzf --height 40% --border --prompt "$DC [$MODE_LABEL] > ") || true
+
+if [ -z "$SELECTED_DB" ]; then
+    echo "No database selected." >&2
+    exit 1
+fi
+
+# --------------------------------------------------------- resolve target db --
+
+TARGET_USER=""; TARGET_PASS=""
+
+case "$SELECTED_DB" in
+    ai-supervisor-service)
+        require_k8s
+        CLUSTER="psql1-supervisor"
+        TARGET_HOST=$(ksec "PGHOST_SUPERVISOR${K8S_SUFFIX}")
+        TARGET_PORT=$(ksec "PGPORT_SUPERVISOR${K8S_SUFFIX}")
+        TARGET_DB=$(ksec 'PG_DATABASE_AI-SUPERVISOR-SERVICE_NAME')
+        if [ -z "$CRED_USER" ]; then
+            TARGET_USER=$(ksec 'PG_DATABASE_AI-SUPERVISOR-SERVICE_USER')
+            TARGET_PASS=$(ksec 'PG_DATABASE_AI-SUPERVISOR-SERVICE_PASS')
+        fi
+        ;;
+    zowie-messaging-service)
+        require_k8s
+        CLUSTER="psql1-zowie-messaging-service"
+        TARGET_HOST=$(ksec "PGHOST_ZOWIE_MESSAGING${K8S_SUFFIX}")
+        TARGET_PORT=$(ksec "PGPORT_ZOWIE_MESSAGING${K8S_SUFFIX}")
+        TARGET_DB=$(ksec 'PG_DATABASE_ZOWIE-MESSAGING-SERVICE_NAME')
+        if [ -z "$CRED_USER" ]; then
+            TARGET_USER=$(ksec 'PG_DATABASE_ZOWIE-MESSAGING-SERVICE_USER')
+            TARGET_PASS=$(ksec 'PG_DATABASE_ZOWIE-MESSAGING-SERVICE_PASS')
+        fi
+        ;;
+    inbox-search-service)
+        CLUSTER="psql1-search-service"
+        TARGET_HOST=$(ssm psql1-search-service "$EP_KEY")
+        TARGET_PORT=$(ssm psql1-search-service port)
+        TARGET_DB="$SELECTED_DB"
+        if [ -z "$CRED_USER" ]; then
+            TARGET_USER=$(ssm psql1-search-service master_username)
+            TARGET_PASS=$(ssm psql1-search-service password)
+        fi
+        ;;
+    *)
+        CLUSTER="psql1"
+        TARGET_HOST="$PG_HOST"
+        TARGET_PORT="$PG_PORT"
+        TARGET_USER="$PG_USER"
+        TARGET_PASS="$PG_PASS"
+        TARGET_DB="$SELECTED_DB"
+        ;;
+esac
+
+if [ -n "$CRED_USER" ]; then
+    TARGET_USER="$CRED_USER"; TARGET_PASS="$CRED_PASS"
+fi
+
+printf '→ %s / %s / %s as %s  %s\n' "$DC" "$CLUSTER" "$MODE_LABEL" "$TARGET_USER" "$TARGET_HOST" >&2
+
+PGPASSWORD="$TARGET_PASS" pgcli -h "$TARGET_HOST" -p "$TARGET_PORT" -U "$TARGET_USER" -d "$TARGET_DB"

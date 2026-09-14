@@ -1,0 +1,208 @@
+#!/usr/bin/env bash
+set -o pipefail
+
+usage() {
+  echo "usage: $(basename "$0") [-a TRACK] DIR" >&2
+  echo "  Converts every .mkv in DIR to DIR/mp4/*.mp4 (video stream-copied, audio -> aac)." >&2
+  echo "  A/V start offsets are baked into the audio so browsers stay in sync." >&2
+  echo "  -a TRACK  0-based audio track to use for all files (skips fzf selection)" >&2
+  exit 1
+}
+
+track_override=""
+while getopts "a:h" opt; do
+  case "$opt" in
+    a) track_override="$OPTARG" ;;
+    *) usage ;;
+  esac
+done
+shift $((OPTIND - 1))
+[ $# -eq 1 ] || usage
+
+if [ -n "$track_override" ] && ! [[ "$track_override" =~ ^[0-9]+$ ]]; then
+  echo "error: -a expects a non-negative integer" >&2
+  exit 1
+fi
+
+dir="${1%/}"
+[ -d "$dir" ] || { echo "error: not a directory: $dir" >&2; exit 1; }
+
+for cmd in ffmpeg ffprobe; do
+  command -v "$cmd" >/dev/null 2>&1 || { echo "error: $cmd not found" >&2; exit 1; }
+done
+
+shopt -s nullglob
+mkvs=("$dir"/*.mkv)
+[ "${#mkvs[@]}" -gt 0 ] || { echo "error: no .mkv files in $dir" >&2; exit 1; }
+
+outdir="$dir/mp4"
+mkdir -p "$outdir"
+
+file_size() { stat -f%z "$1" 2>/dev/null || stat -c%s "$1"; }
+duration_of() { ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "$1" 2>/dev/null; }
+pretty_track() {
+  sed -e 's/codec_name=//' -e 's/channels=\([0-9]*\)/\1ch/' \
+      -e 's/tag:language=//' -e 's/tag:title=//' -e 's/|/  /g' <<<"$1"
+}
+
+stream_start() {
+  ffprobe -v error -select_streams "$2" -show_entries stream=start_time \
+    -of default=nw=1:nk=1 "$1" 2>/dev/null | head -1 |
+    awk '{ print ($0 == "N/A") ? "" : $0 }'
+}
+
+# offset of audio track $2 relative to video, in seconds ("" when there is no audio)
+av_skew() {
+  local a v
+  a=$(stream_start "$1" "a:${2:-0}")
+  [ -n "$a" ] || return 1
+  v=$(stream_start "$1" v:0)
+  [ -n "$v" ] || v=0
+  awk -v a="$a" -v v="$v" 'BEGIN { printf "%.3f", a - v }'
+}
+
+# true when the audio of an .mp4 starts within 10 ms of the video
+in_sync() {
+  local skew
+  skew=$(av_skew "$1" 0) || return 0
+  awk -v d="$skew" 'BEGIN { if (d < 0) d = -d; exit !(d <= 0.010) }'
+}
+
+src_video_duration() {
+  local d
+  d=$(ffprobe -v error -select_streams v:0 -show_entries stream=duration -of default=nw=1:nk=1 "$1" 2>/dev/null)
+  if [ -z "$d" ] || [ "$d" = "N/A" ]; then
+    d=$(ffprobe -v error -select_streams v:0 -show_entries stream_tags=DURATION -of default=nw=1:nk=1 "$1" 2>/dev/null |
+      awk -F: 'NF == 3 { printf "%.3f", $1 * 3600 + $2 * 60 + $3 }')
+  fi
+  if [ -z "$d" ] || [ "$d" = "N/A" ]; then
+    d=$(duration_of "$1")
+  fi
+  echo "$d"
+}
+
+is_complete() {
+  local src=$1 out=$2 src_d out_d
+  out_d=$(duration_of "$out")
+  [ -n "$out_d" ] || return 1
+  src_d=$(src_video_duration "$src")
+  [ -n "$src_d" ] || return 1
+  [ "$(file_size "$out")" -ge $(( $(file_size "$src") / 4 )) ] || return 1
+  awk -v a="$src_d" -v b="$out_d" 'BEGIN { d = a - b; if (d < 0) d = -d; exit !(d <= 2) }' || return 1
+  in_sync "$out"
+}
+
+cache_sigs=()
+cache_picks=()
+converted=0 skipped=0 failed=0
+tmp=""
+trap '[ -n "$tmp" ] && rm -f "$tmp"' EXIT
+trap 'exit 130' INT TERM
+
+for f in "${mkvs[@]}"; do
+  base=$(basename "$f" .mkv)
+  out="$outdir/$base.mp4"
+
+  if [ -f "$out" ] && is_complete "$f" "$out"; then
+    echo "skip: $base.mp4 (already converted)"
+    skipped=$((skipped + 1))
+    continue
+  fi
+
+  tracks=()
+  while IFS= read -r line; do tracks+=("$line"); done < <(
+    ffprobe -v error -select_streams a \
+      -show_entries stream=codec_name,channels:stream_tags=language,title \
+      -of compact=p=0:nk=0 "$f"
+  )
+  ntracks=${#tracks[@]}
+
+  sel=""
+  if [ "$ntracks" -eq 0 ]; then
+    echo "warn: $base.mkv has no audio tracks, converting video only" >&2
+  elif [ -n "$track_override" ]; then
+    if [ "$track_override" -ge "$ntracks" ]; then
+      echo "error: $base.mkv has only $ntracks audio track(s), no track $track_override" >&2
+      failed=$((failed + 1))
+      continue
+    fi
+    sel="$track_override"
+  elif [ "$ntracks" -eq 1 ]; then
+    sel=0
+  else
+    sig=$(printf '%s;' "${tracks[@]}")
+    for i in "${!cache_sigs[@]}"; do
+      [ "${cache_sigs[$i]}" = "$sig" ] && sel="${cache_picks[$i]}"
+    done
+    if [ -z "$sel" ]; then
+      choice=$(
+        for ((i = 0; i < ntracks; i++)); do
+          printf '%s: %s\n' "$i" "$(pretty_track "${tracks[$i]}")"
+        done | fzf --prompt="audio track for $base.mkv> " --no-multi
+      ) || { echo "error: no audio track selected (use -a TRACK for non-interactive runs)" >&2; exit 1; }
+      sel="${choice%%:*}"
+      cache_sigs+=("$sig")
+      cache_picks+=("$sel")
+      echo "using audio track $sel for all files with this track layout"
+    fi
+  fi
+
+  avail_kb=$(df -Pk "$outdir" | awk 'NR==2 {print $4}')
+  need_kb=$(( $(file_size "$f") / 1024 * 2 ))
+  if [ "$avail_kb" -lt "$need_kb" ]; then
+    echo "error: insufficient disk space for $base.mkv (need ~$((need_kb / 1024)) MB free), aborting" >&2
+    failed=$((failed + 1))
+    break
+  fi
+
+  args=(-map 0:v:0 -c:v copy)
+  vcodec=$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=nw=1:nk=1 "$f")
+  [ "$vcodec" = "hevc" ] && args+=(-tag:v hvc1)
+  if [ -n "$sel" ]; then
+    acodec=$(sed -n 's/.*codec_name=\([^|]*\).*/\1/p' <<<"${tracks[$sel]}")
+    alang=$(sed -n 's/.*tag:language=\([^|]*\).*/\1/p' <<<"${tracks[$sel]}")
+    args+=(-map "0:a:$sel")
+
+    realign=no
+    skew=$(av_skew "$f" "$sel")
+    if [ -n "$skew" ] && awk -v d="$skew" 'BEGIN { if (d < 0) d = -d; exit !(d > 0.010) }'; then
+      realign=yes
+    fi
+
+    if [ "$acodec" = "aac" ] && [ "$realign" = no ]; then
+      args+=(-c:a copy)
+    else
+      args+=(-c:a aac -b:a 192k)
+    fi
+    # a container-level offset would otherwise become an mp4 empty edit, which
+    # players honour but browsers ignore -- pad/trim it into the samples instead
+    [ "$realign" = yes ] && args+=(-af "aresample=async=1:first_pts=0")
+    [ -n "$alang" ] && args+=(-metadata:s:a:0 "language=$alang")
+    echo "converting: $base.mkv (audio $sel: $(pretty_track "${tracks[$sel]}"))"
+    [ "$realign" = yes ] && echo "  audio starts ${skew}s off video, baking the offset into the stream"
+  else
+    echo "converting: $base.mkv (no audio)"
+  fi
+
+  tmp="$outdir/.$base.part.mp4"
+  if ffmpeg -hide_banner -loglevel error -nostdin -y -i "$f" "${args[@]}" -movflags +faststart "$tmp"; then
+    if in_sync "$tmp"; then
+      mv "$tmp" "$out"
+      tmp=""
+      converted=$((converted + 1))
+    else
+      echo "error: audio still offset by $(av_skew "$tmp" 0)s after conversion: $base.mkv" >&2
+      rm -f "$tmp"
+      tmp=""
+      failed=$((failed + 1))
+    fi
+  else
+    rm -f "$tmp"
+    tmp=""
+    echo "error: conversion failed: $base.mkv" >&2
+    failed=$((failed + 1))
+  fi
+done
+
+echo "done: $converted converted, $skipped skipped, $failed failed"
+[ "$failed" -eq 0 ]

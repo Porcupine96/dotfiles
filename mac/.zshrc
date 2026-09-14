@@ -98,6 +98,9 @@ plugins=(
   # zsh-vi-mode
 )
 
+# vim-style smart case for `z`: all-lowercase queries match case-insensitively
+ZSHZ_CASE=smart
+
 fpath+=~/.zfunc
 
 source $ZSH/oh-my-zsh.sh

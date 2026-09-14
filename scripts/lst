@@ -1,15 +1,38 @@
 #!/bin/bash
 
-# Usage: lst [-a] [directory]
+# Usage: lst [-a] [-n count] [directory]
 # Print the path to the most recently modified file in the directory (default: .).
 # By default the path is relative to the current working directory, with -a it's absolute.
+# With -n print the paths to the count most recently modified files, newest first.
 
 set -euo pipefail
 
 absolute=false
-if [[ "${1:-}" == "-a" ]]; then
-  absolute=true
-  shift
+count=1
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -a)
+      absolute=true
+      shift
+      ;;
+    -n)
+      if [[ -z "${2:-}" ]]; then
+        echo "lst: -n requires a count" >&2
+        exit 1
+      fi
+      count="$2"
+      shift 2
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+if [[ ! "$count" =~ ^[1-9][0-9]*$ ]]; then
+  echo "lst: invalid count: $count" >&2
+  exit 1
 fi
 
 dir="${1:-.}"
@@ -19,7 +42,7 @@ if [[ ! -d "$dir" ]]; then
   exit 1
 fi
 
-newest=$(find "$dir" -maxdepth 1 -type f -exec stat -f '%m %N' {} + | sort -rn | head -1 | cut -d' ' -f2-)
+newest=$(find "$dir" -maxdepth 1 -type f -exec stat -f '%m %N' {} + | sort -rn | head -"$count" | cut -d' ' -f2-)
 
 if [[ -z "$newest" ]]; then
   echo "lst: no files in $dir" >&2
@@ -27,7 +50,9 @@ if [[ -z "$newest" ]]; then
 fi
 
 if $absolute; then
-  realpath "$newest"
+  while IFS= read -r file; do
+    realpath "$file"
+  done <<< "$newest"
 else
   echo "$newest"
 fi
