@@ -177,11 +177,36 @@ require("lazy").setup({
   },
 
   {
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+    build = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    config = function()
+      local ls = require("luasnip")
+      ls.setup({ enable_autosnippets = true })
+      require("luasnip.loaders.from_vscode").lazy_load()
+      -- Shared with pcode's nvim (NVIM_APPNAME=pcode), which loads the same directory.
+      require("luasnip.loaders.from_lua").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+
+      -- Jump between placeholders. Outside a snippet the keys keep their usual meaning.
+      vim.keymap.set({ "i", "s" }, "<C-l>", function()
+        return ls.locally_jumpable(1) and "<Plug>luasnip-jump-next" or "<C-l>"
+      end, { expr = true, remap = true, silent = true })
+      vim.keymap.set({ "i", "s" }, "<C-h>", function()
+        return ls.locally_jumpable(-1) and "<Plug>luasnip-jump-prev" or "<C-h>"
+      end, { expr = true, remap = true, silent = true })
+    end,
+  },
+
+  {
     "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+    dependencies = { "hrsh7th/cmp-nvim-lsp", "saadparwaiz1/cmp_luasnip", "L3MON4D3/LuaSnip" },
     config = function()
       local cmp = require("cmp")
       cmp.setup({
+        snippet = {
+          expand = function(args) require("luasnip").lsp_expand(args.body) end,
+        },
         mapping = cmp.mapping.preset.insert({
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -190,6 +215,7 @@ require("lazy").setup({
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
+          { name = "luasnip" },
         }),
       })
     end,
@@ -457,6 +483,65 @@ local function live_grep_terms(opts)
     :find()
 end
 
+-- Fuzzy-pick one of the snippets available in this buffer -- by trigger or by
+-- name, with its body in the preview -- and expand it after the cursor.
+local function pick_snippet()
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+  local conf = require("telescope.config").values
+  local ls = require("luasnip")
+
+  local entries = {}
+  for ft, snippets in pairs(ls.available(function(snip) return snip end)) do
+    for _, snip in ipairs(snippets) do
+      entries[#entries + 1] = { ft = ft, snip = snip }
+    end
+  end
+
+  -- Where `a` would start typing. Read now: once the picker is up, the window
+  -- it would be read from is no longer the current one.
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = vim.api.nvim_get_current_line()
+  local pos = { row - 1, line == "" and 0 or col + 1 + vim.str_utf_end(line, col + 1) }
+
+  require("telescope.pickers")
+    .new({}, {
+      prompt_title = "Snippets",
+      finder = require("telescope.finders").new_table({
+        results = entries,
+        entry_maker = function(entry)
+          local text = ("%-16s %s"):format(entry.snip.trigger, entry.snip.name)
+          return { value = entry.snip, display = text .. "  [" .. entry.ft .. "]", ordinal = text }
+        end,
+      }),
+      sorter = conf.generic_sorter({}),
+      previewer = require("telescope.previewers").new_buffer_previewer({
+        define_preview = function(self, entry)
+          -- Lines for a snippet written in Lua, one string for one loaded from JSON.
+          local body = entry.value:get_docstring()
+          if type(body) == "string" then
+            body = vim.split(body, "\n")
+          end
+          vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, body)
+        end,
+      }),
+      attach_mappings = function(prompt_bufnr)
+        actions.select_default:replace(function()
+          local entry = action_state.get_selected_entry()
+          actions.close(prompt_bufnr)
+          if entry then
+            -- Scheduled, so it runs after Telescope has handed the window back.
+            vim.schedule(function()
+              ls.snip_expand(entry.value, { pos = pos })
+            end)
+          end
+        end)
+        return true
+      end,
+    })
+    :find()
+end
+
 vim.keymap.set("n", "<C-s>", function()
   local actions = require("telescope.actions")
   local action_state = require("telescope.actions.state")
@@ -499,6 +584,7 @@ vim.keymap.set("n", "<leader>fG", "<cmd>Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
 vim.keymap.set("n", "<leader>gl", "<cmd>Telescope git_commits<cr>")
 vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")
+vim.keymap.set("n", "<leader>sl", pick_snippet)
 
 -- Gitsigns
 vim.keymap.set("n", "<leader>gB", "<cmd>Gitsigns blame<cr>")
