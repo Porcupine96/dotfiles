@@ -34,6 +34,8 @@ declare -a options=(
   "CMAK WAW"
   "Admin ZE1"
   "Admin ZE3"
+  "Orange PRD Admin"
+  "Orange STG Admin"
   "Google Vertex API"
   "Google Billing"
 )
@@ -70,6 +72,8 @@ function to_url() {
     "CMAK WAW") 	          echo "http://192.168.0.51:9000/clusters/Production/topics" ;;
     "Admin ZE1") 	          echo "https://admin-sl-dev-zowie-engine1.zowie.tech/environments" ;;
     "Admin ZE3") 	          echo "https://admin-sl-dev-zowie-engine3.zowie.tech/environments" ;;
+    "Orange PRD Admin")           echo "https://admin-zowie.sig-cloud.corpnet.pl" ;;
+    "Orange STG Admin")           echo "https://admin-stg-zowie.sig-cloud.corpnet.pl" ;;
     "Google Vertex API")          echo "https://console.cloud.google.com/monitoring/dashboards/integration/vertex_ai.vertex-ai-model-garden;filters=type:rlabel,key:model_user_id%2Btype:rlabel,key:location%2Btype:mlabel,key:request_type;duration=PT3H?inv=1&invt=Ab0AsQ&project=maximal-arcade-267011&pageState=(%22eventTypes%22:(%22selected%22:%5B%22CLOUD_ALERTING_ALERT%22,%22SERVICE_HEALTH_INCIDENT%22%5D))" ;;
     "Google Billing")             echo "https://console.cloud.google.com/billing/01C110-43B199-9E1AEC/reports;projects=maximal-arcade-267011?project=maximal-arcade-267011&organizationId=478175825294" ;;
 

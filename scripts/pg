@@ -10,9 +10,8 @@ Usage: pg <eu|us|dev> [--ro|--rw]
 
 Defaults to the replica. Pass --rw only when you actually need to write.
 
-Credentials: if ~/.pg-devteam-<dc>.txt exists it is used for every cluster in
-that DC (line 1 = username, line 2 = password). Otherwise the per-cluster
-service accounts from SSM / the k8s secret are used.
+Credentials: ~/.pg-devteam-<dc>.txt is used for every cluster in that DC
+(line 1 = username, line 2 = password).
 EOF
 }
 
@@ -76,19 +75,20 @@ fi
 
 # ---------------------------------------------------------------- credentials --
 
-# Per-DC credentials file: line 1 = username, line 2 = password. When present it
-# replaces the shared service accounts (`root` from SSM, `app` from the k8s
-# secret) for every cluster in that DC. Not committed anywhere; chmod 600.
+# Per-DC credentials file: line 1 = username, line 2 = password. Used for every
+# cluster in that DC. Not committed anywhere; chmod 600.
 CRED_FILE="$HOME/.pg-devteam-$DC.txt"
-CRED_USER=""; CRED_PASS=""
-if [ -f "$CRED_FILE" ]; then
-    { IFS= read -r CRED_USER || true; IFS= read -r CRED_PASS || true; } < "$CRED_FILE"
-    CRED_USER=${CRED_USER%$'\r'}
-    CRED_PASS=${CRED_PASS%$'\r'}
-    if [ -z "$CRED_USER" ] || [ -z "$CRED_PASS" ]; then
-        echo "$CRED_FILE is malformed: expected username on line 1, password on line 2." >&2
-        exit 1
-    fi
+if [ ! -f "$CRED_FILE" ]; then
+    echo "$CRED_FILE not found: expected username on line 1, password on line 2." >&2
+    exit 1
+fi
+PG_USER=""; PG_PASS=""
+{ IFS= read -r PG_USER || true; IFS= read -r PG_PASS || true; } < "$CRED_FILE"
+PG_USER=${PG_USER%$'\r'}
+PG_PASS=${PG_PASS%$'\r'}
+if [ -z "$PG_USER" ] || [ -z "$PG_PASS" ]; then
+    echo "$CRED_FILE is malformed: expected username on line 1, password on line 2." >&2
+    exit 1
 fi
 
 # ------------------------------------------------------------------ helpers --
@@ -115,16 +115,6 @@ require_k8s() {
 
 PG_HOST=$(ssm psql1 "$EP_KEY")
 PG_PORT=$(ssm psql1 port)
-if [ -n "$CRED_USER" ]; then
-    PG_USER="$CRED_USER"; PG_PASS="$CRED_PASS"
-else
-    PG_PASS=$(ssm psql1 password)
-    if [ "$DC" = "dev" ]; then
-        PG_USER=$(ssm psql1 master_username)
-    else
-        PG_USER="root"
-    fi
-fi
 
 DATABASES=$(PGPASSWORD="$PG_PASS" psql -h "$PG_HOST" -p "$PG_PORT" -U "$PG_USER" -d postgres \
     -Atc "SELECT datname FROM pg_database WHERE datistemplate = false ORDER BY datname;")
@@ -151,8 +141,6 @@ fi
 
 # --------------------------------------------------------- resolve target db --
 
-TARGET_USER=""; TARGET_PASS=""
-
 case "$SELECTED_DB" in
     ai-supervisor-service)
         require_k8s
@@ -160,10 +148,6 @@ case "$SELECTED_DB" in
         TARGET_HOST=$(ksec "PGHOST_SUPERVISOR${K8S_SUFFIX}")
         TARGET_PORT=$(ksec "PGPORT_SUPERVISOR${K8S_SUFFIX}")
         TARGET_DB=$(ksec 'PG_DATABASE_AI-SUPERVISOR-SERVICE_NAME')
-        if [ -z "$CRED_USER" ]; then
-            TARGET_USER=$(ksec 'PG_DATABASE_AI-SUPERVISOR-SERVICE_USER')
-            TARGET_PASS=$(ksec 'PG_DATABASE_AI-SUPERVISOR-SERVICE_PASS')
-        fi
         ;;
     zowie-messaging-service)
         require_k8s
@@ -171,35 +155,21 @@ case "$SELECTED_DB" in
         TARGET_HOST=$(ksec "PGHOST_ZOWIE_MESSAGING${K8S_SUFFIX}")
         TARGET_PORT=$(ksec "PGPORT_ZOWIE_MESSAGING${K8S_SUFFIX}")
         TARGET_DB=$(ksec 'PG_DATABASE_ZOWIE-MESSAGING-SERVICE_NAME')
-        if [ -z "$CRED_USER" ]; then
-            TARGET_USER=$(ksec 'PG_DATABASE_ZOWIE-MESSAGING-SERVICE_USER')
-            TARGET_PASS=$(ksec 'PG_DATABASE_ZOWIE-MESSAGING-SERVICE_PASS')
-        fi
         ;;
     inbox-search-service)
         CLUSTER="psql1-search-service"
         TARGET_HOST=$(ssm psql1-search-service "$EP_KEY")
         TARGET_PORT=$(ssm psql1-search-service port)
         TARGET_DB="$SELECTED_DB"
-        if [ -z "$CRED_USER" ]; then
-            TARGET_USER=$(ssm psql1-search-service master_username)
-            TARGET_PASS=$(ssm psql1-search-service password)
-        fi
         ;;
     *)
         CLUSTER="psql1"
         TARGET_HOST="$PG_HOST"
         TARGET_PORT="$PG_PORT"
-        TARGET_USER="$PG_USER"
-        TARGET_PASS="$PG_PASS"
         TARGET_DB="$SELECTED_DB"
         ;;
 esac
 
-if [ -n "$CRED_USER" ]; then
-    TARGET_USER="$CRED_USER"; TARGET_PASS="$CRED_PASS"
-fi
+printf '→ %s / %s / %s as %s  %s\n' "$DC" "$CLUSTER" "$MODE_LABEL" "$PG_USER" "$TARGET_HOST" >&2
 
-printf '→ %s / %s / %s as %s  %s\n' "$DC" "$CLUSTER" "$MODE_LABEL" "$TARGET_USER" "$TARGET_HOST" >&2
-
-PGPASSWORD="$TARGET_PASS" pgcli -h "$TARGET_HOST" -p "$TARGET_PORT" -U "$TARGET_USER" -d "$TARGET_DB"
+PGPASSWORD="$PG_PASS" pgcli -h "$TARGET_HOST" -p "$TARGET_PORT" -U "$PG_USER" -d "$TARGET_DB"

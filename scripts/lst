@@ -1,19 +1,25 @@
 #!/bin/bash
 
-# Usage: lst [-a] [-n count] [directory]
+# Usage: lst [-a] [-d] [-n count] [directory]
 # Print the path to the most recently modified file in the directory (default: .).
 # By default the path is relative to the current working directory, with -a it's absolute.
+# With -d directories are included alongside files.
 # With -n print the paths to the count most recently modified files, newest first.
 
 set -euo pipefail
 
 absolute=false
+dirs=false
 count=1
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -a)
       absolute=true
+      shift
+      ;;
+    -d)
+      dirs=true
       shift
       ;;
     -n)
@@ -42,10 +48,18 @@ if [[ ! -d "$dir" ]]; then
   exit 1
 fi
 
-newest=$(find "$dir" -maxdepth 1 -type f -exec stat -f '%m %N' {} + | sort -rn | head -"$count" | cut -d' ' -f2-)
+if $dirs; then
+  types=(\( -type f -o -type d \))
+  what="files or directories"
+else
+  types=(-type f)
+  what="files"
+fi
+
+newest=$(find "$dir" -mindepth 1 -maxdepth 1 "${types[@]}" -exec stat -f '%m %N' {} + | sort -rn | head -"$count" | cut -d' ' -f2-)
 
 if [[ -z "$newest" ]]; then
-  echo "lst: no files in $dir" >&2
+  echo "lst: no $what in $dir" >&2
   exit 1
 fi
 
