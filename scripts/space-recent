@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+# Jump to the previously focused space (skhd: cmd + ctrl - m).
+# `yabai -m space --focus recent` needs the scripting addition, which doesn't support macOS 27
+# (asmvik/yabai#2802), so press the native "Switch to Desktop N" shortcut (cmd+N, Keyboard Shortcuts >
+# Mission Control) instead; that works for empty spaces and windows yabai can't focus.
+# shortcut: fullscreen spaces and desktops past 10 are skipped (no native shortcut); go back to
+# `yabai -m space --focus recent` once the SA supports macOS 27.
+import ctypes, json, subprocess, sys, time
+
+def yabai(*args):
+    return subprocess.run(["yabai", "-m", *args], capture_output=True, text=True, check=True).stdout
+
+recent = json.loads(yabai("query", "--spaces", "--space", "recent"))
+if recent["display"] != json.loads(yabai("query", "--displays", "--display"))["index"]:
+    yabai("display", "--focus", str(recent["display"]))
+if recent["is-visible"] or recent["is-native-fullscreen"]:
+    sys.exit()
+
+# Desktop numbers are per display and skip fullscreen spaces.
+n = sum(1 for s in json.loads(yabai("query", "--spaces", "--display", str(recent["display"])))
+        if s["index"] <= recent["index"] and not s["is-native-fullscreen"])
+KEYCODES = [18, 19, 20, 21, 23, 22, 26, 28, 25, 29]  # 1..9, 0
+if n > len(KEYCODES):
+    sys.exit()
+
+cg = ctypes.CDLL("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")
+cg.CGEventCreateKeyboardEvent.restype = ctypes.c_void_p
+cg.CGEventCreateKeyboardEvent.argtypes = [ctypes.c_void_p, ctypes.c_uint16, ctypes.c_bool]
+cg.CGEventSetFlags.argtypes = [ctypes.c_void_p, ctypes.c_uint64]
+cg.CGEventPost.argtypes = [ctypes.c_uint32, ctypes.c_void_p]
+for down in (True, False):
+    e = cg.CGEventCreateKeyboardEvent(None, KEYCODES[n - 1], down)
+    cg.CGEventSetFlags(e, 0x100000)  # cmd only, so the ctrl you're still holding doesn't hit skhd's cmd+ctrl+N
+    cg.CGEventPost(0, e)
+    time.sleep(0.02)

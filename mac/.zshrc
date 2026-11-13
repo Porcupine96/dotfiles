@@ -100,6 +100,8 @@ plugins=(
 
 # vim-style smart case for `z`: all-lowercase queries match case-insensitively
 ZSHZ_CASE=smart
+# `z work` -> ~/work, not its highest-ranked subdirectory: trim the match back to the dir whose name matched
+ZSHZ_UNCOMMON=1
 
 fpath+=~/.zfunc
 

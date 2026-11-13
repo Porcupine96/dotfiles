@@ -13,6 +13,14 @@ yabai -m signal --add event=window_focused action="sketchybar --trigger window_f
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
+# macOS leaves focus on an app with no key window (shortcuts just beep) after a window closes,
+# an app hides/quits, or you land on a space with nothing focused. Refocus: mouse window, else first.
+# https://github.com/asmvik/yabai/issues/692 , https://github.com/asmvik/yabai/issues/2234
+REFOCUS='yabai -m query --windows --window &>/dev/null || yabai -m window --focus mouse &>/dev/null || yabai -m window --focus first &>/dev/null'
+for ev in window_destroyed window_minimized application_hidden application_terminated space_changed; do
+  yabai -m signal --add label="refocus_$ev" event="$ev" action="$REFOCUS"
+done
+
 yabai -m rule --add app="^Fusion$" subrole="^AXDialog$" mouse_follows_focus=off
 yabai -m rule --add app="^Fusion$" subrole="^AXDialog$" manage=off
 yabai -m rule --add app="^Fusion$" mouse_follows_focus=off

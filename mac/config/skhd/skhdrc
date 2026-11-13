@@ -31,16 +31,18 @@ cmd + ctrl + shift - l  : yabai -m display --focus east
 # ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
 
 # focus space
-cmd - 1 : yabai -m space --focus 1
-cmd - 2 : yabai -m space --focus 2
-cmd - 3 : yabai -m space --focus 3
-cmd - 4 : yabai -m space --focus 4
-cmd - 5 : yabai -m space --focus 5
-cmd - 6 : yabai -m space --focus 6
-cmd - 7 : yabai -m space --focus 7
-cmd - 8 : yabai -m space --focus 8
-cmd - 9 : yabai -m space --focus 9
-cmd - 0 : yabai -m space --focus 10
+# shortcut: yabai SA can't focus spaces on macOS 27 (asmvik/yabai#2802), so cmd-1..0 fall through
+# to native "Switch to Desktop N" (set to cmd+N in Keyboard Shortcuts). Uncomment once SA supports 27.
+# cmd - 1 : yabai -m space --focus 1
+# cmd - 2 : yabai -m space --focus 2
+# cmd - 3 : yabai -m space --focus 3
+# cmd - 4 : yabai -m space --focus 4
+# cmd - 5 : yabai -m space --focus 5
+# cmd - 6 : yabai -m space --focus 6
+# cmd - 7 : yabai -m space --focus 7
+# cmd - 8 : yabai -m space --focus 8
+# cmd - 9 : yabai -m space --focus 9
+# cmd - 0 : yabai -m space --focus 10
 
 cmd - 0x32 : /Users/lukaszkazmierczak/dotfiles/scripts/cycle
 
@@ -101,7 +103,8 @@ cmd + ctrl - right : yabai -m window --resize left:20:0
 cmd + ctrl - up : yabai -m window --resize top:0:-20
 cmd + ctrl - down : yabai -m window --resize top:0:20
 # cmd + ctrl - m : /Users/lukaszkazmierczak/dotfiles/scripts/cycle-fullscreen
-cmd + ctrl - m : yabai -m space --focus recent
+# cmd + ctrl - m : yabai -m space --focus recent  # restore once yabai SA supports macOS 27
+cmd + ctrl - m : /Users/lukaszkazmierczak/dotfiles/scripts/space-recent
 
 # -remove only reaches notifications posted by the bundle it is run from, and
 # pcode session banners come from a pcode-branded copy, so both are cleared.
@@ -130,8 +133,9 @@ cmd + shift + ctrl - i : terminal-notifier -remove ALL; /Users/lukaszkazmierczak
 #                   yabai -m window --space "${index}" && \
 #                   yabai -m space --focus "${index}"
 
-cmd - 1 : yabai -m space --focus 1
-cmd - 2 : yabai -m space --focus 2
+# duplicate of the "focus space" block above, disabled for the same macOS 27 reason
+# cmd - 1 : yabai -m space --focus 1
+# cmd - 2 : yabai -m space --focus 2
 
 # send window to desktop and follow focus
 # shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
